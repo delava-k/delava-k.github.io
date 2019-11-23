@@ -7,58 +7,74 @@
   <title>Delava - канзаши товары</title>
 
 
+
 <script>
 
-function schet() {
-  var v="";
-  var z="";
+function schet(){
+ var v="";
+ var z="";
+ for (var i = 0; i < 5000; i++) {
+ vr=localStorage.getItem('r'+i);
 
-  for (var i = 0; i < 5000; i++) {
-
-  vr=localStorage.getItem('r'+i);
-
-  var ei=document.getElementById('r'+i);
- 
-  if (ei != null) { 
-
-    ei.value = vr;
-
-    if (vr != null) {
-//alert('0'+ei.value);
-
-      if (vr != "") {
+ var ei=document.getElementById('r'+i);
+ if (ei != null) //есть поле
+ {
+   ei.value = vr;
+   if (vr != null) //есть данные по Код(i) в LS
+   { 
+     if (vr != "") 
+     {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+  "["+ i + "] " + vr+"\n";
-      } else
-      {
-	document.getElementById('dr'+i).innerHTML = ".";
-      } 	
+	z=z+ "["+ i + "] "+vr+"\n";
 
-//alert('1');
-    }else
-    {
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
+
+
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:block;"}	
+
+     } else //пустое значение для Код
+     {
 	document.getElementById('dr'+i).innerHTML = ".";
-    }
-  }
- }
+
+
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+	
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
+     } 	
+   }else //нет данных для код
+   {
+	document.getElementById('dr'+i).innerHTML = ".";
+
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+	
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
+   }
+  }//нет поля
+ }//цикл
  document.getElementById('z').innerHTML = z;
 }
 
 
-
 function cSave(id) {
-  localStorage.setItem('zakaz',id);
-  if (typeof(Storage) !== "undefined") {
+
+//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
+//  document.getElementById('bd'+id).style = "display:block;";
+
+ localStorage.setItem('zakaz',id);
+ if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
 	var sz=localStorage.getItem('zakaz');
 
-/*        alert(id);	*/
-
 	if ((sz != null) && (sz != "")) {
 	   arid = sz.split(',');
 	}    
-
 
 	if (arid.indexOf(id)<0) {
            arid.push(id);
@@ -66,19 +82,15 @@ function cSave(id) {
 
 	localStorage.setItem('zakaz',arid.join(','));
 
-
 	localStorage.setItem(id,document.getElementById(id).value);
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
 	}
-}
+ }
  schet();
 }
-// mycopy();
-
-
 
 function cDel(id) {
   if (typeof(Storage) !== "undefined") {                
@@ -88,25 +100,18 @@ function cDel(id) {
       document.getElementById("d"+id).innerHTML = ".";
     }
  }
+// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
+// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
-</script>
+</script></head>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-</head>
 <body> 
 <div class="dpc w100w"><div class="header">Delava - канзаши товары
         <input class="nav-m_cb" type="checkbox" id="m1">
@@ -127,8 +132,8 @@ function cDel(id) {
 <div id="dr875" class="r">.</div><br>
 <input type="text" id="r875" name="r875" class="w95"><br>
 <div>
-<button onclick="cSave('r875')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r875')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r875')" type="button" id="bar875" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r875')" type="button" id="bdr875" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/2375.jpg"><br>
@@ -136,8 +141,8 @@ function cDel(id) {
 <div id="dr2375" class="r">.</div><br>
 <input type="text" id="r2375" name="r2375" class="w95"><br>
 <div>
-<button onclick="cSave('r2375')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r2375')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r2375')" type="button" id="bar2375" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2375')" type="button" id="bdr2375" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/2376.jpg"><br>
@@ -145,8 +150,8 @@ function cDel(id) {
 <div id="dr2376" class="r">.</div><br>
 <input type="text" id="r2376" name="r2376" class="w95"><br>
 <div>
-<button onclick="cSave('r2376')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r2376')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r2376')" type="button" id="bar2376" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2376')" type="button" id="bdr2376" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><div class="w33"><div class="bl"></div></div>

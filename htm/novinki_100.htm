@@ -7,58 +7,74 @@
   <title>Delava - канзаши товары</title>
 
 
+
 <script>
 
-function schet() {
-  var v="";
-  var z="";
+function schet(){
+ var v="";
+ var z="";
+ for (var i = 0; i < 5000; i++) {
+ vr=localStorage.getItem('r'+i);
 
-  for (var i = 0; i < 5000; i++) {
-
-  vr=localStorage.getItem('r'+i);
-
-  var ei=document.getElementById('r'+i);
- 
-  if (ei != null) { 
-
-    ei.value = vr;
-
-    if (vr != null) {
-//alert('0'+ei.value);
-
-      if (vr != "") {
+ var ei=document.getElementById('r'+i);
+ if (ei != null) //есть поле
+ {
+   ei.value = vr;
+   if (vr != null) //есть данные по Код(i) в LS
+   { 
+     if (vr != "") 
+     {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+  "["+ i + "] " + vr+"\n";
-      } else
-      {
-	document.getElementById('dr'+i).innerHTML = ".";
-      } 	
+	z=z+ "["+ i + "] "+vr+"\n";
 
-//alert('1');
-    }else
-    {
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
+
+
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:block;"}	
+
+     } else //пустое значение для Код
+     {
 	document.getElementById('dr'+i).innerHTML = ".";
-    }
-  }
- }
+
+
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+	
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
+     } 	
+   }else //нет данных для код
+   {
+	document.getElementById('dr'+i).innerHTML = ".";
+
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+	
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
+   }
+  }//нет поля
+ }//цикл
  document.getElementById('z').innerHTML = z;
 }
 
 
-
 function cSave(id) {
-  localStorage.setItem('zakaz',id);
-  if (typeof(Storage) !== "undefined") {
+
+//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
+//  document.getElementById('bd'+id).style = "display:block;";
+
+ localStorage.setItem('zakaz',id);
+ if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
 	var sz=localStorage.getItem('zakaz');
 
-/*        alert(id);	*/
-
 	if ((sz != null) && (sz != "")) {
 	   arid = sz.split(',');
 	}    
-
 
 	if (arid.indexOf(id)<0) {
            arid.push(id);
@@ -66,19 +82,15 @@ function cSave(id) {
 
 	localStorage.setItem('zakaz',arid.join(','));
 
-
 	localStorage.setItem(id,document.getElementById(id).value);
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
 	}
-}
+ }
  schet();
 }
-// mycopy();
-
-
 
 function cDel(id) {
   if (typeof(Storage) !== "undefined") {                
@@ -88,25 +100,18 @@ function cDel(id) {
       document.getElementById("d"+id).innerHTML = ".";
     }
  }
+// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
+// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
-</script>
+</script></head>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-</head>
 <body> 
 <div class="dpc w100w"><div class="header">Delava - канзаши товары
         <input class="nav-m_cb" type="checkbox" id="m1">
@@ -127,8 +132,8 @@ function cDel(id) {
 <div id="dr4758" class="r">.</div><br>
 <input type="text" id="r4758" name="r4758" class="w95"><br>
 <div>
-<button onclick="cSave('r4758')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4758')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4758')" type="button" id="bar4758" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4758')" type="button" id="bdr4758" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4776.jpg"><br>
@@ -136,8 +141,8 @@ function cDel(id) {
 <div id="dr4776" class="r">.</div><br>
 <input type="text" id="r4776" name="r4776" class="w95"><br>
 <div>
-<button onclick="cSave('r4776')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4776')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4776')" type="button" id="bar4776" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4776')" type="button" id="bdr4776" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4791.jpg"><br>
@@ -145,8 +150,8 @@ function cDel(id) {
 <div id="dr4791" class="r">.</div><br>
 <input type="text" id="r4791" name="r4791" class="w95"><br>
 <div>
-<button onclick="cSave('r4791')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4791')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4791')" type="button" id="bar4791" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4791')" type="button" id="bdr4791" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4790.jpg"><br>
@@ -154,8 +159,8 @@ function cDel(id) {
 <div id="dr4790" class="r">.</div><br>
 <input type="text" id="r4790" name="r4790" class="w95"><br>
 <div>
-<button onclick="cSave('r4790')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4790')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4790')" type="button" id="bar4790" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4790')" type="button" id="bdr4790" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4789.jpg"><br>
@@ -163,8 +168,8 @@ function cDel(id) {
 <div id="dr4789" class="r">.</div><br>
 <input type="text" id="r4789" name="r4789" class="w95"><br>
 <div>
-<button onclick="cSave('r4789')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4789')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4789')" type="button" id="bar4789" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4789')" type="button" id="bdr4789" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4788.jpg"><br>
@@ -172,8 +177,8 @@ function cDel(id) {
 <div id="dr4788" class="r">.</div><br>
 <input type="text" id="r4788" name="r4788" class="w95"><br>
 <div>
-<button onclick="cSave('r4788')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4788')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4788')" type="button" id="bar4788" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4788')" type="button" id="bdr4788" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4787.jpg"><br>
@@ -181,8 +186,8 @@ function cDel(id) {
 <div id="dr4787" class="r">.</div><br>
 <input type="text" id="r4787" name="r4787" class="w95"><br>
 <div>
-<button onclick="cSave('r4787')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4787')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4787')" type="button" id="bar4787" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4787')" type="button" id="bdr4787" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4786.jpg"><br>
@@ -190,8 +195,8 @@ function cDel(id) {
 <div id="dr4786" class="r">.</div><br>
 <input type="text" id="r4786" name="r4786" class="w95"><br>
 <div>
-<button onclick="cSave('r4786')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4786')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4786')" type="button" id="bar4786" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4786')" type="button" id="bdr4786" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><img src=".././img/360/4785.jpg"><br>
@@ -199,8 +204,8 @@ function cDel(id) {
 <div id="dr4785" class="r">.</div><br>
 <input type="text" id="r4785" name="r4785" class="w95"><br>
 <div>
-<button onclick="cSave('r4785')" type="button" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4785')" type="button" class="br">УДАЛИТЬ</button>
+<button onclick="cSave('r4785')" type="button" id="bar4785" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4785')" type="button" id="bdr4785" class="br" style="display:none;">УДАЛИТЬ</button>
 </div></div>
 
 <div class="w100"><div class="w33"><div class="bl"></div></div>

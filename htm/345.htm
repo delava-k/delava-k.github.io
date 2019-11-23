@@ -9,6 +9,55 @@
 
 <script>
 
+function schet(){
+ var v="";
+ var z="";
+ for (var i = 0; i < 5000; i++) {
+ vr=localStorage.getItem('r'+i);
+
+ var ei=document.getElementById('r'+i);
+ if (ei != null) //есть поле
+ {
+   ei.value = vr;
+   if (vr != null) //есть данные по Код(i) в LS
+   { 
+     if (vr != "") 
+     {
+	document.getElementById('dr'+i).innerHTML = vr;
+
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
+
+
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:block;"}	
+
+     } else //пустое значение для Код
+     {
+	document.getElementById('dr'+i).innerHTML = ".";
+
+
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+	
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
+     } 	
+   }else //нет данных для код
+   {
+	document.getElementById('dr'+i).innerHTML = ".";
+
+	var ba=document.getElementById('bar'+i);
+	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+	
+	var bd=document.getElementById('bdr'+i);
+	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
+   }
+  }//нет поля
+ }//цикл
+
+}
+
 function cSave(id) {
   localStorage.setItem('zakaz',id);
   if (typeof(Storage) !== "undefined") {
@@ -31,14 +80,30 @@ function cSave(id) {
 
 
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
-}
+ }
  schet();
 }
+
 function cDel(id) {
   if (typeof(Storage) !== "undefined") {                
     if (localStorage.getItem('id') != "") {
@@ -47,6 +112,7 @@ function cDel(id) {
       document.getElementById("d"+id).innerHTML = ".";
     }
  }
+ schet();
 }
 
 
@@ -56,10 +122,10 @@ function GetZoom(id) {
   im.src = ".././img/1080/"+id+".jpg";
 }
 
-</script>
+</script></head>
 
 
-</head>
+
 <body> 
 <div class="dpc w100w"><div class="header">Delava - канзаши товары
         <input class="nav-m_cb" type="checkbox" id="m1">
@@ -89,12 +155,14 @@ function GetZoom(id) {
 </div>
 <div>
 <div class="w100">
-<div class="w33"><button onclick="cSave('r345')" type="button" class="bl">ДОБАВИТЬ</button></div>
+<div class="w33"><button onclick="cSave('r345')" type="button" id="bar345" class="bl">ДОБАВИТЬ</button></div>
 <div class="w33"><form action="zakaz.htm"><button type="submit" class="bc">ВАШ ЗАКАЗ</button></form></div>
-<div class="w33"><button onclick="cDel('r345')" type="button" class="br">УДАЛИТЬ</button></div>
+<div class="w33"><button onclick="cDel('r345')" type="button" id="bdr345"class="br" style="display:none;">УДАЛИТЬ</button></div>
 </div>
 </div></div>
 
 
-        
+<script>
+	schet();
+</script>        
 </body></html>
