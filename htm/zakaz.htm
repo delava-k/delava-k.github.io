@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function cCopy() {
+  var copyText = document.getElementById("z");
+  copyText.select();
+  document.execCommand("Copy");
+  alert ("Заказ в буфере обмена");
+}
+
+
+function GetSchet() {
+  var z="";
+  for (var i = 0; i < 5000; i++) {
+  vr=localStorage.getItem('r'+i);
+  if (vr != null) {z=z+  "["+ i + "] " + vr+"\n";}
+  }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+</head>
+<body> 
+
+<div class="dpc w100w"><div class="header">ВАШ ЗАКАЗ
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+        </nav>
+</div></div>
+
+
+
+<section id="content" class="w100">
+<div>
+<div class="w33"><button onclick="cCopy()" type="button" class="bl">Копировать</button></div>
+<div class="w33"><button onclick="javascript:history.back(3)" type="button" class="bc">Назад</button></div>
+<div class="w33"><form action="deletezakaz.htm"><button type="submit" class="br">Удалить</button></form></div>
+</div>
+
+
+<textarea id="z" class="w100" rows=30></textarea> 
+
+
+<script>
+	GetSchet();
+</script>
+        
+</section></body></html>

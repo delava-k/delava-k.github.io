@@ -1,0 +1,553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function schet() {
+  var v="";
+  var z="";
+
+  for (var i = 0; i < 5000; i++) {
+
+  vr=localStorage.getItem('r'+i);
+
+  var ei=document.getElementById('r'+i);
+ 
+  if (ei != null) { 
+
+    ei.value = vr;
+
+    if (vr != null) {
+//alert('0'+ei.value);
+
+      if (vr != "") {
+	document.getElementById('dr'+i).innerHTML = vr;
+	z=z+  "["+ i + "] " + vr+"\n";
+      } else
+      {
+	document.getElementById('dr'+i).innerHTML = ".";
+      } 	
+
+//alert('1');
+    }else
+    {
+	document.getElementById('dr'+i).innerHTML = ".";
+    }
+  }
+ }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100"><img src=".././img/360/213.jpg"><br>
+<p>Лента репсовая 0,6 см - 0.80 грн/м.<br>рулон - 17.00 грн</p>
+<div id="dr213" class="r">.</div><br>
+<input type="text" id="r213" name="r213" class="w95"><br>
+<div>
+<button onclick="cSave('r213')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r213')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/114.jpg"><br>
+<p>Лента репсовая 0,9 см - 1.10 грн/м.<br>рулон - 24.00 грн. номер 8 1.2 см шириной</p>
+<div id="dr114" class="r">.</div><br>
+<input type="text" id="r114" name="r114" class="w95"><br>
+<div>
+<button onclick="cSave('r114')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r114')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/104.jpg"><br>
+<p>Репс 2,5 см - 2.75 грн/м. Рулон (23 метра)-58.50 грн</p>
+<div id="dr104" class="r">.</div><br>
+<input type="text" id="r104" name="r104" class="w95"><br>
+<div>
+<button onclick="cSave('r104')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r104')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/233.jpg"><br>
+<p>Репс 2.5 см серый и сапфир - 2.75 грн/м.Рулон (23 метра)-58.50 грн</p>
+<div id="dr233" class="r">.</div><br>
+<input type="text" id="r233" name="r233" class="w95"><br>
+<div>
+<button onclick="cSave('r233')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r233')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/252.jpg"><br>
+<p>Репс 2,5 см желтый - 2.75 грн/м<br>Репс 4 см ЖЕЛТЫЙ - 3.50 грн/м</p>
+<div id="dr252" class="r">.</div><br>
+<input type="text" id="r252" name="r252" class="w95"><br>
+<div>
+<button onclick="cSave('r252')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r252')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/113.jpg"><br>
+<p>Репс 4 см - 3.50 грн/м.<br>рулон - 70 грн (23м) ОРАНЖЕВОЙ и САЛАТОВОЙ НЕТ !!!</p>
+<div id="dr113" class="r">.</div><br>
+<input type="text" id="r113" name="r113" class="w95"><br>
+<div>
+<button onclick="cSave('r113')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r113')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4355.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4355" class="r">.</div><br>
+<input type="text" id="r4355" name="r4355" class="w95"><br>
+<div>
+<button onclick="cSave('r4355')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4355')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4360.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4360" class="r">.</div><br>
+<input type="text" id="r4360" name="r4360" class="w95"><br>
+<div>
+<button onclick="cSave('r4360')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4360')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4356.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4356" class="r">.</div><br>
+<input type="text" id="r4356" name="r4356" class="w95"><br>
+<div>
+<button onclick="cSave('r4356')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4356')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4357.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4357" class="r">.</div><br>
+<input type="text" id="r4357" name="r4357" class="w95"><br>
+<div>
+<button onclick="cSave('r4357')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4357')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4358.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4358" class="r">.</div><br>
+<input type="text" id="r4358" name="r4358" class="w95"><br>
+<div>
+<button onclick="cSave('r4358')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4358')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4354.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4354" class="r">.</div><br>
+<input type="text" id="r4354" name="r4354" class="w95"><br>
+<div>
+<button onclick="cSave('r4354')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4354')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4361.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4361" class="r">.</div><br>
+<input type="text" id="r4361" name="r4361" class="w95"><br>
+<div>
+<button onclick="cSave('r4361')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4361')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4359.jpg"><br>
+<p>Лента репсовая в горох 0,9 см - 1.65 грн/м.<br>рулон - 33 грн (23 м)</p>
+<div id="dr4359" class="r">.</div><br>
+<input type="text" id="r4359" name="r4359" class="w95"><br>
+<div>
+<button onclick="cSave('r4359')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4359')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4348.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 4.45 грн/м.</p>
+<div id="dr4348" class="r">.</div><br>
+<input type="text" id="r4348" name="r4348" class="w95"><br>
+<div>
+<button onclick="cSave('r4348')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4348')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4349.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 4.45 грн/м.</p>
+<div id="dr4349" class="r">.</div><br>
+<input type="text" id="r4349" name="r4349" class="w95"><br>
+<div>
+<button onclick="cSave('r4349')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4349')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4347.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4347" class="r">.</div><br>
+<input type="text" id="r4347" name="r4347" class="w95"><br>
+<div>
+<button onclick="cSave('r4347')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4347')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4340.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4340" class="r">.</div><br>
+<input type="text" id="r4340" name="r4340" class="w95"><br>
+<div>
+<button onclick="cSave('r4340')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4340')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4343.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4343" class="r">.</div><br>
+<input type="text" id="r4343" name="r4343" class="w95"><br>
+<div>
+<button onclick="cSave('r4343')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4343')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4344.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4344" class="r">.</div><br>
+<input type="text" id="r4344" name="r4344" class="w95"><br>
+<div>
+<button onclick="cSave('r4344')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4344')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4345.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4345" class="r">.</div><br>
+<input type="text" id="r4345" name="r4345" class="w95"><br>
+<div>
+<button onclick="cSave('r4345')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4345')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4350.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4350" class="r">.</div><br>
+<input type="text" id="r4350" name="r4350" class="w95"><br>
+<div>
+<button onclick="cSave('r4350')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4350')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4346.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4346" class="r">.</div><br>
+<input type="text" id="r4346" name="r4346" class="w95"><br>
+<div>
+<button onclick="cSave('r4346')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4346')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4342.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4342" class="r">.</div><br>
+<input type="text" id="r4342" name="r4342" class="w95"><br>
+<div>
+<button onclick="cSave('r4342')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4342')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4341.jpg"><br>
+<p>Лента репсовая в горох 2,5 см - 3.75 грн/м.</p>
+<div id="dr4341" class="r">.</div><br>
+<input type="text" id="r4341" name="r4341" class="w95"><br>
+<div>
+<button onclick="cSave('r4341')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4341')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2882.jpg"><br>
+<p>Репс 4 см Св. розовый - 3.50 грн/м</p>
+<div id="dr2882" class="r">.</div><br>
+<input type="text" id="r2882" name="r2882" class="w95"><br>
+<div>
+<button onclick="cSave('r2882')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2882')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2881.jpg"><br>
+<p>Репс 4 см Пудра - 3.50 грн/м</p>
+<div id="dr2881" class="r">.</div><br>
+<input type="text" id="r2881" name="r2881" class="w95"><br>
+<div>
+<button onclick="cSave('r2881')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2881')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2886.jpg"><br>
+<p>Репс 4 см Крем - 3.50 грн/м</p>
+<div id="dr2886" class="r">.</div><br>
+<input type="text" id="r2886" name="r2886" class="w95"><br>
+<div>
+<button onclick="cSave('r2886')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2886')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2884.jpg"><br>
+<p>Репс 4 см Сирень - 3.50 грн/м</p>
+<div id="dr2884" class="r">.</div><br>
+<input type="text" id="r2884" name="r2884" class="w95"><br>
+<div>
+<button onclick="cSave('r2884')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2884')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2883.jpg"><br>
+<p>Репс 4 см Т. голубой - 3.50 грн/м</p>
+<div id="dr2883" class="r">.</div><br>
+<input type="text" id="r2883" name="r2883" class="w95"><br>
+<div>
+<button onclick="cSave('r2883')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2883')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2878.jpg"><br>
+<p>Репс 2,5 см Яичный - 2.75 грн/м.</p>
+<div id="dr2878" class="r">.</div><br>
+<input type="text" id="r2878" name="r2878" class="w95"><br>
+<div>
+<button onclick="cSave('r2878')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2878')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2885.jpg"><br>
+<p>Репс 4 см Св. зеленый - 3.50 грн/м</p>
+<div id="dr2885" class="r">.</div><br>
+<input type="text" id="r2885" name="r2885" class="w95"><br>
+<div>
+<button onclick="cSave('r2885')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2885')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2880.jpg"><br>
+<p>Репс 2,5 см СВ.зеленый - 2.75 грн/м.</p>
+<div id="dr2880" class="r">.</div><br>
+<input type="text" id="r2880" name="r2880" class="w95"><br>
+<div>
+<button onclick="cSave('r2880')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2880')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3175.jpg"><br>
+<p>Репс 4 см Персик - 3.50 грн/м</p>
+<div id="dr3175" class="r">.</div><br>
+<input type="text" id="r3175" name="r3175" class="w95"><br>
+<div>
+<button onclick="cSave('r3175')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3175')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2560.jpg"><br>
+<p>Репс с перфорацией 3.5 см - 6.95 грн/м</p>
+<div id="dr2560" class="r">.</div><br>
+<input type="text" id="r2560" name="r2560" class="w95"><br>
+<div>
+<button onclick="cSave('r2560')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2560')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2563.jpg"><br>
+<p>Репс с перфорацией 3.5 см - 6.95 грн/м</p>
+<div id="dr2563" class="r">.</div><br>
+<input type="text" id="r2563" name="r2563" class="w95"><br>
+<div>
+<button onclick="cSave('r2563')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2563')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2562.jpg"><br>
+<p>Репс с перфорацией 3.5 см - 6.95 грн/м</p>
+<div id="dr2562" class="r">.</div><br>
+<input type="text" id="r2562" name="r2562" class="w95"><br>
+<div>
+<button onclick="cSave('r2562')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2562')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2561.jpg"><br>
+<p>Репс с перфорацией 3.5 см - 6.95 грн/м</p>
+<div id="dr2561" class="r">.</div><br>
+<input type="text" id="r2561" name="r2561" class="w95"><br>
+<div>
+<button onclick="cSave('r2561')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2561')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2558.jpg"><br>
+<p>Репс с перфорацией Цветок 2 см-7.00 грн/м</p>
+<div id="dr2558" class="r">.</div><br>
+<input type="text" id="r2558" name="r2558" class="w95"><br>
+<div>
+<button onclick="cSave('r2558')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2558')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4370.jpg"><br>
+<p>Репс с люриксом 0.9см - 2.95 грн/м</p>
+<div id="dr4370" class="r">.</div><br>
+<input type="text" id="r4370" name="r4370" class="w95"><br>
+<div>
+<button onclick="cSave('r4370')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4370')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2512.jpg"><br>
+<p>Репс с люрексом двухсторонний 2.5 см - 6.25 грн/м</p>
+<div id="dr2512" class="r">.</div><br>
+<input type="text" id="r2512" name="r2512" class="w95"><br>
+<div>
+<button onclick="cSave('r2512')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2512')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2514.jpg"><br>
+<p>Репс с люрексом двухсторонний 2.5 см - 6.25 грн/м</p>
+<div id="dr2514" class="r">.</div><br>
+<input type="text" id="r2514" name="r2514" class="w95"><br>
+<div>
+<button onclick="cSave('r2514')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2514')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2617.jpg"><br>
+<p>Репс с люрексом двухсторонний 2.5 см - 6.25 грн/м</p>
+<div id="dr2617" class="r">.</div><br>
+<input type="text" id="r2617" name="r2617" class="w95"><br>
+<div>
+<button onclick="cSave('r2617')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2617')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2511.jpg"><br>
+<p>Репс с люрексом двухсторонний 2.5 см - 6.25 грн/м</p>
+<div id="dr2511" class="r">.</div><br>
+<input type="text" id="r2511" name="r2511" class="w95"><br>
+<div>
+<button onclick="cSave('r2511')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2511')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/409.jpg"><br>
+<p>Репс градиент 2.5 см - 8.25 грн/м</p>
+<div id="dr409" class="r">.</div><br>
+<input type="text" id="r409" name="r409" class="w95"><br>
+<div>
+<button onclick="cSave('r409')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r409')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3990.jpg"><br>
+<p>Репс с рисунком 2.5 см - 7.50 грн/м</p>
+<div id="dr3990" class="r">.</div><br>
+<input type="text" id="r3990" name="r3990" class="w95"><br>
+<div>
+<button onclick="cSave('r3990')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3990')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="reps_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+	schet();
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>

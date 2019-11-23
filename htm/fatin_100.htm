@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function schet() {
+  var v="";
+  var z="";
+
+  for (var i = 0; i < 5000; i++) {
+
+  vr=localStorage.getItem('r'+i);
+
+  var ei=document.getElementById('r'+i);
+ 
+  if (ei != null) { 
+
+    ei.value = vr;
+
+    if (vr != null) {
+//alert('0'+ei.value);
+
+      if (vr != "") {
+	document.getElementById('dr'+i).innerHTML = vr;
+	z=z+  "["+ i + "] " + vr+"\n";
+      } else
+      {
+	document.getElementById('dr'+i).innerHTML = ".";
+      } 	
+
+//alert('1');
+    }else
+    {
+	document.getElementById('dr'+i).innerHTML = ".";
+    }
+  }
+ }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100"><img src=".././img/360/386.jpg"><br>
+<p>Фатин 1м. x 1.5м - 18.50 грн.</p>
+<div id="dr386" class="r">.</div><br>
+<input type="text" id="r386" name="r386" class="w95"><br>
+<div>
+<button onclick="cSave('r386')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r386')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/675.jpg"><br>
+<p>Фатин 1м. x 1.5м - 18.50 грн.</p>
+<div id="dr675" class="r">.</div><br>
+<input type="text" id="r675" name="r675" class="w95"><br>
+<div>
+<button onclick="cSave('r675')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r675')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/656.jpg"><br>
+<p>Фатин 1м. x 1.5м - 18.50 грн</p>
+<div id="dr656" class="r">.</div><br>
+<input type="text" id="r656" name="r656" class="w95"><br>
+<div>
+<button onclick="cSave('r656')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r656')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/643.jpg"><br>
+<p>Фатин 1м. x 1.5м - 18.50 грн.ОРАНЖЕВЫЙ</p>
+<div id="dr643" class="r">.</div><br>
+<input type="text" id="r643" name="r643" class="w95"><br>
+<div>
+<button onclick="cSave('r643')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r643')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/575.jpg"><br>
+<p>Фатин 1м. x 1.5м - 18.50 грн.</p>
+<div id="dr575" class="r">.</div><br>
+<input type="text" id="r575" name="r575" class="w95"><br>
+<div>
+<button onclick="cSave('r575')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r575')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4662.jpg"><br>
+<p>Фатин морская волна1м. x 1.5м - 18.50 грн.</p>
+<div id="dr4662" class="r">.</div><br>
+<input type="text" id="r4662" name="r4662" class="w95"><br>
+<div>
+<button onclick="cSave('r4662')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4662')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4663.jpg"><br>
+<p>Фатин морская волна1м. x 1.5м - 18.50 грн.</p>
+<div id="dr4663" class="r">.</div><br>
+<input type="text" id="r4663" name="r4663" class="w95"><br>
+<div>
+<button onclick="cSave('r4663')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4663')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2977.jpg"><br>
+<p>Фатин 1м. x 1.5м - 18.50 грн.</p>
+<div id="dr2977" class="r">.</div><br>
+<input type="text" id="r2977" name="r2977" class="w95"><br>
+<div>
+<button onclick="cSave('r2977')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2977')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/902.jpg"><br>
+<p>Фатин 1м. x 1.5м - 18.50 грн.</p>
+<div id="dr902" class="r">.</div><br>
+<input type="text" id="r902" name="r902" class="w95"><br>
+<div>
+<button onclick="cSave('r902')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r902')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/895.jpg"><br>
+<p>Повязка-Юбочка-Топ - 39.50 грн от 3х шт - 38.00 грн. ЕСТЬ ТОЛЬКО РОЗОВЫЙ, БЕЛЫЙ, ЖЕЛТЫЙ, КРЕМОВЫЙ</p>
+<div id="dr895" class="r">.</div><br>
+<input type="text" id="r895" name="r895" class="w95"><br>
+<div>
+<button onclick="cSave('r895')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r895')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4305.jpg"><br>
+<p>Фатин с мелкими блестками 15 см х 1 м - 5.50 грн/м</p>
+<div id="dr4305" class="r">.</div><br>
+<input type="text" id="r4305" name="r4305" class="w95"><br>
+<div>
+<button onclick="cSave('r4305')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4305')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4308.jpg"><br>
+<p>Фатин с мелкими блестками 15 см х 1 м - 5.50 грн/м</p>
+<div id="dr4308" class="r">.</div><br>
+<input type="text" id="r4308" name="r4308" class="w95"><br>
+<div>
+<button onclick="cSave('r4308')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4308')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4307.jpg"><br>
+<p>Фатин с мелкими блестками 15 см х 1 м - 5.50 грн/м</p>
+<div id="dr4307" class="r">.</div><br>
+<input type="text" id="r4307" name="r4307" class="w95"><br>
+<div>
+<button onclick="cSave('r4307')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4307')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2905.jpg"><br>
+<p>Фатин с блестками 15 см х 1 м - 5.50 грн/м</p>
+<div id="dr2905" class="r">.</div><br>
+<input type="text" id="r2905" name="r2905" class="w95"><br>
+<div>
+<button onclick="cSave('r2905')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2905')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4793.jpg"><br>
+<p>Фатин с блестками 15 см х 1 м - 5.50 грн/м</p>
+<div id="dr4793" class="r">.</div><br>
+<input type="text" id="r4793" name="r4793" class="w95"><br>
+<div>
+<button onclick="cSave('r4793')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4793')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4792.jpg"><br>
+<p>Фатин с блестками 15 см х 1 м - 5.50 грн/м</p>
+<div id="dr4792" class="r">.</div><br>
+<input type="text" id="r4792" name="r4792" class="w95"><br>
+<div>
+<button onclick="cSave('r4792')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4792')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="fatin_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+	schet();
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>

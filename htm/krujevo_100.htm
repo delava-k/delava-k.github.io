@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function schet() {
+  var v="";
+  var z="";
+
+  for (var i = 0; i < 5000; i++) {
+
+  vr=localStorage.getItem('r'+i);
+
+  var ei=document.getElementById('r'+i);
+ 
+  if (ei != null) { 
+
+    ei.value = vr;
+
+    if (vr != null) {
+//alert('0'+ei.value);
+
+      if (vr != "") {
+	document.getElementById('dr'+i).innerHTML = vr;
+	z=z+  "["+ i + "] " + vr+"\n";
+      } else
+      {
+	document.getElementById('dr'+i).innerHTML = ".";
+      } 	
+
+//alert('1');
+    }else
+    {
+	document.getElementById('dr'+i).innerHTML = ".";
+    }
+  }
+ }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100"><img src=".././img/360/149.jpg"><br>
+<p>Кружево органза 4 см - 5.75 грн/м<br>рулон - 50 грн (9 м)</p>
+<div id="dr149" class="r">.</div><br>
+<input type="text" id="r149" name="r149" class="w95"><br>
+<div>
+<button onclick="cSave('r149')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r149')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/203.jpg"><br>
+<p>Кружево 2 см - 3.00 грн/м</p>
+<div id="dr203" class="r">.</div><br>
+<input type="text" id="r203" name="r203" class="w95"><br>
+<div>
+<button onclick="cSave('r203')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r203')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2410.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr2410" class="r">.</div><br>
+<input type="text" id="r2410" name="r2410" class="w95"><br>
+<div>
+<button onclick="cSave('r2410')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2410')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2411.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr2411" class="r">.</div><br>
+<input type="text" id="r2411" name="r2411" class="w95"><br>
+<div>
+<button onclick="cSave('r2411')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2411')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2406.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr2406" class="r">.</div><br>
+<input type="text" id="r2406" name="r2406" class="w95"><br>
+<div>
+<button onclick="cSave('r2406')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2406')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2409.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr2409" class="r">.</div><br>
+<input type="text" id="r2409" name="r2409" class="w95"><br>
+<div>
+<button onclick="cSave('r2409')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2409')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2408.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr2408" class="r">.</div><br>
+<input type="text" id="r2408" name="r2408" class="w95"><br>
+<div>
+<button onclick="cSave('r2408')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2408')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2407.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr2407" class="r">.</div><br>
+<input type="text" id="r2407" name="r2407" class="w95"><br>
+<div>
+<button onclick="cSave('r2407')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2407')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2404.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr2404" class="r">.</div><br>
+<input type="text" id="r2404" name="r2404" class="w95"><br>
+<div>
+<button onclick="cSave('r2404')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2404')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3048.jpg"><br>
+<p>Кружево 4 см - 4.50 грн/м</p>
+<div id="dr3048" class="r">.</div><br>
+<input type="text" id="r3048" name="r3048" class="w95"><br>
+<div>
+<button onclick="cSave('r3048')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3048')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2072.jpg"><br>
+<p>Прошва цветная 5см - 11.75 грн/м</p>
+<div id="dr2072" class="r">.</div><br>
+<input type="text" id="r2072" name="r2072" class="w95"><br>
+<div>
+<button onclick="cSave('r2072')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2072')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1418.jpg"><br>
+<p>Кружево стрейчевое 15 см - 15.50 грн/м</p>
+<div id="dr1418" class="r">.</div><br>
+<input type="text" id="r1418" name="r1418" class="w95"><br>
+<div>
+<button onclick="cSave('r1418')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1418')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1213.jpg"><br>
+<p>Кружево стрейчевое 15 см - 15.50 грн/м</p>
+<div id="dr1213" class="r">.</div><br>
+<input type="text" id="r1213" name="r1213" class="w95"><br>
+<div>
+<button onclick="cSave('r1213')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1213')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/886.jpg"><br>
+<p>Кружево вязанное 4 см - 13.50 грн/пол метра</p>
+<div id="dr886" class="r">.</div><br>
+<input type="text" id="r886" name="r886" class="w95"><br>
+<div>
+<button onclick="cSave('r886')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r886')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/360.jpg"><br>
+<p>Кружево на резинке 2.2 см - 8.75 грн/м</p>
+<div id="dr360" class="r">.</div><br>
+<input type="text" id="r360" name="r360" class="w95"><br>
+<div>
+<button onclick="cSave('r360')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r360')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/475.jpg"><br>
+<p>Кружево ромашка белое 2 см - 12.25 грн грн/м</p>
+<div id="dr475" class="r">.</div><br>
+<input type="text" id="r475" name="r475" class="w95"><br>
+<div>
+<button onclick="cSave('r475')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r475')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/700.jpg"><br>
+<p>Кружево ромашка 2 см - 12.25 грн/м</p>
+<div id="dr700" class="r">.</div><br>
+<input type="text" id="r700" name="r700" class="w95"><br>
+<div>
+<button onclick="cSave('r700')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r700')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/168.jpg"><br>
+<p>Тесьма Сетка 2 см - 6.75 грн/м</p>
+<div id="dr168" class="r">.</div><br>
+<input type="text" id="r168" name="r168" class="w95"><br>
+<div>
+<button onclick="cSave('r168')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r168')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/912.jpg"><br>
+<p>Тесьма декоративная 3 см - 6.50 грн/м</p>
+<div id="dr912" class="r">.</div><br>
+<input type="text" id="r912" name="r912" class="w95"><br>
+<div>
+<button onclick="cSave('r912')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r912')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/581.jpg"><br>
+<p>Тесьма декоративная 3 см - 6.50 грн/м</p>
+<div id="dr581" class="r">.</div><br>
+<input type="text" id="r581" name="r581" class="w95"><br>
+<div>
+<button onclick="cSave('r581')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r581')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1043.jpg"><br>
+<p>Тесьма декоративная 3 см - 6.50 грн/м</p>
+<div id="dr1043" class="r">.</div><br>
+<input type="text" id="r1043" name="r1043" class="w95"><br>
+<div>
+<button onclick="cSave('r1043')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1043')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/291.jpg"><br>
+<p>Атласная тесьма Узор 2 см - 9.50 грн/м</p>
+<div id="dr291" class="r">.</div><br>
+<input type="text" id="r291" name="r291" class="w95"><br>
+<div>
+<button onclick="cSave('r291')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r291')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/339.jpg"><br>
+<p>Тесьма декоративная 4 см(белая) - 7.50 грн/м</p>
+<div id="dr339" class="r">.</div><br>
+<input type="text" id="r339" name="r339" class="w95"><br>
+<div>
+<button onclick="cSave('r339')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r339')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/583.jpg"><br>
+<p>Тесьма атласная с органзой 5 см - 6.25 грн/м</p>
+<div id="dr583" class="r">.</div><br>
+<input type="text" id="r583" name="r583" class="w95"><br>
+<div>
+<button onclick="cSave('r583')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r583')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4378.jpg"><br>
+<p>Тесьма золото 2.8см - 8.95 грн/м</p>
+<div id="dr4378" class="r">.</div><br>
+<input type="text" id="r4378" name="r4378" class="w95"><br>
+<div>
+<button onclick="cSave('r4378')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4378')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2602.jpg"><br>
+<p>Тесьма Узор 2 см золото - 6.50 грн/м</p>
+<div id="dr2602" class="r">.</div><br>
+<input type="text" id="r2602" name="r2602" class="w95"><br>
+<div>
+<button onclick="cSave('r2602')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2602')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2601.jpg"><br>
+<p>Тесьма Узор 2 см серебро - 6.50 грн/м</p>
+<div id="dr2601" class="r">.</div><br>
+<input type="text" id="r2601" name="r2601" class="w95"><br>
+<div>
+<button onclick="cSave('r2601')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2601')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2906.jpg"><br>
+<p>Тесьма Сетка 2 см СЕРЕБРО - 6.75 грн/м</p>
+<div id="dr2906" class="r">.</div><br>
+<input type="text" id="r2906" name="r2906" class="w95"><br>
+<div>
+<button onclick="cSave('r2906')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2906')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2913.jpg"><br>
+<p>Тесьма Сетка 2 см ЗОЛОТО - 6.75 грн/м</p>
+<div id="dr2913" class="r">.</div><br>
+<input type="text" id="r2913" name="r2913" class="w95"><br>
+<div>
+<button onclick="cSave('r2913')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2913')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4383.jpg"><br>
+<p>Атласная тесьма Цветок с листьями цветная 2 см - 8.75 грн/м</p>
+<div id="dr4383" class="r">.</div><br>
+<input type="text" id="r4383" name="r4383" class="w95"><br>
+<div>
+<button onclick="cSave('r4383')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4383')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4353.jpg"><br>
+<p>Атласная тесьма Цветок с листьями цветная 2 см - 8.75 грн/м</p>
+<div id="dr4353" class="r">.</div><br>
+<input type="text" id="r4353" name="r4353" class="w95"><br>
+<div>
+<button onclick="cSave('r4353')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4353')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4351.jpg"><br>
+<p>Атласная тесьма Цветок с листьями цветная 2 см - 8.75 грн/м</p>
+<div id="dr4351" class="r">.</div><br>
+<input type="text" id="r4351" name="r4351" class="w95"><br>
+<div>
+<button onclick="cSave('r4351')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4351')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4352.jpg"><br>
+<p>Атласная тесьма Цветок с листьями цветная 2 см - 8.75 грн/м</p>
+<div id="dr4352" class="r">.</div><br>
+<input type="text" id="r4352" name="r4352" class="w95"><br>
+<div>
+<button onclick="cSave('r4352')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4352')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2448.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2448" class="r">.</div><br>
+<input type="text" id="r2448" name="r2448" class="w95"><br>
+<div>
+<button onclick="cSave('r2448')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2448')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2453.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2453" class="r">.</div><br>
+<input type="text" id="r2453" name="r2453" class="w95"><br>
+<div>
+<button onclick="cSave('r2453')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2453')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2457.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2457" class="r">.</div><br>
+<input type="text" id="r2457" name="r2457" class="w95"><br>
+<div>
+<button onclick="cSave('r2457')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2457')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2450.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2450" class="r">.</div><br>
+<input type="text" id="r2450" name="r2450" class="w95"><br>
+<div>
+<button onclick="cSave('r2450')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2450')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2449.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2449" class="r">.</div><br>
+<input type="text" id="r2449" name="r2449" class="w95"><br>
+<div>
+<button onclick="cSave('r2449')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2449')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2452.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2452" class="r">.</div><br>
+<input type="text" id="r2452" name="r2452" class="w95"><br>
+<div>
+<button onclick="cSave('r2452')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2452')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2447.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2447" class="r">.</div><br>
+<input type="text" id="r2447" name="r2447" class="w95"><br>
+<div>
+<button onclick="cSave('r2447')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2447')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2451.jpg"><br>
+<p>Веточка с листиками 1.5 см - 2.95 грн/м</p>
+<div id="dr2451" class="r">.</div><br>
+<input type="text" id="r2451" name="r2451" class="w95"><br>
+<div>
+<button onclick="cSave('r2451')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2451')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="krujevo_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+	schet();
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>

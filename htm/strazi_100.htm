@@ -1,0 +1,985 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function schet() {
+  var v="";
+  var z="";
+
+  for (var i = 0; i < 5000; i++) {
+
+  vr=localStorage.getItem('r'+i);
+
+  var ei=document.getElementById('r'+i);
+ 
+  if (ei != null) { 
+
+    ei.value = vr;
+
+    if (vr != null) {
+//alert('0'+ei.value);
+
+      if (vr != "") {
+	document.getElementById('dr'+i).innerHTML = vr;
+	z=z+  "["+ i + "] " + vr+"\n";
+      } else
+      {
+	document.getElementById('dr'+i).innerHTML = ".";
+      } 	
+
+//alert('1');
+    }else
+    {
+	document.getElementById('dr'+i).innerHTML = ".";
+    }
+  }
+ }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100"><img src=".././img/360/146.jpg"><br>
+<p>Цепочка со стразой(стекло) 3 мм СЕРЕБРО - 9.00 грн/пол метра</p>
+<div id="dr146" class="r">.</div><br>
+<input type="text" id="r146" name="r146" class="w95"><br>
+<div>
+<button onclick="cSave('r146')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r146')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3076.jpg"><br>
+<p>Цепочка со стразой(стекло) 3 мм золото - 9.00 грн/пол метра</p>
+<div id="dr3076" class="r">.</div><br>
+<input type="text" id="r3076" name="r3076" class="w95"><br>
+<div>
+<button onclick="cSave('r3076')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3076')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3075.jpg"><br>
+<p>Цепочка со стразой(стекло) 3 мм голография - 10.00 грн/пол метра</p>
+<div id="dr3075" class="r">.</div><br>
+<input type="text" id="r3075" name="r3075" class="w95"><br>
+<div>
+<button onclick="cSave('r3075')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3075')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/111.jpg"><br>
+<p>Лента(шина) имитация камней пластик 6 рядов х 0.5 метра - 3.15 грн</p>
+<div id="dr111" class="r">.</div><br>
+<input type="text" id="r111" name="r111" class="w95"><br>
+<div>
+<button onclick="cSave('r111')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r111')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/120.jpg"><br>
+<p>Лента(шина) имитация камней пластик 6 рядов х 0.5 метра - 3.15 грн</p>
+<div id="dr120" class="r">.</div><br>
+<input type="text" id="r120" name="r120" class="w95"><br>
+<div>
+<button onclick="cSave('r120')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r120')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/141.jpg"><br>
+<p>Круг с пупыришками. Диаметр 12мм. -0.50 грн/шт.</p>
+<div id="dr141" class="r">.</div><br>
+<input type="text" id="r141" name="r141" class="w95"><br>
+<div>
+<button onclick="cSave('r141')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r141')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/144.jpg"><br>
+<p>Круг с пупыришками голография. Диаметр 10 мм. - 0.55 грн/шт</p>
+<div id="dr144" class="r">.</div><br>
+<input type="text" id="r144" name="r144" class="w95"><br>
+<div>
+<button onclick="cSave('r144')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r144')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3735.jpg"><br>
+<p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
+<div id="dr3735" class="r">.</div><br>
+<input type="text" id="r3735" name="r3735" class="w95"><br>
+<div>
+<button onclick="cSave('r3735')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3735')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3736.jpg"><br>
+<p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
+<div id="dr3736" class="r">.</div><br>
+<input type="text" id="r3736" name="r3736" class="w95"><br>
+<div>
+<button onclick="cSave('r3736')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3736')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/200.jpg"><br>
+<p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
+<div id="dr200" class="r">.</div><br>
+<input type="text" id="r200" name="r200" class="w95"><br>
+<div>
+<button onclick="cSave('r200')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r200')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/704.jpg"><br>
+<p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
+<div id="dr704" class="r">.</div><br>
+<input type="text" id="r704" name="r704" class="w95"><br>
+<div>
+<button onclick="cSave('r704')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r704')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4524.jpg"><br>
+<p>Набор квадратных страз 2мм (в упаковке 100 штук) - 3.95 грн/уп</p>
+<div id="dr4524" class="r">.</div><br>
+<input type="text" id="r4524" name="r4524" class="w95"><br>
+<div>
+<button onclick="cSave('r4524')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4524')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/192.jpg"><br>
+<p>Страза плоская 2.5мм (100штук) - 6.95 грн/уп.</p>
+<div id="dr192" class="r">.</div><br>
+<input type="text" id="r192" name="r192" class="w95"><br>
+<div>
+<button onclick="cSave('r192')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r192')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/226.jpg"><br>
+<p>Страза плоская 2.5мм (100штук) - 6.95 грн/уп.</p>
+<div id="dr226" class="r">.</div><br>
+<input type="text" id="r226" name="r226" class="w95"><br>
+<div>
+<button onclick="cSave('r226')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r226')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/835.jpg"><br>
+<p>Страза граненная прозрачная 3мм 100 штук - 5.00 грн</p>
+<div id="dr835" class="r">.</div><br>
+<input type="text" id="r835" name="r835" class="w95"><br>
+<div>
+<button onclick="cSave('r835')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r835')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3762.jpg"><br>
+<p>Страза плоская 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3762" class="r">.</div><br>
+<input type="text" id="r3762" name="r3762" class="w95"><br>
+<div>
+<button onclick="cSave('r3762')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3762')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3763.jpg"><br>
+<p>Страза плоская 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3763" class="r">.</div><br>
+<input type="text" id="r3763" name="r3763" class="w95"><br>
+<div>
+<button onclick="cSave('r3763')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3763')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3764.jpg"><br>
+<p>Страза плоская 5 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3764" class="r">.</div><br>
+<input type="text" id="r3764" name="r3764" class="w95"><br>
+<div>
+<button onclick="cSave('r3764')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3764')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3765.jpg"><br>
+<p>Страза плоская 6.5мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3765" class="r">.</div><br>
+<input type="text" id="r3765" name="r3765" class="w95"><br>
+<div>
+<button onclick="cSave('r3765')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3765')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3766.jpg"><br>
+<p>Страза плоская 6.5 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3766" class="r">.</div><br>
+<input type="text" id="r3766" name="r3766" class="w95"><br>
+<div>
+<button onclick="cSave('r3766')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3766')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3767.jpg"><br>
+<p>Страза 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3767" class="r">.</div><br>
+<input type="text" id="r3767" name="r3767" class="w95"><br>
+<div>
+<button onclick="cSave('r3767')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3767')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3768.jpg"><br>
+<p>Страза плоская 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3768" class="r">.</div><br>
+<input type="text" id="r3768" name="r3768" class="w95"><br>
+<div>
+<button onclick="cSave('r3768')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3768')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3746.jpg"><br>
+<p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3746" class="r">.</div><br>
+<input type="text" id="r3746" name="r3746" class="w95"><br>
+<div>
+<button onclick="cSave('r3746')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3746')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3747.jpg"><br>
+<p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3747" class="r">.</div><br>
+<input type="text" id="r3747" name="r3747" class="w95"><br>
+<div>
+<button onclick="cSave('r3747')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3747')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3748.jpg"><br>
+<p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3748" class="r">.</div><br>
+<input type="text" id="r3748" name="r3748" class="w95"><br>
+<div>
+<button onclick="cSave('r3748')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3748')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3749.jpg"><br>
+<p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3749" class="r">.</div><br>
+<input type="text" id="r3749" name="r3749" class="w95"><br>
+<div>
+<button onclick="cSave('r3749')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3749')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3750.jpg"><br>
+<p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3750" class="r">.</div><br>
+<input type="text" id="r3750" name="r3750" class="w95"><br>
+<div>
+<button onclick="cSave('r3750')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3750')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3751.jpg"><br>
+<p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3751" class="r">.</div><br>
+<input type="text" id="r3751" name="r3751" class="w95"><br>
+<div>
+<button onclick="cSave('r3751')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3751')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3752.jpg"><br>
+<p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
+<div id="dr3752" class="r">.</div><br>
+<input type="text" id="r3752" name="r3752" class="w95"><br>
+<div>
+<button onclick="cSave('r3752')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3752')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1068.jpg"><br>
+<p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
+<div id="dr1068" class="r">.</div><br>
+<input type="text" id="r1068" name="r1068" class="w95"><br>
+<div>
+<button onclick="cSave('r1068')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1068')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/644.jpg"><br>
+<p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
+<div id="dr644" class="r">.</div><br>
+<input type="text" id="r644" name="r644" class="w95"><br>
+<div>
+<button onclick="cSave('r644')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r644')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/740.jpg"><br>
+<p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
+<div id="dr740" class="r">.</div><br>
+<input type="text" id="r740" name="r740" class="w95"><br>
+<div>
+<button onclick="cSave('r740')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r740')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/426.jpg"><br>
+<p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
+<div id="dr426" class="r">.</div><br>
+<input type="text" id="r426" name="r426" class="w95"><br>
+<div>
+<button onclick="cSave('r426')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r426')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3523.jpg"><br>
+<p>Цветок с огранкой (синий) 16мм - 0.75 грн/шт</p>
+<div id="dr3523" class="r">.</div><br>
+<input type="text" id="r3523" name="r3523" class="w95"><br>
+<div>
+<button onclick="cSave('r3523')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3523')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3525.jpg"><br>
+<p>Цветок с огранкой (изумруд) 16мм - 0.75 грн/шт</p>
+<div id="dr3525" class="r">.</div><br>
+<input type="text" id="r3525" name="r3525" class="w95"><br>
+<div>
+<button onclick="cSave('r3525')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3525')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3526.jpg"><br>
+<p>Цветок с огранкой (черный) 16мм - 0.75 грн/шт</p>
+<div id="dr3526" class="r">.</div><br>
+<input type="text" id="r3526" name="r3526" class="w95"><br>
+<div>
+<button onclick="cSave('r3526')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3526')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3527.jpg"><br>
+<p>Цветок с огранкой (красный) 16мм - 0.75 грн/шт</p>
+<div id="dr3527" class="r">.</div><br>
+<input type="text" id="r3527" name="r3527" class="w95"><br>
+<div>
+<button onclick="cSave('r3527')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3527')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/222.jpg"><br>
+<p>Клеевой камень <br>«ребристый»<br>13*18мм. 0.55грн./шт ..КРАСНОЙ И ЖЕЛТОЙ НЕТ</p>
+<div id="dr222" class="r">.</div><br>
+<input type="text" id="r222" name="r222" class="w95"><br>
+<div>
+<button onclick="cSave('r222')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r222')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3528.jpg"><br>
+<p>Круг с огранкой <br>12 мм - 0.50 грн/шт<br>14 мм - 0.75 грн/шт</p>
+<div id="dr3528" class="r">.</div><br>
+<input type="text" id="r3528" name="r3528" class="w95"><br>
+<div>
+<button onclick="cSave('r3528')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3528')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3529.jpg"><br>
+<p>Круг с огранкой 10 мм - 0.50 грн/шт</p>
+<div id="dr3529" class="r">.</div><br>
+<input type="text" id="r3529" name="r3529" class="w95"><br>
+<div>
+<button onclick="cSave('r3529')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3529')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3530.jpg"><br>
+<p>Круг с огранкой 10 мм - 0.45 грн/шт</p>
+<div id="dr3530" class="r">.</div><br>
+<input type="text" id="r3530" name="r3530" class="w95"><br>
+<div>
+<button onclick="cSave('r3530')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3530')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/218.jpg"><br>
+<p>Камень ребристый 10мм - 0.19 грн/шт</p>
+<div id="dr218" class="r">.</div><br>
+<input type="text" id="r218" name="r218" class="w95"><br>
+<div>
+<button onclick="cSave('r218')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r218')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/211.jpg"><br>
+<p>Конус сердце 14 мм - 0.55 грн./шт.</p>
+<div id="dr211" class="r">.</div><br>
+<input type="text" id="r211" name="r211" class="w95"><br>
+<div>
+<button onclick="cSave('r211')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r211')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3531.jpg"><br>
+<p>Конус 14 мм - 0.55 грн./шт.</p>
+<div id="dr3531" class="r">.</div><br>
+<input type="text" id="r3531" name="r3531" class="w95"><br>
+<div>
+<button onclick="cSave('r3531')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3531')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3532.jpg"><br>
+<p>Сердце с пупырышками голография. Диаметр 16 мм. - 1.50 грн/шт</p>
+<div id="dr3532" class="r">.</div><br>
+<input type="text" id="r3532" name="r3532" class="w95"><br>
+<div>
+<button onclick="cSave('r3532')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3532')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3533.jpg"><br>
+<p>Сердце с пупыришками. Диаметр 16 мм. -1.15 грн/шт</p>
+<div id="dr3533" class="r">.</div><br>
+<input type="text" id="r3533" name="r3533" class="w95"><br>
+<div>
+<button onclick="cSave('r3533')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3533')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3534.jpg"><br>
+<p>Сердце с огранкой. Диаметр 14 мм. - 0.90 грн/шт</p>
+<div id="dr3534" class="r">.</div><br>
+<input type="text" id="r3534" name="r3534" class="w95"><br>
+<div>
+<button onclick="cSave('r3534')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3534')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3535.jpg"><br>
+<p>Сердце серебрянное с отверстием 16мм-1.00 грн/шт</p>
+<div id="dr3535" class="r">.</div><br>
+<input type="text" id="r3535" name="r3535" class="w95"><br>
+<div>
+<button onclick="cSave('r3535')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3535')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3541.jpg"><br>
+<p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
+<div id="dr3541" class="r">.</div><br>
+<input type="text" id="r3541" name="r3541" class="w95"><br>
+<div>
+<button onclick="cSave('r3541')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3541')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3536.jpg"><br>
+<p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
+<div id="dr3536" class="r">.</div><br>
+<input type="text" id="r3536" name="r3536" class="w95"><br>
+<div>
+<button onclick="cSave('r3536')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3536')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3537.jpg"><br>
+<p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
+<div id="dr3537" class="r">.</div><br>
+<input type="text" id="r3537" name="r3537" class="w95"><br>
+<div>
+<button onclick="cSave('r3537')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3537')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3538.jpg"><br>
+<p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
+<div id="dr3538" class="r">.</div><br>
+<input type="text" id="r3538" name="r3538" class="w95"><br>
+<div>
+<button onclick="cSave('r3538')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3538')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3540.jpg"><br>
+<p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
+<div id="dr3540" class="r">.</div><br>
+<input type="text" id="r3540" name="r3540" class="w95"><br>
+<div>
+<button onclick="cSave('r3540')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3540')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3539.jpg"><br>
+<p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
+<div id="dr3539" class="r">.</div><br>
+<input type="text" id="r3539" name="r3539" class="w95"><br>
+<div>
+<button onclick="cSave('r3539')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3539')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/505.jpg"><br>
+<p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
+<div id="dr505" class="r">.</div><br>
+<input type="text" id="r505" name="r505" class="w95"><br>
+<div>
+<button onclick="cSave('r505')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r505')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/873.jpg"><br>
+<p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
+<div id="dr873" class="r">.</div><br>
+<input type="text" id="r873" name="r873" class="w95"><br>
+<div>
+<button onclick="cSave('r873')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r873')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1106.jpg"><br>
+<p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
+<div id="dr1106" class="r">.</div><br>
+<input type="text" id="r1106" name="r1106" class="w95"><br>
+<div>
+<button onclick="cSave('r1106')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1106')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1110.jpg"><br>
+<p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
+<div id="dr1110" class="r">.</div><br>
+<input type="text" id="r1110" name="r1110" class="w95"><br>
+<div>
+<button onclick="cSave('r1110')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1110')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1112.jpg"><br>
+<p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
+<div id="dr1112" class="r">.</div><br>
+<input type="text" id="r1112" name="r1112" class="w95"><br>
+<div>
+<button onclick="cSave('r1112')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1112')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1196.jpg"><br>
+<p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
+<div id="dr1196" class="r">.</div><br>
+<input type="text" id="r1196" name="r1196" class="w95"><br>
+<div>
+<button onclick="cSave('r1196')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1196')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/964.jpg"><br>
+<p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
+<div id="dr964" class="r">.</div><br>
+<input type="text" id="r964" name="r964" class="w95"><br>
+<div>
+<button onclick="cSave('r964')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r964')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/335.jpg"><br>
+<p>Колечко с камнем 14 мм - 0.15 грн/шт.</p>
+<div id="dr335" class="r">.</div><br>
+<input type="text" id="r335" name="r335" class="w95"><br>
+<div>
+<button onclick="cSave('r335')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r335')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3807.jpg"><br>
+<p>Страза 6мм голубая - 0.12 грн/шт.</p>
+<div id="dr3807" class="r">.</div><br>
+<input type="text" id="r3807" name="r3807" class="w95"><br>
+<div>
+<button onclick="cSave('r3807')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3807')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/373.jpg"><br>
+<p>Страза клеевая 10 мм 5 штук 1.00грн</p>
+<div id="dr373" class="r">.</div><br>
+<input type="text" id="r373" name="r373" class="w95"><br>
+<div>
+<button onclick="cSave('r373')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r373')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/669.jpg"><br>
+<p>Конусный цветок золоой 14мм 0.35грн/шт.</p>
+<div id="dr669" class="r">.</div><br>
+<input type="text" id="r669" name="r669" class="w95"><br>
+<div>
+<button onclick="cSave('r669')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r669')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2479.jpg"><br>
+<p>Роса 10 мм - 0.20 грн/шт.</p>
+<div id="dr2479" class="r">.</div><br>
+<input type="text" id="r2479" name="r2479" class="w95"><br>
+<div>
+<button onclick="cSave('r2479')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2479')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2480.jpg"><br>
+<p>Роса 8 мм - 0.20 грн/шт.</p>
+<div id="dr2480" class="r">.</div><br>
+<input type="text" id="r2480" name="r2480" class="w95"><br>
+<div>
+<button onclick="cSave('r2480')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2480')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2481.jpg"><br>
+<p>Роса 8 мм - 0.20 грн/шт.</p>
+<div id="dr2481" class="r">.</div><br>
+<input type="text" id="r2481" name="r2481" class="w95"><br>
+<div>
+<button onclick="cSave('r2481')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2481')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2482.jpg"><br>
+<p>Роса 8 мм - 0.20 грн/шт.</p>
+<div id="dr2482" class="r">.</div><br>
+<input type="text" id="r2482" name="r2482" class="w95"><br>
+<div>
+<button onclick="cSave('r2482')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2482')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2483.jpg"><br>
+<p>Роса 8 мм - 0.20 грн/шт.</p>
+<div id="dr2483" class="r">.</div><br>
+<input type="text" id="r2483" name="r2483" class="w95"><br>
+<div>
+<button onclick="cSave('r2483')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2483')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2484.jpg"><br>
+<p>Роса 10 мм - 0.20 грн/шт.</p>
+<div id="dr2484" class="r">.</div><br>
+<input type="text" id="r2484" name="r2484" class="w95"><br>
+<div>
+<button onclick="cSave('r2484')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2484')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2485.jpg"><br>
+<p>Роса 8 мм - 0.20 грн/шт.</p>
+<div id="dr2485" class="r">.</div><br>
+<input type="text" id="r2485" name="r2485" class="w95"><br>
+<div>
+<button onclick="cSave('r2485')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2485')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/264.jpg"><br>
+<p>Роса 6 мм - 0.12 грн/шт.<br>Роса 8 мм - 0.20 грн/шт.</p>
+<div id="dr264" class="r">.</div><br>
+<input type="text" id="r264" name="r264" class="w95"><br>
+<div>
+<button onclick="cSave('r264')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r264')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3081.jpg"><br>
+<p>Граненный камень 14мм - 0.50 грн/шт.</p>
+<div id="dr3081" class="r">.</div><br>
+<input type="text" id="r3081" name="r3081" class="w95"><br>
+<div>
+<button onclick="cSave('r3081')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3081')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3073.jpg"><br>
+<p>Граненный камень 14мм - 0.50 грн/шт.</p>
+<div id="dr3073" class="r">.</div><br>
+<input type="text" id="r3073" name="r3073" class="w95"><br>
+<div>
+<button onclick="cSave('r3073')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3073')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3072.jpg"><br>
+<p>Граненный камень хамелеон 14мм - 0.60 грн/шт.</p>
+<div id="dr3072" class="r">.</div><br>
+<input type="text" id="r3072" name="r3072" class="w95"><br>
+<div>
+<button onclick="cSave('r3072')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3072')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3071.jpg"><br>
+<p>Граненный камень 14мм - 0.50 грн/шт.</p>
+<div id="dr3071" class="r">.</div><br>
+<input type="text" id="r3071" name="r3071" class="w95"><br>
+<div>
+<button onclick="cSave('r3071')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3071')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3070.jpg"><br>
+<p>Граненный камень 14мм - 0.50 грн/шт.</p>
+<div id="dr3070" class="r">.</div><br>
+<input type="text" id="r3070" name="r3070" class="w95"><br>
+<div>
+<button onclick="cSave('r3070')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3070')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3069.jpg"><br>
+<p>Граненный камень 14мм - 0.50 грн/шт.</p>
+<div id="dr3069" class="r">.</div><br>
+<input type="text" id="r3069" name="r3069" class="w95"><br>
+<div>
+<button onclick="cSave('r3069')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3069')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3067.jpg"><br>
+<p>Граненный камень 14мм - 0.50 грн/шт.</p>
+<div id="dr3067" class="r">.</div><br>
+<input type="text" id="r3067" name="r3067" class="w95"><br>
+<div>
+<button onclick="cSave('r3067')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3067')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3176.jpg"><br>
+<p>Граненный камень 14мм - 0.50 грн/шт.</p>
+<div id="dr3176" class="r">.</div><br>
+<input type="text" id="r3176" name="r3176" class="w95"><br>
+<div>
+<button onclick="cSave('r3176')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3176')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4367.jpg"><br>
+<p>Стразовая серединка с камнем 23мм - 1.75 грн/шт.</p>
+<div id="dr4367" class="r">.</div><br>
+<input type="text" id="r4367" name="r4367" class="w95"><br>
+<div>
+<button onclick="cSave('r4367')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4367')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4438.jpg"><br>
+<p>3D кабошон с крупными блестками 25 мм - 2.45 грн/шт <br>(фото плохо передает объем и блеск)</p>
+<div id="dr4438" class="r">.</div><br>
+<input type="text" id="r4438" name="r4438" class="w95"><br>
+<div>
+<button onclick="cSave('r4438')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4438')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4468.jpg"><br>
+<p>Стразовый декор на фетре 24*22мм - 1.65 грн/шт</p>
+<div id="dr4468" class="r">.</div><br>
+<input type="text" id="r4468" name="r4468" class="w95"><br>
+<div>
+<button onclick="cSave('r4468')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4468')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4613.jpg"><br>
+<p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
+<div id="dr4613" class="r">.</div><br>
+<input type="text" id="r4613" name="r4613" class="w95"><br>
+<div>
+<button onclick="cSave('r4613')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4613')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4595.jpg"><br>
+<p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
+<div id="dr4595" class="r">.</div><br>
+<input type="text" id="r4595" name="r4595" class="w95"><br>
+<div>
+<button onclick="cSave('r4595')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4595')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4596.jpg"><br>
+<p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
+<div id="dr4596" class="r">.</div><br>
+<input type="text" id="r4596" name="r4596" class="w95"><br>
+<div>
+<button onclick="cSave('r4596')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4596')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4597.jpg"><br>
+<p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
+<div id="dr4597" class="r">.</div><br>
+<input type="text" id="r4597" name="r4597" class="w95"><br>
+<div>
+<button onclick="cSave('r4597')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4597')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4598.jpg"><br>
+<p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
+<div id="dr4598" class="r">.</div><br>
+<input type="text" id="r4598" name="r4598" class="w95"><br>
+<div>
+<button onclick="cSave('r4598')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4598')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4599.jpg"><br>
+<p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
+<div id="dr4599" class="r">.</div><br>
+<input type="text" id="r4599" name="r4599" class="w95"><br>
+<div>
+<button onclick="cSave('r4599')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4599')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4206.jpg"><br>
+<p>Пластиковая серединка 18мм - 1.75 грн/шт</p>
+<div id="dr4206" class="r">.</div><br>
+<input type="text" id="r4206" name="r4206" class="w95"><br>
+<div>
+<button onclick="cSave('r4206')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4206')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4207.jpg"><br>
+<p>Пластиковая серединка 18мм - 1.75 грн/шт</p>
+<div id="dr4207" class="r">.</div><br>
+<input type="text" id="r4207" name="r4207" class="w95"><br>
+<div>
+<button onclick="cSave('r4207')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4207')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4208.jpg"><br>
+<p>Пластиковая серединка 18мм - 1.75 грн/шт</p>
+<div id="dr4208" class="r">.</div><br>
+<input type="text" id="r4208" name="r4208" class="w95"><br>
+<div>
+<button onclick="cSave('r4208')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4208')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4772.jpg"><br>
+<p>Роса голография 8 мм - 0.25 грн/шт.</p>
+<div id="dr4772" class="r">.</div><br>
+<input type="text" id="r4772" name="r4772" class="w95"><br>
+<div>
+<button onclick="cSave('r4772')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4772')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="strazi_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+	schet();
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>

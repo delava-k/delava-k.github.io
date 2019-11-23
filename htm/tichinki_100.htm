@@ -1,0 +1,868 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function schet() {
+  var v="";
+  var z="";
+
+  for (var i = 0; i < 5000; i++) {
+
+  vr=localStorage.getItem('r'+i);
+
+  var ei=document.getElementById('r'+i);
+ 
+  if (ei != null) { 
+
+    ei.value = vr;
+
+    if (vr != null) {
+//alert('0'+ei.value);
+
+      if (vr != "") {
+	document.getElementById('dr'+i).innerHTML = vr;
+	z=z+  "["+ i + "] " + vr+"\n";
+      } else
+      {
+	document.getElementById('dr'+i).innerHTML = ".";
+      } 	
+
+//alert('1');
+    }else
+    {
+	document.getElementById('dr'+i).innerHTML = ".";
+    }
+  }
+ }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100"><img src=".././img/360/527.jpg"><br>
+<p>Тычинка двухцветная 50 нитей (100 тычинок) - 4.00 грн/пучек.СИНЕЙ НЕТ</p>
+<div id="dr527" class="r">.</div><br>
+<input type="text" id="r527" name="r527" class="w95"><br>
+<div>
+<button onclick="cSave('r527')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r527')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/372.jpg"><br>
+<p>Тычинка в сахаре большая 30 нитей (60 тычинок) - 4.80 грн/пучек</p>
+<div id="dr372" class="r">.</div><br>
+<input type="text" id="r372" name="r372" class="w95"><br>
+<div>
+<button onclick="cSave('r372')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r372')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/119.jpg"><br>
+<p>Тычинки 50 нитей (100 тычинок) - 4.00 грн/пучек</p>
+<div id="dr119" class="r">.</div><br>
+<input type="text" id="r119" name="r119" class="w95"><br>
+<div>
+<button onclick="cSave('r119')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r119')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/447.jpg"><br>
+<p>Тычинки 50 нитей (100 тычинок) - 4.00 грн/пучек</p>
+<div id="dr447" class="r">.</div><br>
+<input type="text" id="r447" name="r447" class="w95"><br>
+<div>
+<button onclick="cSave('r447')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r447')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/380.jpg"><br>
+<p>Тычинки 50 нитей (100 тычинок) - 4.00 грн/пучек</p>
+<div id="dr380" class="r">.</div><br>
+<input type="text" id="r380" name="r380" class="w95"><br>
+<div>
+<button onclick="cSave('r380')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r380')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/167.jpg"><br>
+<p>Тычинки 50 нитей (100 тычинок) - 4.50 грн/пучек</p>
+<div id="dr167" class="r">.</div><br>
+<input type="text" id="r167" name="r167" class="w95"><br>
+<div>
+<button onclick="cSave('r167')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r167')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/181.jpg"><br>
+<p>Тычинки в пенопласте 50 нитей (100 тычинок) - 5.00 грн/пучек..Желтых НЕТ</p>
+<div id="dr181" class="r">.</div><br>
+<input type="text" id="r181" name="r181" class="w95"><br>
+<div>
+<button onclick="cSave('r181')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r181')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4329.jpg"><br>
+<p>Тычинки с блестком 50 нитей (100 тычинок) - 4.50 грн/пучек</p>
+<div id="dr4329" class="r">.</div><br>
+<input type="text" id="r4329" name="r4329" class="w95"><br>
+<div>
+<button onclick="cSave('r4329')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4329')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4331.jpg"><br>
+<p>Тычинки с блестком 50 нитей (100 тычинок) - 4.50 грн/пучек</p>
+<div id="dr4331" class="r">.</div><br>
+<input type="text" id="r4331" name="r4331" class="w95"><br>
+<div>
+<button onclick="cSave('r4331')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4331')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4330.jpg"><br>
+<p>Тычинки с блестком 50 нитей (100 тычинок) - 4.50 грн/пучек</p>
+<div id="dr4330" class="r">.</div><br>
+<input type="text" id="r4330" name="r4330" class="w95"><br>
+<div>
+<button onclick="cSave('r4330')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4330')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/287.jpg"><br>
+<p>Тычинки с блестком 50 нитей (100 тычинок) - 5.00 грн/пучек..ЕСТЬ ТОЛЬКО КРАСНЫЕ!!!</p>
+<div id="dr287" class="r">.</div><br>
+<input type="text" id="r287" name="r287" class="w95"><br>
+<div>
+<button onclick="cSave('r287')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r287')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/241.jpg"><br>
+<p>Тычинка в сахаре 50 нитей (100 тычинок) - 4.00 грн/пучек..Нет ЗЕЛЕНОЙ</p>
+<div id="dr241" class="r">.</div><br>
+<input type="text" id="r241" name="r241" class="w95"><br>
+<div>
+<button onclick="cSave('r241')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r241')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/714.jpg"><br>
+<p>Тычинки с блестками (12 веточек в пучке) - 13.95 грн/пучек<br>1 веточка - 1.50 грн/шт.</p>
+<div id="dr714" class="r">.</div><br>
+<input type="text" id="r714" name="r714" class="w95"><br>
+<div>
+<button onclick="cSave('r714')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r714')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/629.jpg"><br>
+<p>Тычинки с блестками (12 веточек в пучке) - 13.95 грн/пучек<br>1 веточка - 1.50 грн/шт.</p>
+<div id="dr629" class="r">.</div><br>
+<input type="text" id="r629" name="r629" class="w95"><br>
+<div>
+<button onclick="cSave('r629')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r629')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1177.jpg"><br>
+<p>Тычинки с блестками (12 веточек в пучке) - 13.95 грн/пучек<br>1 веточка - 1.50 грн/шт.</p>
+<div id="dr1177" class="r">.</div><br>
+<input type="text" id="r1177" name="r1177" class="w95"><br>
+<div>
+<button onclick="cSave('r1177')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1177')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1006.jpg"><br>
+<p>Тычинки с блестками (12 веточек в пучке) - 13.95 грн/пучек<br>1 веточка - 1.50 грн/шт.</p>
+<div id="dr1006" class="r">.</div><br>
+<input type="text" id="r1006" name="r1006" class="w95"><br>
+<div>
+<button onclick="cSave('r1006')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1006')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/531.jpg"><br>
+<p>Тычинки с блестками (12 веточек в пучке) - 13.95 грн/пучек<br>1 веточка - 1.50 грн/шт.</p>
+<div id="dr531" class="r">.</div><br>
+<input type="text" id="r531" name="r531" class="w95"><br>
+<div>
+<button onclick="cSave('r531')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r531')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/713.jpg"><br>
+<p>Тычинки с блестками (12 веточек в пучке) - 8.95 грн/пучек</p>
+<div id="dr713" class="r">.</div><br>
+<input type="text" id="r713" name="r713" class="w95"><br>
+<div>
+<button onclick="cSave('r713')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r713')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3548.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды)-1.00 грн/шт</p>
+<div id="dr3548" class="r">.</div><br>
+<input type="text" id="r3548" name="r3548" class="w95"><br>
+<div>
+<button onclick="cSave('r3548')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3548')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3549.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды)-1.00 грн/шт</p>
+<div id="dr3549" class="r">.</div><br>
+<input type="text" id="r3549" name="r3549" class="w95"><br>
+<div>
+<button onclick="cSave('r3549')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3549')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3543.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды) - 1.00 грн/шт..БЕЛАЯ</p>
+<div id="dr3543" class="r">.</div><br>
+<input type="text" id="r3543" name="r3543" class="w95"><br>
+<div>
+<button onclick="cSave('r3543')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3543')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3544.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды)-1.00 грн/шт..Серебро</p>
+<div id="dr3544" class="r">.</div><br>
+<input type="text" id="r3544" name="r3544" class="w95"><br>
+<div>
+<button onclick="cSave('r3544')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3544')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3545.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды) - 1.00 грн/шт</p>
+<div id="dr3545" class="r">.</div><br>
+<input type="text" id="r3545" name="r3545" class="w95"><br>
+<div>
+<button onclick="cSave('r3545')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3545')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3550.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды) - 1.00 грн/шт</p>
+<div id="dr3550" class="r">.</div><br>
+<input type="text" id="r3550" name="r3550" class="w95"><br>
+<div>
+<button onclick="cSave('r3550')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3550')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3546.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды)-1.00 грн/шт<br>ЗОЛОТО</p>
+<div id="dr3546" class="r">.</div><br>
+<input type="text" id="r3546" name="r3546" class="w95"><br>
+<div>
+<button onclick="cSave('r3546')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3546')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3547.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод ) - 16.75 грн/пучек<br>1 веточка(2 ягоды)-1.00 грн/шт</p>
+<div id="dr3547" class="r">.</div><br>
+<input type="text" id="r3547" name="r3547" class="w95"><br>
+<div>
+<button onclick="cSave('r3547')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3547')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3551.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16,75 грн/пучек<br>1 веточка(2 ягоды) - 1.00 грн/шт</p>
+<div id="dr3551" class="r">.</div><br>
+<input type="text" id="r3551" name="r3551" class="w95"><br>
+<div>
+<button onclick="cSave('r3551')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3551')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3552.jpg"><br>
+<p>Калина 12мм-1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды) - 1.00 грн/шт</p>
+<div id="dr3552" class="r">.</div><br>
+<input type="text" id="r3552" name="r3552" class="w95"><br>
+<div>
+<button onclick="cSave('r3552')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3552')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3553.jpg"><br>
+<p>Калина 12мм -1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды) - 1.00 грн/шт..</p>
+<div id="dr3553" class="r">.</div><br>
+<input type="text" id="r3553" name="r3553" class="w95"><br>
+<div>
+<button onclick="cSave('r3553')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3553')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3554.jpg"><br>
+<p>Калина 12мм -1 пучек 20 веточек(40 ягод) - 16.75 грн/пучек<br>1 веточка(2 ягоды) - 1.00 грн/шт..</p>
+<div id="dr3554" class="r">.</div><br>
+<input type="text" id="r3554" name="r3554" class="w95"><br>
+<div>
+<button onclick="cSave('r3554')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3554')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/315.jpg"><br>
+<p>Калина лаковая (диаметр ягоды 8мм,50 ягод,либо 10мм-40 ягод) - 13.75 грн/пучек</p>
+<div id="dr315" class="r">.</div><br>
+<input type="text" id="r315" name="r315" class="w95"><br>
+<div>
+<button onclick="cSave('r315')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r315')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/883.jpg"><br>
+<p>Калина лаковая (диаметр ягоды 8мм,50 ягод,либо 10мм -40ягод) - 13.75 грн/пучек</p>
+<div id="dr883" class="r">.</div><br>
+<input type="text" id="r883" name="r883" class="w95"><br>
+<div>
+<button onclick="cSave('r883')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r883')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/966.jpg"><br>
+<p>Калина лаковая 8 мм-1 пучек 25 веточек(50 ягод) - 13.75 грн/пучек<br>1 веточка(2 ягоды)-0.85 грн/шт</p>
+<div id="dr966" class="r">.</div><br>
+<input type="text" id="r966" name="r966" class="w95"><br>
+<div>
+<button onclick="cSave('r966')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r966')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1214.jpg"><br>
+<p>Калина лаковая 10 мм-1 пучек 20 веточек(40 ягод) - 13.50 грн/пучек<br>1 веточка(2 ягоды) - 0.75 грн/шт ЗЕЛЕНАЯ</p>
+<div id="dr1214" class="r">.</div><br>
+<input type="text" id="r1214" name="r1214" class="w95"><br>
+<div>
+<button onclick="cSave('r1214')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1214')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/764.jpg"><br>
+<p>Калина лаковая (диаметр ягоды 8мм,50 ягод) - 13.75 грн/пучек</p>
+<div id="dr764" class="r">.</div><br>
+<input type="text" id="r764" name="r764" class="w95"><br>
+<div>
+<button onclick="cSave('r764')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r764')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3624.jpg"><br>
+<p>Проволока с шариками 10 см - 9.25 грн/пучек(12 проволок)<br>1 шт - 0.95 грн/шт</p>
+<div id="dr3624" class="r">.</div><br>
+<input type="text" id="r3624" name="r3624" class="w95"><br>
+<div>
+<button onclick="cSave('r3624')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3624')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3622.jpg"><br>
+<p>Проволока с шариками 10 см - 9.25 грн/пучек(12 проволок)<br>1 шт - 0.95 грн/шт</p>
+<div id="dr3622" class="r">.</div><br>
+<input type="text" id="r3622" name="r3622" class="w95"><br>
+<div>
+<button onclick="cSave('r3622')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3622')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3623.jpg"><br>
+<p>Проволока с шариками 10 см - 9.25 грн/пучек(12 проволок)<br>1 шт - 0.95 грн/шт</p>
+<div id="dr3623" class="r">.</div><br>
+<input type="text" id="r3623" name="r3623" class="w95"><br>
+<div>
+<button onclick="cSave('r3623')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3623')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/762.jpg"><br>
+<p>Додаток легкий (12 веточек в пучке) - 10.75 грн/пучек<br>1 веточка - 1.00 грн/шт.</p>
+<div id="dr762" class="r">.</div><br>
+<input type="text" id="r762" name="r762" class="w95"><br>
+<div>
+<button onclick="cSave('r762')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r762')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/896.jpg"><br>
+<p>Додаток легкий (12 веточек) - 10.75 грн/пучек<br>1 веточка - 1.00 грн/шт.</p>
+<div id="dr896" class="r">.</div><br>
+<input type="text" id="r896" name="r896" class="w95"><br>
+<div>
+<button onclick="cSave('r896')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r896')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/688.jpg"><br>
+<p>Додаток легкий (12 веточек) - 10.75 грн/пучек<br>1 веточка - 1.00 грн/шт.</p>
+<div id="dr688" class="r">.</div><br>
+<input type="text" id="r688" name="r688" class="w95"><br>
+<div>
+<button onclick="cSave('r688')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r688')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/679.jpg"><br>
+<p>Додаток легкий (12 веточек в пучке) - 10.75 грн/пучек<br>1 веточка - 1.00 грн/шт.</p>
+<div id="dr679" class="r">.</div><br>
+<input type="text" id="r679" name="r679" class="w95"><br>
+<div>
+<button onclick="cSave('r679')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r679')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1032.jpg"><br>
+<p>Додаток легкий (12 веточек) - 10.75 грн/пучек<br>1 веточка - 1.00 грн/шт.</p>
+<div id="dr1032" class="r">.</div><br>
+<input type="text" id="r1032" name="r1032" class="w95"><br>
+<div>
+<button onclick="cSave('r1032')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1032')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/358.jpg"><br>
+<p>Додаток тяжелый блеск (10 веточек в пучке) 9.50грн/пучек<br>1 веточка 1.00грн/шт.</p>
+<div id="dr358" class="r">.</div><br>
+<input type="text" id="r358" name="r358" class="w95"><br>
+<div>
+<button onclick="cSave('r358')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r358')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/516.jpg"><br>
+<p>Додаток тяжелый блеск (10 веточек в пучке) 9.50грн/пучек<br>1 веточка 1.00грн/шт.</p>
+<div id="dr516" class="r">.</div><br>
+<input type="text" id="r516" name="r516" class="w95"><br>
+<div>
+<button onclick="cSave('r516')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r516')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/722.jpg"><br>
+<p>Додаток тяжелый блеск (10 веточек в пучке) 9.50грн/пучек<br>1 веточка 1.00грн/шт.</p>
+<div id="dr722" class="r">.</div><br>
+<input type="text" id="r722" name="r722" class="w95"><br>
+<div>
+<button onclick="cSave('r722')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r722')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/684.jpg"><br>
+<p>Додаток легкий (12 веточек в пучке) 10.75 грн/пучек<br>1 веточка 1.00 грн/шт.</p>
+<div id="dr684" class="r">.</div><br>
+<input type="text" id="r684" name="r684" class="w95"><br>
+<div>
+<button onclick="cSave('r684')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r684')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1122.jpg"><br>
+<p>Додаток легкий (12 веточек в пучке) - 10.75 грн/пучек<br>1 веточка - 1.00 грн/шт.</p>
+<div id="dr1122" class="r">.</div><br>
+<input type="text" id="r1122" name="r1122" class="w95"><br>
+<div>
+<button onclick="cSave('r1122')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1122')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/877.jpg"><br>
+<p>Додаток цветочек (Длина Цветок + Ножка 8см. Бумажные<br>Цветок 3см.)-6.75грн/пучек(6 веточек)<br>1 веточка -1.25грн</p>
+<div id="dr877" class="r">.</div><br>
+<input type="text" id="r877" name="r877" class="w95"><br>
+<div>
+<button onclick="cSave('r877')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r877')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/879.jpg"><br>
+<p>Додаток цветочек (Длина Цветок + Ножка 8см. Бумажные<br>Цветок 3см.)-6.75грн/пучек(6 веточек)<br>1 веточка -1.25грн</p>
+<div id="dr879" class="r">.</div><br>
+<input type="text" id="r879" name="r879" class="w95"><br>
+<div>
+<button onclick="cSave('r879')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r879')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1129.jpg"><br>
+<p>Додаток легкий (Высота 8 см) - 9.75 грн/пучек</p>
+<div id="dr1129" class="r">.</div><br>
+<input type="text" id="r1129" name="r1129" class="w95"><br>
+<div>
+<button onclick="cSave('r1129')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1129')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1159.jpg"><br>
+<p>Додаток легкий (Высота 8 см) - 9.75 грн/пучек</p>
+<div id="dr1159" class="r">.</div><br>
+<input type="text" id="r1159" name="r1159" class="w95"><br>
+<div>
+<button onclick="cSave('r1159')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1159')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2380.jpg"><br>
+<p>Додаток легкий (Высота 8 см) - 9.75 грн/пучек</p>
+<div id="dr2380" class="r">.</div><br>
+<input type="text" id="r2380" name="r2380" class="w95"><br>
+<div>
+<button onclick="cSave('r2380')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2380')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1957.jpg"><br>
+<p>Додаток легкий (Высота 8 см) - 9.75 грн/пучек</p>
+<div id="dr1957" class="r">.</div><br>
+<input type="text" id="r1957" name="r1957" class="w95"><br>
+<div>
+<button onclick="cSave('r1957')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1957')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2382.jpg"><br>
+<p>Додаток легкий (Высота 8 см) - 9.75 грн/пучек</p>
+<div id="dr2382" class="r">.</div><br>
+<input type="text" id="r2382" name="r2382" class="w95"><br>
+<div>
+<button onclick="cSave('r2382')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2382')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1161.jpg"><br>
+<p>Додаток веточка (проволка длиной 40см, на веточке 18 тычинок) - 1.85 грн/шт</p>
+<div id="dr1161" class="r">.</div><br>
+<input type="text" id="r1161" name="r1161" class="w95"><br>
+<div>
+<button onclick="cSave('r1161')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1161')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3651.jpg"><br>
+<p>Додаток веточка (проволка длиной 40см,на веточке 18 тычинок) - 1.85грн/шт</p>
+<div id="dr3651" class="r">.</div><br>
+<input type="text" id="r3651" name="r3651" class="w95"><br>
+<div>
+<button onclick="cSave('r3651')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3651')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3653.jpg"><br>
+<p>Додаток веточка (проволка длиной 40см,на веточке 18 тычинок) - 1.85грн/шт</p>
+<div id="dr3653" class="r">.</div><br>
+<input type="text" id="r3653" name="r3653" class="w95"><br>
+<div>
+<button onclick="cSave('r3653')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3653')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3650.jpg"><br>
+<p>Додаток веточка (проволка длиной 40см,на веточке 18 тычинок) - 1.85грн/шт</p>
+<div id="dr3650" class="r">.</div><br>
+<input type="text" id="r3650" name="r3650" class="w95"><br>
+<div>
+<button onclick="cSave('r3650')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3650')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/148.jpg"><br>
+<p>Двухцветная незабудка - 9.55 грн/пучек<br>0.90 грн/вет.</p>
+<div id="dr148" class="r">.</div><br>
+<input type="text" id="r148" name="r148" class="w95"><br>
+<div>
+<button onclick="cSave('r148')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r148')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/272.jpg"><br>
+<p>Двухцветная незабудка - 9.55 грн/пучек<br>0.90 грн/вет.</p>
+<div id="dr272" class="r">.</div><br>
+<input type="text" id="r272" name="r272" class="w95"><br>
+<div>
+<button onclick="cSave('r272')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r272')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/235.jpg"><br>
+<p>Двухцветная незабудка - 9.55 грн/пучек<br>0.90 грн/вет.</p>
+<div id="dr235" class="r">.</div><br>
+<input type="text" id="r235" name="r235" class="w95"><br>
+<div>
+<button onclick="cSave('r235')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r235')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/260.jpg"><br>
+<p>Двухцветная незабудка - 9.55 грн/пучек<br>0.90 грн/вет.</p>
+<div id="dr260" class="r">.</div><br>
+<input type="text" id="r260" name="r260" class="w95"><br>
+<div>
+<button onclick="cSave('r260')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r260')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/319.jpg"><br>
+<p>Двухцветная незабудка - 9.55 грн/пучек<br>0.90 грн/вет.</p>
+<div id="dr319" class="r">.</div><br>
+<input type="text" id="r319" name="r319" class="w95"><br>
+<div>
+<button onclick="cSave('r319')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r319')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/451.jpg"><br>
+<p>Двухцветная незабудка - 9.55 грн/пучек<br>0.90 грн/вет.</p>
+<div id="dr451" class="r">.</div><br>
+<input type="text" id="r451" name="r451" class="w95"><br>
+<div>
+<button onclick="cSave('r451')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r451')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3596.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3596" class="r">.</div><br>
+<input type="text" id="r3596" name="r3596" class="w95"><br>
+<div>
+<button onclick="cSave('r3596')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3596')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3591.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3591" class="r">.</div><br>
+<input type="text" id="r3591" name="r3591" class="w95"><br>
+<div>
+<button onclick="cSave('r3591')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3591')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3598.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3598" class="r">.</div><br>
+<input type="text" id="r3598" name="r3598" class="w95"><br>
+<div>
+<button onclick="cSave('r3598')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3598')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3593.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3593" class="r">.</div><br>
+<input type="text" id="r3593" name="r3593" class="w95"><br>
+<div>
+<button onclick="cSave('r3593')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3593')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3595.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3595" class="r">.</div><br>
+<input type="text" id="r3595" name="r3595" class="w95"><br>
+<div>
+<button onclick="cSave('r3595')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3595')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3594.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3594" class="r">.</div><br>
+<input type="text" id="r3594" name="r3594" class="w95"><br>
+<div>
+<button onclick="cSave('r3594')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3594')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3592.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3592" class="r">.</div><br>
+<input type="text" id="r3592" name="r3592" class="w95"><br>
+<div>
+<button onclick="cSave('r3592')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3592')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3605.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3605" class="r">.</div><br>
+<input type="text" id="r3605" name="r3605" class="w95"><br>
+<div>
+<button onclick="cSave('r3605')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3605')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3602.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3602" class="r">.</div><br>
+<input type="text" id="r3602" name="r3602" class="w95"><br>
+<div>
+<button onclick="cSave('r3602')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3602')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3601.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3601" class="r">.</div><br>
+<input type="text" id="r3601" name="r3601" class="w95"><br>
+<div>
+<button onclick="cSave('r3601')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3601')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3597.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3597" class="r">.</div><br>
+<input type="text" id="r3597" name="r3597" class="w95"><br>
+<div>
+<button onclick="cSave('r3597')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3597')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3599.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3599" class="r">.</div><br>
+<input type="text" id="r3599" name="r3599" class="w95"><br>
+<div>
+<button onclick="cSave('r3599')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3599')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3603.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3603" class="r">.</div><br>
+<input type="text" id="r3603" name="r3603" class="w95"><br>
+<div>
+<button onclick="cSave('r3603')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3603')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3600.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3600" class="r">.</div><br>
+<input type="text" id="r3600" name="r3600" class="w95"><br>
+<div>
+<button onclick="cSave('r3600')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3600')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3606.jpg"><br>
+<p>Незабудка - 0.95 грн/веточка<br>от 12 шт(одного цвета) - 8.25 грн/пучек</p>
+<div id="dr3606" class="r">.</div><br>
+<input type="text" id="r3606" name="r3606" class="w95"><br>
+<div>
+<button onclick="cSave('r3606')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3606')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/458.jpg"><br>
+<p>Незабудка - 0.85 грн/веточка<br>от 12 шт(одного цвета) - 7.90 грн/пучек..</p>
+<div id="dr458" class="r">.</div><br>
+<input type="text" id="r458" name="r458" class="w95"><br>
+<div>
+<button onclick="cSave('r458')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r458')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="tichinki_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+	schet();
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>

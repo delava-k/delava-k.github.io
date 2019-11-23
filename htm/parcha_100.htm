@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function schet() {
+  var v="";
+  var z="";
+
+  for (var i = 0; i < 5000; i++) {
+
+  vr=localStorage.getItem('r'+i);
+
+  var ei=document.getElementById('r'+i);
+ 
+  if (ei != null) { 
+
+    ei.value = vr;
+
+    if (vr != null) {
+//alert('0'+ei.value);
+
+      if (vr != "") {
+	document.getElementById('dr'+i).innerHTML = vr;
+	z=z+  "["+ i + "] " + vr+"\n";
+      } else
+      {
+	document.getElementById('dr'+i).innerHTML = ".";
+      } 	
+
+//alert('1');
+    }else
+    {
+	document.getElementById('dr'+i).innerHTML = ".";
+    }
+  }
+ }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100"><img src=".././img/360/394.jpg"><br>
+<p>Лента парча 5 см - 3.25 грн/м.<br>рулон - 73 грн (23 м)</p>
+<div id="dr394" class="r">.</div><br>
+<input type="text" id="r394" name="r394" class="w95"><br>
+<div>
+<button onclick="cSave('r394')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r394')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4694.jpg"><br>
+<p>Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<div id="dr4694" class="r">.</div><br>
+<input type="text" id="r4694" name="r4694" class="w95"><br>
+<div>
+<button onclick="cSave('r4694')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4694')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4696.jpg"><br>
+<p>Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<div id="dr4696" class="r">.</div><br>
+<input type="text" id="r4696" name="r4696" class="w95"><br>
+<div>
+<button onclick="cSave('r4696')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4696')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4697.jpg"><br>
+<p>Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<div id="dr4697" class="r">.</div><br>
+<input type="text" id="r4697" name="r4697" class="w95"><br>
+<div>
+<button onclick="cSave('r4697')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4697')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4698.jpg"><br>
+<p>Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<div id="dr4698" class="r">.</div><br>
+<input type="text" id="r4698" name="r4698" class="w95"><br>
+<div>
+<button onclick="cSave('r4698')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4698')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4700.jpg"><br>
+<p>Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<div id="dr4700" class="r">.</div><br>
+<input type="text" id="r4700" name="r4700" class="w95"><br>
+<div>
+<button onclick="cSave('r4700')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4700')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4701.jpg"><br>
+<p>Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<div id="dr4701" class="r">.</div><br>
+<input type="text" id="r4701" name="r4701" class="w95"><br>
+<div>
+<button onclick="cSave('r4701')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4701')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4699.jpg"><br>
+<p>Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<div id="dr4699" class="r">.</div><br>
+<input type="text" id="r4699" name="r4699" class="w95"><br>
+<div>
+<button onclick="cSave('r4699')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4699')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4704.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4704" class="r">.</div><br>
+<input type="text" id="r4704" name="r4704" class="w95"><br>
+<div>
+<button onclick="cSave('r4704')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4704')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4708.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4708" class="r">.</div><br>
+<input type="text" id="r4708" name="r4708" class="w95"><br>
+<div>
+<button onclick="cSave('r4708')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4708')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4705.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4705" class="r">.</div><br>
+<input type="text" id="r4705" name="r4705" class="w95"><br>
+<div>
+<button onclick="cSave('r4705')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4705')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4706.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4706" class="r">.</div><br>
+<input type="text" id="r4706" name="r4706" class="w95"><br>
+<div>
+<button onclick="cSave('r4706')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4706')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4710.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4710" class="r">.</div><br>
+<input type="text" id="r4710" name="r4710" class="w95"><br>
+<div>
+<button onclick="cSave('r4710')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4710')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4707.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4707" class="r">.</div><br>
+<input type="text" id="r4707" name="r4707" class="w95"><br>
+<div>
+<button onclick="cSave('r4707')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4707')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4703.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4703" class="r">.</div><br>
+<input type="text" id="r4703" name="r4703" class="w95"><br>
+<div>
+<button onclick="cSave('r4703')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4703')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4709.jpg"><br>
+<p>Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<div id="dr4709" class="r">.</div><br>
+<input type="text" id="r4709" name="r4709" class="w95"><br>
+<div>
+<button onclick="cSave('r4709')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4709')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4712.jpg"><br>
+<p>Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<div id="dr4712" class="r">.</div><br>
+<input type="text" id="r4712" name="r4712" class="w95"><br>
+<div>
+<button onclick="cSave('r4712')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4712')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4715.jpg"><br>
+<p>Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<div id="dr4715" class="r">.</div><br>
+<input type="text" id="r4715" name="r4715" class="w95"><br>
+<div>
+<button onclick="cSave('r4715')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4715')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4711.jpg"><br>
+<p>Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<div id="dr4711" class="r">.</div><br>
+<input type="text" id="r4711" name="r4711" class="w95"><br>
+<div>
+<button onclick="cSave('r4711')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4711')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4716.jpg"><br>
+<p>Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<div id="dr4716" class="r">.</div><br>
+<input type="text" id="r4716" name="r4716" class="w95"><br>
+<div>
+<button onclick="cSave('r4716')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4716')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4713.jpg"><br>
+<p>Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<div id="dr4713" class="r">.</div><br>
+<input type="text" id="r4713" name="r4713" class="w95"><br>
+<div>
+<button onclick="cSave('r4713')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4713')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4714.jpg"><br>
+<p>Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<div id="dr4714" class="r">.</div><br>
+<input type="text" id="r4714" name="r4714" class="w95"><br>
+<div>
+<button onclick="cSave('r4714')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4714')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4718.jpg"><br>
+<p>Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<div id="dr4718" class="r">.</div><br>
+<input type="text" id="r4718" name="r4718" class="w95"><br>
+<div>
+<button onclick="cSave('r4718')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4718')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/901.jpg"><br>
+<p>Лента парча+органза 4см - 6.25 грн/м.</p>
+<div id="dr901" class="r">.</div><br>
+<input type="text" id="r901" name="r901" class="w95"><br>
+<div>
+<button onclick="cSave('r901')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r901')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="parcha_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+	schet();
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>

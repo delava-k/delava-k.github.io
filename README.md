@@ -1,1 +1,0 @@
-# delava-k.github.io

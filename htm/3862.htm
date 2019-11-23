@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+}
+
+
+function GetZoom(id) {
+//  alert('1');
+  im=document.getElementById(id);
+  im.src = ".././img/1080/"+id+".jpg";
+}
+
+</script>
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+
+<div class="w100">
+<!--DB-->
+<div class="w100">
+<div class="w33"><form action="3865.htm"><button type="submit" class="bl">предыдущая</button></form></div>
+<div class="w33"><form action="patchi_33.htm"><button type="submit" class="bc">альбом</button></form></div>
+<div class="w33"><form action="4327.htm"><button type="submit" class="br">следующая</button></form></div>
+</div>
+<a href="/nojs.htm" target="_blank" onclick="GetZoom('3862');return false" ><img id="3862" src=".././img/360/3862.jpg"></a></div>
+<p>Корна 13.8см*6.3см - 3.75 грн/шт</p>
+<div id="dr3862" class="r">.</div><br>
+<div class="w100">
+<input type="text" id="r3862" name="r3862" class="w95 c1"><br>
+</div>
+<div>
+<div class="w100">
+<div class="w33"><button onclick="cSave('r3862')" type="button" class="bl">ДОБАВИТЬ</button></div>
+<div class="w33"><form action="zakaz.htm"><button type="submit" class="bc">ВАШ ЗАКАЗ</button></form></div>
+<div class="w33"><button onclick="cDel('r3862')" type="button" class="br">УДАЛИТЬ</button></div>
+</div>
+</div></div>
+
+
+        
+</body></html>

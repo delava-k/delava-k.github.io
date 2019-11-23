@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function schet() {
+  var v="";
+  var z="";
+
+  for (var i = 0; i < 5000; i++) {
+
+  vr=localStorage.getItem('r'+i);
+
+  var ei=document.getElementById('r'+i);
+ 
+  if (ei != null) { 
+
+    ei.value = vr;
+
+    if (vr != null) {
+//alert('0'+ei.value);
+
+      if (vr != "") {
+	document.getElementById('dr'+i).innerHTML = vr;
+	z=z+  "["+ i + "] " + vr+"\n";
+      } else
+      {
+	document.getElementById('dr'+i).innerHTML = ".";
+      } 	
+
+//alert('1');
+    }else
+    {
+	document.getElementById('dr'+i).innerHTML = ".";
+    }
+  }
+ }
+ document.getElementById('z').innerHTML = z;
+}
+
+
+
+function cSave(id) {
+  localStorage.setItem('zakaz',id);
+  if (typeof(Storage) !== "undefined") {
+
+        var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+
+/*        alert(id);	*/
+
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}    
+
+
+	if (arid.indexOf(id)<0) {
+           arid.push(id);
+	} 
+
+	localStorage.setItem('zakaz',arid.join(','));
+
+
+	localStorage.setItem(id,document.getElementById(id).value);
+	if (document.getElementById(id).value != "") {
+		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+	}else{
+		document.getElementById("d"+id).innerHTML = ".";
+	}
+}
+ schet();
+}
+// mycopy();
+
+
+
+function cDel(id) {
+  if (typeof(Storage) !== "undefined") {                
+    if (localStorage.getItem('id') != "") {
+      localStorage.setItem(id,'');
+      document.getElementById(id).value = "";
+      document.getElementById("d"+id).innerHTML = ".";
+    }
+ }
+ schet();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body> 
+<div class="dpc w100w"><div class="header">Delava - канзаши товары
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100"><img src=".././img/360/314.jpg"><br>
+<p>Органза 2 см - 1.05 грн/м.<br>рулон - 45.00 грн (45м)</p>
+<div id="dr314" class="r">.</div><br>
+<input type="text" id="r314" name="r314" class="w95"><br>
+<div>
+<button onclick="cSave('r314')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r314')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/263.jpg"><br>
+<p>Органза 2,5 см - 2.00 грн/м.<br>от 5 м (один цвет) - 1.90 грн/м.<br>рулон - 80 грн(45м) <br>НЕТ НОМЕРОВ: 10, 14 !!!</p>
+<div id="dr263" class="r">.</div><br>
+<input type="text" id="r263" name="r263" class="w95"><br>
+<div>
+<button onclick="cSave('r263')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r263')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/145.jpg"><br>
+<p>Органза 4 см - 1.95 грн/м.<br>рулон - 85 грн (45м) <br>НЕТ номер 10 !!!</p>
+<div id="dr145" class="r">.</div><br>
+<input type="text" id="r145" name="r145" class="w95"><br>
+<div>
+<button onclick="cSave('r145')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r145')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/732.jpg"><br>
+<p>Органза 4 см - 1.95 грн/м.<br>рулон - 85 грн (45м)</p>
+<div id="dr732" class="r">.</div><br>
+<input type="text" id="r732" name="r732" class="w95"><br>
+<div>
+<button onclick="cSave('r732')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r732')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/413.jpg"><br>
+<p>Органза 4 см - 1.95 грн/м.<br>рулон - 85 грн (45м)</p>
+<div id="dr413" class="r">.</div><br>
+<input type="text" id="r413" name="r413" class="w95"><br>
+<div>
+<button onclick="cSave('r413')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r413')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/269.jpg"><br>
+<p>Органза Ромашка 2.5 см - 2.15 грн/м</p>
+<div id="dr269" class="r">.</div><br>
+<input type="text" id="r269" name="r269" class="w95"><br>
+<div>
+<button onclick="cSave('r269')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r269')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2415.jpg"><br>
+<p>Органза Пион 2.5 см - 2.45 грн/м</p>
+<div id="dr2415" class="r">.</div><br>
+<input type="text" id="r2415" name="r2415" class="w95"><br>
+<div>
+<button onclick="cSave('r2415')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2415')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/638.jpg"><br>
+<p>Органза в горох 2.5 см - 2.25 грн/м</p>
+<div id="dr638" class="r">.</div><br>
+<input type="text" id="r638" name="r638" class="w95"><br>
+<div>
+<button onclick="cSave('r638')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r638')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2412.jpg"><br>
+<p>Органза с атласным краем 1.5 см - 1.20 грн/м</p>
+<div id="dr2412" class="r">.</div><br>
+<input type="text" id="r2412" name="r2412" class="w95"><br>
+<div>
+<button onclick="cSave('r2412')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2412')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/402.jpg"><br>
+<p>Органза в Розы 2.5 см - 2.75 грн/м</p>
+<div id="dr402" class="r">.</div><br>
+<input type="text" id="r402" name="r402" class="w95"><br>
+<div>
+<button onclick="cSave('r402')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r402')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/649.jpg"><br>
+<p>Органза в Розы 2.5 см - 2.75 грн/м</p>
+<div id="dr649" class="r">.</div><br>
+<input type="text" id="r649" name="r649" class="w95"><br>
+<div>
+<button onclick="cSave('r649')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r649')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/972.jpg"><br>
+<p>Органза в Розы 2.5 см - 2.75 грн/м</p>
+<div id="dr972" class="r">.</div><br>
+<input type="text" id="r972" name="r972" class="w95"><br>
+<div>
+<button onclick="cSave('r972')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r972')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/804.jpg"><br>
+<p>Органза в Розы 2.5 см - 2.75 грн/м</p>
+<div id="dr804" class="r">.</div><br>
+<input type="text" id="r804" name="r804" class="w95"><br>
+<div>
+<button onclick="cSave('r804')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r804')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/780.jpg"><br>
+<p>Органза в Розы 2.5 см - 2.75 грн/м</p>
+<div id="dr780" class="r">.</div><br>
+<input type="text" id="r780" name="r780" class="w95"><br>
+<div>
+<button onclick="cSave('r780')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r780')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/1055.jpg"><br>
+<p>Органза в Розы 2.5 см - 2.75 грн/м</p>
+<div id="dr1055" class="r">.</div><br>
+<input type="text" id="r1055" name="r1055" class="w95"><br>
+<div>
+<button onclick="cSave('r1055')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r1055')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/756.jpg"><br>
+<p>Органза в Розы 2.5 см - 2.75 грн/м</p>
+<div id="dr756" class="r">.</div><br>
+<input type="text" id="r756" name="r756" class="w95"><br>
+<div>
+<button onclick="cSave('r756')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r756')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2401.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2401" class="r">.</div><br>
+<input type="text" id="r2401" name="r2401" class="w95"><br>
+<div>
+<button onclick="cSave('r2401')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2401')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2402.jpg"><br>
+<p>Органза с рюшей 2.5 см - 4.95 грн/м</p>
+<div id="dr2402" class="r">.</div><br>
+<input type="text" id="r2402" name="r2402" class="w95"><br>
+<div>
+<button onclick="cSave('r2402')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2402')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2394.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2394" class="r">.</div><br>
+<input type="text" id="r2394" name="r2394" class="w95"><br>
+<div>
+<button onclick="cSave('r2394')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2394')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2395.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2395" class="r">.</div><br>
+<input type="text" id="r2395" name="r2395" class="w95"><br>
+<div>
+<button onclick="cSave('r2395')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2395')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2399.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2399" class="r">.</div><br>
+<input type="text" id="r2399" name="r2399" class="w95"><br>
+<div>
+<button onclick="cSave('r2399')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2399')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2397.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2397" class="r">.</div><br>
+<input type="text" id="r2397" name="r2397" class="w95"><br>
+<div>
+<button onclick="cSave('r2397')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2397')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2393.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2393" class="r">.</div><br>
+<input type="text" id="r2393" name="r2393" class="w95"><br>
+<div>
+<button onclick="cSave('r2393')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2393')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2396.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2396" class="r">.</div><br>
+<input type="text" id="r2396" name="r2396" class="w95"><br>
+<div>
+<button onclick="cSave('r2396')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2396')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2400.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2400" class="r">.</div><br>
+<input type="text" id="r2400" name="r2400" class="w95"><br>
+<div>
+<button onclick="cSave('r2400')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2400')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/2398.jpg"><br>
+<p>Органза с атласным краем 2.5 см - 1.75 грн/м</p>
+<div id="dr2398" class="r">.</div><br>
+<input type="text" id="r2398" name="r2398" class="w95"><br>
+<div>
+<button onclick="cSave('r2398')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r2398')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3003.jpg"><br>
+<p>Органза с орнаментом белая 2см - 2.45 грн/м</p>
+<div id="dr3003" class="r">.</div><br>
+<input type="text" id="r3003" name="r3003" class="w95"><br>
+<div>
+<button onclick="cSave('r3003')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3003')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4728.jpg"><br>
+<p>Органза с орнаментом 2см - 2.45 грн/м.</p>
+<div id="dr4728" class="r">.</div><br>
+<input type="text" id="r4728" name="r4728" class="w95"><br>
+<div>
+<button onclick="cSave('r4728')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4728')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4729.jpg"><br>
+<p>Органза с орнаментом 2см - 2.45 грн/м.</p>
+<div id="dr4729" class="r">.</div><br>
+<input type="text" id="r4729" name="r4729" class="w95"><br>
+<div>
+<button onclick="cSave('r4729')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4729')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3113.jpg"><br>
+<p>Органза с люрексом 4 см - 2.25 грн/м</p>
+<div id="dr3113" class="r">.</div><br>
+<input type="text" id="r3113" name="r3113" class="w95"><br>
+<div>
+<button onclick="cSave('r3113')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3113')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3112.jpg"><br>
+<p>Органза с люрексом 4 см - 2.25 грн/м</p>
+<div id="dr3112" class="r">.</div><br>
+<input type="text" id="r3112" name="r3112" class="w95"><br>
+<div>
+<button onclick="cSave('r3112')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3112')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3114.jpg"><br>
+<p>Органза с люрексом 4 см - 2.25 грн/м</p>
+<div id="dr3114" class="r">.</div><br>
+<input type="text" id="r3114" name="r3114" class="w95"><br>
+<div>
+<button onclick="cSave('r3114')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3114')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3111.jpg"><br>
+<p>Органза с люрексом 4 см - 2.25 грн/м</p>
+<div id="dr3111" class="r">.</div><br>
+<input type="text" id="r3111" name="r3111" class="w95"><br>
+<div>
+<button onclick="cSave('r3111')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3111')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3352.jpg"><br>
+<p>Органза градиент 2.5 см - 2.95 грн/м</p>
+<div id="dr3352" class="r">.</div><br>
+<input type="text" id="r3352" name="r3352" class="w95"><br>
+<div>
+<button onclick="cSave('r3352')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3352')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3351.jpg"><br>
+<p>Органза градиент 2.5 см - 2.95 грн/м</p>
+<div id="dr3351" class="r">.</div><br>
+<input type="text" id="r3351" name="r3351" class="w95"><br>
+<div>
+<button onclick="cSave('r3351')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3351')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3348.jpg"><br>
+<p>Органза градиент 2.5 см - 2.95 грн/м</p>
+<div id="dr3348" class="r">.</div><br>
+<input type="text" id="r3348" name="r3348" class="w95"><br>
+<div>
+<button onclick="cSave('r3348')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3348')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3349.jpg"><br>
+<p>Органза градиент 2.5 см - 2.95 грн/м</p>
+<div id="dr3349" class="r">.</div><br>
+<input type="text" id="r3349" name="r3349" class="w95"><br>
+<div>
+<button onclick="cSave('r3349')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3349')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/3347.jpg"><br>
+<p>Органза градиент 2.5 см - 2.95 грн/м</p>
+<div id="dr3347" class="r">.</div><br>
+<input type="text" id="r3347" name="r3347" class="w95"><br>
+<div>
+<button onclick="cSave('r3347')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r3347')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4250.jpg"><br>
+<p>Шифоновая паутинка 5 см - 2.95 грн/м</p>
+<div id="dr4250" class="r">.</div><br>
+<input type="text" id="r4250" name="r4250" class="w95"><br>
+<div>
+<button onclick="cSave('r4250')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4250')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4373.jpg"><br>
+<p>Лента органза Снежинка 4 см - 4.95 грн/м.</p>
+<div id="dr4373" class="r">.</div><br>
+<input type="text" id="r4373" name="r4373" class="w95"><br>
+<div>
+<button onclick="cSave('r4373')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4373')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><img src=".././img/360/4372.jpg"><br>
+<p>Лента органза Снежинка 4 см - 4.95 грн/м.</p>
+<div id="dr4372" class="r">.</div><br>
+<input type="text" id="r4372" name="r4372" class="w95"><br>
+<div>
+<button onclick="cSave('r4372')" type="button" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('r4372')" type="button" class="br">УДАЛИТЬ</button>
+</div></div>
+
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="organza_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+	schet();
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>
