@@ -21,7 +21,7 @@ function GetSchet() {
   var z="";
   for (var i = 0; i < 5000; i++) {
   vr=localStorage.getItem('r'+i);
-  if (vr != null) {z=z+  "["+ i + "] " + vr+"\n";}
+  if (vr != null) {z=z+i+"-"+vr+"\n";}
   }
  document.getElementById('z').innerHTML = z;
 }
@@ -104,7 +104,7 @@ function cDel(id) {
 </div>
 
 
-<textarea id="z" class="w100" rows=30></textarea> 
+<textarea id="z" class="w100" rows=50 readonly></textarea> 
 
 
 <script>
