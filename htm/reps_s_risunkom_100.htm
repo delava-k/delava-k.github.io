@@ -7,7 +7,6 @@
   <title>Delava - канзаши товары</title>
 
 
-
 <script>
 
 function schet(){
@@ -25,7 +24,6 @@ function schet(){
      if (vr != "") 
      {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+ "["+ i + "] "+vr+"\n";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -57,16 +55,10 @@ function schet(){
    }
   }//нет поля
  }//цикл
- document.getElementById('z').innerHTML = z;
 }
 
 
 function cSave(id) {
-
-//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
-//  document.getElementById('bd'+id).style = "display:block;";
-
- localStorage.setItem('zakaz',id);
  if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
@@ -81,12 +73,25 @@ function cSave(id) {
 	} 
 
 	localStorage.setItem('zakaz',arid.join(','));
-
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
  }
  schet();
@@ -98,10 +103,20 @@ function cDel(id) {
       localStorage.setItem(id,'');
       document.getElementById(id).value = "";
       document.getElementById("d"+id).innerHTML = ".";
+
+	var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}
+	var ind=arid.indexOf(id);
+	if (ind>=0) {
+           arid.splice(ind, 1); 
+	}         
+	localStorage.setItem('zakaz',arid.join(','));
+
     }
  }
-// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
-// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
@@ -129,7 +144,7 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/1069.jpg"><br>
 <p>Репс Гном 2,5 см - 7.25 грн/м ТОЛЬКО ФИОЛЕТ !!!</p>
-<div id="dr1069" class="r">.</div><br>
+<div id="dr1069" class="r">.</div>
 <input type="text" id="r1069" name="r1069" class="w95"><br>
 <div>
 <button onclick="cSave('r1069')" type="button" id="bar1069" class="bl">ДОБАВИТЬ</button>
@@ -138,7 +153,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1362.jpg"><br>
 <p>Репс с рисунокм 2,5 см - 4.85 грн/м</p>
-<div id="dr1362" class="r">.</div><br>
+<div id="dr1362" class="r">.</div>
 <input type="text" id="r1362" name="r1362" class="w95"><br>
 <div>
 <button onclick="cSave('r1362')" type="button" id="bar1362" class="bl">ДОБАВИТЬ</button>
@@ -147,7 +162,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1046.jpg"><br>
 <p>Репс с узором 2,5 см - 4.50 грн/м РОЗОВОЙ,ФИОЛЕТ НЕТ!!!</p>
-<div id="dr1046" class="r">.</div><br>
+<div id="dr1046" class="r">.</div>
 <input type="text" id="r1046" name="r1046" class="w95"><br>
 <div>
 <button onclick="cSave('r1046')" type="button" id="bar1046" class="bl">ДОБАВИТЬ</button>
@@ -156,7 +171,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1200.jpg"><br>
 <p>Репс с рисунком 2.5 см - 5.75 грн/м</p>
-<div id="dr1200" class="r">.</div><br>
+<div id="dr1200" class="r">.</div>
 <input type="text" id="r1200" name="r1200" class="w95"><br>
 <div>
 <button onclick="cSave('r1200')" type="button" id="bar1200" class="bl">ДОБАВИТЬ</button>
@@ -165,7 +180,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1256.jpg"><br>
 <p>Репс с рисунком 2,5 см - 5.75 грн/м</p>
-<div id="dr1256" class="r">.</div><br>
+<div id="dr1256" class="r">.</div>
 <input type="text" id="r1256" name="r1256" class="w95"><br>
 <div>
 <button onclick="cSave('r1256')" type="button" id="bar1256" class="bl">ДОБАВИТЬ</button>
@@ -174,7 +189,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1224.jpg"><br>
 <p>Репс с узором 2,5 см - 4.50 грн/м</p>
-<div id="dr1224" class="r">.</div><br>
+<div id="dr1224" class="r">.</div>
 <input type="text" id="r1224" name="r1224" class="w95"><br>
 <div>
 <button onclick="cSave('r1224')" type="button" id="bar1224" class="bl">ДОБАВИТЬ</button>
@@ -183,7 +198,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1135.jpg"><br>
 <p>Репс с узором 2,5 см - 4.50 грн/м</p>
-<div id="dr1135" class="r">.</div><br>
+<div id="dr1135" class="r">.</div>
 <input type="text" id="r1135" name="r1135" class="w95"><br>
 <div>
 <button onclick="cSave('r1135')" type="button" id="bar1135" class="bl">ДОБАВИТЬ</button>
@@ -192,7 +207,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1255.jpg"><br>
 <p>Репс с рисунком 2,5 см - 5.75 грн/м</p>
-<div id="dr1255" class="r">.</div><br>
+<div id="dr1255" class="r">.</div>
 <input type="text" id="r1255" name="r1255" class="w95"><br>
 <div>
 <button onclick="cSave('r1255')" type="button" id="bar1255" class="bl">ДОБАВИТЬ</button>
@@ -201,7 +216,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1782.jpg"><br>
 <p>- Репс с рисунком 2.5 см - 8.25 грн/м</p>
-<div id="dr1782" class="r">.</div><br>
+<div id="dr1782" class="r">.</div>
 <input type="text" id="r1782" name="r1782" class="w95"><br>
 <div>
 <button onclick="cSave('r1782')" type="button" id="bar1782" class="bl">ДОБАВИТЬ</button>
@@ -210,7 +225,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1138.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.75 грн/м</p>
-<div id="dr1138" class="r">.</div><br>
+<div id="dr1138" class="r">.</div>
 <input type="text" id="r1138" name="r1138" class="w95"><br>
 <div>
 <button onclick="cSave('r1138')" type="button" id="bar1138" class="bl">ДОБАВИТЬ</button>
@@ -219,7 +234,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1189.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.25 грн/м</p>
-<div id="dr1189" class="r">.</div><br>
+<div id="dr1189" class="r">.</div>
 <input type="text" id="r1189" name="r1189" class="w95"><br>
 <div>
 <button onclick="cSave('r1189')" type="button" id="bar1189" class="bl">ДОБАВИТЬ</button>
@@ -228,7 +243,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/890.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.95 грн/м</p>
-<div id="dr890" class="r">.</div><br>
+<div id="dr890" class="r">.</div>
 <input type="text" id="r890" name="r890" class="w95"><br>
 <div>
 <button onclick="cSave('r890')" type="button" id="bar890" class="bl">ДОБАВИТЬ</button>
@@ -237,7 +252,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/443.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.25 грн/м</p>
-<div id="dr443" class="r">.</div><br>
+<div id="dr443" class="r">.</div>
 <input type="text" id="r443" name="r443" class="w95"><br>
 <div>
 <button onclick="cSave('r443')" type="button" id="bar443" class="bl">ДОБАВИТЬ</button>
@@ -246,7 +261,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/945.jpg"><br>
 <p>Репс с рисунком 0.9 см - 6.75 грн/м</p>
-<div id="dr945" class="r">.</div><br>
+<div id="dr945" class="r">.</div>
 <input type="text" id="r945" name="r945" class="w95"><br>
 <div>
 <button onclick="cSave('r945')" type="button" id="bar945" class="bl">ДОБАВИТЬ</button>
@@ -255,7 +270,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/827.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr827" class="r">.</div><br>
+<div id="dr827" class="r">.</div>
 <input type="text" id="r827" name="r827" class="w95"><br>
 <div>
 <button onclick="cSave('r827')" type="button" id="bar827" class="bl">ДОБАВИТЬ</button>
@@ -264,7 +279,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/845.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr845" class="r">.</div><br>
+<div id="dr845" class="r">.</div>
 <input type="text" id="r845" name="r845" class="w95"><br>
 <div>
 <button onclick="cSave('r845')" type="button" id="bar845" class="bl">ДОБАВИТЬ</button>
@@ -273,7 +288,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1018.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr1018" class="r">.</div><br>
+<div id="dr1018" class="r">.</div>
 <input type="text" id="r1018" name="r1018" class="w95"><br>
 <div>
 <button onclick="cSave('r1018')" type="button" id="bar1018" class="bl">ДОБАВИТЬ</button>
@@ -282,7 +297,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2207.jpg"><br>
 <p>Репс с рисунком 0.9 см - 6.75 грн/м</p>
-<div id="dr2207" class="r">.</div><br>
+<div id="dr2207" class="r">.</div>
 <input type="text" id="r2207" name="r2207" class="w95"><br>
 <div>
 <button onclick="cSave('r2207')" type="button" id="bar2207" class="bl">ДОБАВИТЬ</button>
@@ -291,7 +306,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1791.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.25 грн/м</p>
-<div id="dr1791" class="r">.</div><br>
+<div id="dr1791" class="r">.</div>
 <input type="text" id="r1791" name="r1791" class="w95"><br>
 <div>
 <button onclick="cSave('r1791')" type="button" id="bar1791" class="bl">ДОБАВИТЬ</button>
@@ -300,7 +315,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/882.jpg"><br>
 <p>Репс с рисунком 2.5 см - 5.75 грн/м</p>
-<div id="dr882" class="r">.</div><br>
+<div id="dr882" class="r">.</div>
 <input type="text" id="r882" name="r882" class="w95"><br>
 <div>
 <button onclick="cSave('r882')" type="button" id="bar882" class="bl">ДОБАВИТЬ</button>
@@ -309,7 +324,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2151.jpg"><br>
 <p>Репс с узором 2.5 см - 4.50 грн/м</p>
-<div id="dr2151" class="r">.</div><br>
+<div id="dr2151" class="r">.</div>
 <input type="text" id="r2151" name="r2151" class="w95"><br>
 <div>
 <button onclick="cSave('r2151')" type="button" id="bar2151" class="bl">ДОБАВИТЬ</button>
@@ -318,7 +333,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1171.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr1171" class="r">.</div><br>
+<div id="dr1171" class="r">.</div>
 <input type="text" id="r1171" name="r1171" class="w95"><br>
 <div>
 <button onclick="cSave('r1171')" type="button" id="bar1171" class="bl">ДОБАВИТЬ</button>
@@ -327,7 +342,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1019.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr1019" class="r">.</div><br>
+<div id="dr1019" class="r">.</div>
 <input type="text" id="r1019" name="r1019" class="w95"><br>
 <div>
 <button onclick="cSave('r1019')" type="button" id="bar1019" class="bl">ДОБАВИТЬ</button>
@@ -336,7 +351,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/821.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr821" class="r">.</div><br>
+<div id="dr821" class="r">.</div>
 <input type="text" id="r821" name="r821" class="w95"><br>
 <div>
 <button onclick="cSave('r821')" type="button" id="bar821" class="bl">ДОБАВИТЬ</button>
@@ -345,7 +360,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1167.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr1167" class="r">.</div><br>
+<div id="dr1167" class="r">.</div>
 <input type="text" id="r1167" name="r1167" class="w95"><br>
 <div>
 <button onclick="cSave('r1167')" type="button" id="bar1167" class="bl">ДОБАВИТЬ</button>
@@ -354,7 +369,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1166.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr1166" class="r">.</div><br>
+<div id="dr1166" class="r">.</div>
 <input type="text" id="r1166" name="r1166" class="w95"><br>
 <div>
 <button onclick="cSave('r1166')" type="button" id="bar1166" class="bl">ДОБАВИТЬ</button>
@@ -363,7 +378,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1212.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.25 грн/м</p>
-<div id="dr1212" class="r">.</div><br>
+<div id="dr1212" class="r">.</div>
 <input type="text" id="r1212" name="r1212" class="w95"><br>
 <div>
 <button onclick="cSave('r1212')" type="button" id="bar1212" class="bl">ДОБАВИТЬ</button>
@@ -372,7 +387,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2422.jpg"><br>
 <p>Репс с рисунком 2.5 см - 7.00 грн/м</p>
-<div id="dr2422" class="r">.</div><br>
+<div id="dr2422" class="r">.</div>
 <input type="text" id="r2422" name="r2422" class="w95"><br>
 <div>
 <button onclick="cSave('r2422')" type="button" id="bar2422" class="bl">ДОБАВИТЬ</button>
@@ -381,7 +396,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2420.jpg"><br>
 <p>Репс с рисунком 2.5 см - 7.00 грн/м</p>
-<div id="dr2420" class="r">.</div><br>
+<div id="dr2420" class="r">.</div>
 <input type="text" id="r2420" name="r2420" class="w95"><br>
 <div>
 <button onclick="cSave('r2420')" type="button" id="bar2420" class="bl">ДОБАВИТЬ</button>
@@ -390,7 +405,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2573.jpg"><br>
 <p>Репс с надписью 2.5 см - 2.95 грн/м</p>
-<div id="dr2573" class="r">.</div><br>
+<div id="dr2573" class="r">.</div>
 <input type="text" id="r2573" name="r2573" class="w95"><br>
 <div>
 <button onclick="cSave('r2573')" type="button" id="bar2573" class="bl">ДОБАВИТЬ</button>
@@ -399,7 +414,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2572.jpg"><br>
 <p>Репс с надписью 2.5 см - 2.95 грн/м</p>
-<div id="dr2572" class="r">.</div><br>
+<div id="dr2572" class="r">.</div>
 <input type="text" id="r2572" name="r2572" class="w95"><br>
 <div>
 <button onclick="cSave('r2572')" type="button" id="bar2572" class="bl">ДОБАВИТЬ</button>
@@ -408,7 +423,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3132.jpg"><br>
 <p>Репс шары и кольца 4 см - 5.25 грн/м</p>
-<div id="dr3132" class="r">.</div><br>
+<div id="dr3132" class="r">.</div>
 <input type="text" id="r3132" name="r3132" class="w95"><br>
 <div>
 <button onclick="cSave('r3132')" type="button" id="bar3132" class="bl">ДОБАВИТЬ</button>
@@ -417,7 +432,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3126.jpg"><br>
 <p>Репс с рисунком 2.5 см - 4,45 грн/м</p>
-<div id="dr3126" class="r">.</div><br>
+<div id="dr3126" class="r">.</div>
 <input type="text" id="r3126" name="r3126" class="w95"><br>
 <div>
 <button onclick="cSave('r3126')" type="button" id="bar3126" class="bl">ДОБАВИТЬ</button>
@@ -426,7 +441,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3122.jpg"><br>
 <p>Репс с рисунком 2.5 см - 4,45 грн/м</p>
-<div id="dr3122" class="r">.</div><br>
+<div id="dr3122" class="r">.</div>
 <input type="text" id="r3122" name="r3122" class="w95"><br>
 <div>
 <button onclick="cSave('r3122')" type="button" id="bar3122" class="bl">ДОБАВИТЬ</button>
@@ -435,7 +450,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3124.jpg"><br>
 <p>Репс с рисунком 2.5 см - 4,45 грн/м</p>
-<div id="dr3124" class="r">.</div><br>
+<div id="dr3124" class="r">.</div>
 <input type="text" id="r3124" name="r3124" class="w95"><br>
 <div>
 <button onclick="cSave('r3124')" type="button" id="bar3124" class="bl">ДОБАВИТЬ</button>
@@ -444,7 +459,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3119.jpg"><br>
 <p>Репс цветы 4 см - 4,95 грн/м</p>
-<div id="dr3119" class="r">.</div><br>
+<div id="dr3119" class="r">.</div>
 <input type="text" id="r3119" name="r3119" class="w95"><br>
 <div>
 <button onclick="cSave('r3119')" type="button" id="bar3119" class="bl">ДОБАВИТЬ</button>
@@ -453,7 +468,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3004.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.95 грн/м</p>
-<div id="dr3004" class="r">.</div><br>
+<div id="dr3004" class="r">.</div>
 <input type="text" id="r3004" name="r3004" class="w95"><br>
 <div>
 <button onclick="cSave('r3004')" type="button" id="bar3004" class="bl">ДОБАВИТЬ</button>
@@ -462,7 +477,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1197.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.25 грн/м</p>
-<div id="dr1197" class="r">.</div><br>
+<div id="dr1197" class="r">.</div>
 <input type="text" id="r1197" name="r1197" class="w95"><br>
 <div>
 <button onclick="cSave('r1197')" type="button" id="bar1197" class="bl">ДОБАВИТЬ</button>
@@ -471,7 +486,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2950.jpg"><br>
 <p>Репс с рисунком 2.5 см - 7.95 грн/м</p>
-<div id="dr2950" class="r">.</div><br>
+<div id="dr2950" class="r">.</div>
 <input type="text" id="r2950" name="r2950" class="w95"><br>
 <div>
 <button onclick="cSave('r2950')" type="button" id="bar2950" class="bl">ДОБАВИТЬ</button>
@@ -480,7 +495,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2957.jpg"><br>
 <p>Репс с рисунком 2.2 см - 8.25 грн/м</p>
-<div id="dr2957" class="r">.</div><br>
+<div id="dr2957" class="r">.</div>
 <input type="text" id="r2957" name="r2957" class="w95"><br>
 <div>
 <button onclick="cSave('r2957')" type="button" id="bar2957" class="bl">ДОБАВИТЬ</button>
@@ -489,7 +504,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3066.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.95 грн/м</p>
-<div id="dr3066" class="r">.</div><br>
+<div id="dr3066" class="r">.</div>
 <input type="text" id="r3066" name="r3066" class="w95"><br>
 <div>
 <button onclick="cSave('r3066')" type="button" id="bar3066" class="bl">ДОБАВИТЬ</button>
@@ -498,7 +513,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3061.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.95 грн/м</p>
-<div id="dr3061" class="r">.</div><br>
+<div id="dr3061" class="r">.</div>
 <input type="text" id="r3061" name="r3061" class="w95"><br>
 <div>
 <button onclick="cSave('r3061')" type="button" id="bar3061" class="bl">ДОБАВИТЬ</button>
@@ -507,7 +522,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3062.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.95 грн/м</p>
-<div id="dr3062" class="r">.</div><br>
+<div id="dr3062" class="r">.</div>
 <input type="text" id="r3062" name="r3062" class="w95"><br>
 <div>
 <button onclick="cSave('r3062')" type="button" id="bar3062" class="bl">ДОБАВИТЬ</button>
@@ -516,7 +531,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2346.jpg"><br>
 <p>Репс с рисунком 2.5 см - 9.25 грн/м</p>
-<div id="dr2346" class="r">.</div><br>
+<div id="dr2346" class="r">.</div>
 <input type="text" id="r2346" name="r2346" class="w95"><br>
 <div>
 <button onclick="cSave('r2346')" type="button" id="bar2346" class="bl">ДОБАВИТЬ</button>
@@ -525,7 +540,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2019.jpg"><br>
 <p>Репс с рисунком 2.5 см - 8.25 грн/м</p>
-<div id="dr2019" class="r">.</div><br>
+<div id="dr2019" class="r">.</div>
 <input type="text" id="r2019" name="r2019" class="w95"><br>
 <div>
 <button onclick="cSave('r2019')" type="button" id="bar2019" class="bl">ДОБАВИТЬ</button>
@@ -534,7 +549,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4362.jpg"><br>
 <p>Репс с рисунком 2.5 см - 5.75 грн/м</p>
-<div id="dr4362" class="r">.</div><br>
+<div id="dr4362" class="r">.</div>
 <input type="text" id="r4362" name="r4362" class="w95"><br>
 <div>
 <button onclick="cSave('r4362')" type="button" id="bar4362" class="bl">ДОБАВИТЬ</button>
@@ -543,7 +558,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4401.jpg"><br>
 <p>Репс с рисунком 2.5см - 3.95 грн/м</p>
-<div id="dr4401" class="r">.</div><br>
+<div id="dr4401" class="r">.</div>
 <input type="text" id="r4401" name="r4401" class="w95"><br>
 <div>
 <button onclick="cSave('r4401')" type="button" id="bar4401" class="bl">ДОБАВИТЬ</button>
@@ -552,7 +567,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4460.jpg"><br>
 <p>Репс с рисунком 2.5см - 3.95 грн/м</p>
-<div id="dr4460" class="r">.</div><br>
+<div id="dr4460" class="r">.</div>
 <input type="text" id="r4460" name="r4460" class="w95"><br>
 <div>
 <button onclick="cSave('r4460')" type="button" id="bar4460" class="bl">ДОБАВИТЬ</button>
@@ -561,7 +576,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4462.jpg"><br>
 <p>Репс с рисунком 2.5см - 3.95 грн/м</p>
-<div id="dr4462" class="r">.</div><br>
+<div id="dr4462" class="r">.</div>
 <input type="text" id="r4462" name="r4462" class="w95"><br>
 <div>
 <button onclick="cSave('r4462')" type="button" id="bar4462" class="bl">ДОБАВИТЬ</button>
@@ -570,7 +585,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4215.jpg"><br>
 <p>Репс с орнаментом 2.5 см - 5.95 грн/м</p>
-<div id="dr4215" class="r">.</div><br>
+<div id="dr4215" class="r">.</div>
 <input type="text" id="r4215" name="r4215" class="w95"><br>
 <div>
 <button onclick="cSave('r4215')" type="button" id="bar4215" class="bl">ДОБАВИТЬ</button>
@@ -579,7 +594,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4394.jpg"><br>
 <p>РЕПС С РИСУНКОМ 22 ММ - 8.25 ГРН/ЯРД</p>
-<div id="dr4394" class="r">.</div><br>
+<div id="dr4394" class="r">.</div>
 <input type="text" id="r4394" name="r4394" class="w95"><br>
 <div>
 <button onclick="cSave('r4394')" type="button" id="bar4394" class="bl">ДОБАВИТЬ</button>
@@ -588,7 +603,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4489.jpg"><br>
 <p>Репс с рисунком 25 мм - 8.25 грн/м.</p>
-<div id="dr4489" class="r">.</div><br>
+<div id="dr4489" class="r">.</div>
 <input type="text" id="r4489" name="r4489" class="w95"><br>
 <div>
 <button onclick="cSave('r4489')" type="button" id="bar4489" class="bl">ДОБАВИТЬ</button>
@@ -597,7 +612,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4538.jpg"><br>
 <p>Репс с рисунокм 2,5 см - 4.85 грн/м.</p>
-<div id="dr4538" class="r">.</div><br>
+<div id="dr4538" class="r">.</div>
 <input type="text" id="r4538" name="r4538" class="w95"><br>
 <div>
 <button onclick="cSave('r4538')" type="button" id="bar4538" class="bl">ДОБАВИТЬ</button>
@@ -606,7 +621,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4516.jpg"><br>
 <p>Репс с рисунокм 2,5 см - 4.85 грн/м.</p>
-<div id="dr4516" class="r">.</div><br>
+<div id="dr4516" class="r">.</div>
 <input type="text" id="r4516" name="r4516" class="w95"><br>
 <div>
 <button onclick="cSave('r4516')" type="button" id="bar4516" class="bl">ДОБАВИТЬ</button>
@@ -615,7 +630,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4515.jpg"><br>
 <p>Репс с рисунокм 2,5 см - 4.85 грн/м.</p>
-<div id="dr4515" class="r">.</div><br>
+<div id="dr4515" class="r">.</div>
 <input type="text" id="r4515" name="r4515" class="w95"><br>
 <div>
 <button onclick="cSave('r4515')" type="button" id="bar4515" class="bl">ДОБАВИТЬ</button>
@@ -624,7 +639,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4509.jpg"><br>
 <p>Репс с рисунокм 2,5 см - 4.85 грн/м.</p>
-<div id="dr4509" class="r">.</div><br>
+<div id="dr4509" class="r">.</div>
 <input type="text" id="r4509" name="r4509" class="w95"><br>
 <div>
 <button onclick="cSave('r4509')" type="button" id="bar4509" class="bl">ДОБАВИТЬ</button>
@@ -633,7 +648,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4510.jpg"><br>
 <p>Декоративная лента 4см - 4.45 грн/м.</p>
-<div id="dr4510" class="r">.</div><br>
+<div id="dr4510" class="r">.</div>
 <input type="text" id="r4510" name="r4510" class="w95"><br>
 <div>
 <button onclick="cSave('r4510')" type="button" id="bar4510" class="bl">ДОБАВИТЬ</button>
@@ -642,7 +657,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4511.jpg"><br>
 <p>Декоративная лента 4см - 4.45 грн/м.</p>
-<div id="dr4511" class="r">.</div><br>
+<div id="dr4511" class="r">.</div>
 <input type="text" id="r4511" name="r4511" class="w95"><br>
 <div>
 <button onclick="cSave('r4511')" type="button" id="bar4511" class="bl">ДОБАВИТЬ</button>
@@ -651,7 +666,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4664.jpg"><br>
 <p>Репс с рисунком Лол 2.5 см - 8.25 грн/м</p>
-<div id="dr4664" class="r">.</div><br>
+<div id="dr4664" class="r">.</div>
 <input type="text" id="r4664" name="r4664" class="w95"><br>
 <div>
 <button onclick="cSave('r4664')" type="button" id="bar4664" class="bl">ДОБАВИТЬ</button>
@@ -660,7 +675,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4665.jpg"><br>
 <p>Репс с рисунком Лол 2.5 см - 8.25 грн/м</p>
-<div id="dr4665" class="r">.</div><br>
+<div id="dr4665" class="r">.</div>
 <input type="text" id="r4665" name="r4665" class="w95"><br>
 <div>
 <button onclick="cSave('r4665')" type="button" id="bar4665" class="bl">ДОБАВИТЬ</button>
@@ -669,7 +684,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4757.jpg"><br>
 <p>Репс с рисунком 2.5см - 4.95 грн/м.</p>
-<div id="dr4757" class="r">.</div><br>
+<div id="dr4757" class="r">.</div>
 <input type="text" id="r4757" name="r4757" class="w95"><br>
 <div>
 <button onclick="cSave('r4757')" type="button" id="bar4757" class="bl">ДОБАВИТЬ</button>
@@ -678,7 +693,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4746.jpg"><br>
 <p>Репс с рисунком 2.5см - 7.00 грн/м.</p>
-<div id="dr4746" class="r">.</div><br>
+<div id="dr4746" class="r">.</div>
 <input type="text" id="r4746" name="r4746" class="w95"><br>
 <div>
 <button onclick="cSave('r4746')" type="button" id="bar4746" class="bl">ДОБАВИТЬ</button>
@@ -687,7 +702,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4744.jpg"><br>
 <p>Репс с рисунком 2.5см - 7.00 грн/м.</p>
-<div id="dr4744" class="r">.</div><br>
+<div id="dr4744" class="r">.</div>
 <input type="text" id="r4744" name="r4744" class="w95"><br>
 <div>
 <button onclick="cSave('r4744')" type="button" id="bar4744" class="bl">ДОБАВИТЬ</button>
@@ -696,7 +711,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4742.jpg"><br>
 <p>Репс с рисунком 2.5см - 7.00 грн/м.</p>
-<div id="dr4742" class="r">.</div><br>
+<div id="dr4742" class="r">.</div>
 <input type="text" id="r4742" name="r4742" class="w95"><br>
 <div>
 <button onclick="cSave('r4742')" type="button" id="bar4742" class="bl">ДОБАВИТЬ</button>
@@ -705,7 +720,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4741.jpg"><br>
 <p>Репс с рисунком 2.5см - 7.00 грн/м.</p>
-<div id="dr4741" class="r">.</div><br>
+<div id="dr4741" class="r">.</div>
 <input type="text" id="r4741" name="r4741" class="w95"><br>
 <div>
 <button onclick="cSave('r4741')" type="button" id="bar4741" class="bl">ДОБАВИТЬ</button>
@@ -714,7 +729,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4740.jpg"><br>
 <p>Репс с рисунком 2.5см - 7.00 грн/м.</p>
-<div id="dr4740" class="r">.</div><br>
+<div id="dr4740" class="r">.</div>
 <input type="text" id="r4740" name="r4740" class="w95"><br>
 <div>
 <button onclick="cSave('r4740')" type="button" id="bar4740" class="bl">ДОБАВИТЬ</button>
@@ -723,7 +738,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4739.jpg"><br>
 <p>Репс с рисунком 2.5см - 4.95 грн/м.</p>
-<div id="dr4739" class="r">.</div><br>
+<div id="dr4739" class="r">.</div>
 <input type="text" id="r4739" name="r4739" class="w95"><br>
 <div>
 <button onclick="cSave('r4739')" type="button" id="bar4739" class="bl">ДОБАВИТЬ</button>
@@ -732,7 +747,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4738.jpg"><br>
 <p>Репс с рисунком 2.5см - 4.95 грн/м.</p>
-<div id="dr4738" class="r">.</div><br>
+<div id="dr4738" class="r">.</div>
 <input type="text" id="r4738" name="r4738" class="w95"><br>
 <div>
 <button onclick="cSave('r4738')" type="button" id="bar4738" class="bl">ДОБАВИТЬ</button>
@@ -741,7 +756,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4731.jpg"><br>
 <p>Репс с рисунком 2.5см - 7.00 грн/м.</p>
-<div id="dr4731" class="r">.</div><br>
+<div id="dr4731" class="r">.</div>
 <input type="text" id="r4731" name="r4731" class="w95"><br>
 <div>
 <button onclick="cSave('r4731')" type="button" id="bar4731" class="bl">ДОБАВИТЬ</button>
@@ -750,7 +765,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4730.jpg"><br>
 <p>Репс с рисунком 2.5см - 7.00 грн/м.</p>
-<div id="dr4730" class="r">.</div><br>
+<div id="dr4730" class="r">.</div>
 <input type="text" id="r4730" name="r4730" class="w95"><br>
 <div>
 <button onclick="cSave('r4730')" type="button" id="bar4730" class="bl">ДОБАВИТЬ</button>

@@ -7,7 +7,6 @@
   <title>Delava - канзаши товары</title>
 
 
-
 <script>
 
 function schet(){
@@ -25,7 +24,6 @@ function schet(){
      if (vr != "") 
      {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+ "["+ i + "] "+vr+"\n";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -57,16 +55,10 @@ function schet(){
    }
   }//нет поля
  }//цикл
- document.getElementById('z').innerHTML = z;
 }
 
 
 function cSave(id) {
-
-//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
-//  document.getElementById('bd'+id).style = "display:block;";
-
- localStorage.setItem('zakaz',id);
  if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
@@ -81,12 +73,25 @@ function cSave(id) {
 	} 
 
 	localStorage.setItem('zakaz',arid.join(','));
-
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
  }
  schet();
@@ -98,10 +103,20 @@ function cDel(id) {
       localStorage.setItem(id,'');
       document.getElementById(id).value = "";
       document.getElementById("d"+id).innerHTML = ".";
+
+	var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}
+	var ind=arid.indexOf(id);
+	if (ind>=0) {
+           arid.splice(ind, 1); 
+	}         
+	localStorage.setItem('zakaz',arid.join(','));
+
     }
  }
-// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
-// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
@@ -129,7 +144,7 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/3134.jpg"><br>
 <p>Эко-кожа крупный глиттер золото 20*25см - 16.75 грн/лист</p>
-<div id="dr3134" class="r">.</div><br>
+<div id="dr3134" class="r">.</div>
 <input type="text" id="r3134" name="r3134" class="w95"><br>
 <div>
 <button onclick="cSave('r3134')" type="button" id="bar3134" class="bl">ДОБАВИТЬ</button>
@@ -138,7 +153,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3180.jpg"><br>
 <p>Эко-кожа крупный глиттер серебро 20*25см - 16.75 грн/лист</p>
-<div id="dr3180" class="r">.</div><br>
+<div id="dr3180" class="r">.</div>
 <input type="text" id="r3180" name="r3180" class="w95"><br>
 <div>
 <button onclick="cSave('r3180')" type="button" id="bar3180" class="bl">ДОБАВИТЬ</button>
@@ -147,7 +162,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3136.jpg"><br>
 <p>Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
-<div id="dr3136" class="r">.</div><br>
+<div id="dr3136" class="r">.</div>
 <input type="text" id="r3136" name="r3136" class="w95"><br>
 <div>
 <button onclick="cSave('r3136')" type="button" id="bar3136" class="bl">ДОБАВИТЬ</button>
@@ -156,7 +171,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3138.jpg"><br>
 <p>Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
-<div id="dr3138" class="r">.</div><br>
+<div id="dr3138" class="r">.</div>
 <input type="text" id="r3138" name="r3138" class="w95"><br>
 <div>
 <button onclick="cSave('r3138')" type="button" id="bar3138" class="bl">ДОБАВИТЬ</button>
@@ -165,7 +180,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3179.jpg"><br>
 <p>Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
-<div id="dr3179" class="r">.</div><br>
+<div id="dr3179" class="r">.</div>
 <input type="text" id="r3179" name="r3179" class="w95"><br>
 <div>
 <button onclick="cSave('r3179')" type="button" id="bar3179" class="bl">ДОБАВИТЬ</button>
@@ -174,7 +189,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3137.jpg"><br>
 <p>Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
-<div id="dr3137" class="r">.</div><br>
+<div id="dr3137" class="r">.</div>
 <input type="text" id="r3137" name="r3137" class="w95"><br>
 <div>
 <button onclick="cSave('r3137')" type="button" id="bar3137" class="bl">ДОБАВИТЬ</button>
@@ -183,7 +198,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3135.jpg"><br>
 <p>Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
-<div id="dr3135" class="r">.</div><br>
+<div id="dr3135" class="r">.</div>
 <input type="text" id="r3135" name="r3135" class="w95"><br>
 <div>
 <button onclick="cSave('r3135')" type="button" id="bar3135" class="bl">ДОБАВИТЬ</button>
@@ -192,7 +207,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4232.jpg"><br>
 <p>Эко-кожа крупный глиттер черный  15*30см - 16.75 грн/лист</p>
-<div id="dr4232" class="r">.</div><br>
+<div id="dr4232" class="r">.</div>
 <input type="text" id="r4232" name="r4232" class="w95"><br>
 <div>
 <button onclick="cSave('r4232')" type="button" id="bar4232" class="bl">ДОБАВИТЬ</button>
@@ -201,7 +216,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4484.jpg"><br>
 <p>Эко-кожа с крупными блестками св.розовая 19*30см - 18.95 грн/лист</p>
-<div id="dr4484" class="r">.</div><br>
+<div id="dr4484" class="r">.</div>
 <input type="text" id="r4484" name="r4484" class="w95"><br>
 <div>
 <button onclick="cSave('r4484')" type="button" id="bar4484" class="bl">ДОБАВИТЬ</button>
@@ -210,7 +225,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4475.jpg"><br>
 <p>Эко-кожа с крупными блестками 19*30см - 18.95 грн/лист</p>
-<div id="dr4475" class="r">.</div><br>
+<div id="dr4475" class="r">.</div>
 <input type="text" id="r4475" name="r4475" class="w95"><br>
 <div>
 <button onclick="cSave('r4475')" type="button" id="bar4475" class="bl">ДОБАВИТЬ</button>
@@ -219,7 +234,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4482.jpg"><br>
 <p>Эко-кожа с крупными блестками красная 19*30см - 18.95 грн/лист</p>
-<div id="dr4482" class="r">.</div><br>
+<div id="dr4482" class="r">.</div>
 <input type="text" id="r4482" name="r4482" class="w95"><br>
 <div>
 <button onclick="cSave('r4482')" type="button" id="bar4482" class="bl">ДОБАВИТЬ</button>
@@ -228,7 +243,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4481.jpg"><br>
 <p>Эко-кожа с крупными блестками малиновая 19*30см - 18.95 грн/лист</p>
-<div id="dr4481" class="r">.</div><br>
+<div id="dr4481" class="r">.</div>
 <input type="text" id="r4481" name="r4481" class="w95"><br>
 <div>
 <button onclick="cSave('r4481')" type="button" id="bar4481" class="bl">ДОБАВИТЬ</button>
@@ -237,7 +252,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4483.jpg"><br>
 <p>Эко-кожа с крупными блестками фиолет 19*30см - 18.95 грн/лист</p>
-<div id="dr4483" class="r">.</div><br>
+<div id="dr4483" class="r">.</div>
 <input type="text" id="r4483" name="r4483" class="w95"><br>
 <div>
 <button onclick="cSave('r4483')" type="button" id="bar4483" class="bl">ДОБАВИТЬ</button>
@@ -246,7 +261,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4719.jpg"><br>
 <p>Эко-кожа с крупными блестками 19*30см - 18.95 грн/лист</p>
-<div id="dr4719" class="r">.</div><br>
+<div id="dr4719" class="r">.</div>
 <input type="text" id="r4719" name="r4719" class="w95"><br>
 <div>
 <button onclick="cSave('r4719')" type="button" id="bar4719" class="bl">ДОБАВИТЬ</button>
@@ -255,7 +270,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4478.jpg"><br>
 <p>Эко-кожа с крупными блестками белая 19*30см - 18.95 грн/лист</p>
-<div id="dr4478" class="r">.</div><br>
+<div id="dr4478" class="r">.</div>
 <input type="text" id="r4478" name="r4478" class="w95"><br>
 <div>
 <button onclick="cSave('r4478')" type="button" id="bar4478" class="bl">ДОБАВИТЬ</button>
@@ -264,7 +279,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4477.jpg"><br>
 <p>Эко-кожа с крупными блестками 19*30см - 18.95 грн/лист</p>
-<div id="dr4477" class="r">.</div><br>
+<div id="dr4477" class="r">.</div>
 <input type="text" id="r4477" name="r4477" class="w95"><br>
 <div>
 <button onclick="cSave('r4477')" type="button" id="bar4477" class="bl">ДОБАВИТЬ</button>
@@ -273,7 +288,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4689.jpg"><br>
 <p>Эко-кожа с крупными блестками белая ЛЮКС 15*20см - 19.95 грн/лист.</p>
-<div id="dr4689" class="r">.</div><br>
+<div id="dr4689" class="r">.</div>
 <input type="text" id="r4689" name="r4689" class="w95"><br>
 <div>
 <button onclick="cSave('r4689')" type="button" id="bar4689" class="bl">ДОБАВИТЬ</button>
@@ -282,7 +297,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4690.jpg"><br>
 <p>Эко-кожа с крупными блестками цветная ЛЮКС 15*20см - 16.95 грн/лист.</p>
-<div id="dr4690" class="r">.</div><br>
+<div id="dr4690" class="r">.</div>
 <input type="text" id="r4690" name="r4690" class="w95"><br>
 <div>
 <button onclick="cSave('r4690')" type="button" id="bar4690" class="bl">ДОБАВИТЬ</button>
@@ -291,7 +306,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4681.jpg"><br>
 <p>Эко-кожа соты 19*30см - 18.95 грн/лист.</p>
-<div id="dr4681" class="r">.</div><br>
+<div id="dr4681" class="r">.</div>
 <input type="text" id="r4681" name="r4681" class="w95"><br>
 <div>
 <button onclick="cSave('r4681')" type="button" id="bar4681" class="bl">ДОБАВИТЬ</button>
@@ -300,7 +315,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4682.jpg"><br>
 <p>Эко-кожа соты белая голография19*30см - 18.95 грн/лист.</p>
-<div id="dr4682" class="r">.</div><br>
+<div id="dr4682" class="r">.</div>
 <input type="text" id="r4682" name="r4682" class="w95"><br>
 <div>
 <button onclick="cSave('r4682')" type="button" id="bar4682" class="bl">ДОБАВИТЬ</button>
@@ -309,7 +324,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4684.jpg"><br>
 <p>Эко-кожа соты 19*30см - 18.95 грн/лист.</p>
-<div id="dr4684" class="r">.</div><br>
+<div id="dr4684" class="r">.</div>
 <input type="text" id="r4684" name="r4684" class="w95"><br>
 <div>
 <button onclick="cSave('r4684')" type="button" id="bar4684" class="bl">ДОБАВИТЬ</button>
@@ -318,7 +333,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4685.jpg"><br>
 <p>Эко-кожа соты 19*30см - 18.95 грн/лист.</p>
-<div id="dr4685" class="r">.</div><br>
+<div id="dr4685" class="r">.</div>
 <input type="text" id="r4685" name="r4685" class="w95"><br>
 <div>
 <button onclick="cSave('r4685')" type="button" id="bar4685" class="bl">ДОБАВИТЬ</button>
@@ -327,7 +342,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4686.jpg"><br>
 <p>Эко-кожа цветы 19*30см - 18.95 грн/лист.</p>
-<div id="dr4686" class="r">.</div><br>
+<div id="dr4686" class="r">.</div>
 <input type="text" id="r4686" name="r4686" class="w95"><br>
 <div>
 <button onclick="cSave('r4686')" type="button" id="bar4686" class="bl">ДОБАВИТЬ</button>
@@ -336,7 +351,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4687.jpg"><br>
 <p>Эко-кожа цветы 19*30см - 18.95 грн/лист.</p>
-<div id="dr4687" class="r">.</div><br>
+<div id="dr4687" class="r">.</div>
 <input type="text" id="r4687" name="r4687" class="w95"><br>
 <div>
 <button onclick="cSave('r4687')" type="button" id="bar4687" class="bl">ДОБАВИТЬ</button>
@@ -345,7 +360,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4688.jpg"><br>
 <p>Эко-кожа цветы 19*30см - 18.95 грн/лист</p>
-<div id="dr4688" class="r">.</div><br>
+<div id="dr4688" class="r">.</div>
 <input type="text" id="r4688" name="r4688" class="w95"><br>
 <div>
 <button onclick="cSave('r4688')" type="button" id="bar4688" class="bl">ДОБАВИТЬ</button>
@@ -354,7 +369,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4720.jpg"><br>
 <p>Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
-<div id="dr4720" class="r">.</div><br>
+<div id="dr4720" class="r">.</div>
 <input type="text" id="r4720" name="r4720" class="w95"><br>
 <div>
 <button onclick="cSave('r4720')" type="button" id="bar4720" class="bl">ДОБАВИТЬ</button>
@@ -363,7 +378,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4721.jpg"><br>
 <p>Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
-<div id="dr4721" class="r">.</div><br>
+<div id="dr4721" class="r">.</div>
 <input type="text" id="r4721" name="r4721" class="w95"><br>
 <div>
 <button onclick="cSave('r4721')" type="button" id="bar4721" class="bl">ДОБАВИТЬ</button>
@@ -372,7 +387,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4722.jpg"><br>
 <p>Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
-<div id="dr4722" class="r">.</div><br>
+<div id="dr4722" class="r">.</div>
 <input type="text" id="r4722" name="r4722" class="w95"><br>
 <div>
 <button onclick="cSave('r4722')" type="button" id="bar4722" class="bl">ДОБАВИТЬ</button>
@@ -381,7 +396,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4723.jpg"><br>
 <p>Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
-<div id="dr4723" class="r">.</div><br>
+<div id="dr4723" class="r">.</div>
 <input type="text" id="r4723" name="r4723" class="w95"><br>
 <div>
 <button onclick="cSave('r4723')" type="button" id="bar4723" class="bl">ДОБАВИТЬ</button>
@@ -390,7 +405,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/926.jpg"><br>
 <p>Фетр в горох А4(1мм) - 9.50 грн/лист</p>
-<div id="dr926" class="r">.</div><br>
+<div id="dr926" class="r">.</div>
 <input type="text" id="r926" name="r926" class="w95"><br>
 <div>
 <button onclick="cSave('r926')" type="button" id="bar926" class="bl">ДОБАВИТЬ</button>
@@ -399,7 +414,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/694.jpg"><br>
 <p>Фетр в горох А4(1мм) - 9.50 грн/лист</p>
-<div id="dr694" class="r">.</div><br>
+<div id="dr694" class="r">.</div>
 <input type="text" id="r694" name="r694" class="w95"><br>
 <div>
 <button onclick="cSave('r694')" type="button" id="bar694" class="bl">ДОБАВИТЬ</button>
@@ -408,7 +423,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/116.jpg"><br>
 <p>Фетр белый 20*30см(толщина 1мм) - 12.50 грн/шт.</p>
-<div id="dr116" class="r">.</div><br>
+<div id="dr116" class="r">.</div>
 <input type="text" id="r116" name="r116" class="w95"><br>
 <div>
 <button onclick="cSave('r116')" type="button" id="bar116" class="bl">ДОБАВИТЬ</button>
@@ -417,7 +432,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/247.jpg"><br>
 <p>Фетр черный 20*30см (толщина 1мм)- 12.50 грн/шт.</p>
-<div id="dr247" class="r">.</div><br>
+<div id="dr247" class="r">.</div>
 <input type="text" id="r247" name="r247" class="w95"><br>
 <div>
 <button onclick="cSave('r247')" type="button" id="bar247" class="bl">ДОБАВИТЬ</button>
@@ -426,7 +441,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/179.jpg"><br>
 <p>Фетр св.зеленый 20*30см(толщина 1мм) - 6.25 грн/шт.</p>
-<div id="dr179" class="r">.</div><br>
+<div id="dr179" class="r">.</div>
 <input type="text" id="r179" name="r179" class="w95"><br>
 <div>
 <button onclick="cSave('r179')" type="button" id="bar179" class="bl">ДОБАВИТЬ</button>
@@ -435,7 +450,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/248.jpg"><br>
 <p>Фетр оливковый 20*30см (толщина 1мм)- 6.25 грн/шт.</p>
-<div id="dr248" class="r">.</div><br>
+<div id="dr248" class="r">.</div>
 <input type="text" id="r248" name="r248" class="w95"><br>
 <div>
 <button onclick="cSave('r248')" type="button" id="bar248" class="bl">ДОБАВИТЬ</button>
@@ -444,7 +459,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/377.jpg"><br>
 <p>Фетр коричневый 20*30см(толщина 1мм) - 6.25 грн/шт.</p>
-<div id="dr377" class="r">.</div><br>
+<div id="dr377" class="r">.</div>
 <input type="text" id="r377" name="r377" class="w95"><br>
 <div>
 <button onclick="cSave('r377')" type="button" id="bar377" class="bl">ДОБАВИТЬ</button>
@@ -453,7 +468,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/691.jpg"><br>
 <p>Фетр ярко-оранжевый 20*30см (толщина 1мм)6.25грн/шт.</p>
-<div id="dr691" class="r">.</div><br>
+<div id="dr691" class="r">.</div>
 <input type="text" id="r691" name="r691" class="w95"><br>
 <div>
 <button onclick="cSave('r691')" type="button" id="bar691" class="bl">ДОБАВИТЬ</button>
@@ -462,7 +477,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/176.jpg"><br>
 <p>Фетр красный 20*30см (толщина 1мм)- 6.25 грн/шт.</p>
-<div id="dr176" class="r">.</div><br>
+<div id="dr176" class="r">.</div>
 <input type="text" id="r176" name="r176" class="w95"><br>
 <div>
 <button onclick="cSave('r176')" type="button" id="bar176" class="bl">ДОБАВИТЬ</button>
@@ -471,7 +486,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/420.jpg"><br>
 <p>Фетр фиолет 20*30см(толщина 1мм) - 6.25 грн/шт.</p>
-<div id="dr420" class="r">.</div><br>
+<div id="dr420" class="r">.</div>
 <input type="text" id="r420" name="r420" class="w95"><br>
 <div>
 <button onclick="cSave('r420')" type="button" id="bar420" class="bl">ДОБАВИТЬ</button>
@@ -480,7 +495,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/204.jpg"><br>
 <p>Фетр св.розовый 20*30см (толщина 1мм)- 6.25 грн/шт.</p>
-<div id="dr204" class="r">.</div><br>
+<div id="dr204" class="r">.</div>
 <input type="text" id="r204" name="r204" class="w95"><br>
 <div>
 <button onclick="cSave('r204')" type="button" id="bar204" class="bl">ДОБАВИТЬ</button>
@@ -489,7 +504,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/306.jpg"><br>
 <p>Фетр малиновый 20*30см(толщина 1мм) - 6.25 грн/шт.</p>
-<div id="dr306" class="r">.</div><br>
+<div id="dr306" class="r">.</div>
 <input type="text" id="r306" name="r306" class="w95"><br>
 <div>
 <button onclick="cSave('r306')" type="button" id="bar306" class="bl">ДОБАВИТЬ</button>
@@ -498,7 +513,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/201.jpg"><br>
 <p>Фетр желтый 20*30см(толщина 1мм) - 6.25 грн/шт.</p>
-<div id="dr201" class="r">.</div><br>
+<div id="dr201" class="r">.</div>
 <input type="text" id="r201" name="r201" class="w95"><br>
 <div>
 <button onclick="cSave('r201')" type="button" id="bar201" class="bl">ДОБАВИТЬ</button>
@@ -507,7 +522,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/231.jpg"><br>
 <p>Фетр голубой 20*30см (толщина 1мм)- 6.25 грн/шт.</p>
-<div id="dr231" class="r">.</div><br>
+<div id="dr231" class="r">.</div>
 <input type="text" id="r231" name="r231" class="w95"><br>
 <div>
 <button onclick="cSave('r231')" type="button" id="bar231" class="bl">ДОБАВИТЬ</button>
@@ -516,7 +531,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/808.jpg"><br>
 <p>Фетр электрик (толщина 1мм)- 9.00 грн/лист</p>
-<div id="dr808" class="r">.</div><br>
+<div id="dr808" class="r">.</div>
 <input type="text" id="r808" name="r808" class="w95"><br>
 <div>
 <button onclick="cSave('r808')" type="button" id="bar808" class="bl">ДОБАВИТЬ</button>
@@ -525,7 +540,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/132.jpg"><br>
 <p>Фетровый кружочек 40 мм - 0.50 грн/шт. НЕТ 7 и 10</p>
-<div id="dr132" class="r">.</div><br>
+<div id="dr132" class="r">.</div>
 <input type="text" id="r132" name="r132" class="w95"><br>
 <div>
 <button onclick="cSave('r132')" type="button" id="bar132" class="bl">ДОБАВИТЬ</button>
@@ -534,7 +549,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4653.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4653" class="r">.</div><br>
+<div id="dr4653" class="r">.</div>
 <input type="text" id="r4653" name="r4653" class="w95"><br>
 <div>
 <button onclick="cSave('r4653')" type="button" id="bar4653" class="bl">ДОБАВИТЬ</button>
@@ -543,7 +558,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4654.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4654" class="r">.</div><br>
+<div id="dr4654" class="r">.</div>
 <input type="text" id="r4654" name="r4654" class="w95"><br>
 <div>
 <button onclick="cSave('r4654')" type="button" id="bar4654" class="bl">ДОБАВИТЬ</button>
@@ -552,7 +567,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4655.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4655" class="r">.</div><br>
+<div id="dr4655" class="r">.</div>
 <input type="text" id="r4655" name="r4655" class="w95"><br>
 <div>
 <button onclick="cSave('r4655')" type="button" id="bar4655" class="bl">ДОБАВИТЬ</button>
@@ -561,7 +576,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4656.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4656" class="r">.</div><br>
+<div id="dr4656" class="r">.</div>
 <input type="text" id="r4656" name="r4656" class="w95"><br>
 <div>
 <button onclick="cSave('r4656')" type="button" id="bar4656" class="bl">ДОБАВИТЬ</button>
@@ -570,7 +585,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4657.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4657" class="r">.</div><br>
+<div id="dr4657" class="r">.</div>
 <input type="text" id="r4657" name="r4657" class="w95"><br>
 <div>
 <button onclick="cSave('r4657')" type="button" id="bar4657" class="bl">ДОБАВИТЬ</button>
@@ -579,7 +594,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4658.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4658" class="r">.</div><br>
+<div id="dr4658" class="r">.</div>
 <input type="text" id="r4658" name="r4658" class="w95"><br>
 <div>
 <button onclick="cSave('r4658')" type="button" id="bar4658" class="bl">ДОБАВИТЬ</button>
@@ -588,7 +603,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4659.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4659" class="r">.</div><br>
+<div id="dr4659" class="r">.</div>
 <input type="text" id="r4659" name="r4659" class="w95"><br>
 <div>
 <button onclick="cSave('r4659')" type="button" id="bar4659" class="bl">ДОБАВИТЬ</button>
@@ -597,7 +612,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4660.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4660" class="r">.</div><br>
+<div id="dr4660" class="r">.</div>
 <input type="text" id="r4660" name="r4660" class="w95"><br>
 <div>
 <button onclick="cSave('r4660')" type="button" id="bar4660" class="bl">ДОБАВИТЬ</button>
@@ -606,7 +621,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4661.jpg"><br>
 <p>Фоамиран 1мм 20*30см - 4.50 грн/шт.</p>
-<div id="dr4661" class="r">.</div><br>
+<div id="dr4661" class="r">.</div>
 <input type="text" id="r4661" name="r4661" class="w95"><br>
 <div>
 <button onclick="cSave('r4661')" type="button" id="bar4661" class="bl">ДОБАВИТЬ</button>
@@ -615,7 +630,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/246.jpg"><br>
 <p>Набор фоамиран(10 штук 1мм толщина размер 20*30см) - 35.00 грн/набор</p>
-<div id="dr246" class="r">.</div><br>
+<div id="dr246" class="r">.</div>
 <input type="text" id="r246" name="r246" class="w95"><br>
 <div>
 <button onclick="cSave('r246')" type="button" id="bar246" class="bl">ДОБАВИТЬ</button>
@@ -624,7 +639,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/232.jpg"><br>
 <p>Без КЛЕЕВОЙ ОСНОВЫ!!!<br>Фоамиран с блестками (20см*30см) - 84.00 грн/набор.<br>Фоамиран с блестками (15см*20см) - 49.00 грн/набор<br>В наборе 10 листов.<br>Цвета отличаются с фото</p>
-<div id="dr232" class="r">.</div><br>
+<div id="dr232" class="r">.</div>
 <input type="text" id="r232" name="r232" class="w95"><br>
 <div>
 <button onclick="cSave('r232')" type="button" id="bar232" class="bl">ДОБАВИТЬ</button>
@@ -633,7 +648,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4756.jpg"><br>
 <p>Гипюр на сетке 20*30см - 19.95 грн/шт.</p>
-<div id="dr4756" class="r">.</div><br>
+<div id="dr4756" class="r">.</div>
 <input type="text" id="r4756" name="r4756" class="w95"><br>
 <div>
 <button onclick="cSave('r4756')" type="button" id="bar4756" class="bl">ДОБАВИТЬ</button>
@@ -642,7 +657,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4755.jpg"><br>
 <p>Гипюр на сетке 20*30см - 19.95 грн/шт.</p>
-<div id="dr4755" class="r">.</div><br>
+<div id="dr4755" class="r">.</div>
 <input type="text" id="r4755" name="r4755" class="w95"><br>
 <div>
 <button onclick="cSave('r4755')" type="button" id="bar4755" class="bl">ДОБАВИТЬ</button>
@@ -651,7 +666,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4762.jpg"><br>
 <p>Кожа зеркальная голография серебро 15*20см - 16.95 грн/шт.</p>
-<div id="dr4762" class="r">.</div><br>
+<div id="dr4762" class="r">.</div>
 <input type="text" id="r4762" name="r4762" class="w95"><br>
 <div>
 <button onclick="cSave('r4762')" type="button" id="bar4762" class="bl">ДОБАВИТЬ</button>
@@ -660,7 +675,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4761.jpg"><br>
 <p>Кожа зеркальная голография золото 15*20см - 16.95 грн/шт.</p>
-<div id="dr4761" class="r">.</div><br>
+<div id="dr4761" class="r">.</div>
 <input type="text" id="r4761" name="r4761" class="w95"><br>
 <div>
 <button onclick="cSave('r4761')" type="button" id="bar4761" class="bl">ДОБАВИТЬ</button>
@@ -669,7 +684,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4760.jpg"><br>
 <p>Кожа зеркальная голография розовая 15*20см - 16.95 грн/шт.</p>
-<div id="dr4760" class="r">.</div><br>
+<div id="dr4760" class="r">.</div>
 <input type="text" id="r4760" name="r4760" class="w95"><br>
 <div>
 <button onclick="cSave('r4760')" type="button" id="bar4760" class="bl">ДОБАВИТЬ</button>

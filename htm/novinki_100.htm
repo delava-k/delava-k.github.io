@@ -7,7 +7,6 @@
   <title>Delava - канзаши товары</title>
 
 
-
 <script>
 
 function schet(){
@@ -25,7 +24,6 @@ function schet(){
      if (vr != "") 
      {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+ "["+ i + "] "+vr+"\n";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -57,16 +55,10 @@ function schet(){
    }
   }//нет поля
  }//цикл
- document.getElementById('z').innerHTML = z;
 }
 
 
 function cSave(id) {
-
-//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
-//  document.getElementById('bd'+id).style = "display:block;";
-
- localStorage.setItem('zakaz',id);
  if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
@@ -81,12 +73,25 @@ function cSave(id) {
 	} 
 
 	localStorage.setItem('zakaz',arid.join(','));
-
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
  }
  schet();
@@ -98,10 +103,20 @@ function cDel(id) {
       localStorage.setItem(id,'');
       document.getElementById(id).value = "";
       document.getElementById("d"+id).innerHTML = ".";
+
+	var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}
+	var ind=arid.indexOf(id);
+	if (ind>=0) {
+           arid.splice(ind, 1); 
+	}         
+	localStorage.setItem('zakaz',arid.join(','));
+
     }
  }
-// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
-// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
@@ -129,7 +144,7 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/4758.jpg"><br>
 <p>Тесьма с помпонами (ширина 1 см,диаметр помпона 6мм) - 4.75 грн/м.</p>
-<div id="dr4758" class="r">.</div><br>
+<div id="dr4758" class="r">.</div>
 <input type="text" id="r4758" name="r4758" class="w95"><br>
 <div>
 <button onclick="cSave('r4758')" type="button" id="bar4758" class="bl">ДОБАВИТЬ</button>
@@ -138,7 +153,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4776.jpg"><br>
 <p>Тесьма 1см - 1.75 грн/м.</p>
-<div id="dr4776" class="r">.</div><br>
+<div id="dr4776" class="r">.</div>
 <input type="text" id="r4776" name="r4776" class="w95"><br>
 <div>
 <button onclick="cSave('r4776')" type="button" id="bar4776" class="bl">ДОБАВИТЬ</button>
@@ -147,7 +162,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4791.jpg"><br>
 <p>Бархатная лента 1 см-2.95 грн/м</p>
-<div id="dr4791" class="r">.</div><br>
+<div id="dr4791" class="r">.</div>
 <input type="text" id="r4791" name="r4791" class="w95"><br>
 <div>
 <button onclick="cSave('r4791')" type="button" id="bar4791" class="bl">ДОБАВИТЬ</button>
@@ -156,7 +171,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4790.jpg"><br>
 <p>Бархатная лента 1 см-2.95 грн/м</p>
-<div id="dr4790" class="r">.</div><br>
+<div id="dr4790" class="r">.</div>
 <input type="text" id="r4790" name="r4790" class="w95"><br>
 <div>
 <button onclick="cSave('r4790')" type="button" id="bar4790" class="bl">ДОБАВИТЬ</button>
@@ -165,7 +180,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4789.jpg"><br>
 <p>Бархатная лента 1 см-2.95 грн/м</p>
-<div id="dr4789" class="r">.</div><br>
+<div id="dr4789" class="r">.</div>
 <input type="text" id="r4789" name="r4789" class="w95"><br>
 <div>
 <button onclick="cSave('r4789')" type="button" id="bar4789" class="bl">ДОБАВИТЬ</button>
@@ -174,7 +189,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4788.jpg"><br>
 <p>Бархатная лента 1 см-2.95 грн/м</p>
-<div id="dr4788" class="r">.</div><br>
+<div id="dr4788" class="r">.</div>
 <input type="text" id="r4788" name="r4788" class="w95"><br>
 <div>
 <button onclick="cSave('r4788')" type="button" id="bar4788" class="bl">ДОБАВИТЬ</button>
@@ -183,7 +198,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4787.jpg"><br>
 <p>Бархатная лента 1 см-2.95 грн/м</p>
-<div id="dr4787" class="r">.</div><br>
+<div id="dr4787" class="r">.</div>
 <input type="text" id="r4787" name="r4787" class="w95"><br>
 <div>
 <button onclick="cSave('r4787')" type="button" id="bar4787" class="bl">ДОБАВИТЬ</button>
@@ -192,7 +207,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4786.jpg"><br>
 <p>Бархатная лента с люрексом 1 см-2.95 грн/м</p>
-<div id="dr4786" class="r">.</div><br>
+<div id="dr4786" class="r">.</div>
 <input type="text" id="r4786" name="r4786" class="w95"><br>
 <div>
 <button onclick="cSave('r4786')" type="button" id="bar4786" class="bl">ДОБАВИТЬ</button>
@@ -201,7 +216,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4785.jpg"><br>
 <p>Бархатная лента с люрексом 1 см-2.95 грн/м</p>
-<div id="dr4785" class="r">.</div><br>
+<div id="dr4785" class="r">.</div>
 <input type="text" id="r4785" name="r4785" class="w95"><br>
 <div>
 <button onclick="cSave('r4785')" type="button" id="bar4785" class="bl">ДОБАВИТЬ</button>

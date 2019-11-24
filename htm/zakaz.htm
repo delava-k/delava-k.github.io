@@ -19,10 +19,31 @@ function cCopy() {
 
 function GetSchet() {
   var z="";
+
+
+/*
   for (var i = 0; i < 5000; i++) {
   vr=localStorage.getItem('r'+i);
   if (vr != null) {z=z+i+"-"+vr+"\n";}
   }
+*/
+
+var arid = new Array();
+var sz=localStorage.getItem('zakaz');
+if ((sz != null) && (sz != "")) {
+   arid = sz.split(',');
+}    
+
+ for (var j = 0; j < arid.length; j++) 
+{                       
+//alert(arid[j]);
+  vr=localStorage.getItem(arid[j]);
+  if (vr != null) {z=z+arid[j]+"-"+vr+"\n";}
+
+}
+//alert(arid);	
+
+// document.getElementById('z').innerHTML = arid;
  document.getElementById('z').innerHTML = z;
 }
 

@@ -7,7 +7,6 @@
   <title>Delava - канзаши товары</title>
 
 
-
 <script>
 
 function schet(){
@@ -25,7 +24,6 @@ function schet(){
      if (vr != "") 
      {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+ "["+ i + "] "+vr+"\n";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -57,16 +55,10 @@ function schet(){
    }
   }//нет поля
  }//цикл
- document.getElementById('z').innerHTML = z;
 }
 
 
 function cSave(id) {
-
-//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
-//  document.getElementById('bd'+id).style = "display:block;";
-
- localStorage.setItem('zakaz',id);
  if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
@@ -81,12 +73,25 @@ function cSave(id) {
 	} 
 
 	localStorage.setItem('zakaz',arid.join(','));
-
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
  }
  schet();
@@ -98,10 +103,20 @@ function cDel(id) {
       localStorage.setItem(id,'');
       document.getElementById(id).value = "";
       document.getElementById("d"+id).innerHTML = ".";
+
+	var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}
+	var ind=arid.indexOf(id);
+	if (ind>=0) {
+           arid.splice(ind, 1); 
+	}         
+	localStorage.setItem('zakaz',arid.join(','));
+
     }
  }
-// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
-// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
@@ -129,7 +144,7 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/297.jpg"><br>
 <p>Лента атласная 0,3 см - 0.35 грн/м.<br>рулон 15.00 грн (45м)</p>
-<div id="dr297" class="r">.</div><br>
+<div id="dr297" class="r">.</div>
 <input type="text" id="r297" name="r297" class="w95"><br>
 <div>
 <button onclick="cSave('r297')" type="button" id="bar297" class="bl">ДОБАВИТЬ</button>
@@ -138,7 +153,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3147.jpg"><br>
 <p>Лента атласная 0.6 см - 0.35 грн/м<br>Рулон 33 метра - 7.25 грн/рул</p>
-<div id="dr3147" class="r">.</div><br>
+<div id="dr3147" class="r">.</div>
 <input type="text" id="r3147" name="r3147" class="w95"><br>
 <div>
 <button onclick="cSave('r3147')" type="button" id="bar3147" class="bl">ДОБАВИТЬ</button>
@@ -147,7 +162,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3148.jpg"><br>
 <p>Лента атласная 1.2 см - 0.55 грн/м<br>Рулон 33 метра - 11.25 грн/рул</p>
-<div id="dr3148" class="r">.</div><br>
+<div id="dr3148" class="r">.</div>
 <input type="text" id="r3148" name="r3148" class="w95"><br>
 <div>
 <button onclick="cSave('r3148')" type="button" id="bar3148" class="bl">ДОБАВИТЬ</button>
@@ -156,7 +171,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3150.jpg"><br>
 <p>Лента атласная 2.5 см - 0.85 грн/м<br>Рулон 33 метра - 24.95 грн/рул</p>
-<div id="dr3150" class="r">.</div><br>
+<div id="dr3150" class="r">.</div>
 <input type="text" id="r3150" name="r3150" class="w95"><br>
 <div>
 <button onclick="cSave('r3150')" type="button" id="bar3150" class="bl">ДОБАВИТЬ</button>
@@ -165,7 +180,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3152.jpg"><br>
 <p>Лента атласная 2.5 см - 0.85 грн/м<br>Рулон 33 метра - 24.95 грн/рул</p>
-<div id="dr3152" class="r">.</div><br>
+<div id="dr3152" class="r">.</div>
 <input type="text" id="r3152" name="r3152" class="w95"><br>
 <div>
 <button onclick="cSave('r3152')" type="button" id="bar3152" class="bl">ДОБАВИТЬ</button>
@@ -174,7 +189,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3154.jpg"><br>
 <p>Лента атласная 2.5 см - 0.85 грн/м<br>Рулон 33 метра - 24.95 грн/рул</p>
-<div id="dr3154" class="r">.</div><br>
+<div id="dr3154" class="r">.</div>
 <input type="text" id="r3154" name="r3154" class="w95"><br>
 <div>
 <button onclick="cSave('r3154')" type="button" id="bar3154" class="bl">ДОБАВИТЬ</button>
@@ -183,7 +198,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3151.jpg"><br>
 <p>Лента атласная 2.5 см - 0.85грн/м<br>Рулон 33 метра - 24.95 грн/рул</p>
-<div id="dr3151" class="r">.</div><br>
+<div id="dr3151" class="r">.</div>
 <input type="text" id="r3151" name="r3151" class="w95"><br>
 <div>
 <button onclick="cSave('r3151')" type="button" id="bar3151" class="bl">ДОБАВИТЬ</button>
@@ -192,7 +207,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3155.jpg"><br>
 <p>Лента атласная 2.5 см - 0.85 грн/м<br>Рулон 33 метра - 24.95 грн/рул</p>
-<div id="dr3155" class="r">.</div><br>
+<div id="dr3155" class="r">.</div>
 <input type="text" id="r3155" name="r3155" class="w95"><br>
 <div>
 <button onclick="cSave('r3155')" type="button" id="bar3155" class="bl">ДОБАВИТЬ</button>
@@ -201,7 +216,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3153.jpg"><br>
 <p>Лента атласная 2.5 см - 0.85 грн/м<br>Рулон 33 метра - 24.95 грн/рул</p>
-<div id="dr3153" class="r">.</div><br>
+<div id="dr3153" class="r">.</div>
 <input type="text" id="r3153" name="r3153" class="w95"><br>
 <div>
 <button onclick="cSave('r3153')" type="button" id="bar3153" class="bl">ДОБАВИТЬ</button>
@@ -210,7 +225,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3149.jpg"><br>
 <p>Лента атласная 2.5 см - 0.85 грн/м<br>Рулон 33 метра - 24.95 грн/рул</p>
-<div id="dr3149" class="r">.</div><br>
+<div id="dr3149" class="r">.</div>
 <input type="text" id="r3149" name="r3149" class="w95"><br>
 <div>
 <button onclick="cSave('r3149')" type="button" id="bar3149" class="bl">ДОБАВИТЬ</button>
@@ -219,7 +234,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/106.jpg"><br>
 <p>Лента атласная 4 см - 1.70 грн/м<br>от 10 м (один цвет) - 1.60 грн/м<br>рулон - 35.50 грн (23 м)</p>
-<div id="dr106" class="r">.</div><br>
+<div id="dr106" class="r">.</div>
 <input type="text" id="r106" name="r106" class="w95"><br>
 <div>
 <button onclick="cSave('r106')" type="button" id="bar106" class="bl">ДОБАВИТЬ</button>
@@ -228,7 +243,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3161.jpg"><br>
 <p>Лента атласная 5 см - 1.80 грн/м<br>Рулон 33 метра - 47.75 грн/рул</p>
-<div id="dr3161" class="r">.</div><br>
+<div id="dr3161" class="r">.</div>
 <input type="text" id="r3161" name="r3161" class="w95"><br>
 <div>
 <button onclick="cSave('r3161')" type="button" id="bar3161" class="bl">ДОБАВИТЬ</button>
@@ -237,7 +252,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3157.jpg"><br>
 <p>Лента атласная 5 см - 1.80 грн/м<br>Рулон 33 метра - 47.75 грн/рул</p>
-<div id="dr3157" class="r">.</div><br>
+<div id="dr3157" class="r">.</div>
 <input type="text" id="r3157" name="r3157" class="w95"><br>
 <div>
 <button onclick="cSave('r3157')" type="button" id="bar3157" class="bl">ДОБАВИТЬ</button>
@@ -246,7 +261,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3159.jpg"><br>
 <p>Лента атласная 5 см - 1.80 грн/м<br>Рулон 33 метра - 47.75 грн/рул</p>
-<div id="dr3159" class="r">.</div><br>
+<div id="dr3159" class="r">.</div>
 <input type="text" id="r3159" name="r3159" class="w95"><br>
 <div>
 <button onclick="cSave('r3159')" type="button" id="bar3159" class="bl">ДОБАВИТЬ</button>
@@ -255,7 +270,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3160.jpg"><br>
 <p>Лента атласная 5 см - 1.80 грн/м<br>Рулон 33 метра - 47.75 грн/рул</p>
-<div id="dr3160" class="r">.</div><br>
+<div id="dr3160" class="r">.</div>
 <input type="text" id="r3160" name="r3160" class="w95"><br>
 <div>
 <button onclick="cSave('r3160')" type="button" id="bar3160" class="bl">ДОБАВИТЬ</button>
@@ -264,7 +279,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3162.jpg"><br>
 <p>Лента атласная 5 см - 1.80 грн/м<br>Рулон 33 метра - 47.75 грн/рул</p>
-<div id="dr3162" class="r">.</div><br>
+<div id="dr3162" class="r">.</div>
 <input type="text" id="r3162" name="r3162" class="w95"><br>
 <div>
 <button onclick="cSave('r3162')" type="button" id="bar3162" class="bl">ДОБАВИТЬ</button>
@@ -273,7 +288,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3156.jpg"><br>
 <p>Лента атласная 5 см - 1.80 грн/м<br>Рулон 33 метра - 47.75 грн/рул</p>
-<div id="dr3156" class="r">.</div><br>
+<div id="dr3156" class="r">.</div>
 <input type="text" id="r3156" name="r3156" class="w95"><br>
 <div>
 <button onclick="cSave('r3156')" type="button" id="bar3156" class="bl">ДОБАВИТЬ</button>
@@ -282,7 +297,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3158.jpg"><br>
 <p>Лента атласная 5 см - 1.80 грн/м<br>Рулон 33 метра - 47.75 грн/рул</p>
-<div id="dr3158" class="r">.</div><br>
+<div id="dr3158" class="r">.</div>
 <input type="text" id="r3158" name="r3158" class="w95"><br>
 <div>
 <button onclick="cSave('r3158')" type="button" id="bar3158" class="bl">ДОБАВИТЬ</button>
@@ -291,7 +306,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4364.jpg"><br>
 <p>Лента атласная с люрексом 0,6 см - 17.00 грн/рулон<br>0.75 грн/м</p>
-<div id="dr4364" class="r">.</div><br>
+<div id="dr4364" class="r">.</div>
 <input type="text" id="r4364" name="r4364" class="w95"><br>
 <div>
 <button onclick="cSave('r4364')" type="button" id="bar4364" class="bl">ДОБАВИТЬ</button>
@@ -300,7 +315,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/395.jpg"><br>
 <p>Лента атласная с люрексом 0,6 см - 17.00 грн/рулон<br>0.75 грн/м <br>ВСЕ С ЗОЛОТОМ, ТОЛЬКО БЕЛАЯ ЕСТЬ С СЕРЕБРОМ !!!<br>Розовая ярче, чем на фото !!!</p>
-<div id="dr395" class="r">.</div><br>
+<div id="dr395" class="r">.</div>
 <input type="text" id="r395" name="r395" class="w95"><br>
 <div>
 <button onclick="cSave('r395')" type="button" id="bar395" class="bl">ДОБАВИТЬ</button>
@@ -309,7 +324,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/136.jpg"><br>
 <p>Лента атласная с люрексом 2,5 см - 2.00 грн/м <br>рулон - 45 грн (23 м)НЕТ НОМЕР 8!!!</p>
-<div id="dr136" class="r">.</div><br>
+<div id="dr136" class="r">.</div>
 <input type="text" id="r136" name="r136" class="w95"><br>
 <div>
 <button onclick="cSave('r136')" type="button" id="bar136" class="bl">ДОБАВИТЬ</button>
@@ -318,7 +333,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/157.jpg"><br>
 <p>Лента атласная с узором 2.5 см - 2.50 грн./м</p>
-<div id="dr157" class="r">.</div><br>
+<div id="dr157" class="r">.</div>
 <input type="text" id="r157" name="r157" class="w95"><br>
 <div>
 <button onclick="cSave('r157')" type="button" id="bar157" class="bl">ДОБАВИТЬ</button>
@@ -327,7 +342,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/345.jpg"><br>
 <p>Лента атласная в горох 1,5 см - 1.50 грн./м<br>рулон - 65 грн (45 м)</p>
-<div id="dr345" class="r">.</div><br>
+<div id="dr345" class="r">.</div>
 <input type="text" id="r345" name="r345" class="w95"><br>
 <div>
 <button onclick="cSave('r345')" type="button" id="bar345" class="bl">ДОБАВИТЬ</button>
@@ -336,7 +351,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/228.jpg"><br>
 <p>Лента атласная в горох 2,5 см - 2.50 грн/м.<br>рулон - 110 грн (45 м)</p>
-<div id="dr228" class="r">.</div><br>
+<div id="dr228" class="r">.</div>
 <input type="text" id="r228" name="r228" class="w95"><br>
 <div>
 <button onclick="cSave('r228')" type="button" id="bar228" class="bl">ДОБАВИТЬ</button>
@@ -345,7 +360,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4693.jpg"><br>
 <p>Лента атласная в сердечко 1,5 см - 1.50 грн./м</p>
-<div id="dr4693" class="r">.</div><br>
+<div id="dr4693" class="r">.</div>
 <input type="text" id="r4693" name="r4693" class="w95"><br>
 <div>
 <button onclick="cSave('r4693')" type="button" id="bar4693" class="bl">ДОБАВИТЬ</button>
@@ -354,7 +369,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4692.jpg"><br>
 <p>Лента атласная в сердечко 1,5 см - 1.50 грн./м</p>
-<div id="dr4692" class="r">.</div><br>
+<div id="dr4692" class="r">.</div>
 <input type="text" id="r4692" name="r4692" class="w95"><br>
 <div>
 <button onclick="cSave('r4692')" type="button" id="bar4692" class="bl">ДОБАВИТЬ</button>
@@ -363,7 +378,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/310.jpg"><br>
 <p>Атласная лента 2,5 см - 1.00 грн/м.<br>Лента атласная в горох 2,5 см - 2.50 грн./м.<br>рулон - 110 грн (45 м)</p>
-<div id="dr310" class="r">.</div><br>
+<div id="dr310" class="r">.</div>
 <input type="text" id="r310" name="r310" class="w95"><br>
 <div>
 <button onclick="cSave('r310')" type="button" id="bar310" class="bl">ДОБАВИТЬ</button>
@@ -372,7 +387,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/582.jpg"><br>
 <p>Лента атласная в горох 2,5 см - 2.50 грн./м.<br>рулон - 110 грн (45м)<br>Лента ДИОР 2,5 см - 4.25 грн/м</p>
-<div id="dr582" class="r">.</div><br>
+<div id="dr582" class="r">.</div>
 <input type="text" id="r582" name="r582" class="w95"><br>
 <div>
 <button onclick="cSave('r582')" type="button" id="bar582" class="bl">ДОБАВИТЬ</button>
@@ -381,7 +396,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/844.jpg"><br>
 <p>Лента атласная в горох 4 см - 3.25 грн./м.<br>рулон - 140 грн (45 м)</p>
-<div id="dr844" class="r">.</div><br>
+<div id="dr844" class="r">.</div>
 <input type="text" id="r844" name="r844" class="w95"><br>
 <div>
 <button onclick="cSave('r844')" type="button" id="bar844" class="bl">ДОБАВИТЬ</button>
@@ -390,7 +405,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/570.jpg"><br>
 <p>Лента атласная в горох 4 см - 3.25 грн/м.<br>рулон - 140 грн (45 м)</p>
-<div id="dr570" class="r">.</div><br>
+<div id="dr570" class="r">.</div>
 <input type="text" id="r570" name="r570" class="w95"><br>
 <div>
 <button onclick="cSave('r570')" type="button" id="bar570" class="bl">ДОБАВИТЬ</button>
@@ -399,7 +414,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4368.jpg"><br>
 <p>Лента атласная в ромбик 2.5см - 2.95 грн/м</p>
-<div id="dr4368" class="r">.</div><br>
+<div id="dr4368" class="r">.</div>
 <input type="text" id="r4368" name="r4368" class="w95"><br>
 <div>
 <button onclick="cSave('r4368')" type="button" id="bar4368" class="bl">ДОБАВИТЬ</button>
@@ -408,7 +423,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4369.jpg"><br>
 <p>Лента атласная в ромбик 2.5см - 2.95 грн/м</p>
-<div id="dr4369" class="r">.</div><br>
+<div id="dr4369" class="r">.</div>
 <input type="text" id="r4369" name="r4369" class="w95"><br>
 <div>
 <button onclick="cSave('r4369')" type="button" id="bar4369" class="bl">ДОБАВИТЬ</button>
@@ -417,7 +432,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4301.jpg"><br>
 <p>Лента атласная в бантик 2.5см - 2.95 грн/м</p>
-<div id="dr4301" class="r">.</div><br>
+<div id="dr4301" class="r">.</div>
 <input type="text" id="r4301" name="r4301" class="w95"><br>
 <div>
 <button onclick="cSave('r4301')" type="button" id="bar4301" class="bl">ДОБАВИТЬ</button>
@@ -426,7 +441,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4289.jpg"><br>
 <p>Лента атласная в бантик 2.5см - 2.95 грн/м</p>
-<div id="dr4289" class="r">.</div><br>
+<div id="dr4289" class="r">.</div>
 <input type="text" id="r4289" name="r4289" class="w95"><br>
 <div>
 <button onclick="cSave('r4289')" type="button" id="bar4289" class="bl">ДОБАВИТЬ</button>
@@ -435,7 +450,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/611.jpg"><br>
 <p>Лента HAND MADE 1.5 см(10 записей в метре) - 2.00 грн/м</p>
-<div id="dr611" class="r">.</div><br>
+<div id="dr611" class="r">.</div>
 <input type="text" id="r611" name="r611" class="w95"><br>
 <div>
 <button onclick="cSave('r611')" type="button" id="bar611" class="bl">ДОБАВИТЬ</button>
@@ -444,7 +459,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/261.jpg"><br>
 <p>Лента атласная в цветочек 2.5 см - 2.50 грн./м</p>
-<div id="dr261" class="r">.</div><br>
+<div id="dr261" class="r">.</div>
 <input type="text" id="r261" name="r261" class="w95"><br>
 <div>
 <button onclick="cSave('r261')" type="button" id="bar261" class="bl">ДОБАВИТЬ</button>
@@ -453,7 +468,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/431.jpg"><br>
 <p>Лента атласная с кружевом 2.5 см - 6.45 грн/м</p>
-<div id="dr431" class="r">.</div><br>
+<div id="dr431" class="r">.</div>
 <input type="text" id="r431" name="r431" class="w95"><br>
 <div>
 <button onclick="cSave('r431')" type="button" id="bar431" class="bl">ДОБАВИТЬ</button>
@@ -462,7 +477,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/415.jpg"><br>
 <p>Лента атласная в полоску 2.5 см - 2.50 грн./м</p>
-<div id="dr415" class="r">.</div><br>
+<div id="dr415" class="r">.</div>
 <input type="text" id="r415" name="r415" class="w95"><br>
 <div>
 <button onclick="cSave('r415')" type="button" id="bar415" class="bl">ДОБАВИТЬ</button>
@@ -471,7 +486,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/418.jpg"><br>
 <p>Лента атласная в полоску 2.5 см - 2.50 грн./м</p>
-<div id="dr418" class="r">.</div><br>
+<div id="dr418" class="r">.</div>
 <input type="text" id="r418" name="r418" class="w95"><br>
 <div>
 <button onclick="cSave('r418')" type="button" id="bar418" class="bl">ДОБАВИТЬ</button>
@@ -480,7 +495,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/719.jpg"><br>
 <p>Лента атласная в полоску 2.5 см - 2.50 грн./м</p>
-<div id="dr719" class="r">.</div><br>
+<div id="dr719" class="r">.</div>
 <input type="text" id="r719" name="r719" class="w95"><br>
 <div>
 <button onclick="cSave('r719')" type="button" id="bar719" class="bl">ДОБАВИТЬ</button>
@@ -489,7 +504,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/221.jpg"><br>
 <p>Лента атласная в розы 2.5 см - 2.50 грн./м</p>
-<div id="dr221" class="r">.</div><br>
+<div id="dr221" class="r">.</div>
 <input type="text" id="r221" name="r221" class="w95"><br>
 <div>
 <button onclick="cSave('r221')" type="button" id="bar221" class="bl">ДОБАВИТЬ</button>
@@ -498,7 +513,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2553.jpg"><br>
 <p>Лента атласная шахматка 1 см - 2.25 грн/м</p>
-<div id="dr2553" class="r">.</div><br>
+<div id="dr2553" class="r">.</div>
 <input type="text" id="r2553" name="r2553" class="w95"><br>
 <div>
 <button onclick="cSave('r2553')" type="button" id="bar2553" class="bl">ДОБАВИТЬ</button>
@@ -507,7 +522,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2565.jpg"><br>
 <p>Лента атласная шахматка 2.5 см-4.55 грн/м</p>
-<div id="dr2565" class="r">.</div><br>
+<div id="dr2565" class="r">.</div>
 <input type="text" id="r2565" name="r2565" class="w95"><br>
 <div>
 <button onclick="cSave('r2565')" type="button" id="bar2565" class="bl">ДОБАВИТЬ</button>
@@ -516,7 +531,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2549.jpg"><br>
 <p>Лента атласная шахматка 2.5 см-4.55 грн/м</p>
-<div id="dr2549" class="r">.</div><br>
+<div id="dr2549" class="r">.</div>
 <input type="text" id="r2549" name="r2549" class="w95"><br>
 <div>
 <button onclick="cSave('r2549')" type="button" id="bar2549" class="bl">ДОБАВИТЬ</button>
@@ -525,7 +540,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2551.jpg"><br>
 <p>Лента атласная шахматка 2.5 см-4.55 грн/м</p>
-<div id="dr2551" class="r">.</div><br>
+<div id="dr2551" class="r">.</div>
 <input type="text" id="r2551" name="r2551" class="w95"><br>
 <div>
 <button onclick="cSave('r2551')" type="button" id="bar2551" class="bl">ДОБАВИТЬ</button>
@@ -534,7 +549,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2552.jpg"><br>
 <p>Лента атласная шахматка 2.5 см-4.55 грн/м</p>
-<div id="dr2552" class="r">.</div><br>
+<div id="dr2552" class="r">.</div>
 <input type="text" id="r2552" name="r2552" class="w95"><br>
 <div>
 <button onclick="cSave('r2552')" type="button" id="bar2552" class="bl">ДОБАВИТЬ</button>
@@ -543,7 +558,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2600.jpg"><br>
 <p>Лента в клетку 2.5 см - 2.75 грн/м</p>
-<div id="dr2600" class="r">.</div><br>
+<div id="dr2600" class="r">.</div>
 <input type="text" id="r2600" name="r2600" class="w95"><br>
 <div>
 <button onclick="cSave('r2600')" type="button" id="bar2600" class="bl">ДОБАВИТЬ</button>
@@ -552,7 +567,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/534.jpg"><br>
 <p>Лента в клетку 2.5 см - 2.50 грн/м</p>
-<div id="dr534" class="r">.</div><br>
+<div id="dr534" class="r">.</div>
 <input type="text" id="r534" name="r534" class="w95"><br>
 <div>
 <button onclick="cSave('r534')" type="button" id="bar534" class="bl">ДОБАВИТЬ</button>
@@ -561,7 +576,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/615.jpg"><br>
 <p>Лента в клетку 2.5 см - 2.50 грн/м</p>
-<div id="dr615" class="r">.</div><br>
+<div id="dr615" class="r">.</div>
 <input type="text" id="r615" name="r615" class="w95"><br>
 <div>
 <button onclick="cSave('r615')" type="button" id="bar615" class="bl">ДОБАВИТЬ</button>
@@ -570,7 +585,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/633.jpg"><br>
 <p>Лента в клетку 2.5 см - 2.50 грн/м</p>
-<div id="dr633" class="r">.</div><br>
+<div id="dr633" class="r">.</div>
 <input type="text" id="r633" name="r633" class="w95"><br>
 <div>
 <button onclick="cSave('r633')" type="button" id="bar633" class="bl">ДОБАВИТЬ</button>
@@ -579,7 +594,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/630.jpg"><br>
 <p>Лента в клетку 2.5 см - 2.50 грн/м</p>
-<div id="dr630" class="r">.</div><br>
+<div id="dr630" class="r">.</div>
 <input type="text" id="r630" name="r630" class="w95"><br>
 <div>
 <button onclick="cSave('r630')" type="button" id="bar630" class="bl">ДОБАВИТЬ</button>
@@ -588,7 +603,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2599.jpg"><br>
 <p>Лента в клетку 2.5 см - 2.75 грн/м</p>
-<div id="dr2599" class="r">.</div><br>
+<div id="dr2599" class="r">.</div>
 <input type="text" id="r2599" name="r2599" class="w95"><br>
 <div>
 <button onclick="cSave('r2599')" type="button" id="bar2599" class="bl">ДОБАВИТЬ</button>
@@ -597,7 +612,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/851.jpg"><br>
 <p>Лента с ажурным краем 2.5см - 4.65 грн/м</p>
-<div id="dr851" class="r">.</div><br>
+<div id="dr851" class="r">.</div>
 <input type="text" id="r851" name="r851" class="w95"><br>
 <div>
 <button onclick="cSave('r851')" type="button" id="bar851" class="bl">ДОБАВИТЬ</button>
@@ -606,7 +621,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1087.jpg"><br>
 <p>Лента атласная 1 см - 1.75 грн/м</p>
-<div id="dr1087" class="r">.</div><br>
+<div id="dr1087" class="r">.</div>
 <input type="text" id="r1087" name="r1087" class="w95"><br>
 <div>
 <button onclick="cSave('r1087')" type="button" id="bar1087" class="bl">ДОБАВИТЬ</button>
@@ -615,7 +630,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1948.jpg"><br>
 <p>Лента атласная 1 см - 1.75 грн/м</p>
-<div id="dr1948" class="r">.</div><br>
+<div id="dr1948" class="r">.</div>
 <input type="text" id="r1948" name="r1948" class="w95"><br>
 <div>
 <button onclick="cSave('r1948')" type="button" id="bar1948" class="bl">ДОБАВИТЬ</button>
@@ -624,7 +639,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4512.jpg"><br>
 <p>Лента атласная в бабочку 2.5 см - 3.55 грн/м.</p>
-<div id="dr4512" class="r">.</div><br>
+<div id="dr4512" class="r">.</div>
 <input type="text" id="r4512" name="r4512" class="w95"><br>
 <div>
 <button onclick="cSave('r4512')" type="button" id="bar4512" class="bl">ДОБАВИТЬ</button>

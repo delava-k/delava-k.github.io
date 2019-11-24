@@ -7,7 +7,6 @@
   <title>Delava - канзаши товары</title>
 
 
-
 <script>
 
 function schet(){
@@ -25,7 +24,6 @@ function schet(){
      if (vr != "") 
      {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+ "["+ i + "] "+vr+"\n";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -57,16 +55,10 @@ function schet(){
    }
   }//нет поля
  }//цикл
- document.getElementById('z').innerHTML = z;
 }
 
 
 function cSave(id) {
-
-//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
-//  document.getElementById('bd'+id).style = "display:block;";
-
- localStorage.setItem('zakaz',id);
  if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
@@ -81,12 +73,25 @@ function cSave(id) {
 	} 
 
 	localStorage.setItem('zakaz',arid.join(','));
-
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
  }
  schet();
@@ -98,10 +103,20 @@ function cDel(id) {
       localStorage.setItem(id,'');
       document.getElementById(id).value = "";
       document.getElementById("d"+id).innerHTML = ".";
+
+	var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}
+	var ind=arid.indexOf(id);
+	if (ind>=0) {
+           arid.splice(ind, 1); 
+	}         
+	localStorage.setItem('zakaz',arid.join(','));
+
     }
  }
-// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
-// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
@@ -129,7 +144,7 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/3571.jpg"><br>
 <p>Обниматели для бусин 17 мм - 0.45 грн/шт.</p>
-<div id="dr3571" class="r">.</div><br>
+<div id="dr3571" class="r">.</div>
 <input type="text" id="r3571" name="r3571" class="w95"><br>
 <div>
 <button onclick="cSave('r3571')" type="button" id="bar3571" class="bl">ДОБАВИТЬ</button>
@@ -138,7 +153,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3572.jpg"><br>
 <p>Обниматели для бусин 13 мм - 0.30 грн/шт.</p>
-<div id="dr3572" class="r">.</div><br>
+<div id="dr3572" class="r">.</div>
 <input type="text" id="r3572" name="r3572" class="w95"><br>
 <div>
 <button onclick="cSave('r3572')" type="button" id="bar3572" class="bl">ДОБАВИТЬ</button>
@@ -147,7 +162,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/277.jpg"><br>
 <p>Обниматели для бусин 16 мм - 0.50 грн/шт.</p>
-<div id="dr277" class="r">.</div><br>
+<div id="dr277" class="r">.</div>
 <input type="text" id="r277" name="r277" class="w95"><br>
 <div>
 <button onclick="cSave('r277')" type="button" id="bar277" class="bl">ДОБАВИТЬ</button>
@@ -156,7 +171,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/381.jpg"><br>
 <p>Обниматель <br>серебро <br>1,6 см - 0.50 грн/шт.</p>
-<div id="dr381" class="r">.</div><br>
+<div id="dr381" class="r">.</div>
 <input type="text" id="r381" name="r381" class="w95"><br>
 <div>
 <button onclick="cSave('r381')" type="button" id="bar381" class="bl">ДОБАВИТЬ</button>
@@ -165,7 +180,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3574.jpg"><br>
 <p>Обниматель <br>золотой цвет <br>1,4 см. - 0.45 грн/шт.</p>
-<div id="dr3574" class="r">.</div><br>
+<div id="dr3574" class="r">.</div>
 <input type="text" id="r3574" name="r3574" class="w95"><br>
 <div>
 <button onclick="cSave('r3574')" type="button" id="bar3574" class="bl">ДОБАВИТЬ</button>
@@ -174,7 +189,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3575.jpg"><br>
 <p>Обниматель <br>серебро - 0.45 грн/шт.</p>
-<div id="dr3575" class="r">.</div><br>
+<div id="dr3575" class="r">.</div>
 <input type="text" id="r3575" name="r3575" class="w95"><br>
 <div>
 <button onclick="cSave('r3575')" type="button" id="bar3575" class="bl">ДОБАВИТЬ</button>
@@ -183,7 +198,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3578.jpg"><br>
 <p>Колокольчик 15 мм - 0.50 грн./шт.</p>
-<div id="dr3578" class="r">.</div><br>
+<div id="dr3578" class="r">.</div>
 <input type="text" id="r3578" name="r3578" class="w95"><br>
 <div>
 <button onclick="cSave('r3578')" type="button" id="bar3578" class="bl">ДОБАВИТЬ</button>
@@ -192,7 +207,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1443.jpg"><br>
 <p>Обниматели для бусин - 0.40 грн/шт</p>
-<div id="dr1443" class="r">.</div><br>
+<div id="dr1443" class="r">.</div>
 <input type="text" id="r1443" name="r1443" class="w95"><br>
 <div>
 <button onclick="cSave('r1443')" type="button" id="bar1443" class="bl">ДОБАВИТЬ</button>
@@ -201,7 +216,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2907.jpg"><br>
 <p>Пряжка 10*22мм - 1.95 грн/шт.</p>
-<div id="dr2907" class="r">.</div><br>
+<div id="dr2907" class="r">.</div>
 <input type="text" id="r2907" name="r2907" class="w95"><br>
 <div>
 <button onclick="cSave('r2907')" type="button" id="bar2907" class="bl">ДОБАВИТЬ</button>
@@ -210,7 +225,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4673.jpg"><br>
 <p>Подвеска кисточка 2.8см*2.5см - 3.25 грн/шт.</p>
-<div id="dr4673" class="r">.</div><br>
+<div id="dr4673" class="r">.</div>
 <input type="text" id="r4673" name="r4673" class="w95"><br>
 <div>
 <button onclick="cSave('r4673')" type="button" id="bar4673" class="bl">ДОБАВИТЬ</button>
@@ -219,7 +234,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4675.jpg"><br>
 <p>Подвеска кисточка 2.8см*2.5см - 3.25 грн/шт.</p>
-<div id="dr4675" class="r">.</div><br>
+<div id="dr4675" class="r">.</div>
 <input type="text" id="r4675" name="r4675" class="w95"><br>
 <div>
 <button onclick="cSave('r4675')" type="button" id="bar4675" class="bl">ДОБАВИТЬ</button>
@@ -228,7 +243,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4674.jpg"><br>
 <p>Подвеска кисточка 2.8см*2.5см - 3.25 грн/шт.</p>
-<div id="dr4674" class="r">.</div><br>
+<div id="dr4674" class="r">.</div>
 <input type="text" id="r4674" name="r4674" class="w95"><br>
 <div>
 <button onclick="cSave('r4674')" type="button" id="bar4674" class="bl">ДОБАВИТЬ</button>
@@ -237,7 +252,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4672.jpg"><br>
 <p>Подвеска кисточка 2.8см*2.5см - 3.25 грн/шт.</p>
-<div id="dr4672" class="r">.</div><br>
+<div id="dr4672" class="r">.</div>
 <input type="text" id="r4672" name="r4672" class="w95"><br>
 <div>
 <button onclick="cSave('r4672')" type="button" id="bar4672" class="bl">ДОБАВИТЬ</button>
@@ -246,7 +261,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4671.jpg"><br>
 <p>Подвеска кисточка 2.8см*2.5см - 3.25 грн/шт.</p>
-<div id="dr4671" class="r">.</div><br>
+<div id="dr4671" class="r">.</div>
 <input type="text" id="r4671" name="r4671" class="w95"><br>
 <div>
 <button onclick="cSave('r4671')" type="button" id="bar4671" class="bl">ДОБАВИТЬ</button>
@@ -255,7 +270,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/933.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Лунтик1</p>
-<div id="dr933" class="r">.</div><br>
+<div id="dr933" class="r">.</div>
 <input type="text" id="r933" name="r933" class="w95"><br>
 <div>
 <button onclick="cSave('r933')" type="button" id="bar933" class="bl">ДОБАВИТЬ</button>
@@ -264,7 +279,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/703.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Фиксики1</p>
-<div id="dr703" class="r">.</div><br>
+<div id="dr703" class="r">.</div>
 <input type="text" id="r703" name="r703" class="w95"><br>
 <div>
 <button onclick="cSave('r703')" type="button" id="bar703" class="bl">ДОБАВИТЬ</button>
@@ -273,7 +288,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/432.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Фроузен1</p>
-<div id="dr432" class="r">.</div><br>
+<div id="dr432" class="r">.</div>
 <input type="text" id="r432" name="r432" class="w95"><br>
 <div>
 <button onclick="cSave('r432')" type="button" id="bar432" class="bl">ДОБАВИТЬ</button>
@@ -282,7 +297,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/519.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Фроузен2</p>
-<div id="dr519" class="r">.</div><br>
+<div id="dr519" class="r">.</div>
 <input type="text" id="r519" name="r519" class="w95"><br>
 <div>
 <button onclick="cSave('r519')" type="button" id="bar519" class="bl">ДОБАВИТЬ</button>
@@ -291,7 +306,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/864.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Фроузен3</p>
-<div id="dr864" class="r">.</div><br>
+<div id="dr864" class="r">.</div>
 <input type="text" id="r864" name="r864" class="w95"><br>
 <div>
 <button onclick="cSave('r864')" type="button" id="bar864" class="bl">ДОБАВИТЬ</button>
@@ -300,7 +315,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/865.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Фроузен4</p>
-<div id="dr865" class="r">.</div><br>
+<div id="dr865" class="r">.</div>
 <input type="text" id="r865" name="r865" class="w95"><br>
 <div>
 <button onclick="cSave('r865')" type="button" id="bar865" class="bl">ДОБАВИТЬ</button>
@@ -309,7 +324,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/758.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Маша1</p>
-<div id="dr758" class="r">.</div><br>
+<div id="dr758" class="r">.</div>
 <input type="text" id="r758" name="r758" class="w95"><br>
 <div>
 <button onclick="cSave('r758')" type="button" id="bar758" class="bl">ДОБАВИТЬ</button>
@@ -318,7 +333,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1244.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Маша2</p>
-<div id="dr1244" class="r">.</div><br>
+<div id="dr1244" class="r">.</div>
 <input type="text" id="r1244" name="r1244" class="w95"><br>
 <div>
 <button onclick="cSave('r1244')" type="button" id="bar1244" class="bl">ДОБАВИТЬ</button>
@@ -327,7 +342,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/761.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Минни1</p>
-<div id="dr761" class="r">.</div><br>
+<div id="dr761" class="r">.</div>
 <input type="text" id="r761" name="r761" class="w95"><br>
 <div>
 <button onclick="cSave('r761')" type="button" id="bar761" class="bl">ДОБАВИТЬ</button>
@@ -336,7 +351,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/383.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Минни2</p>
-<div id="dr383" class="r">.</div><br>
+<div id="dr383" class="r">.</div>
 <input type="text" id="r383" name="r383" class="w95"><br>
 <div>
 <button onclick="cSave('r383')" type="button" id="bar383" class="bl">ДОБАВИТЬ</button>
@@ -345,7 +360,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/767.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Пеппа1</p>
-<div id="dr767" class="r">.</div><br>
+<div id="dr767" class="r">.</div>
 <input type="text" id="r767" name="r767" class="w95"><br>
 <div>
 <button onclick="cSave('r767')" type="button" id="bar767" class="bl">ДОБАВИТЬ</button>
@@ -354,7 +369,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1008.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Пеппа2</p>
-<div id="dr1008" class="r">.</div><br>
+<div id="dr1008" class="r">.</div>
 <input type="text" id="r1008" name="r1008" class="w95"><br>
 <div>
 <button onclick="cSave('r1008')" type="button" id="bar1008" class="bl">ДОБАВИТЬ</button>
@@ -363,7 +378,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/551.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>София1</p>
-<div id="dr551" class="r">.</div><br>
+<div id="dr551" class="r">.</div>
 <input type="text" id="r551" name="r551" class="w95"><br>
 <div>
 <button onclick="cSave('r551')" type="button" id="bar551" class="bl">ДОБАВИТЬ</button>
@@ -372,7 +387,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/463.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>София2</p>
-<div id="dr463" class="r">.</div><br>
+<div id="dr463" class="r">.</div>
 <input type="text" id="r463" name="r463" class="w95"><br>
 <div>
 <button onclick="cSave('r463')" type="button" id="bar463" class="bl">ДОБАВИТЬ</button>
@@ -381,7 +396,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1064.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Цветы1</p>
-<div id="dr1064" class="r">.</div><br>
+<div id="dr1064" class="r">.</div>
 <input type="text" id="r1064" name="r1064" class="w95"><br>
 <div>
 <button onclick="cSave('r1064')" type="button" id="bar1064" class="bl">ДОБАВИТЬ</button>
@@ -390,7 +405,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1035.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Цветы2</p>
-<div id="dr1035" class="r">.</div><br>
+<div id="dr1035" class="r">.</div>
 <input type="text" id="r1035" name="r1035" class="w95"><br>
 <div>
 <button onclick="cSave('r1035')" type="button" id="bar1035" class="bl">ДОБАВИТЬ</button>
@@ -399,7 +414,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1034.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Цветы3</p>
-<div id="dr1034" class="r">.</div><br>
+<div id="dr1034" class="r">.</div>
 <input type="text" id="r1034" name="r1034" class="w95"><br>
 <div>
 <button onclick="cSave('r1034')" type="button" id="bar1034" class="bl">ДОБАВИТЬ</button>
@@ -408,7 +423,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1062.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Дора1</p>
-<div id="dr1062" class="r">.</div><br>
+<div id="dr1062" class="r">.</div>
 <input type="text" id="r1062" name="r1062" class="w95"><br>
 <div>
 <button onclick="cSave('r1062')" type="button" id="bar1062" class="bl">ДОБАВИТЬ</button>
@@ -417,7 +432,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1217.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Дора2</p>
-<div id="dr1217" class="r">.</div><br>
+<div id="dr1217" class="r">.</div>
 <input type="text" id="r1217" name="r1217" class="w95"><br>
 <div>
 <button onclick="cSave('r1217')" type="button" id="bar1217" class="bl">ДОБАВИТЬ</button>
@@ -426,7 +441,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/498.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Мария1</p>
-<div id="dr498" class="r">.</div><br>
+<div id="dr498" class="r">.</div>
 <input type="text" id="r498" name="r498" class="w95"><br>
 <div>
 <button onclick="cSave('r498')" type="button" id="bar498" class="bl">ДОБАВИТЬ</button>
@@ -435,7 +450,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/459.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Мария2</p>
-<div id="dr459" class="r">.</div><br>
+<div id="dr459" class="r">.</div>
 <input type="text" id="r459" name="r459" class="w95"><br>
 <div>
 <button onclick="cSave('r459')" type="button" id="bar459" class="bl">ДОБАВИТЬ</button>
@@ -444,7 +459,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/934.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Тедди1</p>
-<div id="dr934" class="r">.</div><br>
+<div id="dr934" class="r">.</div>
 <input type="text" id="r934" name="r934" class="w95"><br>
 <div>
 <button onclick="cSave('r934')" type="button" id="bar934" class="bl">ДОБАВИТЬ</button>
@@ -453,7 +468,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1030.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Тедди2</p>
-<div id="dr1030" class="r">.</div><br>
+<div id="dr1030" class="r">.</div>
 <input type="text" id="r1030" name="r1030" class="w95"><br>
 <div>
 <button onclick="cSave('r1030')" type="button" id="bar1030" class="bl">ДОБАВИТЬ</button>
@@ -462,7 +477,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1218.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Тедди3</p>
-<div id="dr1218" class="r">.</div><br>
+<div id="dr1218" class="r">.</div>
 <input type="text" id="r1218" name="r1218" class="w95"><br>
 <div>
 <button onclick="cSave('r1218')" type="button" id="bar1218" class="bl">ДОБАВИТЬ</button>
@@ -471,7 +486,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/880.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>ЦВЕТЫ 4</p>
-<div id="dr880" class="r">.</div><br>
+<div id="dr880" class="r">.</div>
 <input type="text" id="r880" name="r880" class="w95"><br>
 <div>
 <button onclick="cSave('r880')" type="button" id="bar880" class="bl">ДОБАВИТЬ</button>
@@ -480,7 +495,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/776.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>ФРУКТЫ 1</p>
-<div id="dr776" class="r">.</div><br>
+<div id="dr776" class="r">.</div>
 <input type="text" id="r776" name="r776" class="w95"><br>
 <div>
 <button onclick="cSave('r776')" type="button" id="bar776" class="bl">ДОБАВИТЬ</button>
@@ -489,7 +504,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2937.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Новогодние1</p>
-<div id="dr2937" class="r">.</div><br>
+<div id="dr2937" class="r">.</div>
 <input type="text" id="r2937" name="r2937" class="w95"><br>
 <div>
 <button onclick="cSave('r2937')" type="button" id="bar2937" class="bl">ДОБАВИТЬ</button>
@@ -498,7 +513,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2936.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Новогодние 2</p>
-<div id="dr2936" class="r">.</div><br>
+<div id="dr2936" class="r">.</div>
 <input type="text" id="r2936" name="r2936" class="w95"><br>
 <div>
 <button onclick="cSave('r2936')" type="button" id="bar2936" class="bl">ДОБАВИТЬ</button>
@@ -507,7 +522,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2935.jpg"><br>
 <p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>Новогодние 3</p>
-<div id="dr2935" class="r">.</div><br>
+<div id="dr2935" class="r">.</div>
 <input type="text" id="r2935" name="r2935" class="w95"><br>
 <div>
 <button onclick="cSave('r2935')" type="button" id="bar2935" class="bl">ДОБАВИТЬ</button>
@@ -516,7 +531,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4249.jpg"><br>
 <p>Крышечка со стразой(внутренний диаметр 25мм) - 3.95 грн/шт</p>
-<div id="dr4249" class="r">.</div><br>
+<div id="dr4249" class="r">.</div>
 <input type="text" id="r4249" name="r4249" class="w95"><br>
 <div>
 <button onclick="cSave('r4249')" type="button" id="bar4249" class="bl">ДОБАВИТЬ</button>
@@ -525,7 +540,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4570.jpg"><br>
 <p>Крышечка со стразой(внутренний диаметр 25мм) 3.95грн/шт</p>
-<div id="dr4570" class="r">.</div><br>
+<div id="dr4570" class="r">.</div>
 <input type="text" id="r4570" name="r4570" class="w95"><br>
 <div>
 <button onclick="cSave('r4570')" type="button" id="bar4570" class="bl">ДОБАВИТЬ</button>
@@ -534,7 +549,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4566.jpg"><br>
 <p>Крышечка со стразой(внутренний диаметр 25мм) 3.95грн/шт</p>
-<div id="dr4566" class="r">.</div><br>
+<div id="dr4566" class="r">.</div>
 <input type="text" id="r4566" name="r4566" class="w95"><br>
 <div>
 <button onclick="cSave('r4566')" type="button" id="bar4566" class="bl">ДОБАВИТЬ</button>
@@ -543,7 +558,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4784.jpg"><br>
 <p>Крышечка со стразой(внутренний диаметр 25мм) - 3.95 грн/шт.</p>
-<div id="dr4784" class="r">.</div><br>
+<div id="dr4784" class="r">.</div>
 <input type="text" id="r4784" name="r4784" class="w95"><br>
 <div>
 <button onclick="cSave('r4784')" type="button" id="bar4784" class="bl">ДОБАВИТЬ</button>
@@ -552,7 +567,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4783.jpg"><br>
 <p>Крышечка со стразой(внутренний диаметр 25мм) - 3.95 грн/шт.</p>
-<div id="dr4783" class="r">.</div><br>
+<div id="dr4783" class="r">.</div>
 <input type="text" id="r4783" name="r4783" class="w95"><br>
 <div>
 <button onclick="cSave('r4783')" type="button" id="bar4783" class="bl">ДОБАВИТЬ</button>

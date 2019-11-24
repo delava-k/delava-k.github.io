@@ -55,30 +55,23 @@ function schet(){
    }
   }//нет поля
  }//цикл
-
 }
 
 function cSave(id) {
-  localStorage.setItem('zakaz',id);
   if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
 	var sz=localStorage.getItem('zakaz');
 
-/*        alert(id);	*/
-
 	if ((sz != null) && (sz != "")) {
 	   arid = sz.split(',');
 	}    
 
-
 	if (arid.indexOf(id)<0) {
            arid.push(id);
 	} 
-
+        
 	localStorage.setItem('zakaz',arid.join(','));
-
-
 	localStorage.setItem(id,document.getElementById(id).value);
 
 	if (document.getElementById(id).value != "") {
@@ -89,7 +82,6 @@ function cSave(id) {
         
 		var bd=document.getElementById('bd'+id);
 		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
-
 
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
@@ -110,6 +102,19 @@ function cDel(id) {
       localStorage.setItem(id,'');
       document.getElementById(id).value = "";
       document.getElementById("d"+id).innerHTML = ".";
+
+
+	var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}
+	var ind=arid.indexOf(id);
+	if (ind>=0) {
+           arid.splice(ind, 1); 
+	}         
+	localStorage.setItem('zakaz',arid.join(','));
+
     }
  }
  schet();
@@ -117,7 +122,6 @@ function cDel(id) {
 
 
 function GetZoom(id) {
-//  alert('1');
   im=document.getElementById(id);
   im.src = ".././img/1080/"+id+".jpg";
 }
@@ -147,9 +151,9 @@ function GetZoom(id) {
 <div class="w33"><form action="patchi_33.htm"><button type="submit" class="bc">альбом</button></form></div>
 <div class="w33"><form action="4620.htm"><button type="submit" class="br">следующая</button></form></div>
 </div>
-<a href="/nojs.htm" target="_blank" onclick="GetZoom('4619');return false" ><img id="4619" src=".././img/360/4619.jpg"></a></div>
+<div class="ix"><a href="/nojs.htm" target="_blank" onclick="GetZoom('4619');return false" ><img id="4619" src=".././img/360/4619.jpg"></a></div></div>
 <p>Патч Хвостик 6см - 6.95 грн/шт.</p>
-<div id="dr4619" class="r">.</div><br>
+<div id="dr4619" class="r">.</div>
 <div class="w100">
 <input type="text" id="r4619" name="r4619" class="w95 c1"><br>
 </div>

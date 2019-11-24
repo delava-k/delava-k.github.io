@@ -7,7 +7,6 @@
   <title>Delava - канзаши товары</title>
 
 
-
 <script>
 
 function schet(){
@@ -25,7 +24,6 @@ function schet(){
      if (vr != "") 
      {
 	document.getElementById('dr'+i).innerHTML = vr;
-	z=z+ "["+ i + "] "+vr+"\n";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -57,16 +55,10 @@ function schet(){
    }
   }//нет поля
  }//цикл
- document.getElementById('z').innerHTML = z;
 }
 
 
 function cSave(id) {
-
-//  document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";
-//  document.getElementById('bd'+id).style = "display:block;";
-
- localStorage.setItem('zakaz',id);
  if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
@@ -81,12 +73,25 @@ function cSave(id) {
 	} 
 
 	localStorage.setItem('zakaz',arid.join(','));
-
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
  }
  schet();
@@ -98,10 +103,20 @@ function cDel(id) {
       localStorage.setItem(id,'');
       document.getElementById(id).value = "";
       document.getElementById("d"+id).innerHTML = ".";
+
+	var arid = new Array();
+	var sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")) {
+	   arid = sz.split(',');
+	}
+	var ind=arid.indexOf(id);
+	if (ind>=0) {
+           arid.splice(ind, 1); 
+	}         
+	localStorage.setItem('zakaz',arid.join(','));
+
     }
  }
-// document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";
-// document.getElementById('bd'+id).style = "display:none;";
  schet();
 }
 
@@ -129,7 +144,7 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/146.jpg"><br>
 <p>Цепочка со стразой(стекло) 3 мм СЕРЕБРО - 9.00 грн/пол метра</p>
-<div id="dr146" class="r">.</div><br>
+<div id="dr146" class="r">.</div>
 <input type="text" id="r146" name="r146" class="w95"><br>
 <div>
 <button onclick="cSave('r146')" type="button" id="bar146" class="bl">ДОБАВИТЬ</button>
@@ -138,7 +153,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3076.jpg"><br>
 <p>Цепочка со стразой(стекло) 3 мм золото - 9.00 грн/пол метра</p>
-<div id="dr3076" class="r">.</div><br>
+<div id="dr3076" class="r">.</div>
 <input type="text" id="r3076" name="r3076" class="w95"><br>
 <div>
 <button onclick="cSave('r3076')" type="button" id="bar3076" class="bl">ДОБАВИТЬ</button>
@@ -147,7 +162,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3075.jpg"><br>
 <p>Цепочка со стразой(стекло) 3 мм голография - 10.00 грн/пол метра</p>
-<div id="dr3075" class="r">.</div><br>
+<div id="dr3075" class="r">.</div>
 <input type="text" id="r3075" name="r3075" class="w95"><br>
 <div>
 <button onclick="cSave('r3075')" type="button" id="bar3075" class="bl">ДОБАВИТЬ</button>
@@ -156,7 +171,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/111.jpg"><br>
 <p>Лента(шина) имитация камней пластик 6 рядов х 0.5 метра - 3.15 грн</p>
-<div id="dr111" class="r">.</div><br>
+<div id="dr111" class="r">.</div>
 <input type="text" id="r111" name="r111" class="w95"><br>
 <div>
 <button onclick="cSave('r111')" type="button" id="bar111" class="bl">ДОБАВИТЬ</button>
@@ -165,7 +180,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/120.jpg"><br>
 <p>Лента(шина) имитация камней пластик 6 рядов х 0.5 метра - 3.15 грн</p>
-<div id="dr120" class="r">.</div><br>
+<div id="dr120" class="r">.</div>
 <input type="text" id="r120" name="r120" class="w95"><br>
 <div>
 <button onclick="cSave('r120')" type="button" id="bar120" class="bl">ДОБАВИТЬ</button>
@@ -174,7 +189,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/141.jpg"><br>
 <p>Круг с пупыришками. Диаметр 12мм. -0.50 грн/шт.</p>
-<div id="dr141" class="r">.</div><br>
+<div id="dr141" class="r">.</div>
 <input type="text" id="r141" name="r141" class="w95"><br>
 <div>
 <button onclick="cSave('r141')" type="button" id="bar141" class="bl">ДОБАВИТЬ</button>
@@ -183,7 +198,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/144.jpg"><br>
 <p>Круг с пупыришками голография. Диаметр 10 мм. - 0.55 грн/шт</p>
-<div id="dr144" class="r">.</div><br>
+<div id="dr144" class="r">.</div>
 <input type="text" id="r144" name="r144" class="w95"><br>
 <div>
 <button onclick="cSave('r144')" type="button" id="bar144" class="bl">ДОБАВИТЬ</button>
@@ -192,7 +207,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3735.jpg"><br>
 <p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
-<div id="dr3735" class="r">.</div><br>
+<div id="dr3735" class="r">.</div>
 <input type="text" id="r3735" name="r3735" class="w95"><br>
 <div>
 <button onclick="cSave('r3735')" type="button" id="bar3735" class="bl">ДОБАВИТЬ</button>
@@ -201,7 +216,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3736.jpg"><br>
 <p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
-<div id="dr3736" class="r">.</div><br>
+<div id="dr3736" class="r">.</div>
 <input type="text" id="r3736" name="r3736" class="w95"><br>
 <div>
 <button onclick="cSave('r3736')" type="button" id="bar3736" class="bl">ДОБАВИТЬ</button>
@@ -210,7 +225,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/200.jpg"><br>
 <p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
-<div id="dr200" class="r">.</div><br>
+<div id="dr200" class="r">.</div>
 <input type="text" id="r200" name="r200" class="w95"><br>
 <div>
 <button onclick="cSave('r200')" type="button" id="bar200" class="bl">ДОБАВИТЬ</button>
@@ -219,7 +234,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/704.jpg"><br>
 <p>Круг с пупыришками. Диаметр 8 мм. - 0.35 грн/шт</p>
-<div id="dr704" class="r">.</div><br>
+<div id="dr704" class="r">.</div>
 <input type="text" id="r704" name="r704" class="w95"><br>
 <div>
 <button onclick="cSave('r704')" type="button" id="bar704" class="bl">ДОБАВИТЬ</button>
@@ -228,7 +243,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4524.jpg"><br>
 <p>Набор квадратных страз 2мм (в упаковке 100 штук) - 3.95 грн/уп</p>
-<div id="dr4524" class="r">.</div><br>
+<div id="dr4524" class="r">.</div>
 <input type="text" id="r4524" name="r4524" class="w95"><br>
 <div>
 <button onclick="cSave('r4524')" type="button" id="bar4524" class="bl">ДОБАВИТЬ</button>
@@ -237,7 +252,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/192.jpg"><br>
 <p>Страза плоская 2.5мм (100штук) - 6.95 грн/уп.</p>
-<div id="dr192" class="r">.</div><br>
+<div id="dr192" class="r">.</div>
 <input type="text" id="r192" name="r192" class="w95"><br>
 <div>
 <button onclick="cSave('r192')" type="button" id="bar192" class="bl">ДОБАВИТЬ</button>
@@ -246,7 +261,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/226.jpg"><br>
 <p>Страза плоская 2.5мм (100штук) - 6.95 грн/уп.</p>
-<div id="dr226" class="r">.</div><br>
+<div id="dr226" class="r">.</div>
 <input type="text" id="r226" name="r226" class="w95"><br>
 <div>
 <button onclick="cSave('r226')" type="button" id="bar226" class="bl">ДОБАВИТЬ</button>
@@ -255,7 +270,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/835.jpg"><br>
 <p>Страза граненная прозрачная 3мм 100 штук - 5.00 грн</p>
-<div id="dr835" class="r">.</div><br>
+<div id="dr835" class="r">.</div>
 <input type="text" id="r835" name="r835" class="w95"><br>
 <div>
 <button onclick="cSave('r835')" type="button" id="bar835" class="bl">ДОБАВИТЬ</button>
@@ -264,7 +279,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3762.jpg"><br>
 <p>Страза плоская 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3762" class="r">.</div><br>
+<div id="dr3762" class="r">.</div>
 <input type="text" id="r3762" name="r3762" class="w95"><br>
 <div>
 <button onclick="cSave('r3762')" type="button" id="bar3762" class="bl">ДОБАВИТЬ</button>
@@ -273,7 +288,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3763.jpg"><br>
 <p>Страза плоская 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3763" class="r">.</div><br>
+<div id="dr3763" class="r">.</div>
 <input type="text" id="r3763" name="r3763" class="w95"><br>
 <div>
 <button onclick="cSave('r3763')" type="button" id="bar3763" class="bl">ДОБАВИТЬ</button>
@@ -282,7 +297,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3764.jpg"><br>
 <p>Страза плоская 5 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3764" class="r">.</div><br>
+<div id="dr3764" class="r">.</div>
 <input type="text" id="r3764" name="r3764" class="w95"><br>
 <div>
 <button onclick="cSave('r3764')" type="button" id="bar3764" class="bl">ДОБАВИТЬ</button>
@@ -291,7 +306,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3765.jpg"><br>
 <p>Страза плоская 6.5мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3765" class="r">.</div><br>
+<div id="dr3765" class="r">.</div>
 <input type="text" id="r3765" name="r3765" class="w95"><br>
 <div>
 <button onclick="cSave('r3765')" type="button" id="bar3765" class="bl">ДОБАВИТЬ</button>
@@ -300,7 +315,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3766.jpg"><br>
 <p>Страза плоская 6.5 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3766" class="r">.</div><br>
+<div id="dr3766" class="r">.</div>
 <input type="text" id="r3766" name="r3766" class="w95"><br>
 <div>
 <button onclick="cSave('r3766')" type="button" id="bar3766" class="bl">ДОБАВИТЬ</button>
@@ -309,7 +324,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3767.jpg"><br>
 <p>Страза 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3767" class="r">.</div><br>
+<div id="dr3767" class="r">.</div>
 <input type="text" id="r3767" name="r3767" class="w95"><br>
 <div>
 <button onclick="cSave('r3767')" type="button" id="bar3767" class="bl">ДОБАВИТЬ</button>
@@ -318,7 +333,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3768.jpg"><br>
 <p>Страза плоская 6 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3768" class="r">.</div><br>
+<div id="dr3768" class="r">.</div>
 <input type="text" id="r3768" name="r3768" class="w95"><br>
 <div>
 <button onclick="cSave('r3768')" type="button" id="bar3768" class="bl">ДОБАВИТЬ</button>
@@ -327,7 +342,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3746.jpg"><br>
 <p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3746" class="r">.</div><br>
+<div id="dr3746" class="r">.</div>
 <input type="text" id="r3746" name="r3746" class="w95"><br>
 <div>
 <button onclick="cSave('r3746')" type="button" id="bar3746" class="bl">ДОБАВИТЬ</button>
@@ -336,7 +351,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3747.jpg"><br>
 <p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3747" class="r">.</div><br>
+<div id="dr3747" class="r">.</div>
 <input type="text" id="r3747" name="r3747" class="w95"><br>
 <div>
 <button onclick="cSave('r3747')" type="button" id="bar3747" class="bl">ДОБАВИТЬ</button>
@@ -345,7 +360,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3748.jpg"><br>
 <p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3748" class="r">.</div><br>
+<div id="dr3748" class="r">.</div>
 <input type="text" id="r3748" name="r3748" class="w95"><br>
 <div>
 <button onclick="cSave('r3748')" type="button" id="bar3748" class="bl">ДОБАВИТЬ</button>
@@ -354,7 +369,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3749.jpg"><br>
 <p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3749" class="r">.</div><br>
+<div id="dr3749" class="r">.</div>
 <input type="text" id="r3749" name="r3749" class="w95"><br>
 <div>
 <button onclick="cSave('r3749')" type="button" id="bar3749" class="bl">ДОБАВИТЬ</button>
@@ -363,7 +378,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3750.jpg"><br>
 <p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3750" class="r">.</div><br>
+<div id="dr3750" class="r">.</div>
 <input type="text" id="r3750" name="r3750" class="w95"><br>
 <div>
 <button onclick="cSave('r3750')" type="button" id="bar3750" class="bl">ДОБАВИТЬ</button>
@@ -372,7 +387,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3751.jpg"><br>
 <p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3751" class="r">.</div><br>
+<div id="dr3751" class="r">.</div>
 <input type="text" id="r3751" name="r3751" class="w95"><br>
 <div>
 <button onclick="cSave('r3751')" type="button" id="bar3751" class="bl">ДОБАВИТЬ</button>
@@ -381,7 +396,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3752.jpg"><br>
 <p>Страза клеевая 4 мм - 0.10 грн/шт<br>от 50 шт - 0.09 грн/шт</p>
-<div id="dr3752" class="r">.</div><br>
+<div id="dr3752" class="r">.</div>
 <input type="text" id="r3752" name="r3752" class="w95"><br>
 <div>
 <button onclick="cSave('r3752')" type="button" id="bar3752" class="bl">ДОБАВИТЬ</button>
@@ -390,7 +405,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1068.jpg"><br>
 <p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
-<div id="dr1068" class="r">.</div><br>
+<div id="dr1068" class="r">.</div>
 <input type="text" id="r1068" name="r1068" class="w95"><br>
 <div>
 <button onclick="cSave('r1068')" type="button" id="bar1068" class="bl">ДОБАВИТЬ</button>
@@ -399,7 +414,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/644.jpg"><br>
 <p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
-<div id="dr644" class="r">.</div><br>
+<div id="dr644" class="r">.</div>
 <input type="text" id="r644" name="r644" class="w95"><br>
 <div>
 <button onclick="cSave('r644')" type="button" id="bar644" class="bl">ДОБАВИТЬ</button>
@@ -408,7 +423,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/740.jpg"><br>
 <p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
-<div id="dr740" class="r">.</div><br>
+<div id="dr740" class="r">.</div>
 <input type="text" id="r740" name="r740" class="w95"><br>
 <div>
 <button onclick="cSave('r740')" type="button" id="bar740" class="bl">ДОБАВИТЬ</button>
@@ -417,7 +432,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/426.jpg"><br>
 <p>Полубусина граненная перламутр 7 мм - 0.09 грн/шт<br>от 50 шт - 0.08 грн/шт</p>
-<div id="dr426" class="r">.</div><br>
+<div id="dr426" class="r">.</div>
 <input type="text" id="r426" name="r426" class="w95"><br>
 <div>
 <button onclick="cSave('r426')" type="button" id="bar426" class="bl">ДОБАВИТЬ</button>
@@ -426,7 +441,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3523.jpg"><br>
 <p>Цветок с огранкой (синий) 16мм - 0.75 грн/шт</p>
-<div id="dr3523" class="r">.</div><br>
+<div id="dr3523" class="r">.</div>
 <input type="text" id="r3523" name="r3523" class="w95"><br>
 <div>
 <button onclick="cSave('r3523')" type="button" id="bar3523" class="bl">ДОБАВИТЬ</button>
@@ -435,7 +450,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3525.jpg"><br>
 <p>Цветок с огранкой (изумруд) 16мм - 0.75 грн/шт</p>
-<div id="dr3525" class="r">.</div><br>
+<div id="dr3525" class="r">.</div>
 <input type="text" id="r3525" name="r3525" class="w95"><br>
 <div>
 <button onclick="cSave('r3525')" type="button" id="bar3525" class="bl">ДОБАВИТЬ</button>
@@ -444,7 +459,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3526.jpg"><br>
 <p>Цветок с огранкой (черный) 16мм - 0.75 грн/шт</p>
-<div id="dr3526" class="r">.</div><br>
+<div id="dr3526" class="r">.</div>
 <input type="text" id="r3526" name="r3526" class="w95"><br>
 <div>
 <button onclick="cSave('r3526')" type="button" id="bar3526" class="bl">ДОБАВИТЬ</button>
@@ -453,7 +468,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3527.jpg"><br>
 <p>Цветок с огранкой (красный) 16мм - 0.75 грн/шт</p>
-<div id="dr3527" class="r">.</div><br>
+<div id="dr3527" class="r">.</div>
 <input type="text" id="r3527" name="r3527" class="w95"><br>
 <div>
 <button onclick="cSave('r3527')" type="button" id="bar3527" class="bl">ДОБАВИТЬ</button>
@@ -462,7 +477,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/222.jpg"><br>
 <p>Клеевой камень <br>«ребристый»<br>13*18мм. 0.55грн./шт ..КРАСНОЙ И ЖЕЛТОЙ НЕТ</p>
-<div id="dr222" class="r">.</div><br>
+<div id="dr222" class="r">.</div>
 <input type="text" id="r222" name="r222" class="w95"><br>
 <div>
 <button onclick="cSave('r222')" type="button" id="bar222" class="bl">ДОБАВИТЬ</button>
@@ -471,7 +486,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3528.jpg"><br>
 <p>Круг с огранкой <br>12 мм - 0.50 грн/шт<br>14 мм - 0.75 грн/шт</p>
-<div id="dr3528" class="r">.</div><br>
+<div id="dr3528" class="r">.</div>
 <input type="text" id="r3528" name="r3528" class="w95"><br>
 <div>
 <button onclick="cSave('r3528')" type="button" id="bar3528" class="bl">ДОБАВИТЬ</button>
@@ -480,7 +495,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3529.jpg"><br>
 <p>Круг с огранкой 10 мм - 0.50 грн/шт</p>
-<div id="dr3529" class="r">.</div><br>
+<div id="dr3529" class="r">.</div>
 <input type="text" id="r3529" name="r3529" class="w95"><br>
 <div>
 <button onclick="cSave('r3529')" type="button" id="bar3529" class="bl">ДОБАВИТЬ</button>
@@ -489,7 +504,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3530.jpg"><br>
 <p>Круг с огранкой 10 мм - 0.45 грн/шт</p>
-<div id="dr3530" class="r">.</div><br>
+<div id="dr3530" class="r">.</div>
 <input type="text" id="r3530" name="r3530" class="w95"><br>
 <div>
 <button onclick="cSave('r3530')" type="button" id="bar3530" class="bl">ДОБАВИТЬ</button>
@@ -498,7 +513,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/218.jpg"><br>
 <p>Камень ребристый 10мм - 0.19 грн/шт</p>
-<div id="dr218" class="r">.</div><br>
+<div id="dr218" class="r">.</div>
 <input type="text" id="r218" name="r218" class="w95"><br>
 <div>
 <button onclick="cSave('r218')" type="button" id="bar218" class="bl">ДОБАВИТЬ</button>
@@ -507,7 +522,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/211.jpg"><br>
 <p>Конус сердце 14 мм - 0.55 грн./шт.</p>
-<div id="dr211" class="r">.</div><br>
+<div id="dr211" class="r">.</div>
 <input type="text" id="r211" name="r211" class="w95"><br>
 <div>
 <button onclick="cSave('r211')" type="button" id="bar211" class="bl">ДОБАВИТЬ</button>
@@ -516,7 +531,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3531.jpg"><br>
 <p>Конус 14 мм - 0.55 грн./шт.</p>
-<div id="dr3531" class="r">.</div><br>
+<div id="dr3531" class="r">.</div>
 <input type="text" id="r3531" name="r3531" class="w95"><br>
 <div>
 <button onclick="cSave('r3531')" type="button" id="bar3531" class="bl">ДОБАВИТЬ</button>
@@ -525,7 +540,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3532.jpg"><br>
 <p>Сердце с пупырышками голография. Диаметр 16 мм. - 1.50 грн/шт</p>
-<div id="dr3532" class="r">.</div><br>
+<div id="dr3532" class="r">.</div>
 <input type="text" id="r3532" name="r3532" class="w95"><br>
 <div>
 <button onclick="cSave('r3532')" type="button" id="bar3532" class="bl">ДОБАВИТЬ</button>
@@ -534,7 +549,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3533.jpg"><br>
 <p>Сердце с пупыришками. Диаметр 16 мм. -1.15 грн/шт</p>
-<div id="dr3533" class="r">.</div><br>
+<div id="dr3533" class="r">.</div>
 <input type="text" id="r3533" name="r3533" class="w95"><br>
 <div>
 <button onclick="cSave('r3533')" type="button" id="bar3533" class="bl">ДОБАВИТЬ</button>
@@ -543,7 +558,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3534.jpg"><br>
 <p>Сердце с огранкой. Диаметр 14 мм. - 0.90 грн/шт</p>
-<div id="dr3534" class="r">.</div><br>
+<div id="dr3534" class="r">.</div>
 <input type="text" id="r3534" name="r3534" class="w95"><br>
 <div>
 <button onclick="cSave('r3534')" type="button" id="bar3534" class="bl">ДОБАВИТЬ</button>
@@ -552,7 +567,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3535.jpg"><br>
 <p>Сердце серебрянное с отверстием 16мм-1.00 грн/шт</p>
-<div id="dr3535" class="r">.</div><br>
+<div id="dr3535" class="r">.</div>
 <input type="text" id="r3535" name="r3535" class="w95"><br>
 <div>
 <button onclick="cSave('r3535')" type="button" id="bar3535" class="bl">ДОБАВИТЬ</button>
@@ -561,7 +576,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3541.jpg"><br>
 <p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
-<div id="dr3541" class="r">.</div><br>
+<div id="dr3541" class="r">.</div>
 <input type="text" id="r3541" name="r3541" class="w95"><br>
 <div>
 <button onclick="cSave('r3541')" type="button" id="bar3541" class="bl">ДОБАВИТЬ</button>
@@ -570,7 +585,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3536.jpg"><br>
 <p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
-<div id="dr3536" class="r">.</div><br>
+<div id="dr3536" class="r">.</div>
 <input type="text" id="r3536" name="r3536" class="w95"><br>
 <div>
 <button onclick="cSave('r3536')" type="button" id="bar3536" class="bl">ДОБАВИТЬ</button>
@@ -579,7 +594,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3537.jpg"><br>
 <p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
-<div id="dr3537" class="r">.</div><br>
+<div id="dr3537" class="r">.</div>
 <input type="text" id="r3537" name="r3537" class="w95"><br>
 <div>
 <button onclick="cSave('r3537')" type="button" id="bar3537" class="bl">ДОБАВИТЬ</button>
@@ -588,7 +603,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3538.jpg"><br>
 <p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
-<div id="dr3538" class="r">.</div><br>
+<div id="dr3538" class="r">.</div>
 <input type="text" id="r3538" name="r3538" class="w95"><br>
 <div>
 <button onclick="cSave('r3538')" type="button" id="bar3538" class="bl">ДОБАВИТЬ</button>
@@ -597,7 +612,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3540.jpg"><br>
 <p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
-<div id="dr3540" class="r">.</div><br>
+<div id="dr3540" class="r">.</div>
 <input type="text" id="r3540" name="r3540" class="w95"><br>
 <div>
 <button onclick="cSave('r3540')" type="button" id="bar3540" class="bl">ДОБАВИТЬ</button>
@@ -606,7 +621,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3539.jpg"><br>
 <p>Полубусина Цветочек 12мм - 0.30 грн/шт.</p>
-<div id="dr3539" class="r">.</div><br>
+<div id="dr3539" class="r">.</div>
 <input type="text" id="r3539" name="r3539" class="w95"><br>
 <div>
 <button onclick="cSave('r3539')" type="button" id="bar3539" class="bl">ДОБАВИТЬ</button>
@@ -615,7 +630,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/505.jpg"><br>
 <p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
-<div id="dr505" class="r">.</div><br>
+<div id="dr505" class="r">.</div>
 <input type="text" id="r505" name="r505" class="w95"><br>
 <div>
 <button onclick="cSave('r505')" type="button" id="bar505" class="bl">ДОБАВИТЬ</button>
@@ -624,7 +639,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/873.jpg"><br>
 <p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
-<div id="dr873" class="r">.</div><br>
+<div id="dr873" class="r">.</div>
 <input type="text" id="r873" name="r873" class="w95"><br>
 <div>
 <button onclick="cSave('r873')" type="button" id="bar873" class="bl">ДОБАВИТЬ</button>
@@ -633,7 +648,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1106.jpg"><br>
 <p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
-<div id="dr1106" class="r">.</div><br>
+<div id="dr1106" class="r">.</div>
 <input type="text" id="r1106" name="r1106" class="w95"><br>
 <div>
 <button onclick="cSave('r1106')" type="button" id="bar1106" class="bl">ДОБАВИТЬ</button>
@@ -642,7 +657,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1110.jpg"><br>
 <p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
-<div id="dr1110" class="r">.</div><br>
+<div id="dr1110" class="r">.</div>
 <input type="text" id="r1110" name="r1110" class="w95"><br>
 <div>
 <button onclick="cSave('r1110')" type="button" id="bar1110" class="bl">ДОБАВИТЬ</button>
@@ -651,7 +666,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1112.jpg"><br>
 <p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
-<div id="dr1112" class="r">.</div><br>
+<div id="dr1112" class="r">.</div>
 <input type="text" id="r1112" name="r1112" class="w95"><br>
 <div>
 <button onclick="cSave('r1112')" type="button" id="bar1112" class="bl">ДОБАВИТЬ</button>
@@ -660,7 +675,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/1196.jpg"><br>
 <p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
-<div id="dr1196" class="r">.</div><br>
+<div id="dr1196" class="r">.</div>
 <input type="text" id="r1196" name="r1196" class="w95"><br>
 <div>
 <button onclick="cSave('r1196')" type="button" id="bar1196" class="bl">ДОБАВИТЬ</button>
@@ -669,7 +684,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/964.jpg"><br>
 <p>Цветочек с камнем 12 мм - 0.15 грн/шт.</p>
-<div id="dr964" class="r">.</div><br>
+<div id="dr964" class="r">.</div>
 <input type="text" id="r964" name="r964" class="w95"><br>
 <div>
 <button onclick="cSave('r964')" type="button" id="bar964" class="bl">ДОБАВИТЬ</button>
@@ -678,7 +693,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/335.jpg"><br>
 <p>Колечко с камнем 14 мм - 0.15 грн/шт.</p>
-<div id="dr335" class="r">.</div><br>
+<div id="dr335" class="r">.</div>
 <input type="text" id="r335" name="r335" class="w95"><br>
 <div>
 <button onclick="cSave('r335')" type="button" id="bar335" class="bl">ДОБАВИТЬ</button>
@@ -687,7 +702,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3807.jpg"><br>
 <p>Страза 6мм голубая - 0.12 грн/шт.</p>
-<div id="dr3807" class="r">.</div><br>
+<div id="dr3807" class="r">.</div>
 <input type="text" id="r3807" name="r3807" class="w95"><br>
 <div>
 <button onclick="cSave('r3807')" type="button" id="bar3807" class="bl">ДОБАВИТЬ</button>
@@ -696,7 +711,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/373.jpg"><br>
 <p>Страза клеевая 10 мм 5 штук 1.00грн</p>
-<div id="dr373" class="r">.</div><br>
+<div id="dr373" class="r">.</div>
 <input type="text" id="r373" name="r373" class="w95"><br>
 <div>
 <button onclick="cSave('r373')" type="button" id="bar373" class="bl">ДОБАВИТЬ</button>
@@ -705,7 +720,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/669.jpg"><br>
 <p>Конусный цветок золоой 14мм 0.35грн/шт.</p>
-<div id="dr669" class="r">.</div><br>
+<div id="dr669" class="r">.</div>
 <input type="text" id="r669" name="r669" class="w95"><br>
 <div>
 <button onclick="cSave('r669')" type="button" id="bar669" class="bl">ДОБАВИТЬ</button>
@@ -714,7 +729,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2479.jpg"><br>
 <p>Роса 10 мм - 0.20 грн/шт.</p>
-<div id="dr2479" class="r">.</div><br>
+<div id="dr2479" class="r">.</div>
 <input type="text" id="r2479" name="r2479" class="w95"><br>
 <div>
 <button onclick="cSave('r2479')" type="button" id="bar2479" class="bl">ДОБАВИТЬ</button>
@@ -723,7 +738,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2480.jpg"><br>
 <p>Роса 8 мм - 0.20 грн/шт.</p>
-<div id="dr2480" class="r">.</div><br>
+<div id="dr2480" class="r">.</div>
 <input type="text" id="r2480" name="r2480" class="w95"><br>
 <div>
 <button onclick="cSave('r2480')" type="button" id="bar2480" class="bl">ДОБАВИТЬ</button>
@@ -732,7 +747,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2481.jpg"><br>
 <p>Роса 8 мм - 0.20 грн/шт.</p>
-<div id="dr2481" class="r">.</div><br>
+<div id="dr2481" class="r">.</div>
 <input type="text" id="r2481" name="r2481" class="w95"><br>
 <div>
 <button onclick="cSave('r2481')" type="button" id="bar2481" class="bl">ДОБАВИТЬ</button>
@@ -741,7 +756,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2482.jpg"><br>
 <p>Роса 8 мм - 0.20 грн/шт.</p>
-<div id="dr2482" class="r">.</div><br>
+<div id="dr2482" class="r">.</div>
 <input type="text" id="r2482" name="r2482" class="w95"><br>
 <div>
 <button onclick="cSave('r2482')" type="button" id="bar2482" class="bl">ДОБАВИТЬ</button>
@@ -750,7 +765,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2483.jpg"><br>
 <p>Роса 8 мм - 0.20 грн/шт.</p>
-<div id="dr2483" class="r">.</div><br>
+<div id="dr2483" class="r">.</div>
 <input type="text" id="r2483" name="r2483" class="w95"><br>
 <div>
 <button onclick="cSave('r2483')" type="button" id="bar2483" class="bl">ДОБАВИТЬ</button>
@@ -759,7 +774,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2484.jpg"><br>
 <p>Роса 10 мм - 0.20 грн/шт.</p>
-<div id="dr2484" class="r">.</div><br>
+<div id="dr2484" class="r">.</div>
 <input type="text" id="r2484" name="r2484" class="w95"><br>
 <div>
 <button onclick="cSave('r2484')" type="button" id="bar2484" class="bl">ДОБАВИТЬ</button>
@@ -768,7 +783,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/2485.jpg"><br>
 <p>Роса 8 мм - 0.20 грн/шт.</p>
-<div id="dr2485" class="r">.</div><br>
+<div id="dr2485" class="r">.</div>
 <input type="text" id="r2485" name="r2485" class="w95"><br>
 <div>
 <button onclick="cSave('r2485')" type="button" id="bar2485" class="bl">ДОБАВИТЬ</button>
@@ -777,7 +792,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/264.jpg"><br>
 <p>Роса 6 мм - 0.12 грн/шт.<br>Роса 8 мм - 0.20 грн/шт.</p>
-<div id="dr264" class="r">.</div><br>
+<div id="dr264" class="r">.</div>
 <input type="text" id="r264" name="r264" class="w95"><br>
 <div>
 <button onclick="cSave('r264')" type="button" id="bar264" class="bl">ДОБАВИТЬ</button>
@@ -786,7 +801,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3081.jpg"><br>
 <p>Граненный камень 14мм - 0.50 грн/шт.</p>
-<div id="dr3081" class="r">.</div><br>
+<div id="dr3081" class="r">.</div>
 <input type="text" id="r3081" name="r3081" class="w95"><br>
 <div>
 <button onclick="cSave('r3081')" type="button" id="bar3081" class="bl">ДОБАВИТЬ</button>
@@ -795,7 +810,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3073.jpg"><br>
 <p>Граненный камень 14мм - 0.50 грн/шт.</p>
-<div id="dr3073" class="r">.</div><br>
+<div id="dr3073" class="r">.</div>
 <input type="text" id="r3073" name="r3073" class="w95"><br>
 <div>
 <button onclick="cSave('r3073')" type="button" id="bar3073" class="bl">ДОБАВИТЬ</button>
@@ -804,7 +819,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3072.jpg"><br>
 <p>Граненный камень хамелеон 14мм - 0.60 грн/шт.</p>
-<div id="dr3072" class="r">.</div><br>
+<div id="dr3072" class="r">.</div>
 <input type="text" id="r3072" name="r3072" class="w95"><br>
 <div>
 <button onclick="cSave('r3072')" type="button" id="bar3072" class="bl">ДОБАВИТЬ</button>
@@ -813,7 +828,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3071.jpg"><br>
 <p>Граненный камень 14мм - 0.50 грн/шт.</p>
-<div id="dr3071" class="r">.</div><br>
+<div id="dr3071" class="r">.</div>
 <input type="text" id="r3071" name="r3071" class="w95"><br>
 <div>
 <button onclick="cSave('r3071')" type="button" id="bar3071" class="bl">ДОБАВИТЬ</button>
@@ -822,7 +837,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3070.jpg"><br>
 <p>Граненный камень 14мм - 0.50 грн/шт.</p>
-<div id="dr3070" class="r">.</div><br>
+<div id="dr3070" class="r">.</div>
 <input type="text" id="r3070" name="r3070" class="w95"><br>
 <div>
 <button onclick="cSave('r3070')" type="button" id="bar3070" class="bl">ДОБАВИТЬ</button>
@@ -831,7 +846,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3069.jpg"><br>
 <p>Граненный камень 14мм - 0.50 грн/шт.</p>
-<div id="dr3069" class="r">.</div><br>
+<div id="dr3069" class="r">.</div>
 <input type="text" id="r3069" name="r3069" class="w95"><br>
 <div>
 <button onclick="cSave('r3069')" type="button" id="bar3069" class="bl">ДОБАВИТЬ</button>
@@ -840,7 +855,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3067.jpg"><br>
 <p>Граненный камень 14мм - 0.50 грн/шт.</p>
-<div id="dr3067" class="r">.</div><br>
+<div id="dr3067" class="r">.</div>
 <input type="text" id="r3067" name="r3067" class="w95"><br>
 <div>
 <button onclick="cSave('r3067')" type="button" id="bar3067" class="bl">ДОБАВИТЬ</button>
@@ -849,7 +864,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/3176.jpg"><br>
 <p>Граненный камень 14мм - 0.50 грн/шт.</p>
-<div id="dr3176" class="r">.</div><br>
+<div id="dr3176" class="r">.</div>
 <input type="text" id="r3176" name="r3176" class="w95"><br>
 <div>
 <button onclick="cSave('r3176')" type="button" id="bar3176" class="bl">ДОБАВИТЬ</button>
@@ -858,7 +873,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4367.jpg"><br>
 <p>Стразовая серединка с камнем 23мм - 1.75 грн/шт.</p>
-<div id="dr4367" class="r">.</div><br>
+<div id="dr4367" class="r">.</div>
 <input type="text" id="r4367" name="r4367" class="w95"><br>
 <div>
 <button onclick="cSave('r4367')" type="button" id="bar4367" class="bl">ДОБАВИТЬ</button>
@@ -867,7 +882,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4438.jpg"><br>
 <p>3D кабошон с крупными блестками 25 мм - 2.45 грн/шт <br>(фото плохо передает объем и блеск)</p>
-<div id="dr4438" class="r">.</div><br>
+<div id="dr4438" class="r">.</div>
 <input type="text" id="r4438" name="r4438" class="w95"><br>
 <div>
 <button onclick="cSave('r4438')" type="button" id="bar4438" class="bl">ДОБАВИТЬ</button>
@@ -876,7 +891,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4468.jpg"><br>
 <p>Стразовый декор на фетре 24*22мм - 1.65 грн/шт</p>
-<div id="dr4468" class="r">.</div><br>
+<div id="dr4468" class="r">.</div>
 <input type="text" id="r4468" name="r4468" class="w95"><br>
 <div>
 <button onclick="cSave('r4468')" type="button" id="bar4468" class="bl">ДОБАВИТЬ</button>
@@ -885,7 +900,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4613.jpg"><br>
 <p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
-<div id="dr4613" class="r">.</div><br>
+<div id="dr4613" class="r">.</div>
 <input type="text" id="r4613" name="r4613" class="w95"><br>
 <div>
 <button onclick="cSave('r4613')" type="button" id="bar4613" class="bl">ДОБАВИТЬ</button>
@@ -894,7 +909,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4595.jpg"><br>
 <p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
-<div id="dr4595" class="r">.</div><br>
+<div id="dr4595" class="r">.</div>
 <input type="text" id="r4595" name="r4595" class="w95"><br>
 <div>
 <button onclick="cSave('r4595')" type="button" id="bar4595" class="bl">ДОБАВИТЬ</button>
@@ -903,7 +918,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4596.jpg"><br>
 <p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
-<div id="dr4596" class="r">.</div><br>
+<div id="dr4596" class="r">.</div>
 <input type="text" id="r4596" name="r4596" class="w95"><br>
 <div>
 <button onclick="cSave('r4596')" type="button" id="bar4596" class="bl">ДОБАВИТЬ</button>
@@ -912,7 +927,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4597.jpg"><br>
 <p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
-<div id="dr4597" class="r">.</div><br>
+<div id="dr4597" class="r">.</div>
 <input type="text" id="r4597" name="r4597" class="w95"><br>
 <div>
 <button onclick="cSave('r4597')" type="button" id="bar4597" class="bl">ДОБАВИТЬ</button>
@@ -921,7 +936,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4598.jpg"><br>
 <p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
-<div id="dr4598" class="r">.</div><br>
+<div id="dr4598" class="r">.</div>
 <input type="text" id="r4598" name="r4598" class="w95"><br>
 <div>
 <button onclick="cSave('r4598')" type="button" id="bar4598" class="bl">ДОБАВИТЬ</button>
@@ -930,7 +945,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4599.jpg"><br>
 <p>Пластиковая серединка 19мм - 1.45 грн/шт.</p>
-<div id="dr4599" class="r">.</div><br>
+<div id="dr4599" class="r">.</div>
 <input type="text" id="r4599" name="r4599" class="w95"><br>
 <div>
 <button onclick="cSave('r4599')" type="button" id="bar4599" class="bl">ДОБАВИТЬ</button>
@@ -939,7 +954,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4206.jpg"><br>
 <p>Пластиковая серединка 18мм - 1.75 грн/шт</p>
-<div id="dr4206" class="r">.</div><br>
+<div id="dr4206" class="r">.</div>
 <input type="text" id="r4206" name="r4206" class="w95"><br>
 <div>
 <button onclick="cSave('r4206')" type="button" id="bar4206" class="bl">ДОБАВИТЬ</button>
@@ -948,7 +963,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4207.jpg"><br>
 <p>Пластиковая серединка 18мм - 1.75 грн/шт</p>
-<div id="dr4207" class="r">.</div><br>
+<div id="dr4207" class="r">.</div>
 <input type="text" id="r4207" name="r4207" class="w95"><br>
 <div>
 <button onclick="cSave('r4207')" type="button" id="bar4207" class="bl">ДОБАВИТЬ</button>
@@ -957,7 +972,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4208.jpg"><br>
 <p>Пластиковая серединка 18мм - 1.75 грн/шт</p>
-<div id="dr4208" class="r">.</div><br>
+<div id="dr4208" class="r">.</div>
 <input type="text" id="r4208" name="r4208" class="w95"><br>
 <div>
 <button onclick="cSave('r4208')" type="button" id="bar4208" class="bl">ДОБАВИТЬ</button>
@@ -966,7 +981,7 @@ function cDel(id) {
 
 <div class="w100"><img src=".././img/360/4772.jpg"><br>
 <p>Роса голография 8 мм - 0.25 грн/шт.</p>
-<div id="dr4772" class="r">.</div><br>
+<div id="dr4772" class="r">.</div>
 <input type="text" id="r4772" name="r4772" class="w95"><br>
 <div>
 <button onclick="cSave('r4772')" type="button" id="bar4772" class="bl">ДОБАВИТЬ</button>
