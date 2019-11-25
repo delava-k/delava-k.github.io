@@ -107,6 +107,9 @@ div.img {display: inline-block;}
 	background-color: #F9F9F9;
 }
 
+
+
+
 .ix {
 	display: inline-block;
 	width: 100%;
@@ -115,7 +118,8 @@ div.img {display: inline-block;}
 }
 .ix img {
 	width: 100%;
-	margin-top: -12%;
+	margin-top: -12.5%;
+	margin-bottom: -12.5%;
 }
 
 
