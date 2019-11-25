@@ -16,6 +16,15 @@ div.dpc {
 	overflow: hidden;
 }
 
+.w100h{
+        width:100%;
+	height:25%;
+        max-width:1080px;
+        max-height:25%;
+	overflow: hidden;
+}
+
+
 .w100 img{
 	width:100%;
 	max-width:1080px;
@@ -78,14 +87,14 @@ div.img {display: inline-block;}
 .bl{
 	float:left;
 	width:100px;
-	height:3em;
+	height:2.5em;
 /*	margin: 2px 2px 2px 2px;*/
 	background-color: #F9F9F9;
 }
 
 .br{
 	width:100px;
-	height:3em;
+	height:2.5em;
 	float:right;
 	background-color: #F9F9F9;
 }
@@ -93,10 +102,53 @@ div.img {display: inline-block;}
 
 .bc{
 	width:90%;
-	height:3em;	
+	height:2.5em;	
 	margin-left:5%;
 	margin-right:5%;
 	background-color: #F9F9F9;
+}
+
+.ix {
+	display: inline-block;
+	width: 100%;
+	overflow: hidden;
+	outline: 1px solid #CCCCCC;
+}
+.ix img {
+	width: 100%;
+	margin-top: -12%;
+}
+
+
+
+
+
+.h100{
+        height:100%;
+        max-height:2080px;
+}
+
+.w100m{
+        width:100%;
+        height:100%;
+/*        margin:5px;*/
+	padding:1px;
+}
+
+.p{
+	padding:5px;
+	margin:5px;
+}
+.w100b{
+        height:100%;
+/*        max-height:2080px;*/
+/*        border: 1px solid rgba(250, 25, 25, 1);*/
+/*        margin:2px;*/
+/*	padding:1px;*/
+/*	background-color: #0081b9; */
+/*	outline: 5px solid #000; */
+ box-shadow: 1px 1px 1px 1px red;
+
 }
 
 
@@ -121,6 +173,27 @@ div.img {display: inline-block;}
 	overflow: hidden;
 }
 
+.w33a{
+	float:left;
+        width:33.3333%;
+        max-width:95px;
+        position:relative;
+	overflow: hidden;
+}
+.w60{
+	float:left;
+        width:60.0%;
+        max-width:360px;
+        position:relative;
+	overflow: hidden;
+	display:flex;
+	  align-items: center;
+	vertical-align: middle;
+    flex: 1;
+}
+
+
+
 .w33c{
         width:33.3333%;
 	overflow: hidden;
@@ -136,6 +209,37 @@ div.img {display: inline-block;}
 .c1
 {
 	background-color: #F5F5F5;
+}
+
+
+.d1{	
+	width:100%;
+	float:left;
+	max-width:1080px;
+}
+
+
+.d1b{
+	display:block; 
+	width:100%;
+	float:left;
+	max-width:1080px;
+}
+
+.l92{
+	float:left;
+	width:92px;
+}
+
+.wh89{
+	width:89px;
+	height:89px;
+}
+
+.r70{
+	display:block; 
+	width:70%;
+	float:left;
 }
 
 
