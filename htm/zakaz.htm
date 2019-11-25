@@ -13,14 +13,12 @@ function cCopy() {
   var copyText = document.getElementById("z");
   copyText.select();
   document.execCommand("Copy");
-  alert ("Заказ в буфере обмена");
+/*  alert ("Заказ в буфере обмена");*/
 }
 
 
 function GetSchet() {
   var z="";
-
-
 /*
   for (var i = 0; i < 5000; i++) {
   vr=localStorage.getItem('r'+i);
@@ -41,45 +39,52 @@ if ((sz != null) && (sz != "")) {
   if (vr != null) {z=z+arid[j]+"-"+vr+"\n";}
 
 }
-//alert(arid);	
-
-// document.getElementById('z').innerHTML = arid;
  document.getElementById('z').innerHTML = z;
 }
 
 
 
 function cSave(id) {
-  localStorage.setItem('zakaz',id);
+//  localStorage.setItem('zakaz',id);
   if (typeof(Storage) !== "undefined") {
 
         var arid = new Array();
 	var sz=localStorage.getItem('zakaz');
 
-/*        alert(id);	*/
-
 	if ((sz != null) && (sz != "")) {
 	   arid = sz.split(',');
 	}    
 
-
 	if (arid.indexOf(id)<0) {
            arid.push(id);
 	} 
-
+        
 	localStorage.setItem('zakaz',arid.join(','));
-
-
 	localStorage.setItem(id,document.getElementById(id).value);
+
 	if (document.getElementById(id).value != "") {
 		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+        
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
+
+
 	}else{
 		document.getElementById("d"+id).innerHTML = ".";
+
+		var ba=document.getElementById('ba'+id);
+		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+		
+		var bd=document.getElementById('bd'+id);
+		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
 	}
-}
+ }
  schet();
 }
-// mycopy();
+
 
 
 
@@ -124,7 +129,9 @@ function cDel(id) {
 <div class="w33"><form action="deletezakaz.htm"><button type="submit" class="br">Удалить</button></form></div>
 </div>
 
-
+<div>
+<p style="font-size: 12px;color: #BBBBBB;">Нажмите "Копировать".<br>Перейдите в директ instagram, длительное касание сообщения и "Вставить".<br> Подробнее тут - <a href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>.</p>
+</div>
 <textarea id="z" class="w100" rows=50 readonly></textarea> 
 
 
