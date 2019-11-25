@@ -25,6 +25,8 @@ function schet(){
      {
 	document.getElementById('dr'+i).innerHTML = vr;
 
+        ei.style="color: #000;";
+
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
 
@@ -36,6 +38,8 @@ function schet(){
      {
 	document.getElementById('dr'+i).innerHTML = ".";
 
+	ei.value = "введите тут колво и нажмите ДОБАВИТЬ";
+        ei.style="color: #BBBBBB;";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
@@ -47,12 +51,16 @@ function schet(){
    {
 	document.getElementById('dr'+i).innerHTML = ".";
 
+	ei.value = "введите тут колво и нажмите ДОБАВИТЬ";
+        ei.style="color: #BBBBBB;";
+
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
 	
 	var bd=document.getElementById('bdr'+i);
 	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
-   }
+   } 
+
   }//нет поля
  }//цикл
 }
@@ -72,10 +80,17 @@ function cSave(id) {
 	} 
         
 	localStorage.setItem('zakaz',arid.join(','));
-	localStorage.setItem(id,document.getElementById(id).value);
 
-	if (document.getElementById(id).value != "") {
-		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
+
+	var zn=document.getElementById(id).value;
+	if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
+	localStorage.setItem(id,zn);
+
+
+	localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+
+	if (zn != "") {
+		document.getElementById("d"+id).innerHTML = zn;
 
 		var ba=document.getElementById('ba'+id);
 		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
@@ -126,6 +141,12 @@ function GetZoom(id) {
   im.src = ".././img/1080/"+id+".jpg";
 }
 
+function fun1(id){
+  if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
+     document.getElementById(id).value = "";}
+	document.getElementById(id).style="color: #000;"
+}
+
 </script></head>
 
 
@@ -152,10 +173,10 @@ function GetZoom(id) {
 <div class="w33"><form action="1064.htm"><button type="submit" class="br">следующая</button></form></div>
 </div>
 <div class="ix"><a href="/nojs.htm" target="_blank" onclick="GetZoom('463');return false" ><img id="463" src=".././img/360/463.jpg"></a></div></div>
-<p>Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>София2</p>
+<p id="tr463">Картинки для крышечек (25.4 мм диаметр) - 0.40 грн/шт.<br>Картинки хорошего качества, выполненные на фото бумаге.<br>София2</p>
 <div id="dr463" class="r">.</div>
 <div class="w100">
-<input type="text" id="r463" name="r463" class="w95 c1"><br>
+<input type="text" style="color: #BBBBBB;" id="r463" class="w95 c1" onclick="fun1('r463')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 </div>
 <div>
 <div class="w100">
