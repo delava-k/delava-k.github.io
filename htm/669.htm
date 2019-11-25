@@ -9,132 +9,85 @@
 
 <script>
 
-function schet(){
- var v="";
- var z="";
- for (var i = 0; i < 5000; i++) {
- vr=localStorage.getItem('r'+i);
+function schet(id){
+ var vr=localStorage.getItem(id);
+ var ei=document.getElementById(id);
 
- var ei=document.getElementById('r'+i);
  if (ei != null) //есть поле
  {
-   ei.value = vr;
-   if (vr != null) //есть данные по Код(i) в LS
-   { 
-     if (vr != "") 
-     {
-	document.getElementById('dr'+i).innerHTML = vr;
-
+  ei.value = vr;
+  if ((vr != null)&&(vr != ""))
+  { 
+	var er=document.getElementById('d'+id);
+	er.innerHTML=vr;
+	er.style="display:block;";
         ei.style="color: #000;";
 
-	var ba=document.getElementById('bar'+i);
-	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML="ИЗМЕНИТЬ";}	
 
+	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style="display:block;"}	
 
-	var bd=document.getElementById('bdr'+i);
-	if (bd != null) {document.getElementById('bdr'+i).style = "display:block;"}	
-
-     } else //пустое значение для Код
-     {
-	document.getElementById('dr'+i).innerHTML = ".";
-
-	ei.value = "введите тут колво и нажмите ДОБАВИТЬ";
-        ei.style="color: #BBBBBB;";
-
-	var ba=document.getElementById('bar'+i);
-	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+  } else 
+  {
+	var er=document.getElementById('d'+id);
+	er.innerHTML = ".";
+	er.style = "display:none;";
 	
-	var bd=document.getElementById('bdr'+i);
-	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
-     } 	
-   }else //нет данных для код
-   {
-	document.getElementById('dr'+i).innerHTML = ".";
-
 	ei.value = "введите тут колво и нажмите ДОБАВИТЬ";
-        ei.style="color: #BBBBBB;";
+	ei.style="color: #BBBBBB;";
 
-	var ba=document.getElementById('bar'+i);
-	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
-	
-	var bd=document.getElementById('bdr'+i);
-	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
-   } 
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
 
-  }//нет поля
- }//цикл
+	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
+  } 	
+ }//нет поля
 }
 
 function cSave(id) {
-  if (typeof(Storage) !== "undefined") {
+ var arid = new Array();
+ var sz="";
 
-        var arid = new Array();
-	var sz=localStorage.getItem('zakaz');
-
-	if ((sz != null) && (sz != "")) {
-	   arid = sz.split(',');
-	}    
-
-	if (arid.indexOf(id)<0) {
-           arid.push(id);
-	} 
-        
-	localStorage.setItem('zakaz',arid.join(','));
-
-
-	var zn=document.getElementById(id).value;
-	if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
-	localStorage.setItem(id,zn);
-
-
-	localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
-
-	if (zn != "") {
-		document.getElementById("d"+id).innerHTML = zn;
-
-		var ba=document.getElementById('ba'+id);
-		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
-        
-		var bd=document.getElementById('bd'+id);
-		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
-
-	}else{
-		document.getElementById("d"+id).innerHTML = ".";
-
-		var ba=document.getElementById('ba'+id);
-		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-		
-		var bd=document.getElementById('bd'+id);
-		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
-	}
+ if (typeof(Storage) !== "undefined"){
+	sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")){arid = sz.split(',');}
  }
- schet();
+
+ if (arid.indexOf(id)<0) {arid.push(id);}        
+ localStorage.setItem('zakaz',arid.join(','));
+
+ var zn=document.getElementById(id).value;
+ if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
+
+ localStorage.setItem(id,zn);
+ localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ schet(id);
 }
 
 function cDel(id) {
-  if (typeof(Storage) !== "undefined") {                
-    if (localStorage.getItem('id') != "") {
-      localStorage.setItem(id,'');
-      document.getElementById(id).value = "";
-      document.getElementById("d"+id).innerHTML = ".";
+ if (typeof(Storage) !== "undefined") {
 
+    if (localStorage.getItem('id') != "") {
+
+	localStorage.setItem(id,'');
+	document.getElementById(id).value = "";
 
 	var arid = new Array();
 	var sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")) {
-	   arid = sz.split(',');
-	}
-	var ind=arid.indexOf(id);
-	if (ind>=0) {
-           arid.splice(ind, 1); 
-	}         
-	localStorage.setItem('zakaz',arid.join(','));
 
+	if ((sz != null) && (sz != "")) {arid = sz.split(',');}
+
+	var ind=arid.indexOf(id);
+	if (ind>=0) {arid.splice(ind, 1);}         
+
+	localStorage.setItem('zakaz',arid.join(','));
     }
  }
- schet();
+ schet(id);
 }
-
 
 function GetZoom(id) {
   im=document.getElementById(id);
@@ -143,12 +96,11 @@ function GetZoom(id) {
 
 function fun1(id){
   if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
-     document.getElementById(id).value = "";}
-	document.getElementById(id).style="color: #000;"
+	document.getElementById(id).value = "";}
+  document.getElementById(id).style="color: #000;"
 }
 
 </script></head>
-
 
 
 <body> 
@@ -174,7 +126,7 @@ function fun1(id){
 </div>
 <div class="ix"><a href="/nojs.htm" target="_blank" onclick="GetZoom('669');return false" ><img id="669" src=".././img/360/669.jpg"></a></div></div>
 <p id="tr669">Код: 669 Конусный цветок золоой 14мм 0.35грн/шт.</p>
-<div id="dr669" class="r">.</div>
+<div id="dr669" class="r" style="display:none;">.</div>
 <div class="w100">
 <input type="text" style="color: #BBBBBB;" id="r669" class="w95 c1" onclick="fun1('r669')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 </div>
@@ -183,11 +135,10 @@ function fun1(id){
 <div class="w33"><button onclick="cSave('r669')" type="button" id="bar669" class="bl">ДОБАВИТЬ</button></div>
 <div class="w33"><form action="zakaz.htm"><button type="submit" class="bc">ВАШ ЗАКАЗ</button></form></div>
 <div class="w33"><button onclick="cDel('r669')" type="button" id="bdr669"class="br" style="display:none;">УДАЛИТЬ</button></div>
+<script>schet('r669');</script>
 </div>
 </div></div>
 
 
-<script>
-	schet();
-</script>        
+
 </body></html>
