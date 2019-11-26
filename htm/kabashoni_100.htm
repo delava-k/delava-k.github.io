@@ -55,62 +55,43 @@ function schet(){
 
 
 function cSave(id) {
- if (typeof(Storage) !== "undefined") {
+ var arid = new Array();
+ var sz="";
 
-        var arid = new Array();
-	var sz=localStorage.getItem('zakaz');
-
-	if ((sz != null) && (sz != "")) {
-	   arid = sz.split(',');
-	}    
-
-	if (arid.indexOf(id)<0) {
-           arid.push(id);
-	} 
-
-	localStorage.setItem('zakaz',arid.join(','));
-	localStorage.setItem(id,document.getElementById(id).value);
-
-	if (document.getElementById(id).value != "") {
-		document.getElementById("d"+id).innerHTML = document.getElementById(id).value;
-
-		var ba=document.getElementById('ba'+id);
-		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
-        
-		var bd=document.getElementById('bd'+id);
-		if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}	
-
-	}else{
-		document.getElementById("d"+id).innerHTML = ".";
-
-		var ba=document.getElementById('ba'+id);
-		if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-		
-		var bd=document.getElementById('bd'+id);
-		if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
-	}
+ if (typeof(Storage) !== "undefined"){
+	sz=localStorage.getItem('zakaz');
+	if ((sz != null) && (sz != "")){arid = sz.split(',');}
  }
+
+ if (arid.indexOf(id)<0) {arid.push(id);}        
+ localStorage.setItem('zakaz',arid.join(','));
+
+ var zn=document.getElementById(id).value;
+ if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
+
+ localStorage.setItem(id,zn);
+ localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ 
  schet();
 }
 
 function cDel(id) {
-  if (typeof(Storage) !== "undefined") {                
+ if (typeof(Storage) !== "undefined") {
+
     if (localStorage.getItem('id') != "") {
-      localStorage.setItem(id,'');
-      document.getElementById(id).value = "";
-      document.getElementById("d"+id).innerHTML = ".";
+
+	localStorage.setItem(id,'');
+	document.getElementById(id).value = "";
 
 	var arid = new Array();
 	var sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")) {
-	   arid = sz.split(',');
-	}
-	var ind=arid.indexOf(id);
-	if (ind>=0) {
-           arid.splice(ind, 1); 
-	}         
-	localStorage.setItem('zakaz',arid.join(','));
 
+	if ((sz != null) && (sz != "")) {arid = sz.split(',');}
+
+	var ind=arid.indexOf(id);
+	if (ind>=0) {arid.splice(ind, 1);}         
+
+	localStorage.setItem('zakaz',arid.join(','));
     }
  }
  schet();
