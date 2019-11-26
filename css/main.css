@@ -239,9 +239,31 @@ p{
 	height:89px;
 }
 
+
+
+
+.l120{
+	float:left;
+	width:120px;
+	padding-right:5px;
+}
+
+.w120_90{
+	width:120px;
+	height:90px;
+}
+
+
+
 .r70{
 	display:block; 
 	width:70%;
+	float:left;
+}
+.r60{
+	padding-top:10px;
+	display:block; 
+	width:59%;
 	float:left;
 }
 
