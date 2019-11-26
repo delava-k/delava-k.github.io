@@ -37,28 +37,30 @@ function GetSchet() {
 
  for (var i = 0; i < 100; i++) 
  {
-  vr=localStorage.getItem(arid[i]);
+  vr = "";
+  if (i<=arid.length){vr=localStorage.getItem(arid[i+100]);}
+  
 /*  localStorage.SetItem("z"+i,arid[i]);//сохраняем id итый */
   if ((vr != null) && (vr != "")) 
   { 
      var im=document.getElementById("i"+i);
-     im.src = ".././img/120/"+arid[i].slice(1)+".jpg";
+     im.src = ".././img/120/"+arid[i+100].slice(1)+".jpg";
 
      var am=document.getElementById("a"+i);
-     am.href = arid[i].slice(1)+".htm";
+     am.href = arid[i+100].slice(1)+".htm";
 
 	document.getElementById("d"+i).style="display:auto";
-	document.getElementById("dr"+i).innerHTML = localStorage.getItem(arid[i]);
-	document.getElementById("r"+i).value = localStorage.getItem(arid[i]);
-	document.getElementById("k"+i).innerHTML = "Код: "+arid[i].slice(1);
-	document.getElementById("t"+i).innerHTML = localStorage.getItem('t'+arid[i]);
+	document.getElementById("dr"+i).innerHTML = localStorage.getItem(arid[i+100]);
+	document.getElementById("r"+i).value = localStorage.getItem(arid[i+100]);
+	document.getElementById("k"+i).innerHTML = "Код: "+arid[i+100].slice(1);
+	document.getElementById("t"+i).innerHTML = localStorage.getItem('t'+arid[i+100]);
 
   }else{
 	document.getElementById("d"+i).style="display:none";
   }
  }
 
- if (arid.length>=100) {document.getElementById('zak1').style="display:auto";}
+ if (arid.length>=200) {document.getElementById('zak2').style="display:auto";}
 
 }
 
@@ -752,7 +754,7 @@ GetSchet();
 
 
 
-<a id="zak1" class="w100" style="display:none" href="zakaz2.htm">Следующие товары из Вашего заказа</a>
+<a id="zak2" class="w100" style="display:none" href="zakaz3.htm">Следующие товары из Вашего заказа</a>
 <script>
 	GetSchet();
 </script>
