@@ -12,18 +12,21 @@
 function schet(){
  var v="";
  var z="";
- for (var i = 0; i < 5000; i++) {
- vr=localStorage.getItem('r'+i);
+ for (var i = 0; i < 5000; i++){
 
  var ei=document.getElementById('r'+i);
+
  if (ei != null) //есть поле
  {
-   ei.value = vr;
-   if (vr != null) //есть данные по Код(i) в LS
-   { 
-     if (vr != "") 
-     {
-	document.getElementById('dr'+i).innerHTML = vr;
+  vr=localStorage.getItem('r'+i);
+  ei.value = vr;
+  var er=document.getElementById('dr'+i);
+
+  if ((vr != null)&&(vr != ""))
+  { 
+	er.innerHTML=vr;
+	er.style="display:block;";
+        ei.style="color: #000;";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -32,29 +35,22 @@ function schet(){
 	var bd=document.getElementById('bdr'+i);
 	if (bd != null) {document.getElementById('bdr'+i).style = "display:block;"}	
 
-     } else //пустое значение для Код
-     {
-	document.getElementById('dr'+i).innerHTML = ".";
-
+  } else //пустое значение для Код
+  {
+	er.innerHTML = ".";
+	er.style = "display:none;";
+	
+	ei.value = "введите тут колво и нажмите ДОБАВИТЬ";
+	ei.style="color: #BBBBBB;";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
 	
 	var bd=document.getElementById('bdr'+i);
 	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
-     } 	
-   }else //нет данных для код
-   {
-	document.getElementById('dr'+i).innerHTML = ".";
-
-	var ba=document.getElementById('bar'+i);
-	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
-	
-	var bd=document.getElementById('bdr'+i);
-	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
-   }
-  }//нет поля
- }//цикл
+  } 	
+ }//нет поля
+}//цикл
 }
 
 
@@ -120,6 +116,13 @@ function cDel(id) {
  schet();
 }
 
+
+function fun1(id){
+  if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
+	document.getElementById(id).value = "";}
+  document.getElementById(id).style="color: #000;"
+}
+
 </script></head>
 
 
@@ -144,309 +147,309 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/1216.jpg"><br>
 <p>Резинка для волос большая - 2.90 грн/шт. Диаметр: <br>(не в растянутом виде) 5см. <br>Ширина: <br>(не в раскрытом состоянии) 1,7см. <br>ЕСТЬ ТОЛЬКО ОРАНЖЕВАЯ,ЧЕРНАЯ И ФИОЛЕТ !!!</p>
-<div id="dr1216" class="r">.</div>
-<input type="text" id="r1216" name="r1216" class="w95"><br>
+<div id="dr1216" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1216" name="r1216" class="w95 c1" onclick="fun1('r1216')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1216')" type="button" id="bar1216" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1216')" type="button" id="bdr1216" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/978.jpg"><br>
 <p>Резинка для волос большая - 4.55 грн./шт Диаметр: <br>(не в растянутом виде) 5,5см. <br>Ширина: <br>(не в раскрытом состоянии) 2,5см.</p>
-<div id="dr978" class="r">.</div>
-<input type="text" id="r978" name="r978" class="w95"><br>
+<div id="dr978" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r978" name="r978" class="w95 c1" onclick="fun1('r978')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r978')" type="button" id="bar978" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r978')" type="button" id="bdr978" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/931.jpg"><br>
 <p>Резинка большая - 2.75 грн/шт.<br>Диаметр(не в растянутом виде): 5см. <br>Ширина(не в раскрытом состоянии): 3см.</p>
-<div id="dr931" class="r">.</div>
-<input type="text" id="r931" name="r931" class="w95"><br>
+<div id="dr931" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r931" name="r931" class="w95 c1" onclick="fun1('r931')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r931')" type="button" id="bar931" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r931')" type="button" id="bdr931" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1393.jpg"><br>
 <p>Резинка для волос - 2.45 грн/шт. <br>Диаметр: <br>(не в растянутом виде) 4см. <br>Ширина: <br>(не в раскрытом состоянии) 2см.</p>
-<div id="dr1393" class="r">.</div>
-<input type="text" id="r1393" name="r1393" class="w95"><br>
+<div id="dr1393" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1393" name="r1393" class="w95 c1" onclick="fun1('r1393')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1393')" type="button" id="bar1393" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1393')" type="button" id="bdr1393" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/939.jpg"><br>
 <p>Резинка жгутик для волос цветная - 1.55 грн/шт. от 10 шт - 1.50 грн.</p>
-<div id="dr939" class="r">.</div>
-<input type="text" id="r939" name="r939" class="w95"><br>
+<div id="dr939" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r939" name="r939" class="w95 c1" onclick="fun1('r939')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r939')" type="button" id="bar939" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r939')" type="button" id="bdr939" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1155.jpg"><br>
 <p>Жгутик с бусиной - 2.25 грн./шт. от 10 шт - 2.20 грн.</p>
-<div id="dr1155" class="r">.</div>
-<input type="text" id="r1155" name="r1155" class="w95"><br>
+<div id="dr1155" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1155" name="r1155" class="w95 c1" onclick="fun1('r1155')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1155')" type="button" id="bar1155" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1155')" type="button" id="bdr1155" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1324.jpg"><br>
 <p>Резиночка средняя - 1.75 грн/шт. ТОЛЬКО РЫЖАЯ</p>
-<div id="dr1324" class="r">.</div>
-<input type="text" id="r1324" name="r1324" class="w95"><br>
+<div id="dr1324" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1324" name="r1324" class="w95 c1" onclick="fun1('r1324')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1324')" type="button" id="bar1324" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1324')" type="button" id="bdr1324" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1445.jpg"><br>
 <p>Резинка жгутик волнистая, толщина 1 см - 4.75 грн/шт. Очень хорошее качество</p>
-<div id="dr1445" class="r">.</div>
-<input type="text" id="r1445" name="r1445" class="w95"><br>
+<div id="dr1445" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1445" name="r1445" class="w95 c1" onclick="fun1('r1445')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1445')" type="button" id="bar1445" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1445')" type="button" id="bdr1445" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1300.jpg"><br>
 <p>Резинка цветная полосатая - 2.25 грн/шт.</p>
-<div id="dr1300" class="r">.</div>
-<input type="text" id="r1300" name="r1300" class="w95"><br>
+<div id="dr1300" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1300" name="r1300" class="w95 c1" onclick="fun1('r1300')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1300')" type="button" id="bar1300" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1300')" type="button" id="bdr1300" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1421.jpg"><br>
 <p>Резинка ассорти - 4.75 грн/набор(5шт.)</p>
-<div id="dr1421" class="r">.</div>
-<input type="text" id="r1421" name="r1421" class="w95"><br>
+<div id="dr1421" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1421" name="r1421" class="w95 c1" onclick="fun1('r1421')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1421')" type="button" id="bar1421" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1421')" type="button" id="bdr1421" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1185.jpg"><br>
 <p>Резиночка цветная с рисунком - 2.55 грн/шт.</p>
-<div id="dr1185" class="r">.</div>
-<input type="text" id="r1185" name="r1185" class="w95"><br>
+<div id="dr1185" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1185" name="r1185" class="w95 c1" onclick="fun1('r1185')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1185')" type="button" id="bar1185" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1185')" type="button" id="bdr1185" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/406.jpg"><br>
 <p>Велюровая резинка 8см - 2.75 грн/шт.</p>
-<div id="dr406" class="r">.</div>
-<input type="text" id="r406" name="r406" class="w95"><br>
+<div id="dr406" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r406" name="r406" class="w95 c1" onclick="fun1('r406')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r406')" type="button" id="bar406" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r406')" type="button" id="bdr406" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1232.jpg"><br>
 <p>Резинка средняя(плотная) 3см - 2.50 грн/шт.</p>
-<div id="dr1232" class="r">.</div>
-<input type="text" id="r1232" name="r1232" class="w95"><br>
+<div id="dr1232" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1232" name="r1232" class="w95 c1" onclick="fun1('r1232')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1232')" type="button" id="bar1232" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1232')" type="button" id="bdr1232" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1048.jpg"><br>
 <p>Резинка средняя(плотная) 3см - 2.50 грн/шт.</p>
-<div id="dr1048" class="r">.</div>
-<input type="text" id="r1048" name="r1048" class="w95"><br>
+<div id="dr1048" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1048" name="r1048" class="w95 c1" onclick="fun1('r1048')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1048')" type="button" id="bar1048" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1048')" type="button" id="bdr1048" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1077.jpg"><br>
 <p>Резинка велюровая 8см - 5.00 грн/шт</p>
-<div id="dr1077" class="r">.</div>
-<input type="text" id="r1077" name="r1077" class="w95"><br>
+<div id="dr1077" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1077" name="r1077" class="w95 c1" onclick="fun1('r1077')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1077')" type="button" id="bar1077" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1077')" type="button" id="bdr1077" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1422.jpg"><br>
 <p>Резинки для волос - клубнички - 2.45 грн/шт</p>
-<div id="dr1422" class="r">.</div>
-<input type="text" id="r1422" name="r1422" class="w95"><br>
+<div id="dr1422" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1422" name="r1422" class="w95 c1" onclick="fun1('r1422')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1422')" type="button" id="bar1422" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1422')" type="button" id="bdr1422" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1423.jpg"><br>
 <p>Резинки для волос - 2.45 грн/шт.</p>
-<div id="dr1423" class="r">.</div>
-<input type="text" id="r1423" name="r1423" class="w95"><br>
+<div id="dr1423" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1423" name="r1423" class="w95 c1" onclick="fun1('r1423')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1423')" type="button" id="bar1423" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1423')" type="button" id="bdr1423" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/807.jpg"><br>
 <p>Махровая повязка ширина 6 см - 8.50 грн/шт.</p>
-<div id="dr807" class="r">.</div>
-<input type="text" id="r807" name="r807" class="w95"><br>
+<div id="dr807" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r807" name="r807" class="w95 c1" onclick="fun1('r807')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r807')" type="button" id="bar807" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r807')" type="button" id="bdr807" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/935.jpg"><br>
 <p>Гребень 8 см - 5.05 грн/шт</p>
-<div id="dr935" class="r">.</div>
-<input type="text" id="r935" name="r935" class="w95"><br>
+<div id="dr935" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r935" name="r935" class="w95 c1" onclick="fun1('r935')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r935')" type="button" id="bar935" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r935')" type="button" id="bdr935" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/637.jpg"><br>
 <p>Обруч средний 15мм - 7.50 грн/шт.</p>
-<div id="dr637" class="r">.</div>
-<input type="text" id="r637" name="r637" class="w95"><br>
+<div id="dr637" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r637" name="r637" class="w95 c1" onclick="fun1('r637')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r637')" type="button" id="bar637" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r637')" type="button" id="bdr637" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1065.jpg"><br>
 <p>Обруч широкий 2см - 10.75 грн/шт</p>
-<div id="dr1065" class="r">.</div>
-<input type="text" id="r1065" name="r1065" class="w95"><br>
+<div id="dr1065" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1065" name="r1065" class="w95 c1" onclick="fun1('r1065')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1065')" type="button" id="bar1065" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1065')" type="button" id="bdr1065" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1083.jpg"><br>
 <p>Обруч сердечко - 8.75 грн/шт.</p>
-<div id="dr1083" class="r">.</div>
-<input type="text" id="r1083" name="r1083" class="w95"><br>
+<div id="dr1083" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1083" name="r1083" class="w95 c1" onclick="fun1('r1083')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1083')" type="button" id="bar1083" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1083')" type="button" id="bdr1083" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1060.jpg"><br>
 <p>Обруч металлический в горох - 6.25 грн/шт НЕТ СВ.РОЗОВОГО</p>
-<div id="dr1060" class="r">.</div>
-<input type="text" id="r1060" name="r1060" class="w95"><br>
+<div id="dr1060" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1060" name="r1060" class="w95 c1" onclick="fun1('r1060')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1060')" type="button" id="bar1060" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1060')" type="button" id="bdr1060" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1134.jpg"><br>
 <p>Обруч прозрачный - 5.50 грн./шт.</p>
-<div id="dr1134" class="r">.</div>
-<input type="text" id="r1134" name="r1134" class="w95"><br>
+<div id="dr1134" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1134" name="r1134" class="w95 c1" onclick="fun1('r1134')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1134')" type="button" id="bar1134" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1134')" type="button" id="bdr1134" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/967.jpg"><br>
 <p>Обруч корона - 9.00 грн/шт. НЕТ КРАСНОГО</p>
-<div id="dr967" class="r">.</div>
-<input type="text" id="r967" name="r967" class="w95"><br>
+<div id="dr967" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r967" name="r967" class="w95 c1" onclick="fun1('r967')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r967')" type="button" id="bar967" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r967')" type="button" id="bdr967" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1420.jpg"><br>
 <p>Обруч в горох - 10.75 грн/шт.ТОЛЬКО РОЗОВЫЙ</p>
-<div id="dr1420" class="r">.</div>
-<input type="text" id="r1420" name="r1420" class="w95"><br>
+<div id="dr1420" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1420" name="r1420" class="w95 c1" onclick="fun1('r1420')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1420')" type="button" id="bar1420" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1420')" type="button" id="bdr1420" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1239.jpg"><br>
 <p>Стрела с блестками 13 см - 4.35 грн/шт.</p>
-<div id="dr1239" class="r">.</div>
-<input type="text" id="r1239" name="r1239" class="w95"><br>
+<div id="dr1239" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1239" name="r1239" class="w95 c1" onclick="fun1('r1239')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1239')" type="button" id="bar1239" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1239')" type="button" id="bdr1239" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/860.jpg"><br>
 <p>Стрела с блестками 13 см - 4.35 грн/шт.</p>
-<div id="dr860" class="r">.</div>
-<input type="text" id="r860" name="r860" class="w95"><br>
+<div id="dr860" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r860" name="r860" class="w95 c1" onclick="fun1('r860')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r860')" type="button" id="bar860" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r860')" type="button" id="bdr860" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/971.jpg"><br>
 <p>Стрела 13 см - 4.35 грн/шт</p>
-<div id="dr971" class="r">.</div>
-<input type="text" id="r971" name="r971" class="w95"><br>
+<div id="dr971" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r971" name="r971" class="w95 c1" onclick="fun1('r971')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r971')" type="button" id="bar971" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r971')" type="button" id="bdr971" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1225.jpg"><br>
 <p>Стрела 13 см - 4.35 грн/шт</p>
-<div id="dr1225" class="r">.</div>
-<input type="text" id="r1225" name="r1225" class="w95"><br>
+<div id="dr1225" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1225" name="r1225" class="w95 c1" onclick="fun1('r1225')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1225')" type="button" id="bar1225" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1225')" type="button" id="bdr1225" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1050.jpg"><br>
 <p>Заколка стрела металлическая с голографией 13 см - 3.75 грн/шт</p>
-<div id="dr1050" class="r">.</div>
-<input type="text" id="r1050" name="r1050" class="w95"><br>
+<div id="dr1050" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1050" name="r1050" class="w95 c1" onclick="fun1('r1050')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1050')" type="button" id="bar1050" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1050')" type="button" id="bdr1050" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/975.jpg"><br>
 <p>Стрела леопардовая 13 см - 4.35 грн/шт.</p>
-<div id="dr975" class="r">.</div>
-<input type="text" id="r975" name="r975" class="w95"><br>
+<div id="dr975" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r975" name="r975" class="w95 c1" onclick="fun1('r975')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r975')" type="button" id="bar975" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r975')" type="button" id="bdr975" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1148.jpg"><br>
 <p>Заколка стрела металлическая - 4.35 грн/шт</p>
-<div id="dr1148" class="r">.</div>
-<input type="text" id="r1148" name="r1148" class="w95"><br>
+<div id="dr1148" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1148" name="r1148" class="w95 c1" onclick="fun1('r1148')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1148')" type="button" id="bar1148" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1148')" type="button" id="bdr1148" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/1436.jpg"><br>
 <p>Стрела металлик с рисунком 7.5 см - 3.40 грн/шт</p>
-<div id="dr1436" class="r">.</div>
-<input type="text" id="r1436" name="r1436" class="w95"><br>
+<div id="dr1436" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1436" name="r1436" class="w95 c1" onclick="fun1('r1436')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r1436')" type="button" id="bar1436" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r1436')" type="button" id="bdr1436" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><div class="w33"><div class="bl"></div></div>
 <div class="w33"><form action="ogranichenoe_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>

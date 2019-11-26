@@ -12,18 +12,21 @@
 function schet(){
  var v="";
  var z="";
- for (var i = 0; i < 5000; i++) {
- vr=localStorage.getItem('r'+i);
+ for (var i = 0; i < 5000; i++){
 
  var ei=document.getElementById('r'+i);
+
  if (ei != null) //есть поле
  {
-   ei.value = vr;
-   if (vr != null) //есть данные по Код(i) в LS
-   { 
-     if (vr != "") 
-     {
-	document.getElementById('dr'+i).innerHTML = vr;
+  vr=localStorage.getItem('r'+i);
+  ei.value = vr;
+  var er=document.getElementById('dr'+i);
+
+  if ((vr != null)&&(vr != ""))
+  { 
+	er.innerHTML=vr;
+	er.style="display:block;";
+        ei.style="color: #000;";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
@@ -32,29 +35,22 @@ function schet(){
 	var bd=document.getElementById('bdr'+i);
 	if (bd != null) {document.getElementById('bdr'+i).style = "display:block;"}	
 
-     } else //пустое значение для Код
-     {
-	document.getElementById('dr'+i).innerHTML = ".";
-
+  } else //пустое значение для Код
+  {
+	er.innerHTML = ".";
+	er.style = "display:none;";
+	
+	ei.value = "введите тут колво и нажмите ДОБАВИТЬ";
+	ei.style="color: #BBBBBB;";
 
 	var ba=document.getElementById('bar'+i);
 	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
 	
 	var bd=document.getElementById('bdr'+i);
 	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
-     } 	
-   }else //нет данных для код
-   {
-	document.getElementById('dr'+i).innerHTML = ".";
-
-	var ba=document.getElementById('bar'+i);
-	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
-	
-	var bd=document.getElementById('bdr'+i);
-	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
-   }
-  }//нет поля
- }//цикл
+  } 	
+ }//нет поля
+}//цикл
 }
 
 
@@ -120,6 +116,13 @@ function cDel(id) {
  schet();
 }
 
+
+function fun1(id){
+  if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
+	document.getElementById(id).value = "";}
+  document.getElementById(id).style="color: #000;"
+}
+
 </script></head>
 
 
@@ -144,30 +147,30 @@ function cDel(id) {
 <!--DB-->
 <div class="w100"><img src=".././img/360/875.jpg"><br>
 <p>Декоративная пряжка 21*15 мм - 5.25 грн/шт.</p>
-<div id="dr875" class="r">.</div>
-<input type="text" id="r875" name="r875" class="w95"><br>
+<div id="dr875" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r875" name="r875" class="w95 c1" onclick="fun1('r875')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r875')" type="button" id="bar875" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r875')" type="button" id="bdr875" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/2375.jpg"><br>
 <p>Декоративная пряжка 16 мм 5.25 грн/шт.</p>
-<div id="dr2375" class="r">.</div>
-<input type="text" id="r2375" name="r2375" class="w95"><br>
+<div id="dr2375" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r2375" name="r2375" class="w95 c1" onclick="fun1('r2375')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r2375')" type="button" id="bar2375" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r2375')" type="button" id="bdr2375" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><img src=".././img/360/2376.jpg"><br>
 <p>Декоративная пряжка 16 мм 5.25грн/шт.</p>
-<div id="dr2376" class="r">.</div>
-<input type="text" id="r2376" name="r2376" class="w95"><br>
+<div id="dr2376" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r2376" name="r2376" class="w95 c1" onclick="fun1('r2376')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
 <div>
 <button onclick="cSave('r2376')" type="button" id="bar2376" class="bl">ДОБАВИТЬ</button>
 <button onclick="cDel('r2376')" type="button" id="bdr2376" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
+</div></div><hr>
 
 <div class="w100"><div class="w33"><div class="bl"></div></div>
 <div class="w33"><form action="seredinki_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
