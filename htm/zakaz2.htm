@@ -6,15 +6,45 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
-function cCopy() {
-  var copyText = document.getElementById("z");
-  copyText.select();
-  document.execCommand("Copy");
-/*  alert ("Заказ в буфере обмена");*/
+
+function cCopy() {//кнопка копирования в буфер всего заказа, если более 500 нужно вызвать отдельную большую форму, если менее, тосразу копируем
+ var h=1;
+ var tmp="";
+
+ var arid = new Array();
+ var sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")) { arid = sz.split(',');} 
+
+ for (var j = 0; j < arid.length; j++)
+ {
+  vr=localStorage.getItem(arid[j]);
+  if ((vr != null) && (vr != "")) {	
+	tmp=tmp+arid[j].slice(1)+"-"+vr+"\n";
+        h=h+1;
+  }
+ }
+	if (tmp.length>=500-h){//если более 500 в счете, то отдельная форма для нескольких частей
+	 document.location.href = "zakaz_big.htm";
+	}
+	else{ 
+	  var copyText = document.getElementById("z");
+	  copyText.select();
+	  document.execCommand("Copy");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 function GetSchet() {
@@ -27,7 +57,7 @@ function GetSchet() {
  document.getElementById("z").rows=arid.length+1;
 
 
- for (var j = 0; j < arid.length ; j++)
+ for (var j = 0; j < arid.length ; j++) //В массив заказа и текстовый заказ все позиции, а дивы только по 100
  {
   vr=localStorage.getItem(arid[j]);
   if ((vr != null) && (vr != "")) {z=z+arid[j].slice(1)+"-"+vr+"\n";}
@@ -35,12 +65,10 @@ function GetSchet() {
  document.getElementById('z').innerHTML = z;
 
 
+ //@200
  for (var i = 0; i < 100; i++) 
  {
-  vr = "";
-  if (i<=arid.length){vr=localStorage.getItem(arid[i+100]);}
-  
-/*  localStorage.SetItem("z"+i,arid[i]);//сохраняем id итый */
+  vr=localStorage.getItem(arid[i+100]);
   if ((vr != null) && (vr != "")) 
   { 
      var im=document.getElementById("i"+i);
@@ -52,7 +80,7 @@ function GetSchet() {
 	document.getElementById("d"+i).style="display:auto";
 	document.getElementById("dr"+i).innerHTML = localStorage.getItem(arid[i+100]);
 	document.getElementById("r"+i).value = localStorage.getItem(arid[i+100]);
-	document.getElementById("k"+i).innerHTML = "Код: "+arid[i+100].slice(1);
+/*	document.getElementById("k"+i).innerHTML = "Код: "+arid[i+100].slice(1);*/
 	document.getElementById("t"+i).innerHTML = localStorage.getItem('t'+arid[i+100]);
 
   }else{
@@ -60,9 +88,21 @@ function GetSchet() {
   }
  }
 
- if (arid.length>=200) {document.getElementById('zak2').style="display:auto";}
+/* 100/200 */                  
+/*
+Пока хватит и 200 пунктов в заказе редактировать
+ if (arid.length>=200) {document.getElementById('zak_next').style="display:auto";}
+*/
 
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -76,15 +116,19 @@ function cS(i) {
 
  var zn=document.getElementById('r'+i).value;
  if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
- localStorage.setItem(arid[i], zn);//в заказе коды постоянные, меняется только в LS значения по ним
+ localStorage.setItem(arid[i+100], zn);//в заказе коды постоянные, меняется только в LS значения по ним
  if (zn==""){
-	arid.splice(i, 1);
+	arid.splice(i+100, 1);
 	localStorage.setItem('zakaz',arid.join(','));
  }
 
  }
 GetSchet();
 }
+
+
+
+
 
 
 function cD(i) {
@@ -96,15 +140,18 @@ function cD(i) {
   if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
 
 
-  if (localStorage.getItem(arid[i]) != "") {
-      localStorage.removeItem(arid[i]);
+  if (localStorage.getItem(arid[i+100]) != "") {
+      localStorage.removeItem(arid[i+100]);
   }
 
-  arid.splice(i, 1);
+  arid.splice(i+100, 1);//удаляем и-тый из заказка
   localStorage.setItem('zakaz',arid.join(','));
  }
-GetSchet();
+GetSchet();//перечитали все элементы
 }
+
+
+
 
 </script>
 
@@ -143,607 +190,607 @@ GetSchet();
 
 <!--DB-->
 <div id="d0" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a0"><img id="i0" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k0">.</p><p id="t0">.</p><div id="dr0" class="r">.</div>
+<div class="r70"><p id="t0">.</p><div id="dr0" class="r">.</div>
 <input type="text" id="r0" class="w95"><div class="w100">
 <button onclick="cS('0')" type="button" id="bar0" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('0')" type="button" id="bdr0" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d1" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a1"><img id="i1" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k1">.</p><p id="t1">.</p><div id="dr1" class="r">.</div>
+<div class="r70"><p id="t1">.</p><div id="dr1" class="r">.</div>
 <input type="text" id="r1" class="w95"><div class="w100">
 <button onclick="cS('1')" type="button" id="bar1" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('1')" type="button" id="bdr1" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d2" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a2"><img id="i2" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k2">.</p><p id="t2">.</p><div id="dr2" class="r">.</div>
+<div class="r70"><p id="t2">.</p><div id="dr2" class="r">.</div>
 <input type="text" id="r2" class="w95"><div class="w100">
 <button onclick="cS('2')" type="button" id="bar2" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('2')" type="button" id="bdr2" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d3" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a3"><img id="i3" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k3">.</p><p id="t3">.</p><div id="dr3" class="r">.</div>
+<div class="r70"><p id="t3">.</p><div id="dr3" class="r">.</div>
 <input type="text" id="r3" class="w95"><div class="w100">
 <button onclick="cS('3')" type="button" id="bar3" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('3')" type="button" id="bdr3" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d4" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a4"><img id="i4" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k4">.</p><p id="t4">.</p><div id="dr4" class="r">.</div>
+<div class="r70"><p id="t4">.</p><div id="dr4" class="r">.</div>
 <input type="text" id="r4" class="w95"><div class="w100">
 <button onclick="cS('4')" type="button" id="bar4" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('4')" type="button" id="bdr4" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d5" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a5"><img id="i5" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k5">.</p><p id="t5">.</p><div id="dr5" class="r">.</div>
+<div class="r70"><p id="t5">.</p><div id="dr5" class="r">.</div>
 <input type="text" id="r5" class="w95"><div class="w100">
 <button onclick="cS('5')" type="button" id="bar5" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('5')" type="button" id="bdr5" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d6" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a6"><img id="i6" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k6">.</p><p id="t6">.</p><div id="dr6" class="r">.</div>
+<div class="r70"><p id="t6">.</p><div id="dr6" class="r">.</div>
 <input type="text" id="r6" class="w95"><div class="w100">
 <button onclick="cS('6')" type="button" id="bar6" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('6')" type="button" id="bdr6" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d7" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a7"><img id="i7" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k7">.</p><p id="t7">.</p><div id="dr7" class="r">.</div>
+<div class="r70"><p id="t7">.</p><div id="dr7" class="r">.</div>
 <input type="text" id="r7" class="w95"><div class="w100">
 <button onclick="cS('7')" type="button" id="bar7" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('7')" type="button" id="bdr7" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d8" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a8"><img id="i8" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k8">.</p><p id="t8">.</p><div id="dr8" class="r">.</div>
+<div class="r70"><p id="t8">.</p><div id="dr8" class="r">.</div>
 <input type="text" id="r8" class="w95"><div class="w100">
 <button onclick="cS('8')" type="button" id="bar8" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('8')" type="button" id="bdr8" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d9" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a9"><img id="i9" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k9">.</p><p id="t9">.</p><div id="dr9" class="r">.</div>
+<div class="r70"><p id="t9">.</p><div id="dr9" class="r">.</div>
 <input type="text" id="r9" class="w95"><div class="w100">
 <button onclick="cS('9')" type="button" id="bar9" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('9')" type="button" id="bdr9" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d10" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a10"><img id="i10" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k10">.</p><p id="t10">.</p><div id="dr10" class="r">.</div>
+<div class="r70"><p id="t10">.</p><div id="dr10" class="r">.</div>
 <input type="text" id="r10" class="w95"><div class="w100">
 <button onclick="cS('10')" type="button" id="bar10" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('10')" type="button" id="bdr10" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d11" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a11"><img id="i11" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k11">.</p><p id="t11">.</p><div id="dr11" class="r">.</div>
+<div class="r70"><p id="t11">.</p><div id="dr11" class="r">.</div>
 <input type="text" id="r11" class="w95"><div class="w100">
 <button onclick="cS('11')" type="button" id="bar11" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('11')" type="button" id="bdr11" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d12" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a12"><img id="i12" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k12">.</p><p id="t12">.</p><div id="dr12" class="r">.</div>
+<div class="r70"><p id="t12">.</p><div id="dr12" class="r">.</div>
 <input type="text" id="r12" class="w95"><div class="w100">
 <button onclick="cS('12')" type="button" id="bar12" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('12')" type="button" id="bdr12" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d13" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a13"><img id="i13" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k13">.</p><p id="t13">.</p><div id="dr13" class="r">.</div>
+<div class="r70"><p id="t13">.</p><div id="dr13" class="r">.</div>
 <input type="text" id="r13" class="w95"><div class="w100">
 <button onclick="cS('13')" type="button" id="bar13" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('13')" type="button" id="bdr13" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d14" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a14"><img id="i14" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k14">.</p><p id="t14">.</p><div id="dr14" class="r">.</div>
+<div class="r70"><p id="t14">.</p><div id="dr14" class="r">.</div>
 <input type="text" id="r14" class="w95"><div class="w100">
 <button onclick="cS('14')" type="button" id="bar14" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('14')" type="button" id="bdr14" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d15" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a15"><img id="i15" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k15">.</p><p id="t15">.</p><div id="dr15" class="r">.</div>
+<div class="r70"><p id="t15">.</p><div id="dr15" class="r">.</div>
 <input type="text" id="r15" class="w95"><div class="w100">
 <button onclick="cS('15')" type="button" id="bar15" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('15')" type="button" id="bdr15" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d16" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a16"><img id="i16" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k16">.</p><p id="t16">.</p><div id="dr16" class="r">.</div>
+<div class="r70"><p id="t16">.</p><div id="dr16" class="r">.</div>
 <input type="text" id="r16" class="w95"><div class="w100">
 <button onclick="cS('16')" type="button" id="bar16" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('16')" type="button" id="bdr16" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d17" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a17"><img id="i17" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k17">.</p><p id="t17">.</p><div id="dr17" class="r">.</div>
+<div class="r70"><p id="t17">.</p><div id="dr17" class="r">.</div>
 <input type="text" id="r17" class="w95"><div class="w100">
 <button onclick="cS('17')" type="button" id="bar17" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('17')" type="button" id="bdr17" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d18" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a18"><img id="i18" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k18">.</p><p id="t18">.</p><div id="dr18" class="r">.</div>
+<div class="r70"><p id="t18">.</p><div id="dr18" class="r">.</div>
 <input type="text" id="r18" class="w95"><div class="w100">
 <button onclick="cS('18')" type="button" id="bar18" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('18')" type="button" id="bdr18" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d19" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a19"><img id="i19" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k19">.</p><p id="t19">.</p><div id="dr19" class="r">.</div>
+<div class="r70"><p id="t19">.</p><div id="dr19" class="r">.</div>
 <input type="text" id="r19" class="w95"><div class="w100">
 <button onclick="cS('19')" type="button" id="bar19" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('19')" type="button" id="bdr19" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d20" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a20"><img id="i20" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k20">.</p><p id="t20">.</p><div id="dr20" class="r">.</div>
+<div class="r70"><p id="t20">.</p><div id="dr20" class="r">.</div>
 <input type="text" id="r20" class="w95"><div class="w100">
 <button onclick="cS('20')" type="button" id="bar20" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('20')" type="button" id="bdr20" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d21" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a21"><img id="i21" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k21">.</p><p id="t21">.</p><div id="dr21" class="r">.</div>
+<div class="r70"><p id="t21">.</p><div id="dr21" class="r">.</div>
 <input type="text" id="r21" class="w95"><div class="w100">
 <button onclick="cS('21')" type="button" id="bar21" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('21')" type="button" id="bdr21" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d22" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a22"><img id="i22" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k22">.</p><p id="t22">.</p><div id="dr22" class="r">.</div>
+<div class="r70"><p id="t22">.</p><div id="dr22" class="r">.</div>
 <input type="text" id="r22" class="w95"><div class="w100">
 <button onclick="cS('22')" type="button" id="bar22" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('22')" type="button" id="bdr22" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d23" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a23"><img id="i23" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k23">.</p><p id="t23">.</p><div id="dr23" class="r">.</div>
+<div class="r70"><p id="t23">.</p><div id="dr23" class="r">.</div>
 <input type="text" id="r23" class="w95"><div class="w100">
 <button onclick="cS('23')" type="button" id="bar23" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('23')" type="button" id="bdr23" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d24" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a24"><img id="i24" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k24">.</p><p id="t24">.</p><div id="dr24" class="r">.</div>
+<div class="r70"><p id="t24">.</p><div id="dr24" class="r">.</div>
 <input type="text" id="r24" class="w95"><div class="w100">
 <button onclick="cS('24')" type="button" id="bar24" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('24')" type="button" id="bdr24" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d25" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a25"><img id="i25" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k25">.</p><p id="t25">.</p><div id="dr25" class="r">.</div>
+<div class="r70"><p id="t25">.</p><div id="dr25" class="r">.</div>
 <input type="text" id="r25" class="w95"><div class="w100">
 <button onclick="cS('25')" type="button" id="bar25" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('25')" type="button" id="bdr25" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d26" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a26"><img id="i26" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k26">.</p><p id="t26">.</p><div id="dr26" class="r">.</div>
+<div class="r70"><p id="t26">.</p><div id="dr26" class="r">.</div>
 <input type="text" id="r26" class="w95"><div class="w100">
 <button onclick="cS('26')" type="button" id="bar26" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('26')" type="button" id="bdr26" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d27" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a27"><img id="i27" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k27">.</p><p id="t27">.</p><div id="dr27" class="r">.</div>
+<div class="r70"><p id="t27">.</p><div id="dr27" class="r">.</div>
 <input type="text" id="r27" class="w95"><div class="w100">
 <button onclick="cS('27')" type="button" id="bar27" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('27')" type="button" id="bdr27" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d28" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a28"><img id="i28" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k28">.</p><p id="t28">.</p><div id="dr28" class="r">.</div>
+<div class="r70"><p id="t28">.</p><div id="dr28" class="r">.</div>
 <input type="text" id="r28" class="w95"><div class="w100">
 <button onclick="cS('28')" type="button" id="bar28" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('28')" type="button" id="bdr28" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d29" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a29"><img id="i29" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k29">.</p><p id="t29">.</p><div id="dr29" class="r">.</div>
+<div class="r70"><p id="t29">.</p><div id="dr29" class="r">.</div>
 <input type="text" id="r29" class="w95"><div class="w100">
 <button onclick="cS('29')" type="button" id="bar29" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('29')" type="button" id="bdr29" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d30" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a30"><img id="i30" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k30">.</p><p id="t30">.</p><div id="dr30" class="r">.</div>
+<div class="r70"><p id="t30">.</p><div id="dr30" class="r">.</div>
 <input type="text" id="r30" class="w95"><div class="w100">
 <button onclick="cS('30')" type="button" id="bar30" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('30')" type="button" id="bdr30" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d31" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a31"><img id="i31" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k31">.</p><p id="t31">.</p><div id="dr31" class="r">.</div>
+<div class="r70"><p id="t31">.</p><div id="dr31" class="r">.</div>
 <input type="text" id="r31" class="w95"><div class="w100">
 <button onclick="cS('31')" type="button" id="bar31" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('31')" type="button" id="bdr31" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d32" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a32"><img id="i32" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k32">.</p><p id="t32">.</p><div id="dr32" class="r">.</div>
+<div class="r70"><p id="t32">.</p><div id="dr32" class="r">.</div>
 <input type="text" id="r32" class="w95"><div class="w100">
 <button onclick="cS('32')" type="button" id="bar32" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('32')" type="button" id="bdr32" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d33" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a33"><img id="i33" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k33">.</p><p id="t33">.</p><div id="dr33" class="r">.</div>
+<div class="r70"><p id="t33">.</p><div id="dr33" class="r">.</div>
 <input type="text" id="r33" class="w95"><div class="w100">
 <button onclick="cS('33')" type="button" id="bar33" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('33')" type="button" id="bdr33" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d34" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a34"><img id="i34" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k34">.</p><p id="t34">.</p><div id="dr34" class="r">.</div>
+<div class="r70"><p id="t34">.</p><div id="dr34" class="r">.</div>
 <input type="text" id="r34" class="w95"><div class="w100">
 <button onclick="cS('34')" type="button" id="bar34" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('34')" type="button" id="bdr34" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d35" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a35"><img id="i35" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k35">.</p><p id="t35">.</p><div id="dr35" class="r">.</div>
+<div class="r70"><p id="t35">.</p><div id="dr35" class="r">.</div>
 <input type="text" id="r35" class="w95"><div class="w100">
 <button onclick="cS('35')" type="button" id="bar35" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('35')" type="button" id="bdr35" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d36" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a36"><img id="i36" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k36">.</p><p id="t36">.</p><div id="dr36" class="r">.</div>
+<div class="r70"><p id="t36">.</p><div id="dr36" class="r">.</div>
 <input type="text" id="r36" class="w95"><div class="w100">
 <button onclick="cS('36')" type="button" id="bar36" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('36')" type="button" id="bdr36" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d37" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a37"><img id="i37" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k37">.</p><p id="t37">.</p><div id="dr37" class="r">.</div>
+<div class="r70"><p id="t37">.</p><div id="dr37" class="r">.</div>
 <input type="text" id="r37" class="w95"><div class="w100">
 <button onclick="cS('37')" type="button" id="bar37" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('37')" type="button" id="bdr37" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d38" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a38"><img id="i38" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k38">.</p><p id="t38">.</p><div id="dr38" class="r">.</div>
+<div class="r70"><p id="t38">.</p><div id="dr38" class="r">.</div>
 <input type="text" id="r38" class="w95"><div class="w100">
 <button onclick="cS('38')" type="button" id="bar38" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('38')" type="button" id="bdr38" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d39" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a39"><img id="i39" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k39">.</p><p id="t39">.</p><div id="dr39" class="r">.</div>
+<div class="r70"><p id="t39">.</p><div id="dr39" class="r">.</div>
 <input type="text" id="r39" class="w95"><div class="w100">
 <button onclick="cS('39')" type="button" id="bar39" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('39')" type="button" id="bdr39" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d40" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a40"><img id="i40" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k40">.</p><p id="t40">.</p><div id="dr40" class="r">.</div>
+<div class="r70"><p id="t40">.</p><div id="dr40" class="r">.</div>
 <input type="text" id="r40" class="w95"><div class="w100">
 <button onclick="cS('40')" type="button" id="bar40" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('40')" type="button" id="bdr40" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d41" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a41"><img id="i41" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k41">.</p><p id="t41">.</p><div id="dr41" class="r">.</div>
+<div class="r70"><p id="t41">.</p><div id="dr41" class="r">.</div>
 <input type="text" id="r41" class="w95"><div class="w100">
 <button onclick="cS('41')" type="button" id="bar41" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('41')" type="button" id="bdr41" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d42" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a42"><img id="i42" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k42">.</p><p id="t42">.</p><div id="dr42" class="r">.</div>
+<div class="r70"><p id="t42">.</p><div id="dr42" class="r">.</div>
 <input type="text" id="r42" class="w95"><div class="w100">
 <button onclick="cS('42')" type="button" id="bar42" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('42')" type="button" id="bdr42" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d43" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a43"><img id="i43" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k43">.</p><p id="t43">.</p><div id="dr43" class="r">.</div>
+<div class="r70"><p id="t43">.</p><div id="dr43" class="r">.</div>
 <input type="text" id="r43" class="w95"><div class="w100">
 <button onclick="cS('43')" type="button" id="bar43" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('43')" type="button" id="bdr43" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d44" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a44"><img id="i44" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k44">.</p><p id="t44">.</p><div id="dr44" class="r">.</div>
+<div class="r70"><p id="t44">.</p><div id="dr44" class="r">.</div>
 <input type="text" id="r44" class="w95"><div class="w100">
 <button onclick="cS('44')" type="button" id="bar44" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('44')" type="button" id="bdr44" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d45" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a45"><img id="i45" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k45">.</p><p id="t45">.</p><div id="dr45" class="r">.</div>
+<div class="r70"><p id="t45">.</p><div id="dr45" class="r">.</div>
 <input type="text" id="r45" class="w95"><div class="w100">
 <button onclick="cS('45')" type="button" id="bar45" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('45')" type="button" id="bdr45" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d46" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a46"><img id="i46" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k46">.</p><p id="t46">.</p><div id="dr46" class="r">.</div>
+<div class="r70"><p id="t46">.</p><div id="dr46" class="r">.</div>
 <input type="text" id="r46" class="w95"><div class="w100">
 <button onclick="cS('46')" type="button" id="bar46" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('46')" type="button" id="bdr46" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d47" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a47"><img id="i47" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k47">.</p><p id="t47">.</p><div id="dr47" class="r">.</div>
+<div class="r70"><p id="t47">.</p><div id="dr47" class="r">.</div>
 <input type="text" id="r47" class="w95"><div class="w100">
 <button onclick="cS('47')" type="button" id="bar47" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('47')" type="button" id="bdr47" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d48" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a48"><img id="i48" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k48">.</p><p id="t48">.</p><div id="dr48" class="r">.</div>
+<div class="r70"><p id="t48">.</p><div id="dr48" class="r">.</div>
 <input type="text" id="r48" class="w95"><div class="w100">
 <button onclick="cS('48')" type="button" id="bar48" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('48')" type="button" id="bdr48" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d49" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a49"><img id="i49" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k49">.</p><p id="t49">.</p><div id="dr49" class="r">.</div>
+<div class="r70"><p id="t49">.</p><div id="dr49" class="r">.</div>
 <input type="text" id="r49" class="w95"><div class="w100">
 <button onclick="cS('49')" type="button" id="bar49" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('49')" type="button" id="bdr49" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d50" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a50"><img id="i50" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k50">.</p><p id="t50">.</p><div id="dr50" class="r">.</div>
+<div class="r70"><p id="t50">.</p><div id="dr50" class="r">.</div>
 <input type="text" id="r50" class="w95"><div class="w100">
 <button onclick="cS('50')" type="button" id="bar50" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('50')" type="button" id="bdr50" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d51" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a51"><img id="i51" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k51">.</p><p id="t51">.</p><div id="dr51" class="r">.</div>
+<div class="r70"><p id="t51">.</p><div id="dr51" class="r">.</div>
 <input type="text" id="r51" class="w95"><div class="w100">
 <button onclick="cS('51')" type="button" id="bar51" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('51')" type="button" id="bdr51" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d52" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a52"><img id="i52" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k52">.</p><p id="t52">.</p><div id="dr52" class="r">.</div>
+<div class="r70"><p id="t52">.</p><div id="dr52" class="r">.</div>
 <input type="text" id="r52" class="w95"><div class="w100">
 <button onclick="cS('52')" type="button" id="bar52" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('52')" type="button" id="bdr52" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d53" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a53"><img id="i53" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k53">.</p><p id="t53">.</p><div id="dr53" class="r">.</div>
+<div class="r70"><p id="t53">.</p><div id="dr53" class="r">.</div>
 <input type="text" id="r53" class="w95"><div class="w100">
 <button onclick="cS('53')" type="button" id="bar53" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('53')" type="button" id="bdr53" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d54" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a54"><img id="i54" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k54">.</p><p id="t54">.</p><div id="dr54" class="r">.</div>
+<div class="r70"><p id="t54">.</p><div id="dr54" class="r">.</div>
 <input type="text" id="r54" class="w95"><div class="w100">
 <button onclick="cS('54')" type="button" id="bar54" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('54')" type="button" id="bdr54" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d55" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a55"><img id="i55" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k55">.</p><p id="t55">.</p><div id="dr55" class="r">.</div>
+<div class="r70"><p id="t55">.</p><div id="dr55" class="r">.</div>
 <input type="text" id="r55" class="w95"><div class="w100">
 <button onclick="cS('55')" type="button" id="bar55" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('55')" type="button" id="bdr55" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d56" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a56"><img id="i56" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k56">.</p><p id="t56">.</p><div id="dr56" class="r">.</div>
+<div class="r70"><p id="t56">.</p><div id="dr56" class="r">.</div>
 <input type="text" id="r56" class="w95"><div class="w100">
 <button onclick="cS('56')" type="button" id="bar56" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('56')" type="button" id="bdr56" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d57" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a57"><img id="i57" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k57">.</p><p id="t57">.</p><div id="dr57" class="r">.</div>
+<div class="r70"><p id="t57">.</p><div id="dr57" class="r">.</div>
 <input type="text" id="r57" class="w95"><div class="w100">
 <button onclick="cS('57')" type="button" id="bar57" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('57')" type="button" id="bdr57" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d58" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a58"><img id="i58" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k58">.</p><p id="t58">.</p><div id="dr58" class="r">.</div>
+<div class="r70"><p id="t58">.</p><div id="dr58" class="r">.</div>
 <input type="text" id="r58" class="w95"><div class="w100">
 <button onclick="cS('58')" type="button" id="bar58" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('58')" type="button" id="bdr58" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d59" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a59"><img id="i59" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k59">.</p><p id="t59">.</p><div id="dr59" class="r">.</div>
+<div class="r70"><p id="t59">.</p><div id="dr59" class="r">.</div>
 <input type="text" id="r59" class="w95"><div class="w100">
 <button onclick="cS('59')" type="button" id="bar59" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('59')" type="button" id="bdr59" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d60" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a60"><img id="i60" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k60">.</p><p id="t60">.</p><div id="dr60" class="r">.</div>
+<div class="r70"><p id="t60">.</p><div id="dr60" class="r">.</div>
 <input type="text" id="r60" class="w95"><div class="w100">
 <button onclick="cS('60')" type="button" id="bar60" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('60')" type="button" id="bdr60" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d61" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a61"><img id="i61" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k61">.</p><p id="t61">.</p><div id="dr61" class="r">.</div>
+<div class="r70"><p id="t61">.</p><div id="dr61" class="r">.</div>
 <input type="text" id="r61" class="w95"><div class="w100">
 <button onclick="cS('61')" type="button" id="bar61" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('61')" type="button" id="bdr61" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d62" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a62"><img id="i62" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k62">.</p><p id="t62">.</p><div id="dr62" class="r">.</div>
+<div class="r70"><p id="t62">.</p><div id="dr62" class="r">.</div>
 <input type="text" id="r62" class="w95"><div class="w100">
 <button onclick="cS('62')" type="button" id="bar62" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('62')" type="button" id="bdr62" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d63" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a63"><img id="i63" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k63">.</p><p id="t63">.</p><div id="dr63" class="r">.</div>
+<div class="r70"><p id="t63">.</p><div id="dr63" class="r">.</div>
 <input type="text" id="r63" class="w95"><div class="w100">
 <button onclick="cS('63')" type="button" id="bar63" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('63')" type="button" id="bdr63" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d64" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a64"><img id="i64" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k64">.</p><p id="t64">.</p><div id="dr64" class="r">.</div>
+<div class="r70"><p id="t64">.</p><div id="dr64" class="r">.</div>
 <input type="text" id="r64" class="w95"><div class="w100">
 <button onclick="cS('64')" type="button" id="bar64" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('64')" type="button" id="bdr64" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d65" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a65"><img id="i65" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k65">.</p><p id="t65">.</p><div id="dr65" class="r">.</div>
+<div class="r70"><p id="t65">.</p><div id="dr65" class="r">.</div>
 <input type="text" id="r65" class="w95"><div class="w100">
 <button onclick="cS('65')" type="button" id="bar65" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('65')" type="button" id="bdr65" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d66" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a66"><img id="i66" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k66">.</p><p id="t66">.</p><div id="dr66" class="r">.</div>
+<div class="r70"><p id="t66">.</p><div id="dr66" class="r">.</div>
 <input type="text" id="r66" class="w95"><div class="w100">
 <button onclick="cS('66')" type="button" id="bar66" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('66')" type="button" id="bdr66" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d67" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a67"><img id="i67" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k67">.</p><p id="t67">.</p><div id="dr67" class="r">.</div>
+<div class="r70"><p id="t67">.</p><div id="dr67" class="r">.</div>
 <input type="text" id="r67" class="w95"><div class="w100">
 <button onclick="cS('67')" type="button" id="bar67" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('67')" type="button" id="bdr67" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d68" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a68"><img id="i68" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k68">.</p><p id="t68">.</p><div id="dr68" class="r">.</div>
+<div class="r70"><p id="t68">.</p><div id="dr68" class="r">.</div>
 <input type="text" id="r68" class="w95"><div class="w100">
 <button onclick="cS('68')" type="button" id="bar68" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('68')" type="button" id="bdr68" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d69" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a69"><img id="i69" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k69">.</p><p id="t69">.</p><div id="dr69" class="r">.</div>
+<div class="r70"><p id="t69">.</p><div id="dr69" class="r">.</div>
 <input type="text" id="r69" class="w95"><div class="w100">
 <button onclick="cS('69')" type="button" id="bar69" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('69')" type="button" id="bdr69" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d70" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a70"><img id="i70" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k70">.</p><p id="t70">.</p><div id="dr70" class="r">.</div>
+<div class="r70"><p id="t70">.</p><div id="dr70" class="r">.</div>
 <input type="text" id="r70" class="w95"><div class="w100">
 <button onclick="cS('70')" type="button" id="bar70" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('70')" type="button" id="bdr70" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d71" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a71"><img id="i71" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k71">.</p><p id="t71">.</p><div id="dr71" class="r">.</div>
+<div class="r70"><p id="t71">.</p><div id="dr71" class="r">.</div>
 <input type="text" id="r71" class="w95"><div class="w100">
 <button onclick="cS('71')" type="button" id="bar71" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('71')" type="button" id="bdr71" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d72" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a72"><img id="i72" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k72">.</p><p id="t72">.</p><div id="dr72" class="r">.</div>
+<div class="r70"><p id="t72">.</p><div id="dr72" class="r">.</div>
 <input type="text" id="r72" class="w95"><div class="w100">
 <button onclick="cS('72')" type="button" id="bar72" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('72')" type="button" id="bdr72" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d73" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a73"><img id="i73" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k73">.</p><p id="t73">.</p><div id="dr73" class="r">.</div>
+<div class="r70"><p id="t73">.</p><div id="dr73" class="r">.</div>
 <input type="text" id="r73" class="w95"><div class="w100">
 <button onclick="cS('73')" type="button" id="bar73" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('73')" type="button" id="bdr73" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d74" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a74"><img id="i74" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k74">.</p><p id="t74">.</p><div id="dr74" class="r">.</div>
+<div class="r70"><p id="t74">.</p><div id="dr74" class="r">.</div>
 <input type="text" id="r74" class="w95"><div class="w100">
 <button onclick="cS('74')" type="button" id="bar74" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('74')" type="button" id="bdr74" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d75" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a75"><img id="i75" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k75">.</p><p id="t75">.</p><div id="dr75" class="r">.</div>
+<div class="r70"><p id="t75">.</p><div id="dr75" class="r">.</div>
 <input type="text" id="r75" class="w95"><div class="w100">
 <button onclick="cS('75')" type="button" id="bar75" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('75')" type="button" id="bdr75" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d76" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a76"><img id="i76" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k76">.</p><p id="t76">.</p><div id="dr76" class="r">.</div>
+<div class="r70"><p id="t76">.</p><div id="dr76" class="r">.</div>
 <input type="text" id="r76" class="w95"><div class="w100">
 <button onclick="cS('76')" type="button" id="bar76" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('76')" type="button" id="bdr76" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d77" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a77"><img id="i77" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k77">.</p><p id="t77">.</p><div id="dr77" class="r">.</div>
+<div class="r70"><p id="t77">.</p><div id="dr77" class="r">.</div>
 <input type="text" id="r77" class="w95"><div class="w100">
 <button onclick="cS('77')" type="button" id="bar77" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('77')" type="button" id="bdr77" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d78" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a78"><img id="i78" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k78">.</p><p id="t78">.</p><div id="dr78" class="r">.</div>
+<div class="r70"><p id="t78">.</p><div id="dr78" class="r">.</div>
 <input type="text" id="r78" class="w95"><div class="w100">
 <button onclick="cS('78')" type="button" id="bar78" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('78')" type="button" id="bdr78" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d79" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a79"><img id="i79" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k79">.</p><p id="t79">.</p><div id="dr79" class="r">.</div>
+<div class="r70"><p id="t79">.</p><div id="dr79" class="r">.</div>
 <input type="text" id="r79" class="w95"><div class="w100">
 <button onclick="cS('79')" type="button" id="bar79" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('79')" type="button" id="bdr79" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d80" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a80"><img id="i80" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k80">.</p><p id="t80">.</p><div id="dr80" class="r">.</div>
+<div class="r70"><p id="t80">.</p><div id="dr80" class="r">.</div>
 <input type="text" id="r80" class="w95"><div class="w100">
 <button onclick="cS('80')" type="button" id="bar80" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('80')" type="button" id="bdr80" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d81" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a81"><img id="i81" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k81">.</p><p id="t81">.</p><div id="dr81" class="r">.</div>
+<div class="r70"><p id="t81">.</p><div id="dr81" class="r">.</div>
 <input type="text" id="r81" class="w95"><div class="w100">
 <button onclick="cS('81')" type="button" id="bar81" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('81')" type="button" id="bdr81" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d82" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a82"><img id="i82" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k82">.</p><p id="t82">.</p><div id="dr82" class="r">.</div>
+<div class="r70"><p id="t82">.</p><div id="dr82" class="r">.</div>
 <input type="text" id="r82" class="w95"><div class="w100">
 <button onclick="cS('82')" type="button" id="bar82" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('82')" type="button" id="bdr82" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d83" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a83"><img id="i83" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k83">.</p><p id="t83">.</p><div id="dr83" class="r">.</div>
+<div class="r70"><p id="t83">.</p><div id="dr83" class="r">.</div>
 <input type="text" id="r83" class="w95"><div class="w100">
 <button onclick="cS('83')" type="button" id="bar83" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('83')" type="button" id="bdr83" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d84" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a84"><img id="i84" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k84">.</p><p id="t84">.</p><div id="dr84" class="r">.</div>
+<div class="r70"><p id="t84">.</p><div id="dr84" class="r">.</div>
 <input type="text" id="r84" class="w95"><div class="w100">
 <button onclick="cS('84')" type="button" id="bar84" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('84')" type="button" id="bdr84" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d85" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a85"><img id="i85" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k85">.</p><p id="t85">.</p><div id="dr85" class="r">.</div>
+<div class="r70"><p id="t85">.</p><div id="dr85" class="r">.</div>
 <input type="text" id="r85" class="w95"><div class="w100">
 <button onclick="cS('85')" type="button" id="bar85" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('85')" type="button" id="bdr85" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d86" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a86"><img id="i86" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k86">.</p><p id="t86">.</p><div id="dr86" class="r">.</div>
+<div class="r70"><p id="t86">.</p><div id="dr86" class="r">.</div>
 <input type="text" id="r86" class="w95"><div class="w100">
 <button onclick="cS('86')" type="button" id="bar86" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('86')" type="button" id="bdr86" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d87" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a87"><img id="i87" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k87">.</p><p id="t87">.</p><div id="dr87" class="r">.</div>
+<div class="r70"><p id="t87">.</p><div id="dr87" class="r">.</div>
 <input type="text" id="r87" class="w95"><div class="w100">
 <button onclick="cS('87')" type="button" id="bar87" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('87')" type="button" id="bdr87" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d88" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a88"><img id="i88" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k88">.</p><p id="t88">.</p><div id="dr88" class="r">.</div>
+<div class="r70"><p id="t88">.</p><div id="dr88" class="r">.</div>
 <input type="text" id="r88" class="w95"><div class="w100">
 <button onclick="cS('88')" type="button" id="bar88" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('88')" type="button" id="bdr88" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d89" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a89"><img id="i89" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k89">.</p><p id="t89">.</p><div id="dr89" class="r">.</div>
+<div class="r70"><p id="t89">.</p><div id="dr89" class="r">.</div>
 <input type="text" id="r89" class="w95"><div class="w100">
 <button onclick="cS('89')" type="button" id="bar89" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('89')" type="button" id="bdr89" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d90" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a90"><img id="i90" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k90">.</p><p id="t90">.</p><div id="dr90" class="r">.</div>
+<div class="r70"><p id="t90">.</p><div id="dr90" class="r">.</div>
 <input type="text" id="r90" class="w95"><div class="w100">
 <button onclick="cS('90')" type="button" id="bar90" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('90')" type="button" id="bdr90" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d91" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a91"><img id="i91" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k91">.</p><p id="t91">.</p><div id="dr91" class="r">.</div>
+<div class="r70"><p id="t91">.</p><div id="dr91" class="r">.</div>
 <input type="text" id="r91" class="w95"><div class="w100">
 <button onclick="cS('91')" type="button" id="bar91" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('91')" type="button" id="bdr91" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d92" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a92"><img id="i92" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k92">.</p><p id="t92">.</p><div id="dr92" class="r">.</div>
+<div class="r70"><p id="t92">.</p><div id="dr92" class="r">.</div>
 <input type="text" id="r92" class="w95"><div class="w100">
 <button onclick="cS('92')" type="button" id="bar92" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('92')" type="button" id="bdr92" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d93" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a93"><img id="i93" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k93">.</p><p id="t93">.</p><div id="dr93" class="r">.</div>
+<div class="r70"><p id="t93">.</p><div id="dr93" class="r">.</div>
 <input type="text" id="r93" class="w95"><div class="w100">
 <button onclick="cS('93')" type="button" id="bar93" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('93')" type="button" id="bdr93" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d94" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a94"><img id="i94" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k94">.</p><p id="t94">.</p><div id="dr94" class="r">.</div>
+<div class="r70"><p id="t94">.</p><div id="dr94" class="r">.</div>
 <input type="text" id="r94" class="w95"><div class="w100">
 <button onclick="cS('94')" type="button" id="bar94" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('94')" type="button" id="bdr94" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d95" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a95"><img id="i95" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k95">.</p><p id="t95">.</p><div id="dr95" class="r">.</div>
+<div class="r70"><p id="t95">.</p><div id="dr95" class="r">.</div>
 <input type="text" id="r95" class="w95"><div class="w100">
 <button onclick="cS('95')" type="button" id="bar95" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('95')" type="button" id="bdr95" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d96" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a96"><img id="i96" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k96">.</p><p id="t96">.</p><div id="dr96" class="r">.</div>
+<div class="r70"><p id="t96">.</p><div id="dr96" class="r">.</div>
 <input type="text" id="r96" class="w95"><div class="w100">
 <button onclick="cS('96')" type="button" id="bar96" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('96')" type="button" id="bdr96" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d97" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a97"><img id="i97" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k97">.</p><p id="t97">.</p><div id="dr97" class="r">.</div>
+<div class="r70"><p id="t97">.</p><div id="dr97" class="r">.</div>
 <input type="text" id="r97" class="w95"><div class="w100">
 <button onclick="cS('97')" type="button" id="bar97" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('97')" type="button" id="bdr97" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d98" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a98"><img id="i98" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k98">.</p><p id="t98">.</p><div id="dr98" class="r">.</div>
+<div class="r70"><p id="t98">.</p><div id="dr98" class="r">.</div>
 <input type="text" id="r98" class="w95"><div class="w100">
 <button onclick="cS('98')" type="button" id="bar98" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('98')" type="button" id="bdr98" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d99" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a99"><img id="i99" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k99">.</p><p id="t99">.</p><div id="dr99" class="r">.</div>
+<div class="r70"><p id="t99">.</p><div id="dr99" class="r">.</div>
 <input type="text" id="r99" class="w95"><div class="w100">
 <button onclick="cS('99')" type="button" id="bar99" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('99')" type="button" id="bdr99" class="br">УДАЛИТЬ</button>
 </div></div></div><br><hr></div>
 <div id="d100" class="d1" style="display:none"><div class="d1b"><div class="l92"><a href="#" id="a100"><img id="i100" src=".././img/sp.gif" class="wh89"></a></div>
-<div class="r70"><p id="k100">.</p><p id="t100">.</p><div id="dr100" class="r">.</div>
+<div class="r70"><p id="t100">.</p><div id="dr100" class="r">.</div>
 <input type="text" id="r100" class="w95"><div class="w100">
 <button onclick="cS('100')" type="button" id="bar100" class="bl">ИЗМЕНИТЬ</button>
 <button onclick="cD('100')" type="button" id="bdr100" class="br">УДАЛИТЬ</button>
@@ -753,8 +800,9 @@ GetSchet();
 
 
 
-
-<a id="zak2" class="w100" style="display:none" href="zakaz3.htm">Следующие товары из Вашего заказа</a>
+<!--Для следующей страницы, имена полей 1-100 всегда, href и i в LS.zakaz на +100 @200-->
+<a id="zak_pred" class="w100" style="display:auto" href="zakaz1.htm">Предыдущие товары из Вашего заказа</a>
+<a id="zak_next" class="w100" style="display:none" href="zakaz3.htm">Следующие товары из Вашего заказа</a>
 <script>
 	GetSchet();
 </script>
