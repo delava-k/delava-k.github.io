@@ -94,14 +94,14 @@ div.img {display: inline-block;}
 	width:100px;
 	height:2.5em;
 /*	margin: 2px 2px 2px 2px;*/
-	background-color: #F9F9F9;
+/*	background-color: #F9F9F9;*/
 }
 
 .br{
 	width:100px;
 	height:2.5em;
 	float:right;
-	background-color: #F9F9F9;
+/*	background-color: #F9F9F9;*/
 }
 
 
@@ -110,7 +110,7 @@ div.img {display: inline-block;}
 	height:2.5em;	
 	margin-left:5%;
 	margin-right:5%;
-	background-color: #F9F9F9;
+/*	background-color: #F9F9F9;*/
 }
 
 
@@ -206,7 +206,7 @@ p{
 .w33c{
         width:33.3333%;
 	overflow: hidden;
-	background-color: #555555;
+/*	background-color: #555555;*/
 	margin-left:-100px;
 }
 
