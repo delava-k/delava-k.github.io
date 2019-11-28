@@ -76,23 +76,18 @@ function cSave(id) {
 }
 
 function cDel(id) {
- if (typeof(Storage) !== "undefined") {
+ if (typeof(Storage) !== "undefined") 
+ {
+  var arid = new Array();
+  var sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")) {arid = sz.split(',');}
 
-    if (localStorage.getItem('id') != "") {
-
-	localStorage.setItem(id,'');
-	document.getElementById(id).value = "";
-
-	var arid = new Array();
-	var sz=localStorage.getItem('zakaz');
-
-	if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-	var ind=arid.indexOf(id);
-	if (ind>=0) {arid.splice(ind, 1);}         
-
-	localStorage.setItem('zakaz',arid.join(','));
-    }
+  if (localStorage.getItem('id') != "") {
+      localStorage.removeItem(id);
+  }
+  var ind=arid.indexOf(id);
+  if (ind>=0) {arid.splice(ind, 1);}
+  localStorage.setItem('zakaz',arid.join(','));
  }
  schet();
 }
@@ -126,222 +121,184 @@ function fun1(id){
 
 <section id="content" class="w100">
 <!--DB-->
-<div class="ix"><div class="w100"><img src=".././img/360/394.jpg"></div>
-<p id="tr394">Код: 394 Лента парча 5 см - 3.25 грн/м.<br>рулон - 73 грн (23 м)</p>
+<div class="w100">
+<div class="w33"><form action="organza_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><form action="patchi_100.htm"><button type="submit" class="br">следующий</button></form></div>
+</div><hr>ПАРЧА (24)<hr>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="394.htm"><img src=".././img/120/394.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr394">Код: 394 Лента парча 5 см - 3.25 грн/м.<br>рулон - 73 грн (23 м)</p>
 <div id="dr394" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r394" name="r394" class="w95 c1" onclick="fun1('r394')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r394" name="r394" class="w95 c1" onclick="fun1('r394')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r394')" type="button" id="bar394" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r394')" type="button" id="bdr394" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4694.jpg"></div>
-<p id="tr4694">Код: 4694 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<button onclick="cDel('r394')" type="button" id="bdr394" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4694.htm"><img src=".././img/120/4694.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4694">Код: 4694 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
 <div id="dr4694" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4694" name="r4694" class="w95 c1" onclick="fun1('r4694')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4694" name="r4694" class="w95 c1" onclick="fun1('r4694')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4694')" type="button" id="bar4694" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4694')" type="button" id="bdr4694" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4696.jpg"></div>
-<p id="tr4696">Код: 4696 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<button onclick="cDel('r4694')" type="button" id="bdr4694" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4696.htm"><img src=".././img/120/4696.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4696">Код: 4696 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
 <div id="dr4696" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4696" name="r4696" class="w95 c1" onclick="fun1('r4696')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4696" name="r4696" class="w95 c1" onclick="fun1('r4696')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4696')" type="button" id="bar4696" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4696')" type="button" id="bdr4696" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4697.jpg"></div>
-<p id="tr4697">Код: 4697 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<button onclick="cDel('r4696')" type="button" id="bdr4696" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4697.htm"><img src=".././img/120/4697.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4697">Код: 4697 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
 <div id="dr4697" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4697" name="r4697" class="w95 c1" onclick="fun1('r4697')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4697" name="r4697" class="w95 c1" onclick="fun1('r4697')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4697')" type="button" id="bar4697" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4697')" type="button" id="bdr4697" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4698.jpg"></div>
-<p id="tr4698">Код: 4698 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<button onclick="cDel('r4697')" type="button" id="bdr4697" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4698.htm"><img src=".././img/120/4698.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4698">Код: 4698 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
 <div id="dr4698" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4698" name="r4698" class="w95 c1" onclick="fun1('r4698')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4698" name="r4698" class="w95 c1" onclick="fun1('r4698')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4698')" type="button" id="bar4698" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4698')" type="button" id="bdr4698" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4700.jpg"></div>
-<p id="tr4700">Код: 4700 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<button onclick="cDel('r4698')" type="button" id="bdr4698" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4700.htm"><img src=".././img/120/4700.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4700">Код: 4700 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
 <div id="dr4700" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4700" name="r4700" class="w95 c1" onclick="fun1('r4700')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4700" name="r4700" class="w95 c1" onclick="fun1('r4700')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4700')" type="button" id="bar4700" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4700')" type="button" id="bdr4700" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4701.jpg"></div>
-<p id="tr4701">Код: 4701 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<button onclick="cDel('r4700')" type="button" id="bdr4700" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4701.htm"><img src=".././img/120/4701.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4701">Код: 4701 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
 <div id="dr4701" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4701" name="r4701" class="w95 c1" onclick="fun1('r4701')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4701" name="r4701" class="w95 c1" onclick="fun1('r4701')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4701')" type="button" id="bar4701" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4701')" type="button" id="bdr4701" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4699.jpg"></div>
-<p id="tr4699">Код: 4699 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
+<button onclick="cDel('r4701')" type="button" id="bdr4701" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4699.htm"><img src=".././img/120/4699.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4699">Код: 4699 Лента парча 4 см - 3.35 грн/м<br>рулон - 75 грн</p>
 <div id="dr4699" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4699" name="r4699" class="w95 c1" onclick="fun1('r4699')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4699" name="r4699" class="w95 c1" onclick="fun1('r4699')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4699')" type="button" id="bar4699" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4699')" type="button" id="bdr4699" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4704.jpg"></div>
-<p id="tr4704">Код: 4704 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4699')" type="button" id="bdr4699" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4704.htm"><img src=".././img/120/4704.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4704">Код: 4704 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4704" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4704" name="r4704" class="w95 c1" onclick="fun1('r4704')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4704" name="r4704" class="w95 c1" onclick="fun1('r4704')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4704')" type="button" id="bar4704" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4704')" type="button" id="bdr4704" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4708.jpg"></div>
-<p id="tr4708">Код: 4708 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4704')" type="button" id="bdr4704" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4708.htm"><img src=".././img/120/4708.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4708">Код: 4708 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4708" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4708" name="r4708" class="w95 c1" onclick="fun1('r4708')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4708" name="r4708" class="w95 c1" onclick="fun1('r4708')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4708')" type="button" id="bar4708" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4708')" type="button" id="bdr4708" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4705.jpg"></div>
-<p id="tr4705">Код: 4705 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4708')" type="button" id="bdr4708" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4705.htm"><img src=".././img/120/4705.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4705">Код: 4705 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4705" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4705" name="r4705" class="w95 c1" onclick="fun1('r4705')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4705" name="r4705" class="w95 c1" onclick="fun1('r4705')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4705')" type="button" id="bar4705" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4705')" type="button" id="bdr4705" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4706.jpg"></div>
-<p id="tr4706">Код: 4706 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4705')" type="button" id="bdr4705" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4706.htm"><img src=".././img/120/4706.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4706">Код: 4706 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4706" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4706" name="r4706" class="w95 c1" onclick="fun1('r4706')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4706" name="r4706" class="w95 c1" onclick="fun1('r4706')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4706')" type="button" id="bar4706" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4706')" type="button" id="bdr4706" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4710.jpg"></div>
-<p id="tr4710">Код: 4710 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4706')" type="button" id="bdr4706" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4710.htm"><img src=".././img/120/4710.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4710">Код: 4710 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4710" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4710" name="r4710" class="w95 c1" onclick="fun1('r4710')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4710" name="r4710" class="w95 c1" onclick="fun1('r4710')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4710')" type="button" id="bar4710" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4710')" type="button" id="bdr4710" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4707.jpg"></div>
-<p id="tr4707">Код: 4707 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4710')" type="button" id="bdr4710" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4707.htm"><img src=".././img/120/4707.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4707">Код: 4707 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4707" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4707" name="r4707" class="w95 c1" onclick="fun1('r4707')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4707" name="r4707" class="w95 c1" onclick="fun1('r4707')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4707')" type="button" id="bar4707" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4707')" type="button" id="bdr4707" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4703.jpg"></div>
-<p id="tr4703">Код: 4703 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4707')" type="button" id="bdr4707" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4703.htm"><img src=".././img/120/4703.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4703">Код: 4703 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4703" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4703" name="r4703" class="w95 c1" onclick="fun1('r4703')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4703" name="r4703" class="w95 c1" onclick="fun1('r4703')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4703')" type="button" id="bar4703" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4703')" type="button" id="bdr4703" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4709.jpg"></div>
-<p id="tr4709">Код: 4709 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
+<button onclick="cDel('r4703')" type="button" id="bdr4703" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4709.htm"><img src=".././img/120/4709.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4709">Код: 4709 Лента парча 2 см - 1.75 грн/м.<br>рулон - 40 грн (23м)</p>
 <div id="dr4709" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4709" name="r4709" class="w95 c1" onclick="fun1('r4709')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4709" name="r4709" class="w95 c1" onclick="fun1('r4709')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4709')" type="button" id="bar4709" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4709')" type="button" id="bdr4709" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4712.jpg"></div>
-<p id="tr4712">Код: 4712 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<button onclick="cDel('r4709')" type="button" id="bdr4709" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4712.htm"><img src=".././img/120/4712.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4712">Код: 4712 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
 <div id="dr4712" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4712" name="r4712" class="w95 c1" onclick="fun1('r4712')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4712" name="r4712" class="w95 c1" onclick="fun1('r4712')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4712')" type="button" id="bar4712" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4712')" type="button" id="bdr4712" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4715.jpg"></div>
-<p id="tr4715">Код: 4715 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<button onclick="cDel('r4712')" type="button" id="bdr4712" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4715.htm"><img src=".././img/120/4715.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4715">Код: 4715 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
 <div id="dr4715" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4715" name="r4715" class="w95 c1" onclick="fun1('r4715')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4715" name="r4715" class="w95 c1" onclick="fun1('r4715')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4715')" type="button" id="bar4715" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4715')" type="button" id="bdr4715" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4711.jpg"></div>
-<p id="tr4711">Код: 4711 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<button onclick="cDel('r4715')" type="button" id="bdr4715" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4711.htm"><img src=".././img/120/4711.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4711">Код: 4711 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
 <div id="dr4711" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4711" name="r4711" class="w95 c1" onclick="fun1('r4711')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4711" name="r4711" class="w95 c1" onclick="fun1('r4711')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4711')" type="button" id="bar4711" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4711')" type="button" id="bdr4711" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4716.jpg"></div>
-<p id="tr4716">Код: 4716 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<button onclick="cDel('r4711')" type="button" id="bdr4711" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4716.htm"><img src=".././img/120/4716.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4716">Код: 4716 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
 <div id="dr4716" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4716" name="r4716" class="w95 c1" onclick="fun1('r4716')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4716" name="r4716" class="w95 c1" onclick="fun1('r4716')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4716')" type="button" id="bar4716" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4716')" type="button" id="bdr4716" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4713.jpg"></div>
-<p id="tr4713">Код: 4713 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<button onclick="cDel('r4716')" type="button" id="bdr4716" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4713.htm"><img src=".././img/120/4713.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4713">Код: 4713 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
 <div id="dr4713" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4713" name="r4713" class="w95 c1" onclick="fun1('r4713')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4713" name="r4713" class="w95 c1" onclick="fun1('r4713')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4713')" type="button" id="bar4713" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4713')" type="button" id="bdr4713" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4714.jpg"></div>
-<p id="tr4714">Код: 4714 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<button onclick="cDel('r4713')" type="button" id="bdr4713" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4714.htm"><img src=".././img/120/4714.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4714">Код: 4714 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
 <div id="dr4714" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4714" name="r4714" class="w95 c1" onclick="fun1('r4714')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4714" name="r4714" class="w95 c1" onclick="fun1('r4714')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4714')" type="button" id="bar4714" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4714')" type="button" id="bdr4714" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4718.jpg"></div>
-<p id="tr4718">Код: 4718 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
+<button onclick="cDel('r4714')" type="button" id="bdr4714" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4718.htm"><img src=".././img/120/4718.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4718">Код: 4718 Лента парча 0,6 см - 0.75 грн/м.<br>рулон - 17.00 грн.</p>
 <div id="dr4718" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4718" name="r4718" class="w95 c1" onclick="fun1('r4718')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4718" name="r4718" class="w95 c1" onclick="fun1('r4718')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4718')" type="button" id="bar4718" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4718')" type="button" id="bdr4718" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/901.jpg"></div>
-<p id="tr901">Код: 901 Лента парча+органза 4см - 6.25 грн/м.</p>
+<button onclick="cDel('r4718')" type="button" id="bdr4718" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="901.htm"><img src=".././img/120/901.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr901">Код: 901 Лента парча+органза 4см - 6.25 грн/м.</p>
 <div id="dr901" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r901" name="r901" class="w95 c1" onclick="fun1('r901')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r901" name="r901" class="w95 c1" onclick="fun1('r901')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r901')" type="button" id="bar901" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r901')" type="button" id="bdr901" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
+<button onclick="cDel('r901')" type="button" id="bdr901" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="w100"><hr>
+<div class="w33"><form action="organza_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><form action="patchi_100.htm"><button type="submit" class="br">следующий</button></form></div>
+</div><hr>
 <div class="w100"><div class="w33"><div class="bl"></div></div>
 <div class="w33"><form action="parcha_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
 <div class="w33"><div class="br"></div></div></div>

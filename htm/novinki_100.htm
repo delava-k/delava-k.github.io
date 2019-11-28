@@ -76,23 +76,18 @@ function cSave(id) {
 }
 
 function cDel(id) {
- if (typeof(Storage) !== "undefined") {
+ if (typeof(Storage) !== "undefined") 
+ {
+  var arid = new Array();
+  var sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")) {arid = sz.split(',');}
 
-    if (localStorage.getItem('id') != "") {
-
-	localStorage.setItem(id,'');
-	document.getElementById(id).value = "";
-
-	var arid = new Array();
-	var sz=localStorage.getItem('zakaz');
-
-	if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-	var ind=arid.indexOf(id);
-	if (ind>=0) {arid.splice(ind, 1);}         
-
-	localStorage.setItem('zakaz',arid.join(','));
-    }
+  if (localStorage.getItem('id') != "") {
+      localStorage.removeItem(id);
+  }
+  var ind=arid.indexOf(id);
+  if (ind>=0) {arid.splice(ind, 1);}
+  localStorage.setItem('zakaz',arid.join(','));
  }
  schet();
 }
@@ -126,366 +121,296 @@ function fun1(id){
 
 <section id="content" class="w100">
 <!--DB-->
-<div class="ix"><div class="w100"><img src=".././img/360/4758.jpg"></div>
-<p id="tr4758">Код: 4758 Тесьма с помпонами (ширина 1 см,диаметр помпона 6мм) - 4.75 грн/м.</p>
+<div class="w100">
+<div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><form action="atlas_100.htm"><button type="submit" class="br">следующий</button></form></div>
+</div><hr>Новинки (40)<hr>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4758.htm"><img src=".././img/120/4758.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4758">Код: 4758 Тесьма с помпонами (ширина 1 см,диаметр помпона 6мм) - 4.75 грн/м.</p>
 <div id="dr4758" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4758" name="r4758" class="w95 c1" onclick="fun1('r4758')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4758" name="r4758" class="w95 c1" onclick="fun1('r4758')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4758')" type="button" id="bar4758" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4758')" type="button" id="bdr4758" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4776.jpg"></div>
-<p id="tr4776">Код: 4776 Тесьма 1см - 1.75 грн/м.</p>
+<button onclick="cDel('r4758')" type="button" id="bdr4758" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4776.htm"><img src=".././img/120/4776.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4776">Код: 4776 Тесьма 1см - 1.75 грн/м.</p>
 <div id="dr4776" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4776" name="r4776" class="w95 c1" onclick="fun1('r4776')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4776" name="r4776" class="w95 c1" onclick="fun1('r4776')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4776')" type="button" id="bar4776" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4776')" type="button" id="bdr4776" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4791.jpg"></div>
-<p id="tr4791">Код: 4791 Бархатная лента 1 см-2.95 грн/м</p>
+<button onclick="cDel('r4776')" type="button" id="bdr4776" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4791.htm"><img src=".././img/120/4791.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4791">Код: 4791 Бархатная лента 1 см-2.95 грн/м</p>
 <div id="dr4791" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4791" name="r4791" class="w95 c1" onclick="fun1('r4791')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4791" name="r4791" class="w95 c1" onclick="fun1('r4791')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4791')" type="button" id="bar4791" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4791')" type="button" id="bdr4791" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4790.jpg"></div>
-<p id="tr4790">Код: 4790 Бархатная лента 1 см-2.95 грн/м</p>
+<button onclick="cDel('r4791')" type="button" id="bdr4791" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4790.htm"><img src=".././img/120/4790.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4790">Код: 4790 Бархатная лента 1 см-2.95 грн/м</p>
 <div id="dr4790" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4790" name="r4790" class="w95 c1" onclick="fun1('r4790')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4790" name="r4790" class="w95 c1" onclick="fun1('r4790')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4790')" type="button" id="bar4790" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4790')" type="button" id="bdr4790" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4789.jpg"></div>
-<p id="tr4789">Код: 4789 Бархатная лента 1 см-2.95 грн/м</p>
+<button onclick="cDel('r4790')" type="button" id="bdr4790" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4789.htm"><img src=".././img/120/4789.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4789">Код: 4789 Бархатная лента 1 см-2.95 грн/м</p>
 <div id="dr4789" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4789" name="r4789" class="w95 c1" onclick="fun1('r4789')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4789" name="r4789" class="w95 c1" onclick="fun1('r4789')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4789')" type="button" id="bar4789" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4789')" type="button" id="bdr4789" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4788.jpg"></div>
-<p id="tr4788">Код: 4788 Бархатная лента 1 см-2.95 грн/м</p>
+<button onclick="cDel('r4789')" type="button" id="bdr4789" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4788.htm"><img src=".././img/120/4788.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4788">Код: 4788 Бархатная лента 1 см-2.95 грн/м</p>
 <div id="dr4788" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4788" name="r4788" class="w95 c1" onclick="fun1('r4788')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4788" name="r4788" class="w95 c1" onclick="fun1('r4788')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4788')" type="button" id="bar4788" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4788')" type="button" id="bdr4788" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4787.jpg"></div>
-<p id="tr4787">Код: 4787 Бархатная лента 1 см-2.95 грн/м</p>
+<button onclick="cDel('r4788')" type="button" id="bdr4788" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4787.htm"><img src=".././img/120/4787.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4787">Код: 4787 Бархатная лента 1 см-2.95 грн/м</p>
 <div id="dr4787" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4787" name="r4787" class="w95 c1" onclick="fun1('r4787')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4787" name="r4787" class="w95 c1" onclick="fun1('r4787')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4787')" type="button" id="bar4787" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4787')" type="button" id="bdr4787" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4786.jpg"></div>
-<p id="tr4786">Код: 4786 Бархатная лента с люрексом 1 см-2.95 грн/м</p>
+<button onclick="cDel('r4787')" type="button" id="bdr4787" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4786.htm"><img src=".././img/120/4786.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4786">Код: 4786 Бархатная лента с люрексом 1 см-2.95 грн/м</p>
 <div id="dr4786" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4786" name="r4786" class="w95 c1" onclick="fun1('r4786')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4786" name="r4786" class="w95 c1" onclick="fun1('r4786')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4786')" type="button" id="bar4786" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4786')" type="button" id="bdr4786" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4785.jpg"></div>
-<p id="tr4785">Код: 4785 Бархатная лента с люрексом 1 см-2.95 грн/м</p>
+<button onclick="cDel('r4786')" type="button" id="bdr4786" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4785.htm"><img src=".././img/120/4785.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4785">Код: 4785 Бархатная лента с люрексом 1 см-2.95 грн/м</p>
 <div id="dr4785" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4785" name="r4785" class="w95 c1" onclick="fun1('r4785')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4785" name="r4785" class="w95 c1" onclick="fun1('r4785')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4785')" type="button" id="bar4785" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4785')" type="button" id="bdr4785" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4813.jpg"></div>
-<p id="tr4813">Код: 4813 Фатин черный 1м. x 1.5м - 18.50 грн.</p>
+<button onclick="cDel('r4785')" type="button" id="bdr4785" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4813.htm"><img src=".././img/120/4813.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4813">Код: 4813 Фатин черный 1м. x 1.5м - 18.50 грн.</p>
 <div id="dr4813" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4813" name="r4813" class="w95 c1" onclick="fun1('r4813')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4813" name="r4813" class="w95 c1" onclick="fun1('r4813')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4813')" type="button" id="bar4813" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4813')" type="button" id="bdr4813" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4812.jpg"></div>
-<p id="tr4812">Код: 4812 Бусы на нитке белый перламутр, диаметр бусины 3 мм - 3.95 грн/м</p>
+<button onclick="cDel('r4813')" type="button" id="bdr4813" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4812.htm"><img src=".././img/120/4812.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4812">Код: 4812 Бусы на нитке белый перламутр, диаметр бусины 3 мм - 3.95 грн/м</p>
 <div id="dr4812" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4812" name="r4812" class="w95 c1" onclick="fun1('r4812')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4812" name="r4812" class="w95 c1" onclick="fun1('r4812')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4812')" type="button" id="bar4812" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4812')" type="button" id="bdr4812" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4811.jpg"></div>
-<p id="tr4811">Код: 4811 Лента Паутинка белая2.5 см 4.95грн/м.</p>
+<button onclick="cDel('r4812')" type="button" id="bdr4812" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4811.htm"><img src=".././img/120/4811.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4811">Код: 4811 Лента Паутинка белая2.5 см 4.95грн/м.</p>
 <div id="dr4811" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4811" name="r4811" class="w95 c1" onclick="fun1('r4811')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4811" name="r4811" class="w95 c1" onclick="fun1('r4811')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4811')" type="button" id="bar4811" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4811')" type="button" id="bdr4811" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4810.jpg"></div>
-<p id="tr4810">Код: 4810 Пайетка перламутр белая метражная - 1.75 грн/м</p>
+<button onclick="cDel('r4811')" type="button" id="bdr4811" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4810.htm"><img src=".././img/120/4810.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4810">Код: 4810 Пайетка перламутр белая метражная - 1.75 грн/м</p>
 <div id="dr4810" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4810" name="r4810" class="w95 c1" onclick="fun1('r4810')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4810" name="r4810" class="w95 c1" onclick="fun1('r4810')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4810')" type="button" id="bar4810" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4810')" type="button" id="bdr4810" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4809.jpg"></div>
-<p id="tr4809">Код: 4809 Лента Паутинка коралл 2.5 см 4.95грн/м.</p>
+<button onclick="cDel('r4810')" type="button" id="bdr4810" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4809.htm"><img src=".././img/120/4809.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4809">Код: 4809 Лента Паутинка коралл 2.5 см 4.95грн/м.</p>
 <div id="dr4809" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4809" name="r4809" class="w95 c1" onclick="fun1('r4809')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4809" name="r4809" class="w95 c1" onclick="fun1('r4809')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4809')" type="button" id="bar4809" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4809')" type="button" id="bdr4809" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4808.jpg"></div>
-<p id="tr4808">Код: 4808 Лента Паутинка голубая 2.5 см 4.95грн/м.</p>
+<button onclick="cDel('r4809')" type="button" id="bdr4809" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4808.htm"><img src=".././img/120/4808.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4808">Код: 4808 Лента Паутинка голубая 2.5 см 4.95грн/м.</p>
 <div id="dr4808" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4808" name="r4808" class="w95 c1" onclick="fun1('r4808')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4808" name="r4808" class="w95 c1" onclick="fun1('r4808')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4808')" type="button" id="bar4808" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4808')" type="button" id="bdr4808" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4807.jpg"></div>
-<p id="tr4807">Код: 4807 Лента Паутинка синяя2.5 см 4.95грн/м.</p>
+<button onclick="cDel('r4808')" type="button" id="bdr4808" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4807.htm"><img src=".././img/120/4807.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4807">Код: 4807 Лента Паутинка синяя2.5 см 4.95грн/м.</p>
 <div id="dr4807" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4807" name="r4807" class="w95 c1" onclick="fun1('r4807')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4807" name="r4807" class="w95 c1" onclick="fun1('r4807')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4807')" type="button" id="bar4807" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4807')" type="button" id="bdr4807" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4806.jpg"></div>
-<p id="tr4806">Код: 4806 Пайетка голография золото метражная - 1.75 грн/м</p>
+<button onclick="cDel('r4807')" type="button" id="bdr4807" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4806.htm"><img src=".././img/120/4806.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4806">Код: 4806 Пайетка голография золото метражная - 1.75 грн/м</p>
 <div id="dr4806" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4806" name="r4806" class="w95 c1" onclick="fun1('r4806')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4806" name="r4806" class="w95 c1" onclick="fun1('r4806')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4806')" type="button" id="bar4806" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4806')" type="button" id="bdr4806" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4805.jpg"></div>
-<p id="tr4805">Код: 4805 Пайетка голография серебро метражная - 1.75 грн/м</p>
+<button onclick="cDel('r4806')" type="button" id="bdr4806" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4805.htm"><img src=".././img/120/4805.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4805">Код: 4805 Пайетка голография серебро метражная - 1.75 грн/м</p>
 <div id="dr4805" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4805" name="r4805" class="w95 c1" onclick="fun1('r4805')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4805" name="r4805" class="w95 c1" onclick="fun1('r4805')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4805')" type="button" id="bar4805" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4805')" type="button" id="bdr4805" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4804.jpg"></div>
-<p id="tr4804">Код: 4804 Пайетка перламутр коралл метражная - 1.75 грн/м</p>
+<button onclick="cDel('r4805')" type="button" id="bdr4805" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4804.htm"><img src=".././img/120/4804.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4804">Код: 4804 Пайетка перламутр коралл метражная - 1.75 грн/м</p>
 <div id="dr4804" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4804" name="r4804" class="w95 c1" onclick="fun1('r4804')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4804" name="r4804" class="w95 c1" onclick="fun1('r4804')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4804')" type="button" id="bar4804" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4804')" type="button" id="bdr4804" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4803.jpg"></div>
-<p id="tr4803">Код: 4803 Пайетка перламутр голубая метражная - 1.75 грн/м</p>
+<button onclick="cDel('r4804')" type="button" id="bdr4804" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4803.htm"><img src=".././img/120/4803.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4803">Код: 4803 Пайетка перламутр голубая метражная - 1.75 грн/м</p>
 <div id="dr4803" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4803" name="r4803" class="w95 c1" onclick="fun1('r4803')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4803" name="r4803" class="w95 c1" onclick="fun1('r4803')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4803')" type="button" id="bar4803" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4803')" type="button" id="bdr4803" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4802.jpg"></div>
-<p id="tr4802">Код: 4802 Пайетка голография малиновая метражная - 1.75 грн/м</p>
+<button onclick="cDel('r4803')" type="button" id="bdr4803" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4802.htm"><img src=".././img/120/4802.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4802">Код: 4802 Пайетка голография малиновая метражная - 1.75 грн/м</p>
 <div id="dr4802" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4802" name="r4802" class="w95 c1" onclick="fun1('r4802')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4802" name="r4802" class="w95 c1" onclick="fun1('r4802')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4802')" type="button" id="bar4802" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4802')" type="button" id="bdr4802" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4801.jpg"></div>
-<p id="tr4801">Код: 4801 Пайетка Снежинка 40*35 мм 0.20грн/шт.</p>
+<button onclick="cDel('r4802')" type="button" id="bdr4802" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4801.htm"><img src=".././img/120/4801.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4801">Код: 4801 Пайетка Снежинка 40*35 мм 0.20грн/шт.</p>
 <div id="dr4801" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4801" name="r4801" class="w95 c1" onclick="fun1('r4801')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4801" name="r4801" class="w95 c1" onclick="fun1('r4801')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4801')" type="button" id="bar4801" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4801')" type="button" id="bdr4801" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4800.jpg"></div>
-<p id="tr4800">Код: 4800 Пайетка Снежинка 40*35 мм 0.20грн/шт.</p>
+<button onclick="cDel('r4801')" type="button" id="bdr4801" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4800.htm"><img src=".././img/120/4800.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4800">Код: 4800 Пайетка Снежинка 40*35 мм 0.20грн/шт.</p>
 <div id="dr4800" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4800" name="r4800" class="w95 c1" onclick="fun1('r4800')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4800" name="r4800" class="w95 c1" onclick="fun1('r4800')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4800')" type="button" id="bar4800" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4800')" type="button" id="bdr4800" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4799.jpg"></div>
-<p id="tr4799">Код: 4799 Пайетка елочка голография (50 штук) 17*15мм - 3.50 грн/уп.</p>
+<button onclick="cDel('r4800')" type="button" id="bdr4800" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4799.htm"><img src=".././img/120/4799.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4799">Код: 4799 Пайетка елочка голография (50 штук) 17*15мм - 3.50 грн/уп.</p>
 <div id="dr4799" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4799" name="r4799" class="w95 c1" onclick="fun1('r4799')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4799" name="r4799" class="w95 c1" onclick="fun1('r4799')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4799')" type="button" id="bar4799" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4799')" type="button" id="bdr4799" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4798.jpg"></div>
-<p id="tr4798">Код: 4798 Металлический обруч в атласе (0.5 см) - 4.50 грн/шт.</p>
+<button onclick="cDel('r4799')" type="button" id="bdr4799" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4798.htm"><img src=".././img/120/4798.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4798">Код: 4798 Металлический обруч в атласе (0.5 см) - 4.50 грн/шт.</p>
 <div id="dr4798" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4798" name="r4798" class="w95 c1" onclick="fun1('r4798')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4798" name="r4798" class="w95 c1" onclick="fun1('r4798')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4798')" type="button" id="bar4798" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4798')" type="button" id="bdr4798" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4797.jpg"></div>
-<p id="tr4797">Код: 4797 Металлический обруч в атласе (0.5 см) - 4.50 грн/шт.</p>
+<button onclick="cDel('r4798')" type="button" id="bdr4798" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4797.htm"><img src=".././img/120/4797.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4797">Код: 4797 Металлический обруч в атласе (0.5 см) - 4.50 грн/шт.</p>
 <div id="dr4797" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4797" name="r4797" class="w95 c1" onclick="fun1('r4797')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4797" name="r4797" class="w95 c1" onclick="fun1('r4797')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4797')" type="button" id="bar4797" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4797')" type="button" id="bdr4797" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4796.jpg"></div>
-<p id="tr4796">Код: 4796 Металлический обруч в атласе (0.5 см) - 4.50 грн/шт.</p>
+<button onclick="cDel('r4797')" type="button" id="bdr4797" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4796.htm"><img src=".././img/120/4796.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4796">Код: 4796 Металлический обруч в атласе (0.5 см) - 4.50 грн/шт.</p>
 <div id="dr4796" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4796" name="r4796" class="w95 c1" onclick="fun1('r4796')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4796" name="r4796" class="w95 c1" onclick="fun1('r4796')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4796')" type="button" id="bar4796" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4796')" type="button" id="bdr4796" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4795.jpg"></div>
-<p id="tr4795">Код: 4795 Фатин голубой 1м. x 1.5м - 18.50 грн.</p>
+<button onclick="cDel('r4796')" type="button" id="bdr4796" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4795.htm"><img src=".././img/120/4795.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4795">Код: 4795 Фатин голубой 1м. x 1.5м - 18.50 грн.</p>
 <div id="dr4795" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4795" name="r4795" class="w95 c1" onclick="fun1('r4795')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4795" name="r4795" class="w95 c1" onclick="fun1('r4795')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4795')" type="button" id="bar4795" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4795')" type="button" id="bdr4795" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4814.jpg"></div>
-<p id="tr4814">Код: 4814 Бусы на нити 3мм - 2.95 грн/м.</p>
+<button onclick="cDel('r4795')" type="button" id="bdr4795" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4814.htm"><img src=".././img/120/4814.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4814">Код: 4814 Бусы на нити 3мм - 2.95 грн/м.</p>
 <div id="dr4814" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4814" name="r4814" class="w95 c1" onclick="fun1('r4814')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4814" name="r4814" class="w95 c1" onclick="fun1('r4814')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4814')" type="button" id="bar4814" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4814')" type="button" id="bdr4814" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4815.jpg"></div>
-<p id="tr4815">Код: 4815 Бусы на нити 8 мм - 6.45 грн/м.</p>
+<button onclick="cDel('r4814')" type="button" id="bdr4814" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4815.htm"><img src=".././img/120/4815.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4815">Код: 4815 Бусы на нити 8 мм - 6.45 грн/м.</p>
 <div id="dr4815" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4815" name="r4815" class="w95 c1" onclick="fun1('r4815')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4815" name="r4815" class="w95 c1" onclick="fun1('r4815')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4815')" type="button" id="bar4815" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4815')" type="button" id="bdr4815" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4816.jpg"></div>
-<p id="tr4816">Код: 4816 Бусы на нити 5 мм - 4.25 грн/м.</p>
+<button onclick="cDel('r4815')" type="button" id="bdr4815" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4816.htm"><img src=".././img/120/4816.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4816">Код: 4816 Бусы на нити 5 мм - 4.25 грн/м.</p>
 <div id="dr4816" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4816" name="r4816" class="w95 c1" onclick="fun1('r4816')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4816" name="r4816" class="w95 c1" onclick="fun1('r4816')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4816')" type="button" id="bar4816" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4816')" type="button" id="bdr4816" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4817.jpg"></div>
-<p id="tr4817">Код: 4817 Бусы на нити 5 мм - 4.25 грн/м.</p>
+<button onclick="cDel('r4816')" type="button" id="bdr4816" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4817.htm"><img src=".././img/120/4817.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4817">Код: 4817 Бусы на нити 5 мм - 4.25 грн/м.</p>
 <div id="dr4817" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4817" name="r4817" class="w95 c1" onclick="fun1('r4817')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4817" name="r4817" class="w95 c1" onclick="fun1('r4817')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4817')" type="button" id="bar4817" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4817')" type="button" id="bdr4817" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4818.jpg"></div>
-<p id="tr4818">Код: 4818 Бусы на нити 3мм - 2.95 грн/м.</p>
+<button onclick="cDel('r4817')" type="button" id="bdr4817" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4818.htm"><img src=".././img/120/4818.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4818">Код: 4818 Бусы на нити 3мм - 2.95 грн/м.</p>
 <div id="dr4818" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4818" name="r4818" class="w95 c1" onclick="fun1('r4818')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4818" name="r4818" class="w95 c1" onclick="fun1('r4818')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4818')" type="button" id="bar4818" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4818')" type="button" id="bdr4818" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4819.jpg"></div>
-<p id="tr4819">Код: 4819 Бусы на нити 8 мм - 6.45 грн/м.</p>
+<button onclick="cDel('r4818')" type="button" id="bdr4818" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4819.htm"><img src=".././img/120/4819.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4819">Код: 4819 Бусы на нити 8 мм - 6.45 грн/м.</p>
 <div id="dr4819" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4819" name="r4819" class="w95 c1" onclick="fun1('r4819')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4819" name="r4819" class="w95 c1" onclick="fun1('r4819')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4819')" type="button" id="bar4819" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4819')" type="button" id="bdr4819" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4820.jpg"></div>
-<p id="tr4820">Код: 4820 Бусы на нити 8 мм - 6.45 грн/м.</p>
+<button onclick="cDel('r4819')" type="button" id="bdr4819" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4820.htm"><img src=".././img/120/4820.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4820">Код: 4820 Бусы на нити 8 мм - 6.45 грн/м.</p>
 <div id="dr4820" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4820" name="r4820" class="w95 c1" onclick="fun1('r4820')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4820" name="r4820" class="w95 c1" onclick="fun1('r4820')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4820')" type="button" id="bar4820" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4820')" type="button" id="bdr4820" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4821.jpg"></div>
-<p id="tr4821">Код: 4821 Бусы на нити 5 мм - 4.25 грн/м.</p>
+<button onclick="cDel('r4820')" type="button" id="bdr4820" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4821.htm"><img src=".././img/120/4821.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4821">Код: 4821 Бусы на нити 5 мм - 4.25 грн/м.</p>
 <div id="dr4821" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4821" name="r4821" class="w95 c1" onclick="fun1('r4821')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4821" name="r4821" class="w95 c1" onclick="fun1('r4821')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4821')" type="button" id="bar4821" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4821')" type="button" id="bdr4821" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4822.jpg"></div>
-<p id="tr4822">Код: 4822 Бусы на нити 5 мм - 4.25 грн/м.</p>
+<button onclick="cDel('r4821')" type="button" id="bdr4821" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4822.htm"><img src=".././img/120/4822.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4822">Код: 4822 Бусы на нити 5 мм - 4.25 грн/м.</p>
 <div id="dr4822" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4822" name="r4822" class="w95 c1" onclick="fun1('r4822')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4822" name="r4822" class="w95 c1" onclick="fun1('r4822')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4822')" type="button" id="bar4822" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4822')" type="button" id="bdr4822" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4823.jpg"></div>
-<p id="tr4823">Код: 4823 Бусы на нити 8 мм - 6.45 грн/м.</p>
+<button onclick="cDel('r4822')" type="button" id="bdr4822" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4823.htm"><img src=".././img/120/4823.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4823">Код: 4823 Бусы на нити 8 мм - 6.45 грн/м.</p>
 <div id="dr4823" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4823" name="r4823" class="w95 c1" onclick="fun1('r4823')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4823" name="r4823" class="w95 c1" onclick="fun1('r4823')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4823')" type="button" id="bar4823" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4823')" type="button" id="bdr4823" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4824.jpg"></div>
-<p id="tr4824">Код: 4824 Бусы на нити 3мм - 2.95 грн/м.</p>
+<button onclick="cDel('r4823')" type="button" id="bdr4823" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4824.htm"><img src=".././img/120/4824.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4824">Код: 4824 Бусы на нити 3мм - 2.95 грн/м.</p>
 <div id="dr4824" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4824" name="r4824" class="w95 c1" onclick="fun1('r4824')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4824" name="r4824" class="w95 c1" onclick="fun1('r4824')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4824')" type="button" id="bar4824" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4824')" type="button" id="bdr4824" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
-<div class="ix"><div class="w100"><img src=".././img/360/4825.jpg"></div>
-<p id="tr4825">Код: 4825 Бусы на нити 3мм - 2.95 грн/м.</p>
+<button onclick="cDel('r4824')" type="button" id="bdr4824" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4825.htm"><img src=".././img/120/4825.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4825">Код: 4825 Бусы на нити 3мм - 2.95 грн/м.</p>
 <div id="dr4825" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4825" name="r4825" class="w95 c1" onclick="fun1('r4825')" value="введите тут колво и нажмите ДОБАВИТЬ"><br>
-<div>
+<input type="text" style="color: #BBBBBB;" id="r4825" name="r4825" class="w95 c1" onclick="fun1('r4825')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4825')" type="button" id="bar4825" class="bl">ДОБАВИТЬ</button>
-<button onclick="cDel('r4825')" type="button" id="bdr4825" class="br" style="display:none;">УДАЛИТЬ</button>
-</div></div>
-
+<button onclick="cDel('r4825')" type="button" id="bdr4825" class="br" style="display:none;">УДАЛИТЬ</button></div></div></div><br><hr></div>
+<div class="w100"><hr>
+<div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><form action="atlas_100.htm"><button type="submit" class="br">следующий</button></form></div>
+</div><hr>
 <div class="w100"><div class="w33"><div class="bl"></div></div>
 <div class="w33"><form action="novinki_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
 <div class="w33"><div class="br"></div></div></div>
