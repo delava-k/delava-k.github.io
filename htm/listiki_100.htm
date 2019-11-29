@@ -11,46 +11,44 @@
 
 function schet(){
  var v="";
- var z="";
- for (var i = 0; i < 5000; i++){
+ var id;
+ var ei = document.querySelectorAll('input');
 
- var ei=document.getElementById('r'+i);
-
- if (ei != null) //есть поле
+ for (var i = 1; i < ei.length; i++) //0 это из меню input, пропускаем
  {
-  vr=localStorage.getItem('r'+i);
-  ei.value = vr;
-  var er=document.getElementById('dr'+i);
+   id=ei[i].id;
+   vr=localStorage.getItem(id);
+   var er=document.getElementById('d'+id);//красный
 
-  if ((vr != null)&&(vr != ""))
-  { 
-	er.innerHTML=vr;
+   if ((vr != null)&&(vr != ""))
+   { 
+	ei[i].value = vr;
+        ei[i].style="color: #000;";
+
 	er.style="display:block;";
-        ei.style="color: #000;";
+	er.innerHTML=vr;
 
-	var ba=document.getElementById('bar'+i);
-	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ИЗМЕНИТЬ";}	
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
 
-
-	var bd=document.getElementById('bdr'+i);
-	if (bd != null) {document.getElementById('bdr'+i).style = "display:block;"}	
+	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}
 
   } else //пустое значение для Код
   {
-	er.innerHTML = ".";
-	er.style = "display:none;";
-	
-	ei.value = "введите тут колво и нажмите ДОБАВИТЬ";
-	ei.style="color: #BBBBBB;";
+	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
+	ei[i].style="color: #BBBBBB;";
 
-	var ba=document.getElementById('bar'+i);
-	if (ba != null) {document.getElementById('bar'+i).innerHTML = "ДОБАВИТЬ";}
+	er.innerHTML = ".";
+	er.style = "display:none;";	
+
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
 	
-	var bd=document.getElementById('bdr'+i);
-	if (bd != null) {document.getElementById('bdr'+i).style = "display:none;"}
+	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
   } 	
- }//нет поля
-}//цикл
+ }//цикл
 }
 
 
