@@ -26,8 +26,8 @@ function schet(id){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML="ИЗМЕНИТЬ";}	
 
-	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style="display:block;"}	
+/*	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style="display:block;"}*/
 
   } else 
   {
@@ -41,8 +41,8 @@ function schet(id){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
 
-	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
+/*	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
   } 	
  }//нет поля
 }
@@ -66,7 +66,7 @@ function cSave(id) {
  localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
  schet(id);
 }
-
+/*
 function cDel(id) {
  if (typeof(Storage) !== "undefined") {
 
@@ -88,6 +88,8 @@ function cDel(id) {
  }
  schet(id);
 }
+*/
+
 
 function GetZoom(id) {
   im=document.getElementById(id);
