@@ -26,8 +26,8 @@ function schet(id){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML="ИЗМЕНИТЬ";}	
 
-	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style="display:block;"}	
+/*	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style="display:block;"}*/
 
   } else 
   {
@@ -41,8 +41,8 @@ function schet(id){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
 
-	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
+/*	var bd=document.getElementById('bd'+id);
+	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
   } 	
  }//нет поля
 }
@@ -66,7 +66,7 @@ function cSave(id) {
  localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
  schet(id);
 }
-
+/*
 function cDel(id) {
  if (typeof(Storage) !== "undefined") {
 
@@ -88,6 +88,8 @@ function cDel(id) {
  }
  schet(id);
 }
+*/
+
 
 function GetZoom(id) {
   im=document.getElementById(id);
@@ -104,15 +106,14 @@ function fun1(id){
 
 
 <body> 
-<div class="dpc w100w"><div class="header">Delava - канзаши товары
+<div class="dpc w100w"><div class="header"><a class="hw" href=".././index.html">Delava - канзаши товары</a>
         <input class="nav-m_cb" type="checkbox" id="m1">
         <label class="nav-m" for="m1">Меню</label>
         <nav class="nav">
             <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
             <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
-            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
             <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
-            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+            <a class="nav__item" href="zakaz1.htm">ВАШ ЗАКАЗ</a>
         </nav>
 </div></div>
 
@@ -120,10 +121,10 @@ function fun1(id){
 <div class="w100">
 <!--DB-->
 <div class="w100">
-<div class="w33"><form action="3136.htm"><button type="submit" class="bl">предыдущая</button></form></div>
-<div class="w33"><form action="lichniy_33.htm"><button type="submit" class="bc">альбом</button></form></div>
+<div class="w33"><form action="4760.htm"><button type="submit" class="bl">предыдущая</button></form></div>
+<div class="w33"><form action="fom_33.htm"><button type="submit" class="bc">альбом</button></form></div>
 </div>
-<div class="ix"><a href="/nojs.htm" target="_blank" onclick="GetZoom('4689');return false" ><img id="4689" src=".././img/360/4689.jpg"></a></div></div>
+<div class="ix"><a href="/nojs.htm" target="_blank" onclick="GetZoom('4689');return false" ><img id="4689" src=".././img/360/4689.jpg"></a></div>
 <p id="tr4689">Код: 4689 Эко-кожа с крупными блестками белая ЛЮКС 15*20см - 19.95 грн/лист.</p>
 <div id="dr4689" class="r" style="display:none;">.</div>
 <div class="w100">
@@ -131,11 +132,11 @@ function fun1(id){
 </div>
 <div>
 <div class="w100">
-<div class="w33"><button onclick="cSave('r4689')" type="button" id="bar4689" class="bl">ДОБАВИТЬ</button></div>
-<div class="w33"><form action="zakaz.htm"><button type="submit" class="bc">ВАШ ЗАКАЗ</button></form></div>
-<div class="w33"><button onclick="cDel('r4689')" type="button" id="bdr4689"class="br" style="display:none;">УДАЛИТЬ</button></div>
+<div class="w50"><button onclick="cSave('r4689')" type="button" id="bar4689" class="bl">ДОБАВИТЬ</button></div>
+<div class="w50"><form action="zakaz1.htm"><button type="submit" class="br">ВАШ ЗАКАЗ</button></form></div>
 <script>schet('r4689');</script>
 </div>
+<hr>ФОАМИРАН, ЭКО-КОЖА, ФЕТР (58 из 58)<hr>
 </div></div>
 
 
