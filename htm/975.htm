@@ -142,4 +142,27 @@ function fun1(id){
 
 
 
+<hr> 
+===
+  <div style="width:800px" id="nom">test</div>
+  <div style="width:800px">===</div>
+<!--
+Номер заказа:<img src="https://delava.000webhostapp.com/getnom.php?idz=1576508270335">
+-->
+<hr>
+
+<script>
+   function loadp() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', false);
+     xhr.send();
+     if (xhr.status != 200) {
+	document.getElementById("nom").innerHTML = '-';
+     } else {
+	document.getElementById("nom").innerHTML = 'Код заказа: '+xhr.responseText+document.getElementById("nom").innerHTML;
+     }
+   }
+ loadp();
+</script>
+
 </body></html>
