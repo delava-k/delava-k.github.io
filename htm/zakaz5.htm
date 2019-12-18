@@ -192,9 +192,9 @@ function work(obj) {
 <body> 
 
 <hr> 
-======
+===
   <div style="width:800px" id="nom">test</div>
-  <div style="width:800px">========</div>
+  <div style="width:800px">===</div>
 
 <!--
 Номер заказа:<img src="https://delava.000webhostapp.com/getnom.php?idz=1576508270335">
@@ -855,7 +855,7 @@ function work(obj) {
 
 
 
-   function st2() {
+ function st2() {
 
      var sidz=localStorage.getItem('idz');
      if ((sidz === null) || (sidz == "")) {
@@ -864,17 +864,13 @@ function work(obj) {
        sidz=localStorage.getItem('idz');
      }
 
-
-
  var h=1;
  var tmp="";
-
  var arid = new Array();
  var arco = new Array();
 
  var sz=localStorage.getItem('zakaz');
-
-	alert(sz);
+alert(sz);
 
  if ((sz != null) && (sz != "")) { arid = sz.split(',');} 
 
@@ -891,7 +887,7 @@ function work(obj) {
   }
  }
 
-	alert(sidz);
+alert(sidz);
 
      var prim=screen.availWidth+' * '+screen.availHeight+' / '+screen.width+' * '+screen.height + ' ('+navigator.platform+')';
      var xhr = new XMLHttpRequest();
