@@ -48,26 +48,30 @@ function schet(id){
 }
 
 
-   function loadp() {
+   function l1() {
      var xhr = new XMLHttpRequest();
-     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', false);
+     alert('test1');
+     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', true);
+     xhr.open('GET', 'https://delava.000webhostapp.com/st1.php?idz=1576508270335', true);
+
+     alert('test2');
      xhr.send();
+     alert('test3');
      if (xhr.status != 200) {
 	document.getElementById("nom").innerHTML = '-';
      } else {
 	document.getElementById("nom").innerHTML = 'Код заказа: '+xhr.responseText+document.getElementById("nom").innerHTML;
      }
+     alert('test4');
    }
 
 function cSave(id) {
  var arid = new Array();
  var sz="";
-
  if (typeof(Storage) !== "undefined"){
 	sz=localStorage.getItem('zakaz');
 	if ((sz != null) && (sz != "")){arid = sz.split(',');}
  }
-
  if (arid.indexOf(id)<0) {arid.push(id);}        
  localStorage.setItem('zakaz',arid.join(','));
 
@@ -77,8 +81,8 @@ function cSave(id) {
  localStorage.setItem(id,zn);
  localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
  schet(id);
-
- loadp();
+ l1();
+     alert('2');
 }
 /*
 function cDel(id) {
@@ -160,15 +164,13 @@ function fun1(id){
 ===
   <div style="width:800px" id="nom">test</div>
   <div style="width:800px">===</div>
-Test3:<img src="https://delava.000webhostapp.com/geti.php?idz=1576508270335">
-
-
-
+<!-- Test3:<img src="https://delava.000webhostapp.com/geti.php?idz=1576508270335"> -->
 <hr>
+
 <script>
    function loadp() {
      var xhr = new XMLHttpRequest();
-     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', false);
+     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', true);
      xhr.send();
      if (xhr.status != 200) {
 	document.getElementById("nom").innerHTML = '-';
