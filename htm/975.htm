@@ -50,19 +50,13 @@ function schet(id){
 
    function l1() {
      var xhr = new XMLHttpRequest();
-     alert('test1');
-     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', true);
-     xhr.open('GET', 'https://delava.000webhostapp.com/st1.php?idz=1576508270335', true);
-
-     alert('test2');
+     xhr.open('GET', 'https://delava.000webhostapp.com/st1.php?idz=157650820002', true);
      xhr.send();
-     alert('test3');
      if (xhr.status != 200) {
 	document.getElementById("nom").innerHTML = '-';
      } else {
 	document.getElementById("nom").innerHTML = 'Код заказа: '+xhr.responseText+document.getElementById("nom").innerHTML;
      }
-     alert('test4');
    }
 
 function cSave(id) {
@@ -170,13 +164,14 @@ function fun1(id){
 <script>
    function loadp() {
      var xhr = new XMLHttpRequest();
-     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', true);
+/*     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', true); */
+     xhr.open('GET', 'https://delava.000webhostapp.com/st1.php?idz=157650820001', true);
      xhr.send();
-     if (xhr.status != 200) {
+/*     if (xhr.status != 200) {
 	document.getElementById("nom").innerHTML = '-';
      } else {
 	document.getElementById("nom").innerHTML = 'Код заказа: '+xhr.responseText+document.getElementById("nom").innerHTML;
-     }
+     }*/
    }
  loadp();
 </script>
