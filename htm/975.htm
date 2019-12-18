@@ -154,21 +154,34 @@ function fun1(id){
 
 
 <hr> 
+...
   <div style="width:800px" id="nom">test</div>
 <!-- Test3:<img src="https://delava.000webhostapp.com/geti.php?idz=1576508270335"> -->
 <hr>
 
 <script>
    function loadp() {
+     var sidz=localStorage.getItem('idz');
+     if ((sidz === null) || (sz == "")) {
+       var sidz=Date.now();
+       localStorage.setItem('idz',sidz);
+       sidz=localStorage.getItem('idz');
+     }
+     var prim=screen.availWidth+' * '+screen.availHeight+' / '+screen.width+' * '+screen.height + ' ('+navigator.platform+')';
+
      var xhr = new XMLHttpRequest();
-/*     xhr.open('GET', 'https://delava.000webhostapp.com/getnom.php?idz=1576508270335', true); */
+//     var st='https://delava.000webhostapp.com/st1.php?idz='+sidz+'&disp='+encodeURIComponent(prim);
+     var st='https://delava.000webhostapp.com/st1.php?idz='+sidz;
+     xhr.open('GET', st, true);
+
+alert('1 test '+sidz);
+     xhr.send();
+
+/*
+     var xhr = new XMLHttpRequest();
      xhr.open('GET', 'https://delava.000webhostapp.com/st1.php?idz=157650820001', true);
      xhr.send();
-/*     if (xhr.status != 200) {
-	document.getElementById("nom").innerHTML = '-';
-     } else {
-	document.getElementById("nom").innerHTML = 'Код заказа: '+xhr.responseText+document.getElementById("nom").innerHTML;
-     }*/
+*/
    }
  loadp();
 </script>
