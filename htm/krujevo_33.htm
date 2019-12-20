@@ -123,9 +123,7 @@
  var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
  var p = window.location['pathname'].split('/');
  var xhr=new XMLHttpRequest();
- alert(p[p.length - 1]);
  var st='https://delava.000webhostapp.com/st2.php?ist='+p[p.length - 1]+'&idz='+sidz;
- alert(st);
  xhr.open('GET', st, true);
  xhr.send();
 </script>
