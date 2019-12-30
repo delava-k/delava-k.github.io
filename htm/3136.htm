@@ -6,10 +6,12 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
+
 function schet(id){
+ if (typeof(Storage) !== "undefined"){ 
+
  var vr=localStorage.getItem(id);
  var ei=document.getElementById(id);
 
@@ -24,11 +26,7 @@ function schet(id){
         ei.style="color: #000;";
 
 	var ba=document.getElementById('ba'+id);
-	if (ba != null) {document.getElementById('ba'+id).innerHTML="ИЗМЕНИТЬ";}	
-
-	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style="display:block;"}	
-
+	if (ba != null) {document.getElementById('ba'+id).innerHTML="ИЗМЕНИТЬ";}
   } else 
   {
 	var er=document.getElementById('d'+id);
@@ -40,54 +38,46 @@ function schet(id){
 
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-
-	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}
-  } 	
+  }
  }//нет поля
+ } else {alert('Sorry! No Web Storage support..')}
 }
+
 
 function cSave(id) {
- var arid = new Array();
- var sz="";
+ if (typeof(Storage) !== "undefined"){ 
 
- if (typeof(Storage) !== "undefined"){
-	sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")){arid = sz.split(',');}
- }
+  var zn=document.getElementById(id).value;
+  if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+  }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+  } 
 
- if (arid.indexOf(id)<0) {arid.push(id);}        
- localStorage.setItem('zakaz',arid.join(','));
+  var arid = new Array();
+  var sz="";
 
- var zn=document.getElementById(id).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
+  sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")){ arid = sz.split(','); }
 
- localStorage.setItem(id,zn);
- localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
- schet(id);
-}
-
-function cDel(id) {
- if (typeof(Storage) !== "undefined") {
-
-    if (localStorage.getItem('id') != "") {
-
-	localStorage.setItem(id,'');
-	document.getElementById(id).value = "";
-
-	var arid = new Array();
-	var sz=localStorage.getItem('zakaz');
-
-	if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-	var ind=arid.indexOf(id);
-	if (ind>=0) {arid.splice(ind, 1);}         
-
-	localStorage.setItem('zakaz',arid.join(','));
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
     }
- }
+  }
+
  schet(id);
+ } else {alert('Sorry! No Web Storage support..')}
 }
+
 
 function GetZoom(id) {
   im=document.getElementById(id);
@@ -100,19 +90,19 @@ function fun1(id){
   document.getElementById(id).style="color: #000;"
 }
 
+
 </script></head>
 
 
 <body> 
-<div class="dpc w100w"><div class="header">Delava - канзаши товары
+<div class="dpc w100w"><div class="header"><a class="hw" href=".././index.html">Delava - канзаши товары</a>
         <input class="nav-m_cb" type="checkbox" id="m1">
         <label class="nav-m" for="m1">Меню</label>
         <nav class="nav">
             <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
             <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
-            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
             <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
-            <a class="nav__item" href="zakaz.htm">ВАШ ЗАКАЗ</a>
+            <a class="nav__item" href="zakaz1.htm">ВАШ ЗАКАЗ</a>
         </nav>
 </div></div>
 
@@ -120,11 +110,11 @@ function fun1(id){
 <div class="w100">
 <!--DB-->
 <div class="w100">
-<div class="w33"><div class="bl"></div></div>
-<div class="w33"><form action="lichniy_33.htm"><button type="submit" class="bc">альбом</button></form></div>
-<div class="w33"><form action="4689.htm"><button type="submit" class="br">следующая</button></form></div>
+<div class="w33"><form action="3134.htm"><button type="submit" class="bl">предыдущая</button></form></div>
+<div class="w33"><form action="fom_33.htm"><button type="submit" class="bc">альбом</button></form></div>
+<div class="w33"><form action="3138.htm"><button type="submit" class="br">следующая</button></form></div>
 </div>
-<div class="ix"><a href="/nojs.htm" target="_blank" onclick="GetZoom('3136');return false" ><img id="3136" src=".././img/360/3136.jpg"></a></div></div>
+<div class="ix"><a href="/nojs.htm" target="_blank" onclick="GetZoom('3136');return false" ><img id="3136" src=".././img/360/3136.jpg"></a></div>
 <p id="tr3136">Код: 3136 Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
 <div id="dr3136" class="r" style="display:none;">.</div>
 <div class="w100">
@@ -132,13 +122,23 @@ function fun1(id){
 </div>
 <div>
 <div class="w100">
-<div class="w33"><button onclick="cSave('r3136')" type="button" id="bar3136" class="bl">ДОБАВИТЬ</button></div>
-<div class="w33"><form action="zakaz.htm"><button type="submit" class="bc">ВАШ ЗАКАЗ</button></form></div>
-<div class="w33"><button onclick="cDel('r3136')" type="button" id="bdr3136"class="br" style="display:none;">УДАЛИТЬ</button></div>
+<div class="w50"><button onclick="cSave('r3136')" type="button" id="bar3136" class="bl">ДОБАВИТЬ</button></div>
+<div class="w50"><form action="zakaz1.htm"><button type="submit" class="br">ВАШ ЗАКАЗ</button></form></div>
 <script>schet('r3136');</script>
 </div>
+<hr>ФОАМИРАН, ЭКО-КОЖА, ФЕТР (3 из 61)<hr>
 </div></div>
 
+
+
+<script>
+ var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
+ var p = window.location['pathname'].split('/');
+ var xhr=new XMLHttpRequest();
+ var st='https://delava.000webhostapp.com/st2.php?ist='+p[p.length - 1]+'&idz='+sidz;
+ xhr.open('GET', st, true);
+ xhr.send();
+</script>
 
 
 </body></html>

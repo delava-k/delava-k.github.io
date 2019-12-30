@@ -6,10 +6,11 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
+
 function schet(){
+ if (typeof(Storage) !== "undefined"){ 
  var v="";
  var id;
  var ei = document.querySelectorAll('input');
@@ -31,9 +32,6 @@ function schet(){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
 
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}*/
-
   } else //пустое значение для Код
   {
 	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
@@ -44,55 +42,46 @@ function schet(){
 
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-	
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
-  } 	
+  }
  }//цикл
-
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
 function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+ var zn=document.getElementById(id).value;
+ if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+ }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ } 
+
  var arid = new Array();
  var sz="";
 
- if (typeof(Storage) !== "undefined"){
-	sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")){arid = sz.split(',');}
- }
+ sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")){arid = sz.split(',');}
 
- if (arid.indexOf(id)<0) {arid.push(id);}        
- localStorage.setItem('zakaz',arid.join(','));
-
- var zn=document.getElementById(id).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
-
- localStorage.setItem(id,zn);
- localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
- 
- schet();
-}
-
-
-/*
-function cDel(id) {
- if (typeof(Storage) !== "undefined") 
- {
-  var arid = new Array();
-  var sz=localStorage.getItem('zakaz');
-  if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-  if (localStorage.getItem('id') != "") {
-      localStorage.removeItem(id);
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
   }
-  var ind=arid.indexOf(id);
-  if (ind>=0) {arid.splice(ind, 1);}
-  localStorage.setItem('zakaz',arid.join(','));
- }
+
  schet();
+ } else {alert('Sorry! No Web Storage support..')}
 }
-*/
+
 
 function fun1(id){
   if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
@@ -442,13 +431,6 @@ function fun1(id){
 <button onclick="cSave('r4362')" type="button" id="bar4362" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar4362" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="d1"><div class="d1"><div class="l92">
-<a href="4401.htm"><img src=".././img/120/4401.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr4401">Код: 4401 Репс с рисунком 2.5см - 3.95 грн/м</p>
-<div id="dr4401" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4401" class="w95 c1" onclick="fun1('r4401')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r4401')" type="button" id="bar4401" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar4401" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
 <a href="4460.htm"><img src=".././img/120/4460.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr4460">Код: 4460 Репс с рисунком 2.5см - 3.95 грн/м</p>
 <div id="dr4460" class="r" style="display:none;">.</div>
@@ -609,6 +591,13 @@ function fun1(id){
 <input type="text" style="color: #BBBBBB;" id="r4730" class="w95 c1" onclick="fun1('r4730')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4730')" type="button" id="bar4730" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar4730" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="2357.htm"><img src=".././img/120/2357.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr2357">Код: 2357 Репс с рисунком 2.5 см - 8.25 грн/м</p>
+<div id="dr2357" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r2357" class="w95 c1" onclick="fun1('r2357')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r2357')" type="button" id="bar2357" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar2357" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="w100"><hr>
 <div class="w33"><form action="fatin_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>

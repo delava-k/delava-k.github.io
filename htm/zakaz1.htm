@@ -10,7 +10,7 @@
 
 
 function st2(ist) {
-
+ if (typeof(Storage) !== "undefined"){ 
  var sidz=localStorage.getItem('idz');
  if ((sidz === null) || (sidz == "")) {
   var sidz=Date.now();
@@ -38,11 +38,24 @@ function st2(ist) {
  var st='https://delava.000webhostapp.com/st2.php?ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent(arid.join('|'))+'&com='+encodeURIComponent(arco.join('|'));
  xhr.open('GET', st, true);
  xhr.send();
+
+ } else {
+  var sidz='100';
+  var prim=screen.availWidth+' * '+screen.availHeight+' / '+screen.width+' * '+screen.height+' ('+navigator.platform+')';
+  var xhr=new XMLHttpRequest();
+  var st='https://delava.000webhostapp.com/st2.php?ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent('error Storage')+'&com='+encodeURIComponent('error Storage');
+  xhr.open('GET', st, true);
+  xhr.send();
+  alert('Sorry! No Web Storage support..')
+ }
+
 }
 
 
 
 function cCopy() {//кнопка копирования в буфер всего заказа, если более 500 нужно вызвать отдельную большую форму, если менее, тосразу копируем
+ if (typeof(Storage) !== "undefined"){ 
+
  var h=1;
  var tmp="";
 
@@ -69,6 +82,7 @@ function cCopy() {//кнопка копирования в буфер всего
 	  copyText.select();
 	  document.execCommand("Copy");
 	}
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
@@ -78,6 +92,7 @@ function cCopy() {//кнопка копирования в буфер всего
 
 
 function GetSchet() {
+ if (typeof(Storage) !== "undefined"){ 
  var z="";
  var arid = new Array();
  var sz=localStorage.getItem('zakaz');
@@ -93,6 +108,7 @@ function GetSchet() {
   if ((vr != null) && (vr != "")) {z=z+arid[j].slice(1)+"-"+vr+"\n";}
  }
  document.getElementById('z').innerHTML = z;
+
 
 
  for (var i = 0; i < 100; i++) 
@@ -120,28 +136,35 @@ function GetSchet() {
 /* 100/200 */                  
  if (arid.length>=100) {document.getElementById('zak_next').style="display:auto";}
 
+
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
 
 function cS(i) {
- if (typeof(Storage) !== "undefined") 
- {
+ if (typeof(Storage) !== "undefined"){ 
+
   var arid = new Array();
   var sz=localStorage.getItem('zakaz');
   if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
 
 
- var zn=document.getElementById('r'+i).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
- localStorage.setItem(arid[i], zn);//в заказе коды постоянные, меняется только в LS значения по ним
- if (zn==""){
+  var zn=document.getElementById('r'+i).value;
+  if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(arid[i]);
+  }else{
+    localStorage.setItem(arid[i],zn); //в заказе коды постоянные, меняется только в LS значения по ним
+  }
+
+  if (zn==""){
 	arid.splice(i, 1);
 	localStorage.setItem('zakaz',arid.join(','));
- }
+  }
 
- }
-GetSchet();
+ GetSchet();
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
@@ -162,10 +185,11 @@ function cD(i) {
       localStorage.removeItem(arid[i]);
   }
 
-  arid.splice(i, 1);//удаляем и-тый из заказка
+  arid.splice(i, 1);//удаляем и-тый из заказа
   localStorage.setItem('zakaz',arid.join(','));
- }
-GetSchet();//перечитали все элементы
+
+ GetSchet();//перечитали все элементы
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 

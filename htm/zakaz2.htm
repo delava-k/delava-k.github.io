@@ -143,10 +143,6 @@ function GetSchet() {
 function cS(i) {
  if (typeof(Storage) !== "undefined") 
  {
-  var arid = new Array();
-  var sz=localStorage.getItem('zakaz');
-  if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
-
 
  var zn=document.getElementById('r'+i).value;
  if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
@@ -155,6 +151,13 @@ function cS(i) {
 	arid.splice(i+100, 1);
 	localStorage.setItem('zakaz',arid.join(','));
  }
+
+  var arid = new Array();
+  var sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
+
+
+
 
  }
 GetSchet();

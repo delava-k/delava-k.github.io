@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+
+<script>
+
+function cCopy() {
+  var copyText = document.getElementById("z");
+  copyText.select();
+  document.execCommand("Copy");
+/*  alert ("Заказ в буфере обмена");*/
+}
+
+
+function GetSchet() {
+ var z="";
+ var arid = new Array();
+ var sz=localStorage.getItem('zakaz');
+
+ if ((sz != null) && (sz != "")) { arid = sz.split(',');} 
+
+ document.getElementById("z").rows=arid.length+1;
+
+
+ for (var j = 0; j < arid.length ; j++)
+ {
+  vr=localStorage.getItem(arid[j]);
+  if ((vr != null) && (vr != "")) {z=z+arid[j].slice(1)+"-"+vr+"\n";}
+ }
+ document.getElementById('z').innerHTML = z;
+
+
+ for (var i = 0; i < 100; i++) 
+ {
+  vr=localStorage.getItem(arid[i]);
+/*  localStorage.SetItem("z"+i,arid[i]);//сохраняем id итый */
+  if ((vr != null) && (vr != "")) 
+  { 
+     var im=document.getElementById("i"+i);
+     im.src = ".././img/120/"+arid[i].slice(1)+".jpg";
+
+     var am=document.getElementById("a"+i);
+     am.href = arid[i].slice(1)+".htm";
+
+	document.getElementById("d"+i).style="display:auto";
+	document.getElementById("dr"+i).innerHTML = localStorage.getItem(arid[i]);
+	document.getElementById("r"+i).value = localStorage.getItem(arid[i]);
+	document.getElementById("k"+i).innerHTML = "Код: "+arid[i].slice(1);
+	document.getElementById("t"+i).innerHTML = localStorage.getItem('t'+arid[i]);
+
+  }else{
+	document.getElementById("d"+i).style="display:none";
+  }
+
+
+ }
+
+}
+
+
+
+function cSave(i) {
+ if (typeof(Storage) !== "undefined") 
+ {
+  var arid = new Array();
+  var sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
+
+
+ var zn=document.getElementById('r'+i).value;
+ if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
+ localStorage.setItem(arid[i], zn);//в заказе коды постоянные, меняется только в LS значения по ним
+ if (zn==""){
+	arid.splice(i, 1);
+	localStorage.setItem('zakaz',arid.join(','));
+ }
+
+ }
+GetSchet();
+}
+
+
+function cDel(i) {
+ if (typeof(Storage) !== "undefined") 
+ {
+
+  var arid = new Array();
+  var sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
+
+
+  if (localStorage.getItem(arid[i]) != "") {
+      localStorage.removeItem(arid[i]);
+  }
+
+  arid.splice(i, 1);
+  localStorage.setItem('zakaz',arid.join(','));
+ }
+GetSchet();
+}
+
+</script>
+
+
+
+</head>
+<body> 
+
+<div class="w100">
+
+<div class="dpc w100w"><div class="header">ВАШ ЗАКАЗ
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href="oplata_dostavka.htm">ОПЛАТА и ДОСТАВКА</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+        </nav>
+</div></div>
+
+
+
+
+<div>
+<div class="w33"><button onclick="cCopy()" type="button" class="bl">Копировать</button></div>
+<div class="w33"><button onclick="javascript:history.back(3)" type="button" class="bc">Назад</button></div>
+<div class="w33"><form action="deletezakaz.htm"><button type="submit" class="br">Удалить все</button></form></div>
+</div>
+
+<hr><div>
+<p style="font-size: 12px;color: #BBBBBB;">Нажмите Копировать и Вставить в директ. Подробнее тут - <a href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>.</p>
+</div>
+
+<textarea id="z"  rows=3 readonly style="width:98%;padding:0px"></textarea> 
+
+
+
+
+<div id="d0" class="d1" style="display:none">
+<div class="d1b">
+<div class="l92">
+	<a href="#" id="a0"><img id="i0" src=".././img/sp.gif" class="wh89"></a>
+</div>
+
+<div class="r70">
+<p id="k0">kod</p> 
+<p id="t0">txt</p> 
+<div id="dr0" class="r">.</div>
+<input type="text" id="r0" class="w95">
+
+<div class="w100">
+	<button onclick="cSave('0')" type="button" id="bar0" class="bl">ИЗМЕНИТЬ</button>
+	<button onclick="cDel('0')" type="button" id="bdr0" class="br">УДАЛИТЬ</button>
+</div>
+</div>
+
+</div>
+<br><hr>
+</div>
+
+
+
+
+<div id="d1" class="d1" style="display:none">
+<div class="d1b">
+<div class="l92">
+	<a href="#" id="a1"><img id="i1" src=".././img/sp.gif" class="wh89"></a>
+</div>
+
+<div class="r70">
+<p id="k1">kod</p> 
+<p id="t1">txt</p> 
+<div id="dr1" class="r">.</div>
+<input type="text" id="r1" class="w95">
+
+<div class="w100">
+	<button onclick="cSave('1')" type="button" id="bar1" class="bl">ИЗМЕНИТЬ</button>
+	<button onclick="cDel('1')" type="button" id="bdr1" class="br">УДАЛИТЬ</button>
+</div>
+</div>
+
+</div>
+<br><hr>
+</div>
+
+
+
+
+<div id="d2" class="d1" style="display:none">
+<div class="d1b">
+<div class="l92">
+	<a href="#" id="a2"><img id="i2" src=".././img/sp.gif" class="wh89"></a>
+</div>
+
+<div class="r70">
+<p id="k2">kod</p> 
+<p id="t2">txt</p> 
+<div id="dr2" class="r">.</div>
+<input type="text" id="r2" class="w95">
+
+<div class="w100">
+	<button onclick="cSave('2')" type="button" id="bar2" class="bl">ИЗМЕНИТЬ</button>
+	<button onclick="cDel('2')" type="button" id="bdr2" class="br">УДАЛИТЬ</button>
+</div>
+</div>
+
+</div>
+<br><hr>
+</div>
+
+
+
+
+<div id="d3" class="d1" style="display:none">
+<div class="d1b">
+<div class="l92">
+	<a href="#" id="a3"><img id="i3" src=".././img/sp.gif" class="wh89"></a>
+</div>
+
+<div class="r70">
+<p id="k3">kod</p> 
+<p id="t3">txt</p> 
+<div id="dr3" class="r">.</div>
+<input type="text" id="r3" class="w95">
+
+<div class="w100">
+	<button onclick="cSave('3')" type="button" id="bar3" class="bl">ИЗМЕНИТЬ</button>
+	<button onclick="cDel('3')" type="button" id="bdr3" class="br">УДАЛИТЬ</button>
+</div>
+</div>
+
+</div>
+<br><hr>
+</div>
+
+
+
+
+<div id="d4" class="d1" style="display:none">
+<div class="d1b">
+<div class="l92">
+	<a href="#" id="a4"><img id="i4" src=".././img/sp.gif" class="wh89"></a>
+</div>
+
+<div class="r70">
+<p id="k4">kod</p> 
+<p id="t4">txt</p> 
+<div id="dr4" class="r">.</div>
+<input type="text" id="r4" class="w95">
+
+<div class="w100">
+	<button onclick="cSave('4')" type="button" id="bar4" class="bl">ИЗМЕНИТЬ</button>
+	<button onclick="cDel('4')" type="button" id="bdr4" class="br">УДАЛИТЬ</button>
+</div>
+</div>
+
+</div>
+<br><hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="d5" style="display:none">
+<div style="display:block; width:100%;float:left;max-width:1080px;">
+
+<div style="
+	float:left;
+        width:92px;">
+
+<a href="3035.htm" id="a5"><img id="i5" src=".././img/120/3035.jpg" style="width:89px;height:89px;"></a>
+</div>
+
+	<div  style="display:block; width:70%;float:left;">
+
+	<p id="k5"> </p>
+	<p id="t5"> </p>
+	<div id="dr5" class="r">.</div><br>
+	<input type="text" id="r5" class="w95"><br>
+
+<div style="
+	float:left;
+        width:100%;
+        position:relative;
+	overflow: hidden;" >
+<button onclick="cSave('5')" type="button" id="bar5" class="bl">ДОБАВИТЬ</button>
+<button onclick="cDel('5')" type="button" id="bdr5" class="br">УДАЛИТЬ</button>
+</div>
+
+	</div>
+</div>
+<br><hr>
+</div>
+
+
+
+
+
+
+<script>
+	GetSchet();
+</script>
+        
+</body></html>

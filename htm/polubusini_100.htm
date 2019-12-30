@@ -6,10 +6,11 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
+
 function schet(){
+ if (typeof(Storage) !== "undefined"){ 
  var v="";
  var id;
  var ei = document.querySelectorAll('input');
@@ -31,9 +32,6 @@ function schet(){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
 
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}*/
-
   } else //пустое значение для Код
   {
 	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
@@ -44,55 +42,46 @@ function schet(){
 
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-	
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
-  } 	
+  }
  }//цикл
-
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
 function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+ var zn=document.getElementById(id).value;
+ if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+ }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ } 
+
  var arid = new Array();
  var sz="";
 
- if (typeof(Storage) !== "undefined"){
-	sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")){arid = sz.split(',');}
- }
+ sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")){arid = sz.split(',');}
 
- if (arid.indexOf(id)<0) {arid.push(id);}        
- localStorage.setItem('zakaz',arid.join(','));
-
- var zn=document.getElementById(id).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
-
- localStorage.setItem(id,zn);
- localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
- 
- schet();
-}
-
-
-/*
-function cDel(id) {
- if (typeof(Storage) !== "undefined") 
- {
-  var arid = new Array();
-  var sz=localStorage.getItem('zakaz');
-  if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-  if (localStorage.getItem('id') != "") {
-      localStorage.removeItem(id);
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
   }
-  var ind=arid.indexOf(id);
-  if (ind>=0) {arid.splice(ind, 1);}
-  localStorage.setItem('zakaz',arid.join(','));
- }
+
  schet();
+ } else {alert('Sorry! No Web Storage support..')}
 }
-*/
+
 
 function fun1(id){
   if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
@@ -125,7 +114,7 @@ function fun1(id){
 <div class="w33"><form action="strazi_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
 <div class="w33"><form action="kabashoni_100.htm"><button type="submit" class="br">следующий</button></form></div>
-</div><hr>Полубусины, Бусины, Жемчуг (74)<hr>
+</div><hr>Полубусины, Бусины, Жемчуг (79)<hr>
 <div class="d1"><div class="d1"><div class="l92">
 <a href="156.htm"><img src=".././img/120/156.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr156">Код: 156 Набор полубусин 8 мм (110 штук) - 9.00грн<br>6 мм. (110 штук) - 6.00 грн/уп.</p>
@@ -357,13 +346,6 @@ function fun1(id){
 <input type="text" style="color: #BBBBBB;" id="r4767" class="w95 c1" onclick="fun1('r4767')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4767')" type="button" id="bar4767" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar4767" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="4768.htm"><img src=".././img/120/4768.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr4768">Код: 4768 Бусина Рондель хамелеон 6мм - 0.20 грн/шт.<br>- 8.95 грн/уп (в упаковке 50 штук)</p>
-<div id="dr4768" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4768" class="w95 c1" onclick="fun1('r4768')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r4768')" type="button" id="bar4768" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar4768" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="d1"><div class="d1"><div class="l92">
 <a href="3108.htm"><img src=".././img/120/3108.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr3108">Код: 3108 Полубусина 3мм (100 штук) - 3.75 грн/уп.</p>
@@ -644,6 +626,48 @@ function fun1(id){
 <input type="text" style="color: #BBBBBB;" id="r913" class="w95 c1" onclick="fun1('r913')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r913')" type="button" id="bar913" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar913" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3025.htm"><img src=".././img/120/3025.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3025">Код: 3025 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
+<div id="dr3025" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3025" class="w95 c1" onclick="fun1('r3025')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3025')" type="button" id="bar3025" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3025" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3026.htm"><img src=".././img/120/3026.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3026">Код: 3026 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
+<div id="dr3026" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3026" class="w95 c1" onclick="fun1('r3026')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3026')" type="button" id="bar3026" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3026" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="2321.htm"><img src=".././img/120/2321.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr2321">Код: 2321 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
+<div id="dr2321" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r2321" class="w95 c1" onclick="fun1('r2321')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r2321')" type="button" id="bar2321" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar2321" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="2325.htm"><img src=".././img/120/2325.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr2325">Код: 2325 Бусы на нити <br>1.3 м - 7.95 грн/шт.<br>2.7 м - 15.50 грн/шт.</p>
+<div id="dr2325" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r2325" class="w95 c1" onclick="fun1('r2325')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r2325')" type="button" id="bar2325" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar2325" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4487.htm"><img src=".././img/120/4487.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4487">Код: 4487 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
+<div id="dr4487" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4487" class="w95 c1" onclick="fun1('r4487')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4487')" type="button" id="bar4487" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4487" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4488.htm"><img src=".././img/120/4488.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4488">Код: 4488 Бусы на нити <br>1.3 м - 7.95 грн/шт.<br>2.7 м - 15.50 грн/шт.</p>
+<div id="dr4488" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4488" class="w95 c1" onclick="fun1('r4488')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4488')" type="button" id="bar4488" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4488" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="w100"><hr>
 <div class="w33"><form action="strazi_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>

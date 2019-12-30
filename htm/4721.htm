@@ -6,10 +6,12 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
+
 function schet(id){
+ if (typeof(Storage) !== "undefined"){ 
+
  var vr=localStorage.getItem(id);
  var ei=document.getElementById(id);
 
@@ -24,11 +26,7 @@ function schet(id){
         ei.style="color: #000;";
 
 	var ba=document.getElementById('ba'+id);
-	if (ba != null) {document.getElementById('ba'+id).innerHTML="ИЗМЕНИТЬ";}	
-
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style="display:block;"}*/
-
+	if (ba != null) {document.getElementById('ba'+id).innerHTML="ИЗМЕНИТЬ";}
   } else 
   {
 	var er=document.getElementById('d'+id);
@@ -40,56 +38,45 @@ function schet(id){
 
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
-  } 	
+  }
  }//нет поля
-
+ } else {alert('Sorry! No Web Storage support..')}
 }
+
 
 function cSave(id) {
- var arid = new Array();
- var sz="";
+ if (typeof(Storage) !== "undefined"){ 
 
- if (typeof(Storage) !== "undefined"){
-	sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")){arid = sz.split(',');}
- }
+  var zn=document.getElementById(id).value;
+  if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+  }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+  } 
 
- if (arid.indexOf(id)<0) {arid.push(id);}        
- localStorage.setItem('zakaz',arid.join(','));
+  var arid = new Array();
+  var sz="";
 
- var zn=document.getElementById(id).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
+  sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")){ arid = sz.split(','); }
 
- localStorage.setItem(id,zn);
- localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
- schet(id);
-}
-/*
-function cDel(id) {
- if (typeof(Storage) !== "undefined") {
-
-    if (localStorage.getItem('id') != "") {
-
-	localStorage.setItem(id,'');
-	document.getElementById(id).value = "";
-
-	var arid = new Array();
-	var sz=localStorage.getItem('zakaz');
-
-	if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-	var ind=arid.indexOf(id);
-	if (ind>=0) {arid.splice(ind, 1);}         
-
-	localStorage.setItem('zakaz',arid.join(','));
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
     }
- }
+  }
+
  schet(id);
+ } else {alert('Sorry! No Web Storage support..')}
 }
-*/
 
 
 function GetZoom(id) {
@@ -102,6 +89,7 @@ function fun1(id){
 	document.getElementById(id).value = "";}
   document.getElementById(id).style="color: #000;"
 }
+
 
 </script></head>
 
@@ -138,7 +126,7 @@ function fun1(id){
 <div class="w50"><form action="zakaz1.htm"><button type="submit" class="br">ВАШ ЗАКАЗ</button></form></div>
 <script>schet('r4721');</script>
 </div>
-<hr>ФОАМИРАН, ЭКО-КОЖА, ФЕТР (24 из 58)<hr>
+<hr>ФОАМИРАН, ЭКО-КОЖА, ФЕТР (26 из 61)<hr>
 </div></div>
 
 

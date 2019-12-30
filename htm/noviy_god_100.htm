@@ -6,10 +6,11 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
+
 function schet(){
+ if (typeof(Storage) !== "undefined"){ 
  var v="";
  var id;
  var ei = document.querySelectorAll('input');
@@ -31,9 +32,6 @@ function schet(){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
 
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}*/
-
   } else //пустое значение для Код
   {
 	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
@@ -44,55 +42,46 @@ function schet(){
 
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-	
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
-  } 	
+  }
  }//цикл
-
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
 function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+ var zn=document.getElementById(id).value;
+ if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+ }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ } 
+
  var arid = new Array();
  var sz="";
 
- if (typeof(Storage) !== "undefined"){
-	sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")){arid = sz.split(',');}
- }
+ sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")){arid = sz.split(',');}
 
- if (arid.indexOf(id)<0) {arid.push(id);}        
- localStorage.setItem('zakaz',arid.join(','));
-
- var zn=document.getElementById(id).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
-
- localStorage.setItem(id,zn);
- localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
- 
- schet();
-}
-
-
-/*
-function cDel(id) {
- if (typeof(Storage) !== "undefined") 
- {
-  var arid = new Array();
-  var sz=localStorage.getItem('zakaz');
-  if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-  if (localStorage.getItem('id') != "") {
-      localStorage.removeItem(id);
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
   }
-  var ind=arid.indexOf(id);
-  if (ind>=0) {arid.splice(ind, 1);}
-  localStorage.setItem('zakaz',arid.join(','));
- }
+
  schet();
+ } else {alert('Sorry! No Web Storage support..')}
 }
-*/
+
 
 function fun1(id){
   if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
@@ -122,10 +111,10 @@ function fun1(id){
 <section id="content" class="w100">
 <!--DB-->
 <div class="w100">
-<div class="w33"><form action="novinki_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
+<div class="w33"><form action="ogranichenoe_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
-<div class="w33"><form action="atlas_100.htm"><button type="submit" class="br">следующий</button></form></div>
-</div><hr>НОВЫЙ ГОД (57)<hr>
+<div class="w33"><div class="bl"></div></div>
+</div><hr>НОВЫЙ ГОД (35)<hr>
 <div class="d1"><div class="d1"><div class="l92">
 <a href="3033.htm"><img src=".././img/120/3033.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr3033">Код: 3033 Венок 40 см (вогнутый) - 25.50 грн/шт.</p>
@@ -197,34 +186,6 @@ function fun1(id){
 <button onclick="cSave('r878')" type="button" id="bar878" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar878" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="d1"><div class="d1"><div class="l92">
-<a href="2932.htm"><img src=".././img/120/2932.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2932">Код: 2932 Пенопластовый конус 20 см - 11.55 грн/шт.</p>
-<div id="dr2932" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2932" class="w95 c1" onclick="fun1('r2932')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2932')" type="button" id="bar2932" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2932" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="2933.htm"><img src=".././img/120/2933.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2933">Код: 2933 Пенопластовый шар <br>10см-10.50грн/шт<br>7см - 9.00 грн/шт.<br>5см - 4.95 грн/шт<br>3см - 2.75 грн/шт.</p>
-<div id="dr2933" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2933" class="w95 c1" onclick="fun1('r2933')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2933')" type="button" id="bar2933" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2933" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="2934.htm"><img src=".././img/120/2934.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2934">Код: 2934 Пенопластовая шишка 8.5см - 2.95 грн/шт.</p>
-<div id="dr2934" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2934" class="w95 c1" onclick="fun1('r2934')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2934')" type="button" id="bar2934" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2934" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="2931.htm"><img src=".././img/120/2931.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2931">Код: 2931 Пенопластовый колокольчик 6.5см - 3.50 грн/шт.</p>
-<div id="dr2931" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2931" class="w95 c1" onclick="fun1('r2931')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2931')" type="button" id="bar2931" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2931" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
 <a href="2317.htm"><img src=".././img/120/2317.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr2317">Код: 2317 Серединка Елочка 2см - 1.95 грн/шт.</p>
 <div id="dr2317" class="r" style="display:none;">.</div>
@@ -266,13 +227,6 @@ function fun1(id){
 <input type="text" style="color: #BBBBBB;" id="r4409" class="w95 c1" onclick="fun1('r4409')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4409')" type="button" id="bar4409" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar4409" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="3054.htm"><img src=".././img/120/3054.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr3054">Код: 3054 Снежинка ЭКО-кожа 22мм - 0.75 грн/шт.</p>
-<div id="dr3054" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r3054" class="w95 c1" onclick="fun1('r3054')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r3054')" type="button" id="bar3054" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar3054" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="d1"><div class="d1"><div class="l92">
 <a href="4321.htm"><img src=".././img/120/4321.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr4321">Код: 4321 Пайетка снежинка голография (50 штук)17 мм - 3.00 грн/уп.</p>
@@ -406,129 +360,10 @@ function fun1(id){
 <input type="text" style="color: #BBBBBB;" id="r4374" class="w95 c1" onclick="fun1('r4374')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4374')" type="button" id="bar4374" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar4374" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="3058.htm"><img src=".././img/120/3058.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr3058">Код: 3058 Помпон с люриксом микс 10мм (50 штук) - 9.75 грн/уп</p>
-<div id="dr3058" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r3058" class="w95 c1" onclick="fun1('r3058')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r3058')" type="button" id="bar3058" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar3058" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="929.htm"><img src=".././img/120/929.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr929">Код: 929 Помпоны маленькие, диаметр - 1,5 см. - 0.25 грн/шт</p>
-<div id="dr929" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r929" class="w95 c1" onclick="fun1('r929')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r929')" type="button" id="bar929" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar929" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="2902.htm"><img src=".././img/120/2902.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2902">Код: 2902 Помпоны маленькие, диаметр - 1,5 см. - 0.25 грн/шт</p>
-<div id="dr2902" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2902" class="w95 c1" onclick="fun1('r2902')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2902')" type="button" id="bar2902" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2902" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="1080.htm"><img src=".././img/120/1080.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr1080">Код: 1080 Помпоны маленькие, диаметр - 2 см. - 0.30 грн/шт</p>
-<div id="dr1080" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r1080" class="w95 c1" onclick="fun1('r1080')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r1080')" type="button" id="bar1080" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar1080" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="862.htm"><img src=".././img/120/862.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr862">Код: 862 Помпоны маленькие, диаметр - 2 см. - 0.30 грн/шт</p>
-<div id="dr862" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r862" class="w95 c1" onclick="fun1('r862')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r862')" type="button" id="bar862" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar862" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="4691.htm"><img src=".././img/120/4691.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr4691">Код: 4691 Помпоны маленькие, диаметр - 1 см. - 0.18 грн/шт.</p>
-<div id="dr4691" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4691" class="w95 c1" onclick="fun1('r4691')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r4691')" type="button" id="bar4691" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar4691" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="1335.htm"><img src=".././img/120/1335.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr1335">Код: 1335 Помпоны маленькие, диаметр - 1 см. - 0.18 грн/шт</p>
-<div id="dr1335" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r1335" class="w95 c1" onclick="fun1('r1335')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r1335')" type="button" id="bar1335" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar1335" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="2968.htm"><img src=".././img/120/2968.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2968">Код: 2968 Набор помпонов микс(диаметр 1 см, 50 штук) - 8.75 грн/уп</p>
-<div id="dr2968" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2968" class="w95 c1" onclick="fun1('r2968')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2968')" type="button" id="bar2968" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2968" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="3040.htm"><img src=".././img/120/3040.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr3040">Код: 3040 Бархатная палочка (Диаметр 5 мм, длина палочки 30 см) - 0.60 грн/шт</p>
-<div id="dr3040" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r3040" class="w95 c1" onclick="fun1('r3040')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r3040')" type="button" id="bar3040" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar3040" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="262.htm"><img src=".././img/120/262.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr262">Код: 262 Бархатная палочка (Диаметр 5 мм, длина палочки 30 см) - 0.60 грн/шт.<br>ЕСТЬ ЕЩЕ ЧЕРНЫЕ И КОРИЧНЕВЫЕ</p>
-<div id="dr262" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r262" class="w95 c1" onclick="fun1('r262')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r262')" type="button" id="bar262" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar262" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="982.htm"><img src=".././img/120/982.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr982">Код: 982 Новогодняя палочка (Диаметр 5 мм, длина палочки 30 см) - 0.60 грн/шт.<br>ЕЩЕ ЕСТЬ СЕРЕБРО</p>
-<div id="dr982" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r982" class="w95 c1" onclick="fun1('r982')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r982')" type="button" id="bar982" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar982" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="3025.htm"><img src=".././img/120/3025.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr3025">Код: 3025 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
-<div id="dr3025" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r3025" class="w95 c1" onclick="fun1('r3025')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r3025')" type="button" id="bar3025" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar3025" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="3026.htm"><img src=".././img/120/3026.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr3026">Код: 3026 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
-<div id="dr3026" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r3026" class="w95 c1" onclick="fun1('r3026')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r3026')" type="button" id="bar3026" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar3026" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="2321.htm"><img src=".././img/120/2321.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2321">Код: 2321 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
-<div id="dr2321" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2321" class="w95 c1" onclick="fun1('r2321')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2321')" type="button" id="bar2321" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2321" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="2325.htm"><img src=".././img/120/2325.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr2325">Код: 2325 Бусы на нити <br>1.3 м - 7.95 грн/шт.<br>2.7 м - 15.50 грн/шт.</p>
-<div id="dr2325" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r2325" class="w95 c1" onclick="fun1('r2325')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r2325')" type="button" id="bar2325" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar2325" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="4487.htm"><img src=".././img/120/4487.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr4487">Код: 4487 Бусы на нити <br>1.3 м - 8.95 грн/шт.<br>2.7 м - 16.50 грн/шт.</p>
-<div id="dr4487" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4487" class="w95 c1" onclick="fun1('r4487')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r4487')" type="button" id="bar4487" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar4487" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="4488.htm"><img src=".././img/120/4488.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr4488">Код: 4488 Бусы на нити <br>1.3 м - 7.95 грн/шт.<br>2.7 м - 15.50 грн/шт.</p>
-<div id="dr4488" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4488" class="w95 c1" onclick="fun1('r4488')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r4488')" type="button" id="bar4488" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar4488" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="w100"><hr>
-<div class="w33"><form action="novinki_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
+<div class="w33"><form action="ogranichenoe_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
-<div class="w33"><form action="atlas_100.htm"><button type="submit" class="br">следующий</button></form></div>
+<div class="w33"><div class="bl"></div></div>
 </div><hr>
 <div class="w100"><div class="w33"><div class="bl"></div></div>
 <div class="w33"><form action="noviy_god_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>

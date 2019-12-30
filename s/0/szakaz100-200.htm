@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+<script>
+
+
+function cCopy() {//кнопка копирования в буфер всего заказа, если более 500 нужно вызвать отдельную большую форму, если менее, тосразу копируем
+ var h=1;
+ var tmp="";
+
+ var arid = new Array();
+ var sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")) { arid = sz.split(',');} 
+
+ for (var j = 0; j < arid.length; j++)
+ {
+  vr=localStorage.getItem(arid[j]);
+  if ((vr != null) && (vr != "")) {	
+	tmp=tmp+arid[j].slice(1)+"-"+vr+"\n";
+        h=h+1;
+  }
+ }
+	if (tmp.length>=500-h){//если более 500 в счете, то отдельная форма для нескольких частей
+	 document.location.href = "zakaz_big.htm";
+	}
+	else{ 
+	  var copyText = document.getElementById("z");
+	  copyText.select();
+	  document.execCommand("Copy");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function GetSchet() {
+ var z="";
+ var arid = new Array();
+ var sz=localStorage.getItem('zakaz');
+
+ if ((sz != null) && (sz != "")) { arid = sz.split(',');} 
+
+ document.getElementById("z").rows=arid.length+1;
+
+
+ for (var j = 0; j < arid.length ; j++) //В массив заказа и текстовый заказ все позиции, а дивы только по 100
+ {
+  vr=localStorage.getItem(arid[j]);
+  if ((vr != null) && (vr != "")) {z=z+arid[j].slice(1)+"-"+vr+"\n";}
+ }
+ document.getElementById('z').innerHTML = z;
+
+
+ //@200
+ for (var i = 0; i < 100; i++) 
+ {
+  vr=localStorage.getItem(arid[i+100]);
+  if ((vr != null) && (vr != "")) 
+  { 
+     var im=document.getElementById("i"+i);
+     im.src = ".././img/120/"+arid[i+100].slice(1)+".jpg";
+
+     var am=document.getElementById("a"+i);
+     am.href = arid[i+100].slice(1)+".htm";
+
+	document.getElementById("d"+i).style="display:auto";
+	document.getElementById("dr"+i).innerHTML = localStorage.getItem(arid[i+100]);
+	document.getElementById("r"+i).value = localStorage.getItem(arid[i+100]);
+/*	document.getElementById("k"+i).innerHTML = "Код: "+arid[i+100].slice(1);*/
+	document.getElementById("t"+i).innerHTML = localStorage.getItem('t'+arid[i+100]);
+
+  }else{
+	document.getElementById("d"+i).style="display:none";
+  }
+ }
+
+/* 100/200 */                  
+/*
+Пока хватит и 200 пунктов в заказе редактировать
+ if (arid.length>=200) {document.getElementById('zak_next').style="display:auto";}
+*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function cS(i) {
+ if (typeof(Storage) !== "undefined") 
+ {
+  var arid = new Array();
+  var sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
+
+
+ var zn=document.getElementById('r'+i).value;
+ if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
+ localStorage.setItem(arid[i+100], zn);//в заказе коды постоянные, меняется только в LS значения по ним
+ if (zn==""){
+	arid.splice(i+100, 1);
+	localStorage.setItem('zakaz',arid.join(','));
+ }
+
+ }
+GetSchet();
+}
+
+
+
+
+
+
+function cD(i) {
+ if (typeof(Storage) !== "undefined") 
+ {
+
+  var arid = new Array();
+  var sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")) { arid = sz.split(',');}//строку zakaz в массив arid
+
+
+  if (localStorage.getItem(arid[i+100]) != "") {
+      localStorage.removeItem(arid[i+100]);
+  }
+
+  arid.splice(i+100, 1);//удаляем и-тый из заказка
+  localStorage.setItem('zakaz',arid.join(','));
+ }
+GetSchet();//перечитали все элементы
+}
+
+
+
+
+</script>
+
+
+
+</head>
+<body> 
+
+<div class="w100">
+
+<div class="dpc w100w"><div class="header"><a class="hw" href=".././index.html">ВАШ ЗАКАЗ</a>
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+        </nav>
+</div></div>
+
+
+
+
+<div>
+<div class="w33"><button onclick="cCopy()" type="button" class="bl">Копировать</button></div>
+<div class="w33"><button onclick="javascript:history.back(3)" type="button" class="bc">Назад</button></div>
+<div class="w33"><form action="deletezakaz.htm"><button type="submit" class="br">Удалить все</button></form></div>
+</div>
+
+<hr><div>
+<p style="font-size: 12px;color: #BBBBBB;">Нажмите Копировать и Вставить в директ. Подробнее тут - <a href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>.</p>
+</div>
+
+<textarea id="z"  rows=3 readonly style="width:98%;padding:0px"></textarea> 
+
+<!--DB-->
+
+
+
+
+
+<!--Для следующей страницы, имена полей 1-100 всегда, href и i в LS.zakaz на +100 @200-->
+<a id="zak_pred" class="w100" style="display:auto" href="zakaz1.htm">Предыдущие товары из Вашего заказа</a>
+<a id="zak_next" class="w100" style="display:none" href="zakaz3.htm">Следующие товары из Вашего заказа</a>
+<script>
+	GetSchet();
+</script>
+        
+</body></html>

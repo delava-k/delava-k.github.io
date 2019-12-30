@@ -6,10 +6,11 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
+
 function schet(){
+ if (typeof(Storage) !== "undefined"){ 
  var v="";
  var id;
  var ei = document.querySelectorAll('input');
@@ -31,9 +32,6 @@ function schet(){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
 
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}*/
-
   } else //пустое значение для Код
   {
 	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
@@ -44,55 +42,46 @@ function schet(){
 
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-	
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
-  } 	
+  }
  }//цикл
-
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
 function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+ var zn=document.getElementById(id).value;
+ if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+ }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ } 
+
  var arid = new Array();
  var sz="";
 
- if (typeof(Storage) !== "undefined"){
-	sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")){arid = sz.split(',');}
- }
+ sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")){arid = sz.split(',');}
 
- if (arid.indexOf(id)<0) {arid.push(id);}        
- localStorage.setItem('zakaz',arid.join(','));
-
- var zn=document.getElementById(id).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
-
- localStorage.setItem(id,zn);
- localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
- 
- schet();
-}
-
-
-/*
-function cDel(id) {
- if (typeof(Storage) !== "undefined") 
- {
-  var arid = new Array();
-  var sz=localStorage.getItem('zakaz');
-  if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-  if (localStorage.getItem('id') != "") {
-      localStorage.removeItem(id);
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
   }
-  var ind=arid.indexOf(id);
-  if (ind>=0) {arid.splice(ind, 1);}
-  localStorage.setItem('zakaz',arid.join(','));
- }
+
  schet();
+ } else {alert('Sorry! No Web Storage support..')}
 }
-*/
+
 
 function fun1(id){
   if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
@@ -124,7 +113,7 @@ function fun1(id){
 <div class="w100">
 <div class="w33"><form action="drugoe_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
-<div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="noviy_god_100.htm"><button type="submit" class="br">следующий</button></form></div>
 </div><hr>ОГРАНИЧЕННОЕ КОЛ-ВО (34)<hr>
 <div class="d1"><div class="d1"><div class="l92">
 <a href="1216.htm"><img src=".././img/120/1216.jpg" class="wh89"></a></div>
@@ -367,7 +356,7 @@ function fun1(id){
 <div class="w100"><hr>
 <div class="w33"><form action="drugoe_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
-<div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="noviy_god_100.htm"><button type="submit" class="br">следующий</button></form></div>
 </div><hr>
 <div class="w100"><div class="w33"><div class="bl"></div></div>
 <div class="w33"><form action="ogranichenoe_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>

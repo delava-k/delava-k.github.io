@@ -6,10 +6,11 @@
   <link rel="stylesheet" type="text/css" href=".././css/main.css">
   <title>Delava - канзаши товары</title>
 
-
 <script>
 
+
 function schet(){
+ if (typeof(Storage) !== "undefined"){ 
  var v="";
  var id;
  var ei = document.querySelectorAll('input');
@@ -31,9 +32,6 @@ function schet(){
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
 
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:block;"}*/
-
   } else //пустое значение для Код
   {
 	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
@@ -44,55 +42,46 @@ function schet(){
 
 	var ba=document.getElementById('ba'+id);
 	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
-	
-/*	var bd=document.getElementById('bd'+id);
-	if (bd != null) {document.getElementById('bd'+id).style = "display:none;"}*/
-  } 	
+  }
  }//цикл
-
+ } else {alert('Sorry! No Web Storage support..')}
 }
 
 
 function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+ var zn=document.getElementById(id).value;
+ if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+ }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ } 
+
  var arid = new Array();
  var sz="";
 
- if (typeof(Storage) !== "undefined"){
-	sz=localStorage.getItem('zakaz');
-	if ((sz != null) && (sz != "")){arid = sz.split(',');}
- }
+ sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")){arid = sz.split(',');}
 
- if (arid.indexOf(id)<0) {arid.push(id);}        
- localStorage.setItem('zakaz',arid.join(','));
-
- var zn=document.getElementById(id).value;
- if (zn=="введите тут колво и нажмите ДОБАВИТЬ"){zn=""}
-
- localStorage.setItem(id,zn);
- localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
- 
- schet();
-}
-
-
-/*
-function cDel(id) {
- if (typeof(Storage) !== "undefined") 
- {
-  var arid = new Array();
-  var sz=localStorage.getItem('zakaz');
-  if ((sz != null) && (sz != "")) {arid = sz.split(',');}
-
-  if (localStorage.getItem('id') != "") {
-      localStorage.removeItem(id);
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
   }
-  var ind=arid.indexOf(id);
-  if (ind>=0) {arid.splice(ind, 1);}
-  localStorage.setItem('zakaz',arid.join(','));
- }
+
  schet();
+ } else {alert('Sorry! No Web Storage support..')}
 }
-*/
+
 
 function fun1(id){
   if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
@@ -435,6 +424,13 @@ function fun1(id){
 <button onclick="cSave('r4249')" type="button" id="bar4249" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar4249" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="d1"><div class="d1"><div class="l92">
+<a href="4783.htm"><img src=".././img/120/4783.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4783">Код: 4783 Крышечка со стразой(внутренний диаметр 25мм) - 3.95 грн/шт.</p>
+<div id="dr4783" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4783" class="w95 c1" onclick="fun1('r4783')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4783')" type="button" id="bar4783" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4783" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
 <a href="4570.htm"><img src=".././img/120/4570.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr4570">Код: 4570 Крышечка со стразой(внутренний диаметр 25мм) 3.95грн/шт</p>
 <div id="dr4570" class="r" style="display:none;">.</div>
@@ -455,13 +451,6 @@ function fun1(id){
 <input type="text" style="color: #BBBBBB;" id="r4784" class="w95 c1" onclick="fun1('r4784')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r4784')" type="button" id="bar4784" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar4784" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="4783.htm"><img src=".././img/120/4783.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr4783">Код: 4783 Крышечка со стразой(внутренний диаметр 25мм) - 3.95 грн/шт.</p>
-<div id="dr4783" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r4783" class="w95 c1" onclick="fun1('r4783')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r4783')" type="button" id="bar4783" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar4783" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="d1"><div class="d1"><div class="l92">
 <a href="153.htm"><img src=".././img/120/153.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr153">Код: 153 Эпоксидная наклейка 25 мм - 1.45 грн/шт</p>
