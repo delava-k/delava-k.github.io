@@ -123,6 +123,13 @@ function fun1(id){
 <button onclick="cSave('r149')" type="button" id="bar149" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar149" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="d1"><div class="d1"><div class="l92">
+<a href="1252.htm"><img src=".././img/120/1252.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr1252">Код: 1252 Кружево вязанное 3 см - 3.00 грн/м</p>
+<div id="dr1252" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1252" class="w95 c1" onclick="fun1('r1252')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r1252')" type="button" id="bar1252" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar1252" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
 <a href="203.htm"><img src=".././img/120/203.jpg" class="wh89"></a></div>
 <div class="r70"><p id="tr203">Код: 203 Кружево 2 см - 3.00 грн/м</p>
 <div id="dr203" class="r" style="display:none;">.</div>
@@ -388,13 +395,6 @@ function fun1(id){
 <input type="text" style="color: #BBBBBB;" id="r2451" class="w95 c1" onclick="fun1('r2451')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
 <button onclick="cSave('r2451')" type="button" id="bar2451" class="bl">ДОБАВИТЬ</button>
 <button onclick="location.href='zakaz1.htm'" type="button" id="bar2451" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
-<div class="d1"><div class="d1"><div class="l92">
-<a href="1252.htm"><img src=".././img/120/1252.jpg" class="wh89"></a></div>
-<div class="r70"><p id="tr1252">Код: 1252 Кружево вязанное 3 см - 3.00 грн/м</p>
-<div id="dr1252" class="r" style="display:none;">.</div>
-<input type="text" style="color: #BBBBBB;" id="r1252" class="w95 c1" onclick="fun1('r1252')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
-<button onclick="cSave('r1252')" type="button" id="bar1252" class="bl">ДОБАВИТЬ</button>
-<button onclick="location.href='zakaz1.htm'" type="button" id="bar1252" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
 <div class="w100"><hr>
 <div class="w33"><form action="obnimateli_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
 <div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
@@ -415,7 +415,7 @@ function fun1(id){
  var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
  var p = window.location['pathname'].split('/');
  var xhr=new XMLHttpRequest();
- var st='https://delava.000webhostapp.com/st2.php?ist='+p[p.length - 1]+'&idz='+sidz;
+ var st='http://s96322ms.beget.tech/st2.php?ist='+p[p.length - 1]+'&idz='+sidz;
  xhr.open('GET', st, true);
  xhr.send();
 
