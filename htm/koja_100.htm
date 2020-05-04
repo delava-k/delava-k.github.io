@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+<script>
+
+
+function schet(){
+ if (typeof(Storage) !== "undefined"){ 
+ var v="";
+ var id;
+ var ei = document.querySelectorAll('input');
+
+ for (var i = 1; i < ei.length; i++) //0 это из меню input, пропускаем
+ {
+   id=ei[i].id;
+   vr=localStorage.getItem(id);
+   var er=document.getElementById('d'+id);//красный
+
+   if ((vr != null)&&(vr != ""))
+   { 
+	ei[i].value = vr;
+        ei[i].style="color: #000;";
+
+	er.style="display:block;";
+	er.innerHTML=vr;
+
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+
+  } else //пустое значение для Код
+  {
+	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
+	ei[i].style="color: #BBBBBB;";
+
+	er.innerHTML = ".";
+	er.style = "display:none;";	
+
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+  }
+ }//цикл
+ } else {alert('Sorry! No Web Storage support..')}
+}
+
+
+function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+ var zn=document.getElementById(id).value;
+ if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+ }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ } 
+
+ var arid = new Array();
+ var sz="";
+
+ sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")){arid = sz.split(',');}
+
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
+  }
+
+ schet();
+ } else {alert('Sorry! No Web Storage support..')}
+}
+
+
+function fun1(id){
+  if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
+	document.getElementById(id).value = "";}
+  document.getElementById(id).style="color: #000;"
+}
+
+</script></head>
+
+
+
+
+
+
+<body> 
+<div class="dpc w100w"><div class="header"><a class="hw" href=".././index.html">Delava - канзаши товары</a>
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz1.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100">
+<div class="w33"><form action="novinki_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><form action="atlas_100.htm"><button type="submit" class="br">следующий</button></form></div>
+</div><hr>КОЖА (53)<hr>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3180.htm"><img src=".././img/120/3180.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3180">Код: 3180 Эко-кожа крупный глиттер серебро 20*25см - 16.75 грн/лист</p>
+<div id="dr3180" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3180" class="w95 c1" onclick="fun1('r3180')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3180')" type="button" id="bar3180" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3180" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3134.htm"><img src=".././img/120/3134.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3134">Код: 3134 Эко-кожа крупный глиттер золото 20*25см - 16.75 грн/лист</p>
+<div id="dr3134" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3134" class="w95 c1" onclick="fun1('r3134')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3134')" type="button" id="bar3134" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3134" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4232.htm"><img src=".././img/120/4232.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4232">Код: 4232 Эко-кожа крупный глиттер черный  15*30см - 16.75 грн/лист</p>
+<div id="dr4232" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4232" class="w95 c1" onclick="fun1('r4232')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4232')" type="button" id="bar4232" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4232" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4475.htm"><img src=".././img/120/4475.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4475">Код: 4475 Эко-кожа с крупными блестками 19*30см - 18.95 грн/лист</p>
+<div id="dr4475" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4475" class="w95 c1" onclick="fun1('r4475')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4475')" type="button" id="bar4475" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4475" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4482.htm"><img src=".././img/120/4482.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4482">Код: 4482 Эко-кожа с крупными блестками красная 19*30см - 18.95 грн/лист.</p>
+<div id="dr4482" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4482" class="w95 c1" onclick="fun1('r4482')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4482')" type="button" id="bar4482" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4482" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4481.htm"><img src=".././img/120/4481.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4481">Код: 4481 Эко-кожа с крупными блестками малиновая 19*30см - 18.95 грн/лист</p>
+<div id="dr4481" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4481" class="w95 c1" onclick="fun1('r4481')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4481')" type="button" id="bar4481" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4481" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4483.htm"><img src=".././img/120/4483.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4483">Код: 4483 Эко-кожа с крупными блестками фиолет 19*30см - 18.95 грн/лист</p>
+<div id="dr4483" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4483" class="w95 c1" onclick="fun1('r4483')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4483')" type="button" id="bar4483" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4483" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4478.htm"><img src=".././img/120/4478.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4478">Код: 4478 Эко-кожа с крупными блестками белая 19*30см - 18.95 грн/лист</p>
+<div id="dr4478" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4478" class="w95 c1" onclick="fun1('r4478')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4478')" type="button" id="bar4478" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4478" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4477.htm"><img src=".././img/120/4477.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4477">Код: 4477 Эко-кожа с крупными блестками 19*30см - 18.95 грн/лист</p>
+<div id="dr4477" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4477" class="w95 c1" onclick="fun1('r4477')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4477')" type="button" id="bar4477" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4477" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4690.htm"><img src=".././img/120/4690.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4690">Код: 4690 Эко-кожа с крупными блестками цветная ЛЮКС 15*20см - 16.95 грн/лист.</p>
+<div id="dr4690" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4690" class="w95 c1" onclick="fun1('r4690')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4690')" type="button" id="bar4690" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4690" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4681.htm"><img src=".././img/120/4681.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4681">Код: 4681 Эко-кожа соты 19*30см - 18.95 грн/лист.</p>
+<div id="dr4681" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4681" class="w95 c1" onclick="fun1('r4681')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4681')" type="button" id="bar4681" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4681" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4682.htm"><img src=".././img/120/4682.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4682">Код: 4682 Эко-кожа соты белая голография19*30см - 18.95 грн/лист.</p>
+<div id="dr4682" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4682" class="w95 c1" onclick="fun1('r4682')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4682')" type="button" id="bar4682" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4682" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4685.htm"><img src=".././img/120/4685.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4685">Код: 4685 Эко-кожа соты 19*30см - 18.95 грн/лист.</p>
+<div id="dr4685" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4685" class="w95 c1" onclick="fun1('r4685')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4685')" type="button" id="bar4685" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4685" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4686.htm"><img src=".././img/120/4686.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4686">Код: 4686 Эко-кожа цветы 19*30см - 18.95 грн/лист.</p>
+<div id="dr4686" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4686" class="w95 c1" onclick="fun1('r4686')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4686')" type="button" id="bar4686" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4686" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4687.htm"><img src=".././img/120/4687.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4687">Код: 4687 Эко-кожа цветы 19*30см - 18.95 грн/лист.</p>
+<div id="dr4687" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4687" class="w95 c1" onclick="fun1('r4687')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4687')" type="button" id="bar4687" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4687" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4688.htm"><img src=".././img/120/4688.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4688">Код: 4688 Эко-кожа цветы 19*30см - 18.95 грн/лист</p>
+<div id="dr4688" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4688" class="w95 c1" onclick="fun1('r4688')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4688')" type="button" id="bar4688" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4688" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4720.htm"><img src=".././img/120/4720.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4720">Код: 4720 Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
+<div id="dr4720" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4720" class="w95 c1" onclick="fun1('r4720')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4720')" type="button" id="bar4720" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4720" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4721.htm"><img src=".././img/120/4721.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4721">Код: 4721 Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
+<div id="dr4721" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4721" class="w95 c1" onclick="fun1('r4721')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4721')" type="button" id="bar4721" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4721" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4722.htm"><img src=".././img/120/4722.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4722">Код: 4722 Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
+<div id="dr4722" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4722" class="w95 c1" onclick="fun1('r4722')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4722')" type="button" id="bar4722" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4722" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4723.htm"><img src=".././img/120/4723.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4723">Код: 4723 Эко-кожа мелкий глиттер 20*25см - 13.95 грн/лист</p>
+<div id="dr4723" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4723" class="w95 c1" onclick="fun1('r4723')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4723')" type="button" id="bar4723" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4723" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4761.htm"><img src=".././img/120/4761.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4761">Код: 4761 Кожа зеркальная голография золото 15*20см - 16.95 грн/шт.</p>
+<div id="dr4761" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4761" class="w95 c1" onclick="fun1('r4761')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4761')" type="button" id="bar4761" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4761" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4760.htm"><img src=".././img/120/4760.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4760">Код: 4760 Кожа зеркальная голография розовая 15*20см - 16.95 грн/шт.</p>
+<div id="dr4760" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4760" class="w95 c1" onclick="fun1('r4760')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4760')" type="button" id="bar4760" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4760" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4689.htm"><img src=".././img/120/4689.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4689">Код: 4689 Эко-кожа с крупными блестками белая ЛЮКС 15*20см - 19.95 грн/лист.</p>
+<div id="dr4689" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4689" class="w95 c1" onclick="fun1('r4689')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4689')" type="button" id="bar4689" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4689" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4755.htm"><img src=".././img/120/4755.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4755">Код: 4755 Гипюр на сетке 20*30см - 19.95 грн/шт.</p>
+<div id="dr4755" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4755" class="w95 c1" onclick="fun1('r4755')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4755')" type="button" id="bar4755" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4755" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4994.htm"><img src=".././img/120/4994.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4994">Код: 4994 Эко-кожа с блестками 20*15 см - 16.95 грн/лист.</p>
+<div id="dr4994" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4994" class="w95 c1" onclick="fun1('r4994')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4994')" type="button" id="bar4994" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4994" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4993.htm"><img src=".././img/120/4993.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4993">Код: 4993 Эко-кожа блестящая 20*25см - 8.75 грн/лист</p>
+<div id="dr4993" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4993" class="w95 c1" onclick="fun1('r4993')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4993')" type="button" id="bar4993" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4993" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4992.htm"><img src=".././img/120/4992.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4992">Код: 4992 Эко-кожа с мелкой трубочкой 20*15 см - 13.95 грн/лист.</p>
+<div id="dr4992" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4992" class="w95 c1" onclick="fun1('r4992')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4992')" type="button" id="bar4992" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4992" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4991.htm"><img src=".././img/120/4991.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4991">Код: 4991 Эко-кожа с мелкой трубочкой 20*15 см - 13.95 грн/лист.</p>
+<div id="dr4991" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4991" class="w95 c1" onclick="fun1('r4991')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4991')" type="button" id="bar4991" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4991" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4990.htm"><img src=".././img/120/4990.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4990">Код: 4990 Эко-кожа с мелкой трубочкой 20*15 см - 13.95 грн/лист.</p>
+<div id="dr4990" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4990" class="w95 c1" onclick="fun1('r4990')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4990')" type="button" id="bar4990" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4990" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4989.htm"><img src=".././img/120/4989.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4989">Код: 4989 Эко-кожа блестящая 20*25см - 8.75 грн/лист</p>
+<div id="dr4989" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4989" class="w95 c1" onclick="fun1('r4989')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4989')" type="button" id="bar4989" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4989" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4988.htm"><img src=".././img/120/4988.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4988">Код: 4988 Эко-кожа с крупными блестками 19*30см - 19.95 грн/лист.</p>
+<div id="dr4988" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4988" class="w95 c1" onclick="fun1('r4988')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4988')" type="button" id="bar4988" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4988" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4987.htm"><img src=".././img/120/4987.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4987">Код: 4987 Эко-кожа с крупными блестками 19*30см - 19.95 грн/лист.</p>
+<div id="dr4987" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4987" class="w95 c1" onclick="fun1('r4987')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4987')" type="button" id="bar4987" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4987" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4986.htm"><img src=".././img/120/4986.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4986">Код: 4986 Эко-кожа с крупными блестками 19*30см - 21.95 грн/лист.</p>
+<div id="dr4986" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4986" class="w95 c1" onclick="fun1('r4986')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4986')" type="button" id="bar4986" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4986" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4984.htm"><img src=".././img/120/4984.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4984">Код: 4984 Эко-кожа с крупными блестками 19*30см - 19.95 грн/лист.</p>
+<div id="dr4984" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4984" class="w95 c1" onclick="fun1('r4984')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4984')" type="button" id="bar4984" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4984" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4983.htm"><img src=".././img/120/4983.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4983">Код: 4983 Эко-кожа с крупными блестками зеленая 19*30см - 18.95 грн/лист.</p>
+<div id="dr4983" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4983" class="w95 c1" onclick="fun1('r4983')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4983')" type="button" id="bar4983" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4983" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4850.htm"><img src=".././img/120/4850.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4850">Код: 4850 Эко-кожа мелкий глиттер с звездочками 20*30см - 15.95 грн/шт.</p>
+<div id="dr4850" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4850" class="w95 c1" onclick="fun1('r4850')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4850')" type="button" id="bar4850" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4850" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4848.htm"><img src=".././img/120/4848.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4848">Код: 4848 Эко-кожа мелкий глиттер с звездочками 20*30см - 15.95 грн/шт.</p>
+<div id="dr4848" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4848" class="w95 c1" onclick="fun1('r4848')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4848')" type="button" id="bar4848" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4848" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4845.htm"><img src=".././img/120/4845.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4845">Код: 4845 Эко-кожа мелкий глиттер с звездочками 20*30см - 15.95 грн/шт.</p>
+<div id="dr4845" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4845" class="w95 c1" onclick="fun1('r4845')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4845')" type="button" id="bar4845" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4845" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4844.htm"><img src=".././img/120/4844.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4844">Код: 4844 Эко-кожа мелкий глиттер с звездочками 20*30см - 15.95 грн/шт.</p>
+<div id="dr4844" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4844" class="w95 c1" onclick="fun1('r4844')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4844')" type="button" id="bar4844" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4844" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4841.htm"><img src=".././img/120/4841.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4841">Код: 4841 Эко-кожа с крупными блестками салатовая ЛЮКС 15*20см - 16.95 грн/лист.</p>
+<div id="dr4841" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4841" class="w95 c1" onclick="fun1('r4841')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4841')" type="button" id="bar4841" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4841" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4840.htm"><img src=".././img/120/4840.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4840">Код: 4840 Эко-кожа с крупными блестками желтая ЛЮКС 15*20см - 16.95 грн/лист.</p>
+<div id="dr4840" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4840" class="w95 c1" onclick="fun1('r4840')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4840')" type="button" id="bar4840" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4840" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4839.htm"><img src=".././img/120/4839.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4839">Код: 4839 Эко-кожа белая с серебром 19*30см - 17.95 грн/лист.</p>
+<div id="dr4839" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4839" class="w95 c1" onclick="fun1('r4839')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4839')" type="button" id="bar4839" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4839" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4838.htm"><img src=".././img/120/4838.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4838">Код: 4838 Эко-кожа черная с серебром 19*30см - 17.95 грн/лист.</p>
+<div id="dr4838" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4838" class="w95 c1" onclick="fun1('r4838')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4838')" type="button" id="bar4838" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4838" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4837.htm"><img src=".././img/120/4837.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4837">Код: 4837 Эко-кожа белая с золотом 19*30см - 17.95 грн/лист.</p>
+<div id="dr4837" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4837" class="w95 c1" onclick="fun1('r4837')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4837')" type="button" id="bar4837" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4837" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4836.htm"><img src=".././img/120/4836.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4836">Код: 4836 Эко-кожа с пайетками и стразами 15*20см - 14.95 грн/лист.</p>
+<div id="dr4836" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4836" class="w95 c1" onclick="fun1('r4836')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4836')" type="button" id="bar4836" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4836" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4835.htm"><img src=".././img/120/4835.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4835">Код: 4835 Эко-кожа с пайетками и стразами 15*20см - 14.95 грн/лист.</p>
+<div id="dr4835" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4835" class="w95 c1" onclick="fun1('r4835')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4835')" type="button" id="bar4835" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4835" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4834.htm"><img src=".././img/120/4834.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4834">Код: 4834 Эко-кожа прозрачная зеркальная 19*30см - 18.95 грн/лист.</p>
+<div id="dr4834" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4834" class="w95 c1" onclick="fun1('r4834')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4834')" type="button" id="bar4834" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4834" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="4833.htm"><img src=".././img/120/4833.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr4833">Код: 4833 Эко-кожа с крупными блестками сиреневая ЛЮКС 15*20см - 16.95 грн/лист.</p>
+<div id="dr4833" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4833" class="w95 c1" onclick="fun1('r4833')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r4833')" type="button" id="bar4833" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar4833" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3136.htm"><img src=".././img/120/3136.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3136">Код: 3136 Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
+<div id="dr3136" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3136" class="w95 c1" onclick="fun1('r3136')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3136')" type="button" id="bar3136" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3136" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3138.htm"><img src=".././img/120/3138.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3138">Код: 3138 Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
+<div id="dr3138" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3138" class="w95 c1" onclick="fun1('r3138')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3138')" type="button" id="bar3138" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3138" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3179.htm"><img src=".././img/120/3179.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3179">Код: 3179 Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
+<div id="dr3179" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3179" class="w95 c1" onclick="fun1('r3179')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3179')" type="button" id="bar3179" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3179" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3137.htm"><img src=".././img/120/3137.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3137">Код: 3137 Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
+<div id="dr3137" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3137" class="w95 c1" onclick="fun1('r3137')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3137')" type="button" id="bar3137" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3137" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="3135.htm"><img src=".././img/120/3135.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr3135">Код: 3135 Эко-кожа блестящая 20*25см - 11.75 грн/лист</p>
+<div id="dr3135" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r3135" class="w95 c1" onclick="fun1('r3135')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r3135')" type="button" id="bar3135" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar3135" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="w100"><hr>
+<div class="w33"><form action="novinki_100.htm"><button type="submit" class="bl">предыдущий</button></form></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><form action="atlas_100.htm"><button type="submit" class="br">следующий</button></form></div>
+</div><hr>
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="koja_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+  schet();
+
+ var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
+ var p = window.location['pathname'].split('/');
+ var xhr=new XMLHttpRequest();
+ var st='http://s96322ms.beget.tech/st2.php?ist='+p[p.length - 1]+'&idz='+sidz;
+ xhr.open('GET', st, true);
+ xhr.send();
+
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>
