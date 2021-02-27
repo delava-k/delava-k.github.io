@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Delava товары для рукоделия и канзаши"> 
+  <link rel="stylesheet" type="text/css" href=".././css/main.css">
+  <title>Delava - канзаши товары</title>
+
+<script>
+
+
+function schet(){
+ if (typeof(Storage) !== "undefined"){ 
+ var v="";
+ var id;
+ var ei = document.querySelectorAll('input');
+
+ for (var i = 1; i < ei.length; i++) //0 это из меню input, пропускаем
+ {
+   id=ei[i].id;
+   vr=localStorage.getItem(id);
+   var er=document.getElementById('d'+id);//красный
+
+   if ((vr != null)&&(vr != ""))
+   { 
+	ei[i].value = vr;
+        ei[i].style="color: #000;";
+
+	er.style="display:block;";
+	er.innerHTML=vr;
+
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+
+  } else //пустое значение для Код
+  {
+	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
+	ei[i].style="color: #BBBBBB;";
+
+	er.innerHTML = ".";
+	er.style = "display:none;";	
+
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+  }
+ }//цикл
+ } else {alert('Sorry! No Web Storage support..')}
+}
+
+
+function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+ var zn=document.getElementById(id).value;
+ if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+ }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+ } 
+
+ var arid = new Array();
+ var sz="";
+
+ sz=localStorage.getItem('zakaz');
+ if ((sz != null) && (sz != "")){arid = sz.split(',');}
+
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
+  }
+
+ schet();
+ } else {alert('Sorry! No Web Storage support..')}
+}
+
+
+function fun1(id){
+  if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
+	document.getElementById(id).value = "";}
+  document.getElementById(id).style="color: #000;"
+}
+
+</script></head>
+
+
+
+
+
+
+<body> 
+<div class="dpc w100w"><div class="header"><a class="hw" href=".././index.html">Delava - канзаши товары</a>
+        <input class="nav-m_cb" type="checkbox" id="m1">
+        <label class="nav-m" for="m1">Меню</label>
+        <nav class="nav">
+            <a class="nav__item" href="kontakti.htm">МЫ В СОЦСЕТЯХ</a>
+            <a class="nav__item" href="kak_zakazat.htm">КАК ЗАКАЗАТЬ</a>
+            <a class="nav__item" href=".././index.html">КАТАЛОГ ТОВАРОВ</a>
+            <a class="nav__item" href="zakaz1.htm">ВАШ ЗАКАЗ</a>
+        </nav>
+</div></div>
+
+<section id="content" class="w100">
+<!--DB-->
+<div class="w100">
+<div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><div class="bl"></div></div>
+</div><hr> (0)<hr>
+<div class="d1"><div class="d1"><div class="l92">
+<a href="1507.htm"><img src=".././img/120/1507.jpg" class="wh89"></a></div>
+<div class="r70"><p id="tr1507">Код: 1507 </p>
+<div id="dr1507" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r1507" class="w95 c1" onclick="fun1('r1507')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<button onclick="cSave('r1507')" type="button" id="bar1507" class="bl">ДОБАВИТЬ</button>
+<button onclick="location.href='zakaz1.htm'" type="button" id="bar1507" class="br">ВАШ ЗАКАЗ</button></div></div></div><br><hr></div>
+<div class="w100"><hr>
+<div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action=".././index.html"><button type="submit" class="bc">альбомы</button></form></div>
+<div class="w33"><div class="bl"></div></div>
+</div><hr>
+<div class="w100"><div class="w33"><div class="bl"></div></div>
+<div class="w33"><form action="stena_33.htm"><button type="submit" class="bc">в 3 колонки</button></form></div>
+<div class="w33"><div class="br"></div></div></div>
+
+
+
+
+
+
+<script>
+  schet();
+
+ var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
+ var p = window.location['pathname'].split('/');
+ var xhr=new XMLHttpRequest();
+ var st='http://s96322ms.beget.tech/st2.php?ist='+p[p.length - 1]+'&idz='+sidz;
+ xhr.open('GET', st, true);
+ xhr.send();
+
+</script>
+</section>
+</footer><!-- #footer -->
+</section></body></html>
