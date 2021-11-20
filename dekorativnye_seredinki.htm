@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="украина купить декоративная серединка"> 
+<meta name="description" content="Альбом Декоративные серединки (Интернет магазин Delava канзаши Украина)."> 
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>Декоративные серединки</title>
+
+<script>
+
+var ari= ['4830;0;9.95,,,;шт.,,;;Стразовое полотно на силиконовой клеевой основе 1см*40см - 9.95 грн/шт. ','4827;0;7.95,,,;шт.,,;;Стразовое полотно на силиконовой клеевой основе 1см*40см - 7.95 грн/шт. ','5092;0;7.95,,,;шт.,,;;Стразовое полотно на силиконовой клеевой основе 1см*40см - 7.95 грн/шт. ','5093;0;9.95,,,;шт.,,;;Стразовое полотно на силиконовой клеевой основе 1см*40см - 9.95 грн/шт. ','5094;0;7.95,,,;шт.,,;;Стразовое полотно на силиконовой клеевой основе 1см*40см - 7.95 грн/шт. '];
+var arind= [4830,4827,5092,5093,5094];
+//----------------------------------------------
+
+
+function schet(){
+ if (typeof(Storage) !== "undefined"){ 
+ var v="";
+ var id;
+ var ei = document.querySelectorAll('input');
+
+ for (var i = 0; i < ei.length; i++) //0 это из меню input, пропускаем
+ {
+   id=ei[i].id;
+   vr=localStorage.getItem(id);
+   var er=document.getElementById('d'+id);//красный
+
+   if ((vr != null)&&(vr != ""))
+   { 
+	ei[i].value = vr;
+        ei[i].style="color: #000;";
+
+	er.style="display:block;";
+	er.innerHTML=vr;
+
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ИЗМЕНИТЬ";}	
+
+  } else //пустое значение для Код
+  {
+	ei[i].value = "введите тут колво и нажмите ДОБАВИТЬ";
+	ei[i].style="color: #BBBBBB;";
+
+	er.innerHTML = ".";
+	er.style = "display:none;";	
+
+	var ba=document.getElementById('ba'+id);
+	if (ba != null) {document.getElementById('ba'+id).innerHTML = "ДОБАВИТЬ";}
+  }
+ }//цикл
+ } else {alert('Sorry! No Web Storage support..')}
+}
+
+
+function cSave(id) {
+ if (typeof(Storage) !== "undefined"){ 
+
+  var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
+
+  var zn=document.getElementById(id).value;
+  if ((zn=="введите тут колво и нажмите ДОБАВИТЬ")||(zn=="")||(zn==null)){
+    zn="";
+    localStorage.removeItem(id);
+    localStorage.removeItem("t"+id);
+  }else{
+    localStorage.setItem(id,zn);
+    localStorage.setItem("t"+id, document.getElementById("t"+id).innerHTML);
+  } 
+
+  var arid = new Array();
+  var sz="";
+
+  sz=localStorage.getItem('zakaz');
+  if ((sz != null) && (sz != "")){arid = sz.split(',');}
+
+  if ( (zn!="")&&(arid.indexOf(id)<0) ) {
+    arid.push(id);
+    localStorage.setItem('zakaz',arid.join(','));
+  }else{
+    var ind=arid.indexOf(id);
+    if ((zn=="")&&(ind>=0)) {
+      arid.splice(ind, 1);
+      localStorage.setItem('zakaz',arid.join(','));
+    }
+  }
+
+ if (zn==""){zn=0};
+
+ var xhr2=new XMLHttpRequest();
+ var st2='http://delava.tk/zakaz100.php?t=1&idz='+sidz+'&id='+id+'&zn='+encodeURIComponent(zn);
+ xhr2.open('GET', st2, true);
+ xhr2.send();
+
+ var xhr=new XMLHttpRequest();                
+ var st='http://s96322ms.beget.tech/zakaz100.php?t=1&idz='+sidz+'&id='+id+'&zn='+encodeURIComponent(zn);
+ xhr.open('GET', st, true);
+ xhr.send();
+
+ schet();
+ } else {alert('Sorry! No Web Storage support..')}
+}
+
+
+function fun1(id){
+  if (document.getElementById(id).value == "введите тут колво и нажмите ДОБАВИТЬ"){
+	document.getElementById(id).value = "";}
+  document.getElementById(id).style="color: #000;"
+}
+
+</script></head>
+
+
+
+
+
+
+<body> 
+
+<div id="cont" class="cont">
+
+<section id="content" class="w100">
+<hr>
+<!--DB-->
+<h1>Декоративные серединки от "Delava - товары для рукоделия и канзаши" (Украина)</h1><hr>
+
+<div id="4830" class="d1"><div class="d1"><div class="l92_2 ix">
+<a href="dekorativnye_seredinki_lite.htm#4830"><img src="img/255/4830.jpg" class="wh89_2"></a></div>
+<div class="r100"><p id="tr4830">Код: 4830 Стразовое полотно на силиконовой клеевой основе 1см*40см - 9.95 грн/шт.</p>
+<div id="dr4830" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4830" class="w95 c1" onclick="fun1('r4830')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<div class="r100"><div class="bc3 bp5"><button onclick="cSave('r4830')" type="button" id="bar4830" class="bc2">В Корзину</button></div></div></div></div></div></div>
+<div id="4827" class="d1"><div class="d1"><div class="l92_2 ix">
+<a href="dekorativnye_seredinki_lite.htm#4827"><img src="img/255/4827.jpg" class="wh89_2"></a></div>
+<div class="r100"><p id="tr4827">Код: 4827 Стразовое полотно на силиконовой клеевой основе 1см*40см - 7.95 грн/шт.</p>
+<div id="dr4827" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r4827" class="w95 c1" onclick="fun1('r4827')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<div class="r100"><div class="bc3 bp5"><button onclick="cSave('r4827')" type="button" id="bar4827" class="bc2">В Корзину</button></div></div></div></div></div></div>
+<div id="5092" class="d1"><div class="d1"><div class="l92_2 ix">
+<a href="dekorativnye_seredinki_lite.htm#5092"><img src="img/255/5092.jpg" class="wh89_2"></a></div>
+<div class="r100"><p id="tr5092">Код: 5092 Стразовое полотно на силиконовой клеевой основе 1см*40см - 7.95 грн/шт.</p>
+<div id="dr5092" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r5092" class="w95 c1" onclick="fun1('r5092')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<div class="r100"><div class="bc3 bp5"><button onclick="cSave('r5092')" type="button" id="bar5092" class="bc2">В Корзину</button></div></div></div></div></div></div>
+<div id="5093" class="d1"><div class="d1"><div class="l92_2 ix">
+<a href="dekorativnye_seredinki_lite.htm#5093"><img src="img/255/5093.jpg" class="wh89_2"></a></div>
+<div class="r100"><p id="tr5093">Код: 5093 Стразовое полотно на силиконовой клеевой основе 1см*40см - 9.95 грн/шт.</p>
+<div id="dr5093" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r5093" class="w95 c1" onclick="fun1('r5093')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<div class="r100"><div class="bc3 bp5"><button onclick="cSave('r5093')" type="button" id="bar5093" class="bc2">В Корзину</button></div></div></div></div></div></div>
+<div id="5094" class="d1"><div class="d1"><div class="l92_2 ix">
+<a href="dekorativnye_seredinki_lite.htm#5094"><img src="img/255/5094.jpg" class="wh89_2"></a></div>
+<div class="r100"><p id="tr5094">Код: 5094 Стразовое полотно на силиконовой клеевой основе 1см*40см - 7.95 грн/шт.</p>
+<div id="dr5094" class="r" style="display:none;">.</div>
+<input type="text" style="color: #BBBBBB;" id="r5094" class="w95 c1" onclick="fun1('r5094')" value="введите тут колво и нажмите ДОБАВИТЬ"><br><div class="w100">
+<div class="r100"><div class="bc3 bp5"><button onclick="cSave('r5094')" type="button" id="bar5094" class="bc2">В Корзину</button></div></div></div></div></div></div>
+
+
+</section></div>
+
+<div id="footer"><div id="footer2">
+  <div class="b2"><form action="index.html#i1"><button type="submit" class="bp">КАТАЛОГ</button></form></div>
+  <div class="b1"><form action="kak_zakazat.htm"><button type="submit" class="bp">КАК ЗАКАЗАТЬ</button></form></div>
+  <div class="b1"><form action="zakaz1.htm"><button type="submit" class="bp">КОРЗИНА</button></form></div>
+</div></div>
+
+<script>
+  schet();
+
+ var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
+ var p = window.location['pathname'].split('/');
+
+ var xhr=new XMLHttpRequest();
+ var st='http://s96322ms.beget.tech/st2.php?t=1&ist='+p[p.length - 1]+'&idz='+sidz;
+ xhr.open('GET', st, true);
+ xhr.send();
+
+ var xhr2=new XMLHttpRequest();
+ var st2='http://delava.tk/st2.php?t=1&ist='+p[p.length - 1]+'&idz='+sidz;
+ xhr2.open('GET', st2, true);
+ xhr2.send();
+
+</script>
+
+</body></html>

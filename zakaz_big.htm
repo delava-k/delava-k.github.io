@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Delava товары для рукоделия и канзаши"> 
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>Delava - канзаши товары</title>
+
+<script>
+
+function cCopy(ind) {
+ var copyText = "";
+ var h=1;
+ var tmp="";
+ var n=0;
+ var arid = new Array();
+ var sz=localStorage.getItem('zakaz');
+
+ if ((sz != null) && (sz != "")) { arid = sz.split(',');} 
+
+ for (var j = 0; j < arid.length; j++)
+ {
+
+  vr=localStorage.getItem(arid[j]);
+  if ((vr != null) && (vr != "")) {	
+
+	  var l=tmp+arid[j].slice(1)+"-"+vr+"\n";
+
+	  if (l.length>=500-h)
+	  {	n=n+1;
+	        if (n==ind){copyText=tmp;}
+
+		tmp=arid[j].slice(1)+"-"+vr+"\n";
+	        h=1;
+	  }else{
+		tmp=tmp+arid[j].slice(1)+"-"+vr+"\n";
+	        h=h+1;
+	  }
+  }
+ }
+
+	n=n+1;
+	if (n==ind){copyText=tmp; }
+
+	var inp =document.createElement('textarea');
+	document.body.appendChild(inp);
+	inp.innerHTML = copyText;
+	inp.select();
+	document.execCommand('copy');
+	inp.remove();
+}
+
+
+function GetSchet() {
+ var h=1;
+ var tmp="";
+ var n=0;
+ var arid = new Array();
+ var sz=localStorage.getItem('zakaz');
+
+ if ((sz != null) && (sz != "")) { arid = sz.split(',');} 
+
+ for (var j = 0; j < arid.length; j++)
+ {
+  vr=localStorage.getItem(arid[j]);
+  if ((vr != null) && (vr != "")) {	
+
+  var l=tmp+arid[j].slice(1)+"-"+vr+"\n";
+
+  if (l.length>=500-h)
+  {	n=n+1;
+	document.getElementById("c"+n).style="display:block";
+	tmp=arid[j].slice(1)+"-"+vr+"\n";
+        h=1;
+  }else{
+	tmp=tmp+arid[j].slice(1)+"-"+vr+"\n";
+        h=h+1;
+  }
+  }
+ }
+
+n=n+1;
+document.getElementById("c"+n).style="display:block";
+
+}
+
+
+</script>
+
+
+</head><body> 
+
+<div id="cont" class="cont">
+<div class="w100">
+
+<div class="dpc w100w"><div class="header pad2"><a class="hw" href="index.html">ВАШ ЗАКАЗ</a>
+</div></div>
+
+<div class="w100">
+<div class="w33"><button onclick="javascript:history.back(3)" type="button" class="bc">Назад</button></div>
+</div><hr>
+<p>В одном сообщении Instagram можно отправить 500 символов, а у Вас в заказе больше. Отправьте все части, отдельными сообщениями в директ<p>
+ <br>
+<div id="c1" class="w100" style="display:none"><button onclick="cCopy(1)" type="button" class="bc">Копировать 1 часть</button>&nbsp<br></div> 
+<div id="c2" class="w100" style="display:none"><button onclick="cCopy(2)" type="button" class="bc">Копировать 2 часть</button>&nbsp<br></div>
+<div id="c3" class="w100" style="display:none"><button onclick="cCopy(3)" type="button" class="bc">Копировать 3 часть</button>&nbsp<br></div>
+<div id="c4" class="w100" style="display:none"><button onclick="cCopy(4)" type="button" class="bc">Копировать 4 часть</button>&nbsp<br></div>
+<div id="c5" class="w100" style="display:none"><button onclick="cCopy(5)" type="button" class="bc">Копировать 5 часть</button>&nbsp<br></div>
+<div id="c6" class="w100" style="display:none"><button onclick="cCopy(6)" type="button" class="bc">Копировать 6 часть</button>&nbsp<br></div> 
+<div id="c7" class="w100" style="display:none"><button onclick="cCopy(7)" type="button" class="bc">Копировать 7 часть</button>&nbsp<br></div>
+<div id="c8" class="w100" style="display:none"><button onclick="cCopy(8)" type="button" class="bc">Копировать 8 часть</button>&nbsp<br></div>
+<div id="c9" class="w100" style="display:none"><button onclick="cCopy(9)" type="button" class="bc">Копировать 9 часть</button>&nbsp<br></div>
+<div id="c10" class="w100" style="display:none"><button onclick="cCopy(10)" type="button" class="bc">Копировать 10 часть</button>&nbsp<br></div>
+
+</div></div>
+
+<div id="footer"><div id="footer2">
+  <div class="b1"><form action="index.html#i1"><button type="submit" class="bp">КАТАЛОГ</button></form></div>
+  <div class="b2"><form action="kak_zakazat.htm"><button type="submit" class="bp">КАК ЗАКАЗАТЬ</button></form></div>
+  <div class="b1"><form action="zakaz1.htm"><button type="submit" class="bp">КОРЗИНА</button></form></div>
+</div></div>
+
+<script>
+ GetSchet();
+
+ var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
+ var p = window.location['pathname'].split('/');
+ var xhr=new XMLHttpRequest();
+ var st='http://s96322ms.beget.tech/st2.php?t=1&ist='+p[p.length - 1]+'&idz='+sidz;
+ xhr.open('GET', st, true);
+ xhr.send();
+
+ var xhr2=new XMLHttpRequest();
+ var st2='http://delava.tk/st2.php?t=1&ist='+p[p.length - 1]+'&idz='+sidz;
+ xhr2.open('GET', st2, true);
+ xhr2.send();
+</script>
+        
+</body></html>
