@@ -40,21 +40,14 @@ function st2(ist) {
  }
 
 
- var st='http://s96322ms.beget.tech/st2.php?t=1&ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent(arid.join('|'))+'&com='+encodeURIComponent(arco.join('|'));
- xhr.open('GET', st, true);
- xhr.send();
-
- var st2='http://delava.tk/st2.php?t=1&ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent(arid.join('|'))+'&com='+encodeURIComponent(arco.join('|'));
+ var st2='https://delava.tk/st2.php?t=1&ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent(arid.join('|'))+'&com='+encodeURIComponent(arco.join('|'));
  xhr2.open('GET', st2, true);
  xhr2.send();
 
  } else {
   var sidz='100';
-  var st='http://s96322ms.beget.tech/st2.php?t=1&ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent('error Storage')+'&com='+encodeURIComponent('error Storage');
-  xhr.open('GET', st, true);
-  xhr.send();
 
-  var st2='http://delava.tk/st2.php?t=1&ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent('error Storage')+'&com='+encodeURIComponent('error Storage');
+  var st2='https://delava.tk/st2.php?t=1&ist='+ist+'&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent('error Storage')+'&com='+encodeURIComponent('error Storage');
   xhr2.open('GET', st2, true);
   xhr2.send();
 
@@ -182,15 +175,9 @@ function cS(i) {
 
   if (zn==""){zn=0};
   var xhr2=new XMLHttpRequest();
-  var st2='http://delava.tk/zakaz100.php?t=1&idz='+sidz+'&id='+arid[i]+'&zn='+encodeURIComponent(zn);
+  var st2='https://delava.tk/zakaz100.php?t=1&idz='+sidz+'&id='+arid[i]+'&zn='+encodeURIComponent(zn);
   xhr2.open('GET', st2, true);
   xhr2.send();
-
-  var xhr=new XMLHttpRequest();
-  var st='http://s96322ms.beget.tech/zakaz100.php?t=1&idz='+sidz+'&id='+arid[i]+'&zn='+encodeURIComponent(zn);
-  xhr.open('GET', st, true);
-  xhr.send();
-
 
   if (zn==""){
 	arid.splice(i, 1);
@@ -219,14 +206,9 @@ function cD(i) {
 
     var zn=0;
     var xhr2=new XMLHttpRequest();
-    var st2='http://delava.tk/zakaz100.php?t=1&idz='+sidz+'&id='+arid[i]+'&zn=0';
+    var st2='https://delava.tk/zakaz100.php?t=1&idz='+sidz+'&id='+arid[i]+'&zn=0';
     xhr2.open('GET', st2, true);
     xhr2.send();
-
-    var xhr=new XMLHttpRequest();
-    var st='http://s96322ms.beget.tech/zakaz100.php?t=1&idz='+sidz+'&id='+arid[i]+'&zn=0';
-    xhr.open('GET', st, true);
-    xhr.send();
 
     if (localStorage.getItem(arid[i]) != "") {
         localStorage.removeItem(arid[i]);
