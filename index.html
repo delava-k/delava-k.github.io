@@ -6,42 +6,9 @@
 <meta name="keywords" content="интернет магазин Delava канзаши атлас репс атласные ленты купить Украина">
 <meta name="description" content="Купить недорого атласные ленты(атлас), репс, органза, фатин, фоамиран, фетр в интернет магазине Delava товары для канзаши и рукоделия (Украина)">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<title>интернет магазин "Delava - товары для рукоделия и канзаши" (Украина)</title>
+<title>Интернет магазин "Delava - товары для рукоделия и канзаши" (Украина)</title>
+<script src="m1.js"></script>
 
-<script>
-
-function st2() {
-
- var sidz=localStorage.getItem('idz');
- if ((sidz === null) || (sidz == "")) {
-  var sidz=Date.now();
-  localStorage.setItem('idz',sidz);
-  sidz=localStorage.getItem('idz');
- }
-
- var arid = new Array();
- var arco = new Array();
- var sz=localStorage.getItem('zakaz');
-
- if ((sz != null) && (sz != "")) { arid = sz.split(',');}
-
- for (var j = 0; j < arid.length; j++)
- {
-  vr=localStorage.getItem(arid[j]);
-  if ((vr != null) && (vr != "")) {	
-   arco[j]=vr;
-   arid[j]=arid[j].slice(1);
-  }
- }
-
- var prim=screen.availWidth+' * '+screen.availHeight+' / '+screen.width+' * '+screen.height+' ('+navigator.platform+')';
-
- var xhr2=new XMLHttpRequest();
- var st2='https://delava.tk/st2.php?t=1&ist=1&idz='+sidz+'&disp='+encodeURIComponent(prim)+'&zakaz='+encodeURIComponent(arid.join('|'))+'&com='+encodeURIComponent(arco.join('|'));
- xhr2.open('GET', st2, true);
- xhr2.send();
-}
-</script>
 
 </head>
 <body> 
@@ -80,7 +47,7 @@ function st2() {
 
 <div class="w100">
 <div class="w33"><div class="da"><a class="an" href="reps_s_risunkom_lite.htm"><img src="img/reps_s_risunkom.jpg" alt="СТРАЗЫ, Стразовый декор">&nbspРЕПС с РИСУНКОМ (57)</a></div></div>
-<div class="w33"><div class="da"><a class="an" href="strazy_lite.htm"><img src="img/strazy.jpg" alt="Полубусины, Бусины, Жемчуг">&nbspСТРАЗЫ (80)</a></div></div>
+<div class="w33"><div class="da"><a class="an" href="strazy_lite.htm"><img src="img/strazy.jpg" alt="Полубусины, Бусины, Жемчуг">&nbspСТРАЗЫ (79)</a></div></div>
 <div class="w33"><div class="da"><a class="an" href="polubusiny_lite.htm"><img src="img/polubusiny.jpg" alt="ДЕТСКИЕ КАБОШОНЫ">&nbspПОЛУБУСИНЫ (59)</a></div></div>
 </div>
 
@@ -91,7 +58,7 @@ function st2() {
 </div>
 
 <div class="w100">
-<div class="w33"><div class="da"><a class="an" href="tsvety_lite.htm"><img src="img/tsvety.jpg" alt="ЛИСТИКИ, ПЕРЬЯ, ФРУКТЫ">&nbspЦВЕТЫ (78)</a></div></div>
+<div class="w33"><div class="da"><a class="an" href="tsvety_lite.htm"><img src="img/tsvety.jpg" alt="ЛИСТИКИ, ПЕРЬЯ, ФРУКТЫ">&nbspЦВЕТЫ (77)</a></div></div>
 <div class="w33"><div class="da"><a class="an" href="listiki_perya_frukty_lite.htm"><img src="img/listiki_perya_frukty.jpg" alt="ТЫЧИНКИ, ДОДАТКИ К ЦВЕТАМ">&nbspЛИСТИКИ, ПЕРЬЯ (38)</a></div></div>
 <div class="w33"><div class="da"><a class="an" href="tychinki_dodatki_lite.htm"><img src="img/tychinki_dodatki.jpg" alt="Обниматели, Крышечки, Картинки">&nbspТЫЧИНКИ, ДОДАТКИ  (98)</a></div></div>
 </div>
@@ -115,12 +82,11 @@ function st2() {
 
 <div id="footer"><div id="footer2">
   <div class="b2"><form action="index.html#i1"><button type="submit" class="bp2">КАТАЛОГ</button></form></div>
+  <div class="b1"><form action="user.htm"><button type="submit" class="bp">ВХОД</button></form></div>
   <div class="b1"><form action="kak_zakazat.htm"><button type="submit" class="bp">КАК ЗАКАЗАТЬ</button></form></div>
   <div class="b1"><form action="zakaz1.htm"><button type="submit" class="bp">КОРЗИНА</button></form></div>
 </div></div>
 
-<script>
-  st2();
-</script>
+<script>st2('');</script>
 
 </body></html>

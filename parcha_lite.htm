@@ -7,6 +7,7 @@
 
 <title>Delava - ПАРЧА</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="m1.js"></script>
 
 </head>
 <body> 
@@ -64,19 +65,10 @@
 </section></div>
  <div id="footer"><div id="footer2">
    <div class="b2"><form action="index.html#i1"><button type="submit" class="bp">КАТАЛОГ</button></form></div>
+   <div class="b1"><form action="user.htm"><button type="submit" class="bp">ВХОД</button></form></div>
    <div class="b1"><form action="kak_zakazat.htm"><button type="submit" class="bp">КАК ЗАКАЗАТЬ</button></form></div>
    <div class="b1"><form action="zakaz1.htm"><button type="submit" class="bp">КОРЗИНА</button></form></div>
  </div></div>
 
-<script>
- var sidz=localStorage.getItem('idz'); if ((sidz === null) || (sidz == "")) {var sidz=Date.now();  localStorage.setItem('idz',sidz);  sidz=localStorage.getItem('idz'); }
- var p = window.location['pathname'].split('/');
-
- var xhr2=new XMLHttpRequest();
- var st2='https://delava.tk/st2.php?t=1&ist='+p[p.length - 1]+'&idz='+sidz;
- xhr2.open('GET', st2, true);
- xhr2.send();
-
-</script>
-
+<script>st2('');</script>
 </body></html>

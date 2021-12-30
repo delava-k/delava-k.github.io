@@ -1,0 +1,496 @@
+<!DOCTYPE html> 
+<html lang="ru"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>Вход в магазин</title>
+<script src="m1.js"></script>
+
+<script>
+
+var dom='http://delava/';
+
+function myDate(dat) { 
+ d= new Date(Number(dat));
+ var yyyy = d.getFullYear();
+ var mm = d.getMonth()+ 1; //January is 0!
+ var dd = d.getDate();
+ var h = d.getHours();
+ var m = d.getMinutes();
+ var s = d.getSeconds();
+ var ms = d.getMilliseconds();
+  if (dd < 10) {dd = '0' + dd;};
+  if (mm < 10) {mm = '0' + mm;};
+  if (h < 10) {h = '0' + h;};
+  if (m < 10) {m = '0' + m;};
+  if (s < 10) {s = '0' + s;};
+
+ //return dd + '/' + mm + '/' + yyyy;
+ return dd + '.' + mm + '.' +yyyy +' ' + h + ':' + m ;
+//+ ':' + s + '.' + ms;
+}
+
+//---
+
+function v(typ) {
+
+ if (typ==1){ //Выход и доставка
+   document.getElementById("v2").innerHTML='';
+   document.getElementById("dd").style="display:auto";
+   document.getElementById("e0").style="display:auto";
+   document.getElementById("v0").style="display:none";
+   document.getElementById("r0").style="display:none";
+ }
+ if (typ==2){ //показать вход
+   document.getElementById("v2").innerHTML='';
+   document.getElementById("dd").style="display:none";
+   document.getElementById("e0").style="display:none";
+   document.getElementById("v0").style="display:auto";
+   document.getElementById("r0").style="display:none";
+ }
+ if (typ==3){ //показать регу
+   document.getElementById("dd").style="display:none";
+   document.getElementById("e0").style="display:none";
+   document.getElementById("v0").style="display:none";
+   document.getElementById("r0").style="display:auto";
+ }
+}
+
+
+//---
+
+function LoadZ(u, res) {
+ var t=localStorage.getItem('t');
+ console.log('r/'+res+'/');
+
+ var ar=res.split('^');//0-t.'^'.1-cart.'^'.2-atxt.'^'.3-zakazs;
+
+ console.log('0/'+ar[0]+'/');
+ console.log('1/'+ar[1]+'/');//undefined
+ console.log('2/'+ar[2]+'/');
+ console.log('3/'+ar[3]+'/');
+
+ //............. Cart - 1
+
+   if (ar[1]!='0'){
+    var ac = ar[1].split('|');//0-n | 1-idz | 2-zakaz
+     var idz = ac[1];
+      localStorage.setItem("idz", idz);
+     var jc = JSON.parse(ac[2]);//json корзины
+   }
+
+/*    //............. Dostavla - 2
+   if (ar[2]!='0'){
+    var ad = ar[2].split('|');//массив доставки
+     for (var j = 0; j <= 8; j++){
+      if (ad[j]==undefined) {ad[j]=''}
+      var j1=j+1;
+      document.getElementById("d"+j1).value=ad[j];
+     }
+   }
+*/
+
+
+ //............. Orders - 3
+   if (ar[3]!='0'){
+    var az = ar[3].split('|');//массив заказов старых
+
+
+    for (var j = az.length; j <=10 ; j++){ //чистим
+     document.getElementById("z"+j).style="display:none";
+    }
+
+    if (az.length <= 0) {   
+     document.getElementById("z0").innerHTML='У Вас пока небыло заказов';
+     document.getElementById("z0").style="display:auto";
+    }else{ 
+     document.getElementById("z0").style="display:none";
+    }
+
+    for (var j = 1; j <= az.length; j++){ //по json-у с заказами 1-10 последних !первых
+     var idz=0;
+     var a=document.getElementById("a"+j);
+     var azak=az[j-1].split(':');
+     a.innerHTML = j+'. № '+azak[0]+' от '+myDate(azak[1]); //(5 шт.) 345.50 грн.
+     a.href = dom+'hz.htm?t='+t+'&u='+u+'&idz='+azak[1];
+     document.getElementById("z"+j).style="display:auto";
+    }//for
+   }
+    
+
+  
+  document.getElementById("u").value=u;
+  document.getElementById("e1").innerHTML='Вы вошли как: <big>'+u+'</big>'; 
+
+  v(1);
+}       
+
+//---
+
+function Load() {
+
+ var t=localStorage.getItem('t');
+ var u=localStorage.getItem('u');
+ console.log('u=/'+ u+'/');                          
+
+ if ((t === null) || (t === "") || (u === null) || (u === "") || (u === "undefined")) {
+  if ( (u !== null) && (u !== "")&& (u !== "undefined") ) {
+    document.getElementById("u").value=u;//а если null/undef ?
+  }
+  v(2);
+ }else{//уже вошли
+//alert('2');
+
+  //1.проверяем корректность токена
+  var xhr=new XMLHttpRequest();
+  var st=dom+'gv.php?t='+t+'&u='+u+'&typ=0';
+  xhr.open('GET',st,true);
+  xhr.send();
+
+
+  xhr.onload = function() {
+   let res = xhr.response;
+   console.log('/'+res+'/');
+
+   if (res == '0') {//нет токена
+    //показать регистрацию/вход
+    //alert('3');
+    u='';
+    document.getElementById("u").value='';
+    document.getElementById("p").value='';
+    console.log('u=/'+ u+'/');
+    v(2);
+
+   }else{
+ 
+    LoadZ(u, res);
+ 
+   }//res
+
+  }//on load
+ }//t u
+}//fun
+
+
+//----------------------------------------------------
+
+function cV(){
+
+ document.getElementById("v2").innerHTML='';
+ var u=document.getElementById("u").value;
+
+ if (u=="") {
+   alert('Укажите свой логин');
+   return;
+ }
+
+ var p=document.getElementById("p").value;
+
+    var xhr=new XMLHttpRequest();
+    var st=dom+'gv.php?u='+u+'&p='+p+'&typ=1';
+    xhr.open('GET', st, true);
+    xhr.send();
+
+    xhr.onload = function() {
+     let res = xhr.response;
+     console.log('/'+res+'/');
+
+     if (res !='0') {
+
+      var ar=res.split('^');//0-t.'^'.1-cart.'^'.2-atxt.'^'.3-zakazs;
+
+      localStorage.setItem("t", ar[0]);
+      localStorage.setItem("u", u);
+
+      if (ar[1]!='0'){
+       var ac = ar[1].split('|');//0-n | 1-idz | 2-zakaz
+       var idz = ac[1];
+       localStorage.setItem("idz",idz);
+      }
+
+      v(1);
+      document.getElementById("e1").innerHTML='Вы вошли как: <big>'+u+'</big>'; 
+      LoadZ(u,res);
+     }else{ 
+       v(2);
+       document.getElementById("v2").innerHTML='Ошибка, неверный логин или пароль';
+     }
+    }
+}
+
+//----------------------------------------------------
+
+function cR(){
+
+/* if (! document.getElementById("ir").checked) {
+   alert('Активируйте "Я не робот".');
+   return;
+ }*/
+
+ if (document.getElementById("ir").checked) {
+   st2('r');
+   return;//click hide ?
+ }
+
+ document.getElementById("r2").innerHTML='';
+ var u=document.getElementById("ur").value;
+ var p=document.getElementById("pr").value;
+
+ if (u=="") {
+   alert('Укажите свой логин');
+   return;
+ }
+
+  var idz=localStorage.getItem('idz'); if ((idz === null) || (idz == "")) {var idz=Date.now();  localStorage.setItem('idz',idz);  idz=localStorage.getItem('idz'); }
+  var xhr=new XMLHttpRequest();
+  var st=dom+'r.php?u='+u+'&p='+p+'&idz='+idz;
+  xhr.open('GET', st, true);
+  xhr.send();
+
+  xhr.onload = function() {
+   let res = xhr.response;
+   console.log('/'+res+'/');
+
+   if (res == '0') {
+    v(3);
+    document.getElementById("r2").innerHTML='Ошибка, логин '+u+' - занят !';
+    return;
+   }
+
+   var ar=res.split('^');//0-t.'^'.1-cart.'^'.2-atxt.'^'.3-zakazs;
+   if (ar[0] != '0'){
+    localStorage.setItem("t", ar[0]);
+    localStorage.setItem("u", u);
+    v(1);
+    document.getElementById("e1").innerHTML='Вы вошли как: <big>'+u+'</big>';
+    document.getElementById("u").value=u;
+    document.getElementById("p").value='';
+    LoadZ(u,res);
+   }else{
+    document.getElementById("r2").innerHTML='Ошибка...';
+    return;
+   }
+  }
+}
+
+
+//----------------------------------------------------
+/*
+function cI(u) {
+// var u = document.getElementById("u").value;
+ var xhr=new XMLHttpRequest();
+  var st=dom+'tu.php?u='+u;
+  xhr.open('GET', st, true);
+  xhr.send();
+
+  xhr.onload = function() {
+   let res = xhr.response;
+   console.log(res);
+
+   if (res =='0') {
+    document.getElementById("r2").innerHTML='Логин - ' + u + ' свободен';
+//      alert(u+' Свободен '+res);
+   }else{
+    document.getElementById("r2").innerHTML='Логин - ' + u + ' занят';
+//      alert(u+' Занят '+res);
+   }
+  }
+} */
+
+//---
+
+function setu() {
+ var input = document.getElementById("user");
+ localStorage.setItem("user", input.value);
+}
+
+//---
+
+function cE(){ //Выход из аккаунта
+ document.getElementById("u").value='';
+ document.getElementById("p").value='';
+ localStorage.clear();
+ v(2);
+}
+
+//---
+
+function cbpv(){ 
+ if (document.getElementById("cbpv").checked){
+   document.getElementById("p").type="text";
+ } else {
+   document.getElementById("p").type="password";
+ }
+}
+
+//---
+
+function cbpr(){ 
+ if (document.getElementById("cbpr").checked){
+   document.getElementById("pr").type="text";
+ } else {
+   document.getElementById("pr").type="password";
+ }
+}
+
+//---
+/*
+function cSaveD(){ //сохранить данные для доставки
+
+ var u=document.getElementById("u").value;
+ var t=localStorage.getItem("t");
+ console.log(u);
+
+ if (t=="") {
+   alert('Зарегистрируйтесь или войдите в аккаунт');
+   return;
+ }
+
+ if (u=="") {
+   alert('Укажите свой логин');
+   return;
+ }
+
+ d1=document.getElementById("d1").value;
+ d2=document.getElementById("d2").value;
+ d3=document.getElementById("d3").value;
+ d4=document.getElementById("d4").value;
+ d5=document.getElementById("d5").value;
+ d6=document.getElementById("d6").value;
+ d7=document.getElementById("d7").value;
+ d8=document.getElementById("d8").value;
+ d9=document.getElementById("d9").value;
+
+ var xhr=new XMLHttpRequest();
+ var st=dom+'sd.php?t='+t+'&u='+u+'&d1='+d1+'&d2='+d2+'&d3='+d3+'&d4='+d4+'&d5='+d5+'&d6='+d6+'&d7='+d7+'&d8='+d8+'&d9='+d9;
+ xhr.open('GET', st, true);
+ xhr.send();
+// console.log(st);
+
+ xhr.onload = function() {
+   let res = xhr.response;
+//   console.log('/'+res+'/');
+
+  if (res == '0') {
+    alert('Проблемы при сохранении данных для доставки');
+  }else{
+   //данные сохранены успешно
+    console.log(res);
+  }
+ }
+}
+*/
+
+//--------------------------------------------------------------------------------------------
+
+</script>
+</head>
+<body> 
+<div id="cont" class="cont">
+
+<div class="w100" >
+
+
+
+<div class="w100" id="e0" style="display:none">
+<div><p id="e1">Вы вошли как...</p></div>
+<button onclick="cE()" type="button" class="bc2">Выйти</button>
+</div>
+
+
+
+<div class="w100" id="v0" style="display:none">
+<div><p id="v1">Вход в сущестующий аккаунт:</p></div>
+<div>
+<div class="w95">
+<div class="w20">Логин: *</div>
+<input type="text" id="u" class="w50" autocomplete="off" size="30" maxlength="30" value="">
+</div>
+
+<div class="w95">
+<div class="w20">Пароль:</div>
+<input type="password" id="p" class="w50" autocomplete="off" size="30" maxlength="30" value=""> 
+<label class="checkbox"><input id="cbpv" onclick="cbpv()" type="checkbox">показать<Br></label>
+</div>
+<div><p id="v2" class="r">.<p></div>
+</div>
+
+<div class="r100">
+<div class="bc3 bp5"><button onclick="cV()" type="button" class="bc2">Войти</button></div>
+</div>
+
+<a href="#" onclick="v(3)">Нет аккаунта, <big>[ЗАРЕГИСТРИРОВАТЬ]</big></a>
+<hr>
+После входа в аккаунт, Вы сможете видеть свои заказы и их состояние с любых браузеров ( компьютера / телефона ).
+</div>
+
+
+
+
+
+
+<div class="w100" id="r0" style="display:none">
+<div><p id="r1">Создание нового аккаунта:</p></div>
+<div>
+<div class="w95">
+<div class="w20">Логин: *</div>
+<input type="text" id="ur" class="w50" autocomplete="off" size="30" maxlength="30" value="">
+</div>
+
+<div class="w95">
+<div class="w20">Пароль:</div>
+<input type="password" id="pr" class="w50" autocomplete="off" size="30" maxlength="30" value=""> 
+<label class="checkbox"><input id="cbpr" onclick="cbpr()" type="checkbox">показать<Br></label>
+</div>
+<label class="checkbox"><div class="w95" style="display:none"><input id="ir" type="checkbox">Я не робот *<Br></label></div>
+<div><p id="r2" class="r">&nbsp<p></div>
+</div>
+
+<div class="r100">
+<div class="bc3 bp5"><button onclick="cR()" type="button" class="bc100">Регистрация</button></div>
+</div>
+<a href="#" onclick="v(2)">Есть аккаунт, <big>[ВХОД]</big></a>
+<hr>
+После простой регистрации Вы сможете видеть все свои заказы и их состояние с любых браузеров ( компьютера / телефона ).
+</div>
+
+
+
+
+
+
+<div class="w100" id='dd' style="display:none">
+<hr>
+<div class="r100"><big><center>Архив заказов:</center></big></div>
+<div id='z0'> У Вас пока небыло заказов</div>
+<div class="w100" id='z1' style="display:none"><a id="a1" href="#"></a></div>
+<div class="w100" id='z2' style="display:none"><a id="a2" href="#"></a></div>
+<div class="w100" id='z3' style="display:none"><a id="a3" href="#"></a></div>
+<div class="w100" id='z4' style="display:none"><a id="a4" href="#"></a></div>
+<div class="w100" id='z5' style="display:none"><a id="a5" href="#"></a></div>
+<div class="w100" id='z6' style="display:none"><a id="a6" href="#"></a></div>
+<div class="w100" id='z7' style="display:none"><a id="a7" href="#"></a></div>
+<div class="w100" id='z8' style="display:none"><a id="a8" href="#"></a></div>
+<div class="w100" id='z9' style="display:none"><a id="a9" href="#"></a></div>
+<div class="w100" id='z10' style="display:none"><a id="a10" href="#"></a></div>
+<hr>
+
+</div>
+
+</div>
+
+<div id="footer"><div id="footer2">
+  <div class="b1"><form action="index.html#i1"><button type="submit" class="bp">КАТАЛОГ</button></form></div>
+  <div class="b2"><form action="user.htm"><button type="submit" class="bp2">ВХОД</button></form></div>
+  <div class="b1"><form action="kak_zakazat.htm"><button type="submit" class="bp">КАК ЗАКАЗАТЬ</button></form></div>
+  <div class="b1"><form action="zakaz1.htm"><button type="submit" class="bp">КОРЗИНА</button></form></div>
+</div></div>
+
+
+<script>
+  Load();
+  st2('z2');
+</script>
+        
+</body></html>

@@ -101,8 +101,8 @@ div.dpc {
 .w100{
         width:100%;
         max-width:768px;
-        margin: 0 auto 1px; /* Выравнивание по центру */
-	overflow: hidden;
+        margin: 0 auto 1px; /* п▓я▀я─п╟п╡п╫п╦п╡п╟п╫п╦п╣ п©п╬ я├п╣п╫я┌я─я┐ */
+/*	overflow: hidden; */
 }
 
 .w100h{
@@ -153,14 +153,14 @@ div.img {display: inline-block;}
 	width: 768px;
 }
 
-.w30{
-	width: 30px;
-	height: 50px;
-}
 
 .r{
 	color: #FF0000;
 }
+
+/*.bl{
+	color: #0000FF;
+}*/
 
 
 .an{
@@ -171,27 +171,51 @@ div.img {display: inline-block;}
 
 .bl{
 	float:left;
-	width:120px;
-	height:2.5em;
-        font-size:0.9em;
+	width:87px;
+/*	width:99%; */
+	height:2.2em;
+        font-size:0.8em;
 }
+
+.bl33{
+	float:left;
+	width:95%; 
+	height:2.5em;
+        font-size:0.8em;
+}
+
+.br{
+	float:right;
+	width:100px;
+/*	width:99%; */
+	height:2.2em;
+        font-size:0.8em;
+/*	background-color: #F9F9F9;*/
+}
+
+.br33{
+	float:right;
+	width:95%; 
+	height:2.5em;
+        font-size:0.8em;
+}
+
 
 .bc{
 	float:left;
-	width:99%;
+	width:95%;
 /*	width:120px;*/
-	height:2.5em;
-        font-size:0.9em;
+	height:2.2em;
+        font-size:0.8em;
 }
 
-
-.br{
-	width:100px;
+.bc33{
+	float:left;
+	width:99%;
 	height:2.5em;
-	float:right;
-        font-size:0.9em;
-/*	background-color: #F9F9F9;*/
+        font-size:0.8em;
 }
+
 
 
 
@@ -220,8 +244,16 @@ div.img {display: inline-block;}
 	width:7em;
 	height:2.0em;
 /*	float:right;*/
-        margin: 0 auto 1px; /* Выравнивание по центру */
+        margin: 0 auto 1px; /* п▓я▀я─п╟п╡п╫п╦п╡п╟п╫п╦п╣ п©п╬ я├п╣п╫я┌я─я┐ */
 /*	background-color: #FF0000;*/
+	background-color: #00A046;  
+        color: #FFFFFF;
+}
+
+.bc100{
+	width:100%;
+	height:2.0em;
+        margin: 0 auto 1px; 
 	background-color: #00A046;  
         color: #FFFFFF;
 }
@@ -229,30 +261,30 @@ div.img {display: inline-block;}
 .bc3{
 	width:7em;
 	height:1.8em;
-        margin: 0 auto 1px; /* Выравнивание по центру */
+        margin: 0 auto 1px; /* п▓я▀я─п╟п╡п╫п╦п╡п╟п╫п╦п╣ п©п╬ я├п╣п╫я┌я─я┐ */
 /*	background-color: #FFCCCC;*/
 }
 
 #cont {
-    width: 768px; /* Ширина слоя */
+    width: 768px; /* п╗п╦я─п╦п╫п╟ я│п╩п╬я▐ */
     max-width: 100%;
-    margin: 0 auto 1px; /* Выравнивание по центру */
+    margin: 0 auto 1px; /* п▓я▀я─п╟п╡п╫п╦п╡п╟п╫п╦п╣ п©п╬ я├п╣п╫я┌я─я┐ */
 /*    margin-bottom:2em;*/
     margin-top:2.5em;
    }
 
 #footer {
-    position: fixed; /* Фиксированное положение */
-/*    left: 0; bottom: 0; /* Левый нижний угол    bottom  */
-    left: 0; top: 0; /* Левый нижний угол    bottom  */
+    position: fixed; /* п╓п╦п╨я│п╦я─п╬п╡п╟п╫п╫п╬п╣ п©п╬п╩п╬п╤п╣п╫п╦п╣ */
+/*    left: 0; bottom: 0; /* п⌡п╣п╡я▀п╧ п╫п╦п╤п╫п╦п╧ я┐пЁп╬п╩    bottom  */
+    left: 0; top: 0; /* п⌡п╣п╡я▀п╧ п╫п╦п╤п╫п╦п╧ я┐пЁп╬п╩    bottom  */
     height:2.1em;
-    width: 100%; /* Ширина слоя */
+    width: 100%; /* п╗п╦я─п╦п╫п╟ я│п╩п╬я▐ */
    }
 
 #footer2 {
   margin: 0 auto 1px; 
     background: #39b54a;
-    width: 768px; /* Ширина слоя */
+    width: 768px; /* п╗п╦я─п╦п╫п╟ я│п╩п╬я▐ */
     height:2.1em;
     max-width: 100%;
    }
@@ -262,7 +294,7 @@ div.img {display: inline-block;}
 .bp{
 	width:100%;
         height:3em;
-        margin: 0 auto 1px; /* Выравнивание по центру 	 */
+        margin: 0 auto 1px; /* п▓я▀я─п╟п╡п╫п╦п╡п╟п╫п╦п╣ п©п╬ я├п╣п╫я┌я─я┐ 	 */
 /*	background-color: #FF9866;*/
 /*	background-color: #39b54a;*/
 	background-color: #FF4747;
@@ -274,7 +306,7 @@ div.img {display: inline-block;}
 .bp2{
 	width:100%;
         height:3em;
-        margin: 0 auto 1px; /* Выравнивание по центру 	 */
+        margin: 0 auto 1px; /* п▓я▀я─п╟п╡п╫п╦п╡п╟п╫п╦п╣ п©п╬ я├п╣п╫я┌я─я┐ 	 */
 /*	background-color: #FF9866;*/
 /*	background-color: #39b54a;*/
 	background-color: #FF9A00;
@@ -286,7 +318,7 @@ div.img {display: inline-block;}
 
 .b1{
 	float:left;
-        width:33.3333%;
+        width:25%;
         height:2em;
         position:relative;
 	overflow: hidden;
@@ -295,7 +327,7 @@ div.img {display: inline-block;}
 
 .b2{
 	float:left;
-        width:33.3333%;
+        width:25%;
         height:2em;
         position:relative;
 	overflow: hidden;
@@ -360,13 +392,20 @@ p{
 .w100w{
         width:100%;
         max-width:768px;
-        margin: 0 auto 1px; /* Выравнивание по центру */
+        margin: 0 auto 1px; /* п▓я▀я─п╟п╡п╫п╦п╡п╟п╫п╦п╣ п©п╬ я├п╣п╫я┌я─я┐ */
 }
 
 .w95{
         clear:both;
         width:98%;
 	margin-left:0.5%;
+        max-width:768px;
+	overflow: hidden;
+}
+
+.w99{
+        clear:both;
+        width:99.5%;
         max-width:768px;
 	overflow: hidden;
 }
@@ -380,7 +419,7 @@ p{
 
 .w3{
 	float:left;
-        width:2.0em;
+        width:2.25em;
 	margin-left:0.5%;
         max-width:768px;
 	overflow: hidden;
@@ -413,7 +452,6 @@ p{
         width:30%;
         max-width:768px;
         position:relative;
-	overflow: hidden;
 
 }
 
@@ -422,18 +460,18 @@ p{
         width:33.3333%;
         max-width:768px;
         position:relative;
-	overflow: hidden;
 }
 
-.pc{
+.w29{
 	float:left;
-        width:3.5em;
-	overflow: hidden;
-        margin-right:1px;
+        width:29.50%;
+        max-width:768px;
+        position:relative;
+}
 
-    display: table-cell;
-    vertical-align: middle
 
+.ri{    align:right; 
+        width:100%;
 }
 
 .w40{
@@ -441,8 +479,6 @@ p{
         width:40%;
         max-width:768px;
         position:relative;
-	overflow: hidden;
-
 }
 
 .w50{
@@ -485,6 +521,20 @@ p{
         position:relative;
 	overflow: hidden;
 }
+
+
+.pc{
+	float:left;
+        width:3.5em;
+	overflow: hidden;
+        margin-right:1px;
+
+    display: table-cell;
+    vertical-align: middle
+
+}
+
+
 
 .al{
 	float:right;
@@ -543,6 +593,22 @@ p{
 	width:30%;
 }
 
+.l20{
+	float:left;
+	width:20%;
+}
+.l10{
+	float:left;
+	width:10%;
+}
+
+.l80{
+	display:block; 
+	float:left;
+	width:80%;
+}
+
+
 .l92_2{
 	float:left;
 	width:100%;
@@ -595,7 +661,7 @@ p{
 }
 
 
-/* лемч */
+/* п╩п╣п╪я┤ */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -662,6 +728,13 @@ body {
   right: 1px;
   z-index: 1;
 }
+
+.kolvo {
+    margin-left:1px; 
+    margin-right:1px;
+    width: 4em;
+}
+
 .nav-m_cb {
   display: none;
 }
@@ -682,3 +755,12 @@ hr {
 p{
   margin:5px;
 }
+
+.btnTest{
+   background: #FF4747  url('.././img/k2.svg') no-repeat left center;
+   padding-left:20px;
+} 
+.btnTest2{
+   background: #FF9A00  url('.././img/icon-cross.svg') no-repeat left center;
+   padding-left:20px;
+} 
