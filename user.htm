@@ -1,15 +1,16 @@
 <!DOCTYPE html> 
 <html lang="ru"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="max-age=3600, must-revalidate">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?v=3">
 <title>Вход в магазин</title>
-<script src="m1.js"></script>
+<script src="m1.js?v=3"></script>
 
 <script>
-
 var dom='https://delava.tk/';
+//===
 
 function myDate(dat) { 
  d= new Date(Number(dat));
@@ -57,7 +58,6 @@ function v(typ) {
  }
 }
 
-
 //---
 
 function LoadZ(u, res) {
@@ -70,6 +70,11 @@ function LoadZ(u, res) {
  console.log('1/'+ar[1]+'/');//undefined
  console.log('2/'+ar[2]+'/');
  console.log('3/'+ar[3]+'/');
+ console.log('4/'+ar[4]+'/');
+
+   if ((ar[4]!='0')&&(ar[4]!='')&&(ar[4]!='undefined')){
+    document.location.href = ar[4];
+   }
 
  //............. Cart - 1
 
@@ -113,12 +118,11 @@ function LoadZ(u, res) {
      var a=document.getElementById("a"+j);
      var azak=az[j-1].split(':');
      a.innerHTML = j+'. № '+azak[0]+' от '+myDate(azak[1]); //(5 шт.) 345.50 грн.
-     a.href = 'https://delava-k.github.io/hz.htm?t='+t+'&u='+u+'&idz='+azak[1];
+     a.href = dom+'hz.htm?t='+t+'&u='+u+'&idz='+azak[1];
      document.getElementById("z"+j).style="display:auto";
     }//for
    }
     
-
   
   document.getElementById("u").value=u;
   document.getElementById("e1").innerHTML='Вы вошли как: <big>'+u+'</big>'; 
@@ -128,11 +132,11 @@ function LoadZ(u, res) {
 
 //---
 
-function Load() {
+function Load() { //3U
 
  var t=localStorage.getItem('t');
  var u=localStorage.getItem('u');
- console.log('u=/'+ u+'/');                          
+ console.log('u=/'+ u+'/');
 
  if ((t === null) || (t === "") || (u === null) || (u === "") || (u === "undefined")) {
   if ( (u !== null) && (u !== "")&& (u !== "undefined") ) {
@@ -148,20 +152,18 @@ function Load() {
   xhr.open('GET',st,true);
   xhr.send();
 
-
   xhr.onload = function() {
    let res = xhr.response;
    console.log('/'+res+'/');
 
    if (res == '0') {//нет токена
     //показать регистрацию/вход
-    //alert('3');
+
     u='';
     document.getElementById("u").value='';
     document.getElementById("p").value='';
     console.log('u=/'+ u+'/');
     v(2);
-
    }else{
  
     LoadZ(u, res);
@@ -172,8 +174,7 @@ function Load() {
  }//t u
 }//fun
 
-
-//----------------------------------------------------
+//---
 
 function cV(){
 
@@ -197,7 +198,6 @@ function cV(){
      console.log('/'+res+'/');
 
      if (res !='0') {
-
       var ar=res.split('^');//0-t.'^'.1-cart.'^'.2-atxt.'^'.3-zakazs;
 
       localStorage.setItem("t", ar[0]);
