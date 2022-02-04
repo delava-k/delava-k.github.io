@@ -139,14 +139,14 @@ function Load() { //3U
  if (e=='1') {
   console.log('e=/'+ e+'/');
   localStorage.clear();
-  alert(e);
- }
+  var t='';
+  var u='';
+ } else {
+  var t=localStorage.getItem('t');
+  var u=localStorage.getItem('u');
+  console.log('u=/'+ u+'/');
+}
 
-
-
- var t=localStorage.getItem('t');
- var u=localStorage.getItem('u');
- console.log('u=/'+ u+'/');
 
  if ((t === null) || (t === "") || (u === null) || (u === "") || (u === "undefined")) {
   if ( (u !== null) && (u !== "")&& (u !== "undefined") ) {
