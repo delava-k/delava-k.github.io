@@ -135,8 +135,12 @@ function LoadZ(u, res) {
 function Load() { //3U
 
  let params = (new URL(document.location)).searchParams;
- e=params.get("e");
- if (e=='1') {localStorage.clear();}
+ let e=params.get("e");
+ if (e=='1') {
+  console.log('e=/'+ e+'/');
+  localStorage.clear();
+  alert(e);
+ }
 
 
 
