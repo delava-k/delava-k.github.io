@@ -71,6 +71,7 @@ function LoadZ(u, res) {
  console.log('2/'+ar[2]+'/');
  console.log('3/'+ar[3]+'/');
 
+
    if (ar[4]!=undefined){
     document.location.href = ar[4];
    }
@@ -132,6 +133,12 @@ function LoadZ(u, res) {
 //---
 
 function Load() { //3U
+
+ let params = (new URL(document.location)).searchParams;
+ e=params.get("e");
+ if (e=='1') {localStorage.clear();}
+
+
 
  var t=localStorage.getItem('t');
  var u=localStorage.getItem('u');
