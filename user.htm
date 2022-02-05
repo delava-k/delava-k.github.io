@@ -346,54 +346,12 @@ function cbpr(){
 }
 
 //---
-/*
-function cSaveD(){ //сохранить данные для доставки
-
- var u=document.getElementById("u").value;
- var t=localStorage.getItem("t");
- console.log(u);
-
- if (t=="") {
-   alert('Зарегистрируйтесь или войдите в аккаунт');
-   return;
- }
-
- if (u=="") {
-   alert('Укажите свой логин');
-   return;
- }
-
- d1=document.getElementById("d1").value;
- d2=document.getElementById("d2").value;
- d3=document.getElementById("d3").value;
- d4=document.getElementById("d4").value;
- d5=document.getElementById("d5").value;
- d6=document.getElementById("d6").value;
- d7=document.getElementById("d7").value;
- d8=document.getElementById("d8").value;
- d9=document.getElementById("d9").value;
-
- var xhr=new XMLHttpRequest();
- var st=dom+'sd.php?t='+t+'&u='+u+'&d1='+d1+'&d2='+d2+'&d3='+d3+'&d4='+d4+'&d5='+d5+'&d6='+d6+'&d7='+d7+'&d8='+d8+'&d9='+d9;
- xhr.open('GET', st, true);
- xhr.send();
-// console.log(st);
-
- xhr.onload = function() {
-   let res = xhr.response;
-//   console.log('/'+res+'/');
-
-  if (res == '0') {
-    alert('Проблемы при сохранении данных для доставки');
-  }else{
-   //данные сохранены успешно
-    console.log(res);
-  }
+function keyp(e){ 
+ if (e.keyCode == 13) {
+   cV();
  }
 }
-*/
-
-//--------------------------------------------------------------------------------------------
+//---
 
 </script>
 </head>
@@ -421,7 +379,7 @@ function cSaveD(){ //сохранить данные для доставки
 
 <div class="w95">
 <div class="w20">Пароль:</div>
-<input type="password" id="p" class="w50" autocomplete="off" size="30" maxlength="30" value=""> 
+<input type="password" id="p" onkeypress="keyp(event)" class="w50" autocomplete="off" size="30" maxlength="30" value=""> 
 <label class="checkbox"><input id="cbpv" onclick="cbpv()" type="checkbox">показать<Br></label>
 </div>
 <div><p id="v2" class="r">.<p></div>
