@@ -10,6 +10,7 @@
 
 <script>
 var dom='https://delava.tk/';
+var site='d';//io tk
 //===
 
 function myDate(dat) { 
@@ -158,7 +159,7 @@ function Load() { //3U
 
   //1.проверяем корректность токена
   var xhr=new XMLHttpRequest();
-  var st=dom+'gv.php?t='+t+'&u='+u+'&typ=0';
+  var st=dom+'gv.php?t='+t+'&u='+u+'&typ=0&s='+site;
   xhr.open('GET',st,true);
   xhr.send();
 
@@ -199,7 +200,7 @@ function cV(){
  var p=document.getElementById("p").value;
 
     var xhr=new XMLHttpRequest();
-    var st=dom+'gv.php?u='+u+'&p='+p+'&typ=1';
+    var st=dom+'gv.php?u='+u+'&p='+p+'&typ=1&s='+site;
     xhr.open('GET', st, true);
     xhr.send();
 
