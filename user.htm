@@ -119,7 +119,7 @@ function LoadZ(u, res) {
      var a=document.getElementById("a"+j);
      var azak=az[j-1].split(':');
      a.innerHTML = j+'. № '+azak[0]+' от '+myDate(azak[1]); //(5 шт.) 345.50 грн.
-     a.href = dom+'hz.htm?t='+t+'&u='+u+'&idz='+azak[1];
+     a.href = 'hz.htm?t='+t+'&u='+u+'&idz='+azak[1];
      document.getElementById("z"+j).style="display:auto";
     }//for
    }
