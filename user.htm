@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/main.css?v=3">
 <title>Вход в магазин</title>
-<script src="m1.js?v=3"></script>
+<script src="m1.js?v=4"></script>
 
 <script>
 var dom='https://delava.tk/';
-var site='io';
+var site='tk';//d io tk
 //===
 
 function myDate(dat) { 
@@ -346,6 +346,54 @@ function cbpr(){
 }
 
 //---
+/*
+function cSaveD(){ //сохранить данные для доставки
+
+ var u=document.getElementById("u").value;
+ var t=localStorage.getItem("t");
+ console.log(u);
+
+ if (t=="") {
+   alert('Зарегистрируйтесь или войдите в аккаунт');
+   return;
+ }
+
+ if (u=="") {
+   alert('Укажите свой логин');
+   return;
+ }
+
+ d1=document.getElementById("d1").value;
+ d2=document.getElementById("d2").value;
+ d3=document.getElementById("d3").value;
+ d4=document.getElementById("d4").value;
+ d5=document.getElementById("d5").value;
+ d6=document.getElementById("d6").value;
+ d7=document.getElementById("d7").value;
+ d8=document.getElementById("d8").value;
+ d9=document.getElementById("d9").value;
+
+ var xhr=new XMLHttpRequest();
+ var st=dom+'sd.php?t='+t+'&u='+u+'&d1='+d1+'&d2='+d2+'&d3='+d3+'&d4='+d4+'&d5='+d5+'&d6='+d6+'&d7='+d7+'&d8='+d8+'&d9='+d9;
+ xhr.open('GET', st, true);
+ xhr.send();
+// console.log(st);
+
+ xhr.onload = function() {
+   let res = xhr.response;
+//   console.log('/'+res+'/');
+
+  if (res == '0') {
+    alert('Проблемы при сохранении данных для доставки');
+  }else{
+   //данные сохранены успешно
+    console.log(res);
+  }
+ }
+}
+*/
+
+//---
 function keyp(e){ 
  if (e.keyCode == 13) {
    cV();
@@ -450,16 +498,16 @@ function keyp(e){
 </div>
 
 <div id="footer"><div id="footer2">
-  <div class="b1"><form action="index.html#i1"><button type="submit" class="bp">КАТАЛОГ</button></form></div>
-  <div class="b2"><form action="user.htm"><button type="submit" class="bp2">ВХОД</button></form></div>
-  <div class="b1"><form action="kak_zakazat.htm"><button type="submit" class="bp">КАК ЗАКАЗАТЬ</button></form></div>
-  <div class="b1"><form action="zakaz1.htm"><button type="submit" class="bp">КОРЗИНА</button></form></div>
+  <div class="b1"><form action="index.html?v=1#i1"><button type="submit" class="bp">КАТАЛОГ</button></form></div>
+  <div class="b2"><form action="user.htm?v=1"><button type="submit" class="bp2">ВХОД</button></form></div>
+  <div class="b1"><form action="kak_zakazat.htm?v=1"><button type="submit" class="bp">КАК ЗАКАЗАТЬ</button></form></div>
+  <div class="b1"><form action="zakaz1.htm?v=1"><button type="submit" class="bp">КОРЗИНА</button></form></div>
 </div></div>
 
 
 <script>
   Load();
-  st2('z2');
+  st2('z4');
 </script>
         
 </body></html>
